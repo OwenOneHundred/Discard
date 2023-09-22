@@ -3768,7 +3768,7 @@ Tilemap:
       - {fileID: 1643359262, guid: a883504ad37574bf1a62f779a3474c9e, type: 3}
       - {fileID: 884988598, guid: a883504ad37574bf1a62f779a3474c9e, type: 3}
       - {fileID: 642280579, guid: a883504ad37574bf1a62f779a3474c9e, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 14, y: 17, z: 0}
@@ -4584,7 +4584,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 15, y: 21, z: 0}
@@ -4600,7 +4600,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 16, y: 21, z: 0}
@@ -4728,7 +4728,7 @@ Tilemap:
       - {fileID: 1101064861, guid: c15b2ea3936494e2599ad6ec759b160a, type: 3}
       - {fileID: 1361533043, guid: c15b2ea3936494e2599ad6ec759b160a, type: 3}
       - {fileID: 1067777190, guid: c15b2ea3936494e2599ad6ec759b160a, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 14, y: 22, z: 0}
@@ -5768,7 +5768,7 @@ MonoBehaviour:
   m_AssetsPPU: 16
   m_RefResolutionX: 320
   m_RefResolutionY: 180
-  m_CropFrame: 4
+  m_CropFrame: 0
   m_GridSnapping: 0
   m_UpscaleRT: 0
   m_PixelSnapping: 0
@@ -5796,13 +5796,13 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.99829066
-    height: 0.9977221
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 26.991467
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 6.59375
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
