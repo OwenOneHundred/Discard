@@ -10,5 +10,5 @@ public class Card : ScriptableObject
     public string description;
     public Sprite art;
     public string cost;
-    public GameObject attackPrefab;
+    public GameObject spellPrefab;
 }
