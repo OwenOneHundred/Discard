@@ -204,9 +204,9 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -477361755
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1924112319
+  m_SortingLayer: -2
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -1125,7 +1125,7 @@ Camera:
   far clip plane: 1000
   field of view: 26.991467
   orthographic: 1
-  orthographic size: 6.59375
+  orthographic size: 6.0625
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -2334,7 +2334,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 91495e6ec121b72ca5098ce300000000291c199203ec6940a97cebb9
+  m_ApplyToSortingLayers: 2dd7f9e54160508d53953eb40000000075a9feaa4f884504192079e2
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -2401,7 +2401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070479678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.012968, y: -6.4365883, z: 0.031962022}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3528,6 +3528,7 @@ GameObject:
   - component: {fileID: 1671662864}
   - component: {fileID: 1671662863}
   - component: {fileID: 1671662865}
+  - component: {fileID: 1671662866}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -3581,23 +3582,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ground: {fileID: 1745739093}
   worldSize: 200
-  genPerFrame: 30
+  genPerFrame: 60
   biomeSize: 200
   biomes:
   - name: Plains
     temperature: 5
+    weight: 2
     groundTile: {fileID: 11400000, guid: 5096702c5901841a7b7f149517ab92bc, type: 2}
     raisedGroundFront: {fileID: 0}
     raisedGroundTop: {fileID: 0}
-    decorObjects: []
+    customScript: {fileID: 0}
+    decorObjects:
+    - prefab: {fileID: 1992165639378764853, guid: e5454d8a5460e41898f0fa64a3a84e3c, type: 3}
+      spawnrate0to1: 0.001
+    - prefab: {fileID: 1992165639378764853, guid: 705ddb13f5cef4de5a139deb155a34e6, type: 3}
+      spawnrate0to1: 0.001
     structures: []
   - name: Desert
     temperature: 10
+    weight: 2
     groundTile: {fileID: 11400000, guid: 58cd2c8a136cd439fb1fffc0a321d38d, type: 2}
     raisedGroundFront: {fileID: 0}
     raisedGroundTop: {fileID: 0}
+    customScript: {fileID: 0}
     decorObjects: []
     structures: []
+--- !u!114 &1671662866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671662862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c783a8a8b16ee4dd593a834a4191a3c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1719304562
 GameObject:
   m_ObjectHideFlags: 0
@@ -3804,8 +3825,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 750199233
-  m_SortingLayer: 0
+  m_SortingLayerID: -1924112319
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
