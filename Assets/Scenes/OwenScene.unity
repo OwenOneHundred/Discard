@@ -353,7 +353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &219341722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,7 +878,7 @@ GameObject:
   - component: {fileID: 455356339}
   - component: {fileID: 455356338}
   m_Layer: 0
-  m_Name: Cliffs [0]
+  m_Name: RaisedGround [0]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_RefResolutionX: 320
   m_RefResolutionY: 180
   m_CropFrame: 0
-  m_GridSnapping: 0
+  m_GridSnapping: 2
   m_UpscaleRT: 0
   m_PixelSnapping: 0
   m_CropFrameX: 0
@@ -1107,8 +1107,8 @@ Camera:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1117,10 +1117,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.0013377926
+    y: 0.005154639
+    width: 2.0013378
+    height: 2.2061856
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 26.991467
@@ -1354,7 +1354,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -0.000011444092, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2190,7 +2190,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.0000076293945, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2814,7 +2814,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -0.00001335144, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3581,31 +3581,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ground: {fileID: 1745739093}
-  worldSize: 200
-  genPerFrame: 60
+  raisedGround: {fileID: 455356339}
+  rgShadowTile: {fileID: 11400000, guid: cfe5fe8b5574a42e282c2ecc4c9e56f1, type: 2}
+  worldSize: 100
+  genPerFrame: 200
   biomeSize: 200
+  hillSpawnAttempts: 30
+  averageHillSize: 80
   biomes:
   - name: Plains
     temperature: 5
     weight: 2
     groundTile: {fileID: 11400000, guid: 5096702c5901841a7b7f149517ab92bc, type: 2}
-    raisedGroundFront: {fileID: 0}
-    raisedGroundTop: {fileID: 0}
-    customScript: {fileID: 0}
+    raisedGroundTop: {fileID: 11400000, guid: bad8e30c3265f4758be4c2655fcf2120, type: 2}
+    raisedGroundFront: {fileID: 11400000, guid: 5e15cb1b74a3e46e88b75170d915e65a, type: 2}
+    hillOdds0to1: 1
     decorObjects:
-    - prefab: {fileID: 1992165639378764853, guid: e5454d8a5460e41898f0fa64a3a84e3c, type: 3}
+    - name: SmallTree
+      prefab: {fileID: 1992165639378764853, guid: e5454d8a5460e41898f0fa64a3a84e3c, type: 3}
       spawnrate0to1: 0.001
-    - prefab: {fileID: 1992165639378764853, guid: 705ddb13f5cef4de5a139deb155a34e6, type: 3}
+      occupyTiles: 1
+    - name: MediumTreeDouble
+      prefab: {fileID: 1992165639378764853, guid: 705ddb13f5cef4de5a139deb155a34e6, type: 3}
       spawnrate0to1: 0.001
+      occupyTiles: 1
+    - name: Bush2x1
+      prefab: {fileID: 3761206157792249600, guid: 444be42f1169c49d3972b91ad8cc90e5, type: 3}
+      spawnrate0to1: 0.0003
+      occupyTiles: 1
+    - name: Bush2x1
+      prefab: {fileID: 8332976566183827426, guid: 6b062ee6c75154da5be4f906daca33c3, type: 3}
+      spawnrate0to1: 0.0002
+      occupyTiles: 1
     structures: []
   - name: Desert
     temperature: 10
     weight: 2
     groundTile: {fileID: 11400000, guid: 58cd2c8a136cd439fb1fffc0a321d38d, type: 2}
-    raisedGroundFront: {fileID: 0}
     raisedGroundTop: {fileID: 0}
-    customScript: {fileID: 0}
-    decorObjects: []
+    raisedGroundFront: {fileID: 0}
+    hillOdds0to1: 0
+    decorObjects:
+    - name: Cactus
+      prefab: {fileID: 7374663493335591726, guid: a36487ec8174445938548ada0d192313, type: 3}
+      spawnrate0to1: 0.0004
+      occupyTiles: 1
+    - name: Cactus
+      prefab: {fileID: 8332976566183827426, guid: 6b062ee6c75154da5be4f906daca33c3, type: 3}
+      spawnrate0to1: 0.0003
+      occupyTiles: 1
     structures: []
 --- !u!114 &1671662866
 MonoBehaviour:

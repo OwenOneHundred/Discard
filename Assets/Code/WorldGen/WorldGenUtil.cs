@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.WSA;
 
 public static class WorldGenUtil
 {
@@ -19,7 +20,6 @@ public static class WorldGenUtil
 
         return false;
     }
-
 
     public static TileBase GetTileBaseInMultipleTilemaps(Vector3Int location, List<Tilemap> tilemaps)
     {
@@ -85,6 +85,9 @@ public static class WorldGenUtil
         return toReturn;
     }
 
+    /// <summary>
+    /// Spawns clump of tiles at position of random size and random but generally circular shape. ONLY works if tilemap is EMPTY otherwise.
+    /// </summary>
     public static void CreateClump(Vector3Int center, int tileCount, TileBase tile, Tilemap tilemap)
     {
         for (int tileNumber = 0; tileNumber < tileCount; tileNumber++)
@@ -131,6 +134,60 @@ public static class WorldGenUtil
         }
     }
 
+    public static List<Vector3Int> GetClump(Vector3Int center, int tileCount)
+    {
+        List<Vector3Int> toReturn = new List<Vector3Int>();
+
+        for (int tileNumber = 0; tileNumber < tileCount; tileNumber++)
+        {
+            int x = 0;
+            int y = 0;
+            int xDirection = Random.Range(0, 2) == 0 ? -1 : 1;
+            int yDirection = Random.Range(0, 2) == 0 ? -1 : 1;
+
+            for (int tryPlaceTile = 0; tryPlaceTile < 100; tryPlaceTile++)
+            {
+                if (!toReturn.Contains(center + new Vector3Int(x, y, 0)))
+                {
+                    Vector3Int chosenCell = center + new Vector3Int(x, y, 0);
+                    toReturn.Add(chosenCell);
+
+                    foreach (Vector3Int i in GetSurroundingTilePositions(chosenCell, false))
+                    {
+                        int surroundingTileCount = 0;
+                        foreach (Vector3Int j in GetSurroundingTilePositions(i, false, false))
+                        {
+                            if (toReturn.Contains(j))
+                            {
+                                surroundingTileCount += 1;
+                            }
+                        }
+
+                        if (surroundingTileCount > 1)
+                        {
+                            if (!toReturn.Contains(i))
+                            {
+                                toReturn.Add(i);
+                            }
+                        }
+                    }
+
+                    break;
+                }
+
+                if (Random.Range(0, 2) == 0)
+                {
+                    x += xDirection;
+                }
+                else
+                {
+                    y += yDirection;
+                }
+            }
+        }
+
+        return toReturn;
+    }
 
 
 
