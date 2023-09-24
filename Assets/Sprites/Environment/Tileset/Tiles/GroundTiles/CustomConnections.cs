@@ -23,6 +23,8 @@ public class CustomConnections : RuleTile<CustomConnections.Neighbor>
         {
             case Neighbor.Connectable: return tile == this || connectableRTs.Contains(tile) || connectableTiles.Contains(tile);
             case Neighbor.NotConnectable: return !(tile == this || connectableRTs.Contains(tile) || connectableTiles.Contains(tile));
+            default:
+                break;
         }
         return base.RuleMatch(neighbor, tile);
     }

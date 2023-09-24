@@ -2552,7 +2552,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 13, y: -16, z: 0}
@@ -3416,7 +3416,7 @@ Tilemap:
       - {fileID: -1443984935, guid: e40ed689c8458471ea0a14b82fd154ee, type: 3}
       - {fileID: -1587752742, guid: e40ed689c8458471ea0a14b82fd154ee, type: 3}
       - {fileID: -1781465016, guid: e40ed689c8458471ea0a14b82fd154ee, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 26, y: 6, z: 0}
@@ -3448,7 +3448,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 28, y: 6, z: 0}
@@ -5714,7 +5714,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f72a5e0615d2743d69a37229429061b1, type: 3}
   m_Name: 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7717145088485654349}
   - component: {fileID: 2162752376385771690}
   m_Layer: 5
-  m_Name: PileNotifPrefab
+  m_Name: PileNotificationPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

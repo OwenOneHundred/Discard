@@ -20,18 +20,23 @@ MonoBehaviour:
     m_Sprites:
     - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
     - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
-    - {fileID: -1016516325, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
+    - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
+    - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
+    - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
+    - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
+    - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
+    - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
+    - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
+    - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
     - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
     - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
     - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
     - {fileID: -2130016143, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
     - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
-    - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
-    - {fileID: -1590297672, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
-    - {fileID: -1254738638, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
-    - {fileID: -635909969, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
     - {fileID: 416059890, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
-    - {fileID: -2130016143, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
+    - {fileID: -1590297672, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
+    - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
+    - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
     - {fileID: -276534074, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
     - {fileID: 128770487, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
     m_GameObject: {fileID: 0}
