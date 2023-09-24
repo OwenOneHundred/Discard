@@ -26,8 +26,8 @@ public class WorldGenerator : MonoBehaviour
 
     public event Action<Vector3Int, Biome> CallCustomScripts;
 
-    [System.NonSerialized] public List<Vector3Int> raisedTiles;
-    [System.NonSerialized] public List<Vector3Int> decorObjectTiles;
+    [System.NonSerialized] public List<Vector3Int> doNotSpawnTiles = new();
+    [System.NonSerialized] public List<Vector3Int> decorObjectTiles = new();
 
     // Start is called before the first frame update
     void Start()
@@ -81,10 +81,15 @@ public class WorldGenerator : MonoBehaviour
         }
     }
 
+    // operation order:
+    // Generate biome tiles
+    // Generate hills
+    // Generate decor objects
     IEnumerator GenerateWorld()
     {
         yield return StartCoroutine(GenerateBiomeTiles(worldSize, Vector2.zero));
-        StartCoroutine(GenerateHills());
+        yield return StartCoroutine(GenerateHills());
+        yield return StartCoroutine(ObjectSpawner());
     }
 
     IEnumerator GenerateBiomeTiles(int generationRange, Vector2 positionToGenerate)
@@ -117,9 +122,6 @@ public class WorldGenerator : MonoBehaviour
 
                 ground.SetTile(currentCell, biomes[biomeIndex].groundTile);
 
-                // try to spawn objects
-                CheckSpawnObject(currentCell, biomes[biomeIndex]);
-
                 CallCustomScripts?.Invoke(currentCell, biomes[biomeIndex]);
 
                 genCount += 1;
@@ -148,36 +150,61 @@ public class WorldGenerator : MonoBehaviour
                 List<Vector3Int> hillPositions = WorldGenUtil.GetClump(pos, UnityEngine.Random.Range(averageHillSize/2, (int) (averageHillSize * 1.5) ));
                 List<Vector3Int> bottomTiles = new();
 
+                // remove invalid positions
+                List<Vector3Int> dummyList = new List<Vector3Int>(hillPositions);
+                foreach (Vector3Int hillPos in dummyList)
+                {
+                    if (Mathf.Abs(hillPos.x) > worldSize || Mathf.Abs(hillPos.y) > worldSize)
+                    {
+                        hillPositions.Remove(hillPos);
+                        continue;
+                    }
+
+                    if (GetBiomeAtPos(hillPos).raisedGroundTop == null)
+                    {
+                        hillPositions.Remove(hillPos);
+                        continue;
+                    }
+                }
+
                 // add top tiles
                 foreach (Vector3Int currentPos in hillPositions)
                 {
-                    if (Mathf.Abs(currentPos.x) > worldSize || Mathf.Abs(currentPos.y) > worldSize) { continue; }
                     Biome currentBiome = GetBiomeAtPos(currentPos);
-                    if (currentBiome.raisedGroundTop == null) { continue; }
-
                     raisedGround.SetTile(currentPos, currentBiome.raisedGroundTop);
+
+                    // add edge tiles and immediate borders to doNotSpawn list
+                    List<Vector3Int> topTileSurrounding = WorldGenUtil.GetSurroundingTilePositions(currentPos);
+                    foreach (Vector3Int surroundingTile in topTileSurrounding)
+                    {
+                        if (raisedGround.GetTile(surroundingTile) == null)
+                        {
+                            doNotSpawnTiles.AddRange(topTileSurrounding);
+                        }
+                    }
                 }
+
+                // add front tiles
                 foreach (Vector3Int currentPos in hillPositions)
                 {
-                    if (Mathf.Abs(currentPos.x) > worldSize || Mathf.Abs(currentPos.y) > worldSize) { continue; }
                     Biome currentBiome = GetBiomeAtPos(currentPos);
-                    if (currentBiome.raisedGroundTop == null) { continue; }
 
-                    // add front tiles
                     int j = 1;
                     for (j = 1; j < height; j++)
                     {
-                        if (raisedGround.GetTile(currentPos + (Vector3Int.down * j)) == null)
+                        Vector3Int bottomPos = currentPos + (Vector3Int.down * j);
+                        if (raisedGround.GetTile(bottomPos) == null)
                         {
-                            bottomTiles.Add(currentPos + (Vector3Int.down * j));
-                            raisedGround.SetTile(currentPos + (Vector3Int.down * j), currentBiome.raisedGroundFront);
+                            bottomTiles.Add(bottomPos);
+                            if (!doNotSpawnTiles.Contains(bottomPos)) { doNotSpawnTiles.Add(bottomPos); }
+                            raisedGround.SetTile(bottomPos, currentBiome.raisedGroundFront);
                         }
-                        yield return null;
                     }
                 }
+
+                // add shadows
                 foreach (Vector3Int bottomPos in bottomTiles)
                 {
-                    // add shadows
                     if (raisedGround.GetTile(bottomPos + Vector3Int.down) == null)
                     {
                         raisedGround.SetTile(bottomPos + Vector3Int.down, rgShadowTile);
@@ -187,6 +214,24 @@ public class WorldGenerator : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    IEnumerator ObjectSpawner()
+    {
+        for (int x = -worldSize; x < worldSize; x++)
+        {
+            for (int y = -worldSize; y < worldSize; y++)
+            {
+                Vector3Int currentCell = new Vector3Int(x, y, 0);
+
+                if (!doNotSpawnTiles.Contains(currentCell) && !decorObjectTiles.Contains(currentCell))
+                {
+                    RunSpawnObjects(currentCell, GetBiomeAtPos(currentCell));
+                }
+            }
+
+            yield return null;
+        }
     }
 
     // this is here, and not in Utils, because it includes random, and this file has the seed set.
@@ -201,7 +246,7 @@ public class WorldGenerator : MonoBehaviour
         return biomes.Find(x => x.groundTile == ground.GetTile(position));
     }    
 
-    void CheckSpawnObject(Vector3Int location, Biome biome)
+    void RunSpawnObjects(Vector3Int location, Biome biome)
     {
         foreach (Biome.DecorObject decorObject in biome.decorObjects)
         {
