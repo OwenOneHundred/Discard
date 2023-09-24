@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
-
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal.Internal;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 
@@ -21,6 +22,18 @@ public class ProjectileManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        setUpTransform();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        projectileMotion();
+
+        destroyOutOfBounds();
+    }
+
+    public void setUpTransform() {
         playerPos = new Vector2(0,0);
 
         //Translates the cursor position to World Space and then subracting from player position to obtain the direction of the projectile when spawned.
@@ -33,6 +46,8 @@ public class ProjectileManager : MonoBehaviour
 
         direction = heading.normalized;
 
+        //Calculates amount to rotate projectile in degrees in order to aim towards mouse.
+
         float theta = (float)Math.Acos(direction.y) * (float)(180/Math.PI);
 
         if(worldMousePos.x > 0) theta = -theta; 
@@ -40,17 +55,18 @@ public class ProjectileManager : MonoBehaviour
         transform.Rotate(0,0,theta,Space.World);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        projectileMotion();
-    }
-
     public void projectileMotion(){
         transform.Translate(Vector2.up * Time.deltaTime * speed);
     }
 
-    public void destroyOutOfBounds(){
-        
+    //Destroy Projectile outside of screen. Buffer is 0.2 by default but can be modified in method call.
+    public void destroyOutOfBounds(float buffer = 0.2f){
+        Vector2 screenPos = Camera.main.WorldToViewportPoint(transform.position);
+
+        float xPos = screenPos.x;
+
+        float yPos = screenPos.y;
+
+        if((xPos < 0 - buffer || yPos < 0 - buffer) || (xPos > 1 + buffer ||  yPos > 1 + buffer)) Destroy(gameObject);
     }
 }
