@@ -19,6 +19,8 @@ public class ProjectileManager : MonoBehaviour
 
     [SerializeField] Vector2 direction;
 
+    [SerializeField] GameObject explosionEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,5 +70,14 @@ public class ProjectileManager : MonoBehaviour
         float yPos = screenPos.y;
 
         if((xPos < 0 - buffer || yPos < 0 - buffer) || (xPos > 1 + buffer ||  yPos > 1 + buffer)) Destroy(gameObject);
+    }
+
+    //Replaces fireball with explosion on collision
+    public void OnCollisionEnter2D() {
+        Instantiate(explosionEffect,transform.GetChild(0).position,transform.rotation);
+
+        Destroy(GameObject.Find("ExplosionEffect(Clone)"),0.667f);
+
+        Destroy(gameObject);
     }
 }
