@@ -21,6 +21,10 @@ public class ProjectileManager : MonoBehaviour
 
     [SerializeField] GameObject explosionEffect;
 
+    [SerializeField] String effectName = "ExplosionEffect(Clone)";
+
+    [SerializeField] float effectLengthInSeconds = 0.667f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,7 +80,7 @@ public class ProjectileManager : MonoBehaviour
     public void OnCollisionEnter2D() {
         Instantiate(explosionEffect,transform.GetChild(0).position,transform.rotation);
 
-        Destroy(GameObject.Find("ExplosionEffect(Clone)"),0.667f);
+        Destroy(GameObject.Find(effectName),effectLengthInSeconds);
 
         Destroy(gameObject);
     }
