@@ -235,6 +235,7 @@ public class WorldGenerator : MonoBehaviour
         foreach (Biome biome in biomes)
         {
             if (biome.averageNumTilesForStructure == 0) { continue; }
+            if (biome.structures.Count == 0) { continue; }
 
             int numStructures = biome.numberOfTiles / biome.averageNumTilesForStructure;
             numStructures += UnityEngine.Random.Range(-numStructures / 2, (numStructures / 2) + 1);

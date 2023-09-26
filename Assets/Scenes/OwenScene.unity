@@ -3859,10 +3859,7 @@ MonoBehaviour:
       prefab: {fileID: 3761206157792249600, guid: 444be42f1169c49d3972b91ad8cc90e5, type: 3}
       spawnrate0to1: 0.0001
       occupyTiles: 1
-    structures:
-    - prefab: {fileID: 4137720269928942430, guid: bb60eff9801c641da9ce000dac1216bf, type: 3}
-      weightInBiome: 1
-      center: {x: 0, y: 0, z: 0}
+    structures: []
   - name: Desert
     temperature: 10
     weight: 1
@@ -3881,6 +3878,9 @@ MonoBehaviour:
       spawnrate0to1: 0.0001
       occupyTiles: 1
     structures: []
+  Debug_DoNotSpawnObjs: 0
+  Debug_DoNotSpawnHills: 0
+  Debug_DoNotSpawnStructures: 0
 --- !u!114 &1671662866
 MonoBehaviour:
   m_ObjectHideFlags: 0
