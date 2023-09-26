@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static UnityEditor.PlayerSettings;
 
 public class WorldGenerator : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class WorldGenerator : MonoBehaviour
 
     [SerializeField] Tilemap ground;
     [SerializeField] Tilemap raisedGround;
+
+    [SerializeField] List<Tilemap> structureTilemapsDNR;
 
     [SerializeField] RuleTile rgShadowTile;
 
@@ -28,6 +31,10 @@ public class WorldGenerator : MonoBehaviour
 
     [System.NonSerialized] public List<Vector3Int> doNotSpawnTiles = new();
     [System.NonSerialized] public List<Vector3Int> decorObjectTiles = new();
+
+    [SerializeField] bool Debug_DoNotSpawnObjs = false;
+    [SerializeField] bool Debug_DoNotSpawnHills = false;
+    [SerializeField] bool Debug_DoNotSpawnStructures = false;
 
     // Start is called before the first frame update
     void Start()
@@ -84,12 +91,17 @@ public class WorldGenerator : MonoBehaviour
     // operation order:
     // Generate biome tiles
     // Generate hills
+    // Generate structures
     // Generate decor objects
     IEnumerator GenerateWorld()
     {
         yield return StartCoroutine(GenerateBiomeTiles(worldSize, Vector2.zero));
-        yield return StartCoroutine(GenerateHills());
-        yield return StartCoroutine(ObjectSpawner());
+
+        if (!Debug_DoNotSpawnHills) { yield return StartCoroutine(GenerateHills()); }
+
+        if (!Debug_DoNotSpawnStructures) { yield return StartCoroutine(StructureSpawner()); }
+
+        if (!Debug_DoNotSpawnObjs) { yield return StartCoroutine(ObjectSpawner()); }
     }
 
     IEnumerator GenerateBiomeTiles(int generationRange, Vector2 positionToGenerate)
@@ -121,6 +133,7 @@ public class WorldGenerator : MonoBehaviour
                 }    
 
                 ground.SetTile(currentCell, biomes[biomeIndex].groundTile);
+                biomes[biomeIndex].numberOfTiles += 1;
 
                 CallCustomScripts?.Invoke(currentCell, biomes[biomeIndex]);
 
@@ -138,7 +151,7 @@ public class WorldGenerator : MonoBehaviour
     {
         for (int i = 0; i < hillSpawnAttempts; i++)
         {
-            Vector3Int pos = PickRandomTilePos();
+            Vector3Int pos = WorldGenUtil.PickRandomTilePos(worldSize);
             Biome startBiome = GetBiomeAtPos(pos);
 
             if (startBiome.raisedGroundTop == null || startBiome.hillOdds0to1 <= 0) { continue; }
@@ -193,7 +206,8 @@ public class WorldGenerator : MonoBehaviour
                     for (j = 1; j < height; j++)
                     {
                         Vector3Int bottomPos = currentPos + (Vector3Int.down * j);
-                        if (raisedGround.GetTile(bottomPos) == null)
+                        TileBase tileInTheWay = raisedGround.GetTile(bottomPos);
+                        if (tileInTheWay == null || tileInTheWay == rgShadowTile)
                         {
                             bottomTiles.Add(bottomPos);
                             if (!doNotSpawnTiles.Contains(bottomPos)) { doNotSpawnTiles.Add(bottomPos); }
@@ -216,6 +230,62 @@ public class WorldGenerator : MonoBehaviour
         yield return null;
     }
 
+    IEnumerator StructureSpawner()
+    {
+        foreach (Biome biome in biomes)
+        {
+            if (biome.averageNumTilesForStructure == 0) { continue; }
+
+            int numStructures = biome.numberOfTiles / biome.averageNumTilesForStructure;
+            numStructures += UnityEngine.Random.Range(-numStructures / 2, (numStructures / 2) + 1);
+
+            for (int i = 0; i < numStructures; i++)
+            {
+                List<float> structureWeights = new();
+                foreach (Biome.Structure structure in biome.structures) { structureWeights.Add(structure.weightInBiome); }
+
+                Biome.Structure selectedStructure = biome.structures[GeneralUtil.RandomWeighted(structureWeights)];
+                Debug.Log(selectedStructure.GetBiggestBounds().size);
+                SpawnStructure(selectedStructure, GetRandomFreeAreaInBiomeViaRandom(biome, selectedStructure.GetBiggestBounds().size));
+
+                yield return null;
+            }
+        }
+    }
+
+    void SpawnStructure(Biome.Structure structure, Vector3Int selectedPosition)
+    {
+        GameObject newTilemaps = Instantiate(structure.prefab);
+        Debug.Log("Spawn structure at " + selectedPosition);
+
+        int budgetEnum = 0;
+        foreach (Transform i in newTilemaps.transform)
+        {
+            Tilemap toTilemap = structureTilemapsDNR[budgetEnum];
+            Tilemap fromTilemap = i.GetComponent<Tilemap>();
+
+            fromTilemap.CompressBounds();
+
+            BoundsInt bounds = fromTilemap.cellBounds;
+            Vector2Int xVector = new Vector2Int(bounds.xMin, bounds.xMax);
+            Vector2Int yVector = new Vector2Int(bounds.yMin, bounds.yMax);
+
+            for (int x = xVector.x; x <= xVector.y; x++)
+            {
+                for (int y = yVector.x; y <= yVector.y; y++)
+                {
+                    Vector3Int pos = new Vector3Int(x, y, 0);
+                    toTilemap.SetTile(pos - structure.center + selectedPosition, fromTilemap.GetTile(pos));
+                    doNotSpawnTiles.Add(pos);
+                }
+            }
+
+            budgetEnum += 1;
+        }
+
+        Destroy(newTilemaps);
+    }
+
     IEnumerator ObjectSpawner()
     {
         for (int x = -worldSize; x < worldSize; x++)
@@ -234,18 +304,6 @@ public class WorldGenerator : MonoBehaviour
         }
     }
 
-    // this is here, and not in Utils, because it includes random, and this file has the seed set.
-    Vector3Int PickRandomTilePos()
-    {
-        int safeWorldSize = worldSize - 2;
-        return new Vector3Int(UnityEngine.Random.Range(-safeWorldSize, safeWorldSize), UnityEngine.Random.Range(-safeWorldSize, safeWorldSize));
-    }
-
-    Biome GetBiomeAtPos(Vector3Int position)
-    {
-        return biomes.Find(x => x.groundTile == ground.GetTile(position));
-    }    
-
     void RunSpawnObjects(Vector3Int location, Biome biome)
     {
         foreach (Biome.DecorObject decorObject in biome.decorObjects)
@@ -258,6 +316,69 @@ public class WorldGenerator : MonoBehaviour
         }
     }
 
+    Vector3Int GetRandomTileOfBiomeViaRandom(Biome biome, int maxAttempts = 300)
+    {
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            Vector3Int pos = WorldGenUtil.PickRandomTilePos(worldSize);
+            if (GetBiomeFromTile(ground.GetTile(pos)) == biome)
+            {
+                return pos;
+            }
+        }
+        return new Vector3Int(666, 666, 666);
+    }
+
+    Vector3Int GetRandomFreeAreaInBiomeViaRandom(Biome biome, Vector3Int size, int maxAttempts = 300)
+    {
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            Vector3Int pos = WorldGenUtil.PickRandomTilePos(worldSize - (size.x / 2));
+            if (GetBiomeFromTile(ground.GetTile(pos)) == biome)
+            {
+                if (CheckAreaForSpawn(pos))
+                {
+                    return pos;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+        return new Vector3Int(666, 666, 666);
+
+        bool CheckAreaForSpawn(Vector3Int pos)
+        {
+            int x = pos.x - (size.x / 2);
+            int y = pos.y - (size.y / 2);
+            int yMin = y;
+            int xMax = pos.x + (size.x / 2);
+            int yMax = pos.y + (size.y / 2);
+
+            for (; x < xMax; x++)
+            {
+                for (; y < yMax; y++)
+                {
+                    if (doNotSpawnTiles.Contains(new Vector3Int (x, y, 0))) { return false; }
+                }
+                y = yMin;
+            }
+
+            return true;
+        }
+    }
+
+    Biome GetBiomeAtPos(Vector3Int position)
+    {
+        return biomes.Find(x => x.groundTile == ground.GetTile(position));
+    }
+
+    public Biome GetBiomeFromTile(TileBase tile)
+    {
+        return biomes.Find(x => x.groundTile == tile);
+    }
+
     [System.Serializable]
     public class Biome
     {
@@ -266,6 +387,8 @@ public class WorldGenerator : MonoBehaviour
         public int temperature;
 
         public int weight = 1;
+
+        public int averageNumTilesForStructure = 1000;
 
         [System.NonSerialized] public float relativeWeight = 0;
         [System.NonSerialized] public float thresholdWeight = 0;
@@ -279,13 +402,15 @@ public class WorldGenerator : MonoBehaviour
 
         public float hillOdds0to1 = 1f;
 
+        [System.NonSerialized] public int numberOfTiles = 0;
+
         [System.NonSerialized] public Transform decorObjectRoot;
 
         [Tooltip("Input the GameObject for the object, and the chance of it spawning on any particular tile (0 - 1).")]
         public List<DecorObject> decorObjects;
 
         [Tooltip("Input the tilemaps for the structure, the center of the structure on the tilemap (if it's not (0, 0)), and the frequency.")]
-        public List<DecorObject> structures;
+        public List<Structure> structures;
 
         [System.Serializable]
         public class DecorObject
@@ -300,9 +425,26 @@ public class WorldGenerator : MonoBehaviour
         [System.Serializable]
         public class Structure
         {
-            public GameObject structureTilemaps;
-            public int size;
-            public Vector2 center;
+            public GameObject prefab;
+            public float weightInBiome = 1;
+            public Vector3Int center;
+
+            public BoundsInt GetBiggestBounds()
+            {
+                BoundsInt biggestBounds = new BoundsInt(0, 0, 0, 0, 0, 0);
+                if (prefab == null) { return biggestBounds; }
+                foreach (Transform trans in prefab.transform)
+                {
+                    Tilemap tilemap = trans.GetComponent<Tilemap>();
+                    tilemap.CompressBounds();
+                    if (biggestBounds == null) { biggestBounds = tilemap.cellBounds; }
+                    if (tilemap.cellBounds.size.magnitude > biggestBounds.size.magnitude)
+                    {
+                        biggestBounds = tilemap.cellBounds;
+                    }
+                }
+                return biggestBounds;
+            }
         }
 
         [System.Serializable]

@@ -11,6 +11,9 @@ public static class GeneralUtil
     /// <returns>Index of chosen float.</returns>
     public static int RandomWeighted(List<float> values)
     {
+        if (values.Count == 0) { return 666; }
+        if (values.Count == 1) { return 0; }
+
         float total = values.Sum(x => System.Convert.ToInt32(x));
         float randomValue = UnityEngine.Random.Range(0f, total);
         float tally = 0;
