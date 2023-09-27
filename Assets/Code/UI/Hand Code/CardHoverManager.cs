@@ -10,6 +10,7 @@ public class CardHoverManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
     Vector2 relativePointOfContact;
     [SerializeField] float growRate = 1;
 
+
     private void Awake()
     {
         if (hm == null)
@@ -22,7 +23,7 @@ public class CardHoverManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
     {
         if (selected)
         {
-            transform.position = (Vector2)Input.mousePosition + relativePointOfContact;
+            transform.position = ((Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition)) + relativePointOfContact;
         }
 
         if (transform.localScale.x < 1)
@@ -47,7 +48,7 @@ public class CardHoverManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         hm.SelectCard(gameObject);
         selected = true;
         hm.UnhoverCard(gameObject);
-        relativePointOfContact = transform.position - Input.mousePosition;
+        relativePointOfContact = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     public void OnPointerUp(PointerEventData eventData)
