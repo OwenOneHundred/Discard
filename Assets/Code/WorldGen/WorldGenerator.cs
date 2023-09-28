@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using static UnityEditor.PlayerSettings;
+using UnityEngine.XR;
 
 public class WorldGenerator : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class WorldGenerator : MonoBehaviour
 
     [SerializeField] Tilemap ground;
     [SerializeField] Tilemap raisedGround;
+    [SerializeField] Tilemap slopes;
+    [SerializeField] Tilemap water;
 
     [SerializeField] List<Tilemap> structureTilemapsDNR;
 
@@ -147,8 +150,11 @@ public class WorldGenerator : MonoBehaviour
         }
     }
 
+    // this has to be the first thing with collision generated or it will break. Could be changed tho
     IEnumerator GenerateHills()
     {
+        List<Vector3Int> bottomRCorners = new();
+        List<Vector3Int> bottomLCorners = new();
         for (int i = 0; i < hillSpawnAttempts; i++)
         {
             Vector3Int pos = WorldGenUtil.PickRandomTilePos(worldSize);
@@ -158,76 +164,155 @@ public class WorldGenerator : MonoBehaviour
 
             int height = UnityEngine.Random.Range(2, 5);
 
-            if (UnityEngine.Random.value < startBiome.hillOdds0to1)
+            if (!(UnityEngine.Random.value < startBiome.hillOdds0to1))
             {
-                List<Vector3Int> hillPositions = WorldGenUtil.GetClump(pos, UnityEngine.Random.Range(averageHillSize/2, (int) (averageHillSize * 1.5) ));
-                List<Vector3Int> bottomTiles = new();
+                continue;
+            }
 
-                // remove invalid positions
-                List<Vector3Int> dummyList = new List<Vector3Int>(hillPositions);
-                foreach (Vector3Int hillPos in dummyList)
+            List<Vector3Int> hillPositions = WorldGenUtil.GetClump(pos, UnityEngine.Random.Range(averageHillSize / 2, (int)(averageHillSize * 1.5)));
+            List<Vector3Int> bottomTiles = new();
+
+            // remove invalid positions
+            List<Vector3Int> dummyList = new List<Vector3Int>(hillPositions);
+            foreach (Vector3Int hillPos in dummyList)
+            {
+                if (Mathf.Abs(hillPos.x) > worldSize || Mathf.Abs(hillPos.y) > worldSize)
                 {
-                    if (Mathf.Abs(hillPos.x) > worldSize || Mathf.Abs(hillPos.y) > worldSize)
-                    {
-                        hillPositions.Remove(hillPos);
-                        continue;
-                    }
-
-                    if (GetBiomeAtPos(hillPos).raisedGroundTop == null)
-                    {
-                        hillPositions.Remove(hillPos);
-                        continue;
-                    }
+                    hillPositions.Remove(hillPos);
+                    continue;
                 }
 
-                // add top tiles
-                foreach (Vector3Int currentPos in hillPositions)
+                if (GetBiomeAtPos(hillPos).raisedGroundTop == null)
                 {
-                    Biome currentBiome = GetBiomeAtPos(currentPos);
-                    raisedGround.SetTile(currentPos, currentBiome.raisedGroundTop);
-
-                    // add edge tiles and immediate borders to doNotSpawn list
-                    List<Vector3Int> topTileSurrounding = WorldGenUtil.GetSurroundingTilePositions(currentPos);
-                    foreach (Vector3Int surroundingTile in topTileSurrounding)
-                    {
-                        if (raisedGround.GetTile(surroundingTile) == null)
-                        {
-                            doNotSpawnTiles.AddRange(topTileSurrounding);
-                        }
-                    }
+                    hillPositions.Remove(hillPos);
+                    continue;
                 }
+            }
 
-                // add front tiles
-                foreach (Vector3Int currentPos in hillPositions)
+            // add top tiles
+            foreach (Vector3Int currentPos in hillPositions)
+            {
+                Biome currentBiome = GetBiomeAtPos(currentPos);
+                raisedGround.SetTile(currentPos, currentBiome.raisedGroundTop);
+
+                // add edge tiles and immediate borders to doNotSpawn list
+                List<Vector3Int> topTileSurrounding = WorldGenUtil.GetSurroundingTilePositions(currentPos);
+                foreach (Vector3Int surroundingTile in topTileSurrounding)
                 {
-                    Biome currentBiome = GetBiomeAtPos(currentPos);
-
-                    int j = 1;
-                    for (j = 1; j < height; j++)
+                    if (raisedGround.GetTile(surroundingTile) == null)
                     {
-                        Vector3Int bottomPos = currentPos + (Vector3Int.down * j);
-                        TileBase tileInTheWay = raisedGround.GetTile(bottomPos);
-                        if (tileInTheWay == null || tileInTheWay == rgShadowTile)
-                        {
-                            bottomTiles.Add(bottomPos);
-                            if (!doNotSpawnTiles.Contains(bottomPos)) { doNotSpawnTiles.Add(bottomPos); }
-                            raisedGround.SetTile(bottomPos, currentBiome.raisedGroundFront);
-                        }
-                    }
-                }
-
-                // add shadows
-                foreach (Vector3Int bottomPos in bottomTiles)
-                {
-                    if (raisedGround.GetTile(bottomPos + Vector3Int.down) == null)
-                    {
-                        raisedGround.SetTile(bottomPos + Vector3Int.down, rgShadowTile);
+                        doNotSpawnTiles.AddRange(topTileSurrounding);
                     }
                 }
             }
+
+            // add front tiles
+            foreach (Vector3Int currentPos in hillPositions)
+            {
+                Biome currentBiome = GetBiomeAtPos(currentPos);
+
+                int j = 1;
+                for (j = 1; j < height; j++)
+                {
+                    Vector3Int bottomPos = currentPos + (Vector3Int.down * j);
+                    TileBase tileInTheWay = raisedGround.GetTile(bottomPos);
+                    if (tileInTheWay == null || tileInTheWay == rgShadowTile)
+                    {
+                        bottomTiles.Add(bottomPos);
+                        if (!doNotSpawnTiles.Contains(bottomPos)) { doNotSpawnTiles.Add(bottomPos); }
+                        raisedGround.SetTile(bottomPos, currentBiome.raisedGroundFront);
+                    }
+                }
+            }
+
+            List<Vector3Int> bottomCenters = new();
+            // add shadows
+            // uses list populated by AddFrontTiles
+            foreach (Vector3Int bottomPos in bottomTiles)
+            {
+                if (!(raisedGround.GetTile(bottomPos + Vector3Int.down) == null)) { continue; }
+
+                raisedGround.SetTile(bottomPos + Vector3Int.down, rgShadowTile);
+
+                // populate bottom corner tile lists
+                if (raisedGround.GetTile(bottomPos + Vector3Int.right) == null || raisedGround.GetTile(bottomPos + Vector3Int.right) == rgShadowTile)
+                {
+                    bottomRCorners.Add(bottomPos);
+                }
+                else if (raisedGround.GetTile(bottomPos + Vector3Int.left) == null || raisedGround.GetTile(bottomPos + Vector3Int.left) == rgShadowTile)
+                {
+                    bottomLCorners.Add(bottomPos);
+                }
+                else
+                {
+                    bottomCenters.Add(bottomPos);
+                }    
+            }
+
+            // add slopes
+            int slopeNum = UnityEngine.Random.Range(0, 2);
+            GeneralUtil.ShuffleList(bottomCenters);
+            if (slopeNum > bottomCenters.Count) { slopeNum = bottomCenters.Count - 1; }
+            for (int count = 0; count < slopeNum; count++)
+            {
+                Vector3Int current = bottomCenters[count];
+
+                Biome biome = GetBiomeAtPos(current);
+
+                if (biome == null) { continue; }
+                if (biome.bottomSlope == null) { continue; }
+
+                for (int slopeHeight = 0; slopeHeight < height; slopeHeight++)
+                {
+                    slopes.SetTile(current, biome.bottomSlope);
+                    raisedGround.SetTile(current, biome.bottomSlope);
+                    current += Vector3Int.up;
+                }
+            }
+
+            yield return null;
         }
 
-        yield return null;
+        AddHillSides(bottomLCorners, bottomRCorners);
+    }
+
+    void AddHillSides(List<Vector3Int> bottomLCorners, List<Vector3Int> bottomRCorners)
+    {
+        List<List<Vector3Int>> combined = new List<List<Vector3Int>>
+        {
+            bottomLCorners,
+            bottomRCorners
+        };
+
+        int budgetEnum = 0;
+        // add wall center edge tiles using corner tile lists (because there's no other way to do that for some reason)
+        foreach (List<Vector3Int> list in combined)
+        {
+            foreach (Vector3Int bottom in list)
+            {
+                if (raisedGround.GetTile(bottom) == null || raisedGround.GetTile(bottom) == rgShadowTile) { continue; }
+                if (budgetEnum == 0)
+                {
+                    if (!(raisedGround.GetTile(bottom + Vector3Int.left) == null || raisedGround.GetTile(bottom + Vector3Int.left) == rgShadowTile)) { continue; }
+                }
+                else
+                {
+                    if (!(raisedGround.GetTile(bottom + Vector3Int.right) == null || raisedGround.GetTile(bottom + Vector3Int.right) == rgShadowTile)) { continue; }
+                }
+
+                Vector3Int current = bottom;
+                Biome above = GetBiomeFromHillFront(raisedGround.GetTile(current + Vector3Int.up));
+                while (above != null)
+                {
+                    if (budgetEnum == 0) { raisedGround.SetTile(current + Vector3Int.up, above.rgFrontL); }
+                    else { raisedGround.SetTile(current + Vector3Int.up, above.rgFrontR); }
+
+                    current += Vector3Int.up;
+                    above = GetBiomeFromHillFront(raisedGround.GetTile(current + Vector3Int.up));
+                }
+            }
+            budgetEnum += 1;
+        }
     }
 
     IEnumerator StructureSpawner()
@@ -291,11 +376,13 @@ public class WorldGenerator : MonoBehaviour
     {
         for (int x = -worldSize; x < worldSize; x++)
         {
+            List<Vector3Int> xValueList = new List<Vector3Int> (doNotSpawnTiles.Where(f => f.x == x));
+
             for (int y = -worldSize; y < worldSize; y++)
             {
                 Vector3Int currentCell = new Vector3Int(x, y, 0);
 
-                if (!doNotSpawnTiles.Contains(currentCell) && !decorObjectTiles.Contains(currentCell))
+                if (!xValueList.Contains(currentCell))
                 {
                     RunSpawnObjects(currentCell, GetBiomeAtPos(currentCell));
                 }
@@ -311,7 +398,7 @@ public class WorldGenerator : MonoBehaviour
         {
             if (UnityEngine.Random.value < decorObject.spawnrate0to1)
             {
-                Instantiate(decorObject.prefab, location + new Vector3(0.5f, 0.5f), Quaternion.identity, decorObject.typeParent);
+                Instantiate(decorObject.prefab, location + new Vector3(0.5f, 0.5f), Quaternion.identity, decorObject.typeParent).tag = "DecorObj";
                 return;
             }
         }
@@ -375,6 +462,11 @@ public class WorldGenerator : MonoBehaviour
         return biomes.Find(x => x.groundTile == ground.GetTile(position));
     }
 
+    Biome GetBiomeFromHillFront(TileBase front)
+    {
+        return biomes.Find(x => x.raisedGroundFront == front);
+    }
+
     public Biome GetBiomeFromTile(TileBase tile)
     {
         return biomes.Find(x => x.groundTile == tile);
@@ -400,6 +492,10 @@ public class WorldGenerator : MonoBehaviour
         public RuleTile raisedGroundTop;
         [Tooltip("Leave this empty if this biome does not have hills, and cuts off hills from other biomes that reach into this biome.")]
         public RuleTile raisedGroundFront;
+        public Tile rgFrontL;
+        public Tile rgFrontR;
+        public RuleTile bottomSlope;
+        public RuleTile topSlope;
 
         public float hillOdds0to1 = 1f;
 
@@ -456,6 +552,5 @@ public class WorldGenerator : MonoBehaviour
             public Tilemap tilemap;
         }
     }
-
 
 }

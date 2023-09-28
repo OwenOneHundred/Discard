@@ -99,7 +99,7 @@ MonoBehaviour:
     - {x: -1, y: 0, z: 0}
     - {x: 1, y: 0, z: 0}
     m_RuleTransform: 0
-  - m_Id: 5
+  - m_Id: 7
     m_Sprites:
     - {fileID: -461262311, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
     m_GameObject: {fileID: 0}
@@ -115,7 +115,8 @@ MonoBehaviour:
     - {x: 1, y: 0, z: 0}
     - {x: -1, y: 0, z: 0}
     m_RuleTransform: 0
-  customField: 0
   connectableRTs:
   - {fileID: 11400000, guid: bad8e30c3265f4758be4c2655fcf2120, type: 2}
-  connectableTiles: []
+  connectableTiles:
+  - {fileID: 11400000, guid: 26b1bd58734bc445196aea5020d036c4, type: 2}
+  - {fileID: 11400000, guid: 301c2a4dc55f949f1a37ac06fee7b89b, type: 2}
