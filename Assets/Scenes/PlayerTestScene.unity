@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f93fd38b1834545f9948d22b8b01d4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  hp: 100
 --- !u!61 &267398344
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53998,7 +53998,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 13, y: -17, z: 0}
@@ -54110,7 +54110,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 11, y: -16, z: 0}
@@ -54606,7 +54606,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 14, y: -12, z: 0}
@@ -54622,7 +54622,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 15, y: -12, z: 0}
@@ -54638,7 +54638,7 @@ Tilemap:
       - {fileID: -577726864, guid: 3c646e971a64a4f1dab9e9580decd0dc, type: 3}
       - {fileID: 440825982, guid: 3c646e971a64a4f1dab9e9580decd0dc, type: 3}
       - {fileID: -1534807985, guid: 3c646e971a64a4f1dab9e9580decd0dc, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 12, y: -11, z: 0}
@@ -54686,7 +54686,7 @@ Tilemap:
       - {fileID: -1132643709, guid: 90d3bdeb672fe4917a3b4284b9adeb9f, type: 3}
       - {fileID: 1664357273, guid: 90d3bdeb672fe4917a3b4284b9adeb9f, type: 3}
       - {fileID: -893667004, guid: 90d3bdeb672fe4917a3b4284b9adeb9f, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 15, y: -11, z: 0}
@@ -54750,7 +54750,7 @@ Tilemap:
       - {fileID: 1030857549, guid: 27cc1d035f4794924b57033aa522c1cc, type: 3}
       - {fileID: 1610247587, guid: 27cc1d035f4794924b57033aa522c1cc, type: 3}
       - {fileID: 1516223888, guid: 27cc1d035f4794924b57033aa522c1cc, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 26, y: 3, z: 0}
@@ -54846,7 +54846,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 27, y: 4, z: 0}
@@ -55310,7 +55310,7 @@ Tilemap:
       - {fileID: 1643359262, guid: a883504ad37574bf1a62f779a3474c9e, type: 3}
       - {fileID: 884988598, guid: a883504ad37574bf1a62f779a3474c9e, type: 3}
       - {fileID: 642280579, guid: a883504ad37574bf1a62f779a3474c9e, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 18, y: 16, z: 0}
@@ -55342,7 +55342,7 @@ Tilemap:
       - {fileID: 1030857549, guid: 27cc1d035f4794924b57033aa522c1cc, type: 3}
       - {fileID: 1610247587, guid: 27cc1d035f4794924b57033aa522c1cc, type: 3}
       - {fileID: 1516223888, guid: 27cc1d035f4794924b57033aa522c1cc, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 13, y: 17, z: 0}
@@ -55374,7 +55374,7 @@ Tilemap:
       - {fileID: 1643359262, guid: a883504ad37574bf1a62f779a3474c9e, type: 3}
       - {fileID: 884988598, guid: a883504ad37574bf1a62f779a3474c9e, type: 3}
       - {fileID: 642280579, guid: a883504ad37574bf1a62f779a3474c9e, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 15, y: 17, z: 0}
@@ -55422,7 +55422,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 18, y: 17, z: 0}
@@ -55854,7 +55854,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 21, y: 19, z: 0}
@@ -56014,7 +56014,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 18, y: 20, z: 0}
@@ -56174,7 +56174,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 15, y: 21, z: 0}
@@ -57620,7 +57620,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atObjective: 1
-  objective: {fileID: 267398340}
+  objective: {fileID: 0}
+  objectiveV3: {x: 0, y: 0, z: 0}
   speed: 2.5
 --- !u!114 &1784970666
 MonoBehaviour:
@@ -57634,7 +57635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cd2a16c932d4027ab4c7cb59113675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 2
+  hp: 100
 --- !u!114 &1784970667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57642,7 +57643,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784970663}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 922c89f6a65824cdb8e06e4a3b0ba8be, type: 3}
   m_Name: 
@@ -57650,9 +57651,9 @@ MonoBehaviour:
   distToPlayer: 0
   aggroed: 0
   inRange: 0
-  agroeDistance: 5
+  agroeDistance: 1
   pacifyDistance: 6
-  rangeDistance: 3
+  attackDistance: 0
 --- !u!114 &1784970668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57667,9 +57668,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inRange: 1
   attacks:
-  - bullet: {fileID: 2357229704702582223, guid: 342d052d52f984921b678d93a5a164ad, type: 3}
-    fireRate: 25
-  player: {fileID: 267398340}
+  - bullet: {fileID: 953912392717314917, guid: 1e50cb065c315494cbe1f1b94d95b2f6, type: 3}
+    fireRate: 60
+    diesOnFire: 0
+    dontAngle: 0
+  - bullet: {fileID: 2310318038817695043, guid: 342d052d52f984921b678d93a5a164ad, type: 3}
+    fireRate: 60
+    diesOnFire: 0
+    dontAngle: 0
+  - bullet: {fileID: 6108226392395280530, guid: b18458dd25901424e9f492a83bc09813, type: 3}
+    fireRate: 60
+    diesOnFire: 0
+    dontAngle: 0
+  player: {fileID: 0}
   enemyTargeter: {fileID: 547572892}
 --- !u!1001 &1827763544
 PrefabInstance:
@@ -58051,10 +58062,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.0012202562
-    y: 0
-    width: 0.9978984
-    height: 0.99999994
+    x: 0
+    y: 0.010638298
+    width: 0.9993898
+    height: 0.98018616
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 26.991467

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyMind : MonoBehaviour
 {
+    //Used for positioing
     private GameObject player;
+    private Vector3 idlePos;
 
     //Enemy Info Scripts
     private EnemyInfo enemyInfo;
@@ -21,7 +23,7 @@ public class EnemyMind : MonoBehaviour
     //Distance Goals
     public float agroeDistance;
     public float pacifyDistance;
-    public float rangeDistance;
+    public float attackDistance;
 
 
     // Start is called before the first frame update
@@ -29,13 +31,14 @@ public class EnemyMind : MonoBehaviour
     {
         //Gets Player
         player = GameObject.FindGameObjectWithTag("Player");
+        idlePos = new Vector3(transform.position.x, transform.position.y, 0f);
 
         //Gets Info
         enemyInfo = this.gameObject.GetComponent<EnemyInfo>();
 
         enemyMovement = this.gameObject.GetComponent<EnemyMovement>();
         enemyMovement.atObjective = true;
-        enemyMovement.objective = player.transform;
+        enemyMovement.objectiveV3 = idlePos;
 
         enemyGun = this.gameObject.GetComponent<EnemyGun>();
         enemyGun.inRange = false;
@@ -45,11 +48,12 @@ public class EnemyMind : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distToPlayer = GetDist();
+        distToPlayer = GetDist(player.transform.position);
 
         //Attacking
         if(aggroed == true)
         {
+            enemyMovement.objective = player.transform;
             if(distToPlayer >= pacifyDistance)
             {
                 aggroed = false;
@@ -57,7 +61,7 @@ public class EnemyMind : MonoBehaviour
             else
             {
                 //Activates or Deactives Gun
-                if(distToPlayer < rangeDistance)
+                if(distToPlayer < attackDistance)
                 {
                     inRange = true;
                     enemyGun.inRange = true;
@@ -90,18 +94,28 @@ public class EnemyMind : MonoBehaviour
             else
             {
                 //Move to Idle Pos
-                enemyMovement.atObjective = true;
+                enemyMovement.objective = null;
                 enemyGun.inRange = false;
+
+                //Check if at Idle Pos
+                if(GetDist(idlePos) < .5f)
+                {
+                    enemyMovement.atObjective = true;
+                }
+                else
+                {
+                    enemyMovement.atObjective = false;
+                }
             }
         }
 
     }
 
     //Returns the distance between the player and the enemy
-    public float GetDist()
+    public float GetDist(Vector3 target)
     {
         Vector3 currentPos = transform.position;
-        float dist = Vector3.Distance(player.transform.position, currentPos);
+        float dist = Vector3.Distance(target, currentPos);
 
         return dist;
     }

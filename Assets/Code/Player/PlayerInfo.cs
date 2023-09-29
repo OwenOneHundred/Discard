@@ -21,7 +21,7 @@ public class PlayerInfo : MonoBehaviour
 
         if(hp <= 0)
         {
-            Debug.Log("Death");
+            Debug.Log("Player Death");
         }
     }
 

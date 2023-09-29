@@ -5,11 +5,20 @@ using UnityEngine;
 public class EnemyInfo : MonoBehaviour
 {
     public int hp;
-    //Allows for getting and setting hp 
-    public int Hp
-    {
-        get { return hp; }
 
-        set { hp = value; }
+    //Does damage to enemy
+    public void Damage(int damageAmount)
+    {
+        hp -= damageAmount;
+        if(hp <= 0)
+        {
+            Death();
+        }
+    }
+
+    //Kills Enemy
+    public void Death()
+    {
+        Debug.Log("Enemy Death");
     }
 }
