@@ -10,6 +10,6 @@ PresetManager:
       m_ManagedTypePPtr: {fileID: 0}
       m_ManagedTypeFallback: 
     second:
-    - m_Preset: {fileID: 2655988077585873504, guid: 278bbe91349f08c4f8c51143cc4fa8da, type: 2}
+    - m_Preset: {fileID: 2655988077585873504, guid: c25e56676a4004e90b3a47946e47f6bb, type: 2}
       m_Filter: glob:"*.png"
       m_Disabled: 0

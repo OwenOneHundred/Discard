@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.WSA;
 
 public static class WorldGenUtil
 {
@@ -35,6 +33,12 @@ public static class WorldGenUtil
         }
 
         return tile;
+    }
+
+    public static Vector3Int PickRandomTilePos(int worldSize)
+    {
+        int safeWorldSize = worldSize - 2;
+        return new Vector3Int(UnityEngine.Random.Range(-safeWorldSize, safeWorldSize), UnityEngine.Random.Range(-safeWorldSize, safeWorldSize));
     }
 
     public static List<Vector3Int> GetSurroundingTilePositions(Vector3Int center, bool includeCenter = true, bool includeDiagonals = true)

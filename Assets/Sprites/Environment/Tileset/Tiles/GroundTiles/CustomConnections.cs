@@ -7,7 +7,6 @@ using System.Linq;
 [CreateAssetMenu]
 public class CustomConnections : RuleTile<CustomConnections.Neighbor>
 {
-    public bool customField;
     public RuleTile[] connectableRTs;
     public Tile[] connectableTiles;
 

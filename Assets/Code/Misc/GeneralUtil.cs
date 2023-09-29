@@ -11,6 +11,9 @@ public static class GeneralUtil
     /// <returns>Index of chosen float.</returns>
     public static int RandomWeighted(List<float> values)
     {
+        if (values.Count == 0) { return 666; }
+        if (values.Count == 1) { return 0; }
+
         float total = values.Sum(x => System.Convert.ToInt32(x));
         float randomValue = UnityEngine.Random.Range(0f, total);
         float tally = 0;
@@ -25,5 +28,20 @@ public static class GeneralUtil
         return values.Count;
     }
 
+    /// <summary>
+    /// Shuffles the element order of the specified list.
+    /// </summary>
+    public static void ShuffleList<T>(this IList<T> ts)
+    {
+        var count = ts.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i)
+        {
+            var r = UnityEngine.Random.Range(i, count);
+            var tmp = ts[i];
+            ts[i] = ts[r];
+            ts[r] = tmp;
+        }
+    }
 
 }
