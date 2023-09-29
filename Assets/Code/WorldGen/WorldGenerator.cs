@@ -182,7 +182,7 @@ public class WorldGenerator : MonoBehaviour
                     continue;
                 }
 
-                if (GetBiomeAtPos(hillPos).raisedGroundTop == null)
+                if (GetBiomeAtPos(hillPos) != startBiome)
                 {
                     hillPositions.Remove(hillPos);
                     continue;
@@ -252,7 +252,7 @@ public class WorldGenerator : MonoBehaviour
             // add slopes
             int slopeNum = UnityEngine.Random.Range(0, 2);
             GeneralUtil.ShuffleList(bottomCenters);
-            if (slopeNum > bottomCenters.Count) { slopeNum = bottomCenters.Count - 1; }
+            if (slopeNum > bottomCenters.Count) { slopeNum = bottomCenters.Count; }
             for (int count = 0; count < slopeNum; count++)
             {
                 Vector3Int current = bottomCenters[count];

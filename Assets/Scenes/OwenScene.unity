@@ -4036,11 +4036,11 @@ MonoBehaviour:
     decorObjects:
     - name: MedTreeDouble
       prefab: {fileID: 1992165639378764853, guid: 705ddb13f5cef4de5a139deb155a34e6, type: 3}
-      spawnrate0to1: 0.001
+      spawnrate0to1: 0.0015
       occupyTiles: 1
     - name: SmallTree
       prefab: {fileID: 1992165639378764853, guid: e5454d8a5460e41898f0fa64a3a84e3c, type: 3}
-      spawnrate0to1: 0.001
+      spawnrate0to1: 0.0015
       occupyTiles: 1
     - name: Rock1
       prefab: {fileID: 8332976566183827426, guid: 6b062ee6c75154da5be4f906daca33c3, type: 3}
@@ -4056,13 +4056,13 @@ MonoBehaviour:
     weight: 1
     averageNumTilesForStructure: 0
     groundTile: {fileID: 11400000, guid: 58cd2c8a136cd439fb1fffc0a321d38d, type: 2}
-    raisedGroundTop: {fileID: 0}
-    raisedGroundFront: {fileID: 0}
-    rgFrontL: {fileID: 0}
-    rgFrontR: {fileID: 0}
+    raisedGroundTop: {fileID: 11400000, guid: d9e17f34db27944b9895874f1e763501, type: 2}
+    raisedGroundFront: {fileID: 11400000, guid: e72261d0f966b48f6842657265b3fc6c, type: 2}
+    rgFrontL: {fileID: 11400000, guid: 45fde19796ad0462180b79e42adc3462, type: 2}
+    rgFrontR: {fileID: 11400000, guid: 4c88137f8d1d041b19768a1a685be9ff, type: 2}
     bottomSlope: {fileID: 0}
     topSlope: {fileID: 0}
-    hillOdds0to1: 0
+    hillOdds0to1: 0.2
     decorObjects:
     - name: Cactus
       prefab: {fileID: 7374663493335591726, guid: a36487ec8174445938548ada0d192313, type: 3}
