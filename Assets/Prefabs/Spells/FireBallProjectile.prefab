@@ -103,7 +103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   playerPos: {x: 0, y: 0}
-  direction: {x: 0, y: 0}
   explosionEffect: {fileID: 7187706179279901132, guid: 6f48a8ef243594248a7d4494e03646a2, type: 3}
   effectName: ExplosionEffect(Clone)
   effectLengthInSeconds: 0.667
@@ -137,7 +136,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.7}

@@ -5103,8 +5103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  playerPos: {x: 0, y: 0}
-  direction: {x: 0, y: 0}
+  startingPos: {x: 0, y: 0}
   explosionEffect: {fileID: 274123162304865363, guid: c1aef2f39b090c24ebe83181f7196d16, type: 3}
   effectName: ShockWaveEffect(Clone)
   effectLengthInSeconds: 0.583
@@ -5138,7 +5137,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.7}

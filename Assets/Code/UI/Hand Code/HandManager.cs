@@ -183,7 +183,7 @@ public class HandManager : MonoBehaviour
         {
             // idk how I'll do the effects of the cards
 
-            Instantiate(card.GetComponent<CardInfo>().scriptableObject.spellPrefab);
+            Instantiate(card.GetComponent<CardInfo>().scriptableObject.spellPrefab,GameObject.FindGameObjectWithTag("Player").transform);
 
             uim.energyBar.slider.value -= cardCost;
 

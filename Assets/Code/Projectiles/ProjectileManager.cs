@@ -15,9 +15,9 @@ public class ProjectileManager : MonoBehaviour
 {
     [SerializeField] int speed = 10;
 
-    [SerializeField] Vector2 playerPos;
+    [SerializeField] Vector2 startingPos;
 
-    [SerializeField] Vector2 direction;
+    Vector2 direction;
 
     [SerializeField] GameObject explosionEffect;
 
@@ -40,13 +40,13 @@ public class ProjectileManager : MonoBehaviour
     }
 
     public void setUpTransform() {
-        playerPos = new Vector2(0,0);
+        startingPos = transform.position;
 
         //Translates the cursor position to World Space and then subracting from player position to obtain the direction of the projectile when spawned.
 
         Vector2 worldMousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector2 heading = worldMousePos - playerPos;
+        Vector2 heading = worldMousePos - startingPos;
 
         //Normalizes the vector so magnitude doesn't influence projectile speed.
 
@@ -54,9 +54,9 @@ public class ProjectileManager : MonoBehaviour
 
         //Calculates amount to rotate projectile in degrees in order to aim towards mouse.
 
-        float theta = (float)Math.Acos(direction.y) * (float)(180/Math.PI);
+        float theta = (float)Math.Acos(direction.y) * (float)Mathf.Rad2Deg;   //Math.Acos(direction.y)
 
-        if(worldMousePos.x > 0) theta = -theta; 
+        if(worldMousePos.x > startingPos.x) theta = -theta; 
 
         transform.Rotate(0,0,theta,Space.World);
     }
@@ -77,11 +77,17 @@ public class ProjectileManager : MonoBehaviour
     }
 
     //Replaces fireball with explosion on collision
-    public void OnCollisionEnter2D() {
-        Instantiate(explosionEffect,transform.GetChild(0).position,transform.rotation);
+    public void OnTriggerEnter2D(Collider2D c) {
+        
+        Debug.Log("Triggered");
 
-        Destroy(GameObject.Find(effectName),effectLengthInSeconds);
+        if(!c.gameObject.tag.Equals("Player")){
+            Instantiate(explosionEffect,transform.GetChild(0).position,transform.rotation);
 
-        Destroy(gameObject);
+            Destroy(GameObject.Find(effectName),effectLengthInSeconds);
+
+            Destroy(gameObject);
+        }
+        
     }
 }
