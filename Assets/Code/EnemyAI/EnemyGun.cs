@@ -17,6 +17,10 @@ public class EnemyGun : MonoBehaviour
         //Stops the bullet from angle towards the player
         //If true does not rotate bullet
         public bool dontAngle;
+        //Number of Bullets Fired per attack
+        public int bulletCount;
+        //Amount of time between bullets being fired
+        public int timeBetweenBullets;
     }
 
     //In attack range of player
@@ -29,6 +33,8 @@ public class EnemyGun : MonoBehaviour
 
     //Fire Rate
     private int currentFireCount;
+    private int currentNumBulletsFired;
+    private int currentInBetweenFireCount = int.MaxValue;
 
     //Objs Needed--------
     //Gotten from enemy mind
@@ -59,19 +65,51 @@ public class EnemyGun : MonoBehaviour
             //If enemy is in range and has had enough time since last fire
             if (inRange && currentFireCount > attacks[0].fireRate)
             {
-                currentFireCount = 0;
+                //When the bullet only fires one shot
+                if(attacks[0].bulletCount == 1)
+                {
+                    currentFireCount = 0;
 
-                //Positioning Firing Object
-                Vector3 difference = player.transform.position - transform.position;
-                float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-                enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+                    //Positioning Firing Object
+                    Vector3 difference = player.transform.position - transform.position;
+                    float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                    enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
 
-                Fire(0);
+                    Fire(0);
+                }
+                //Fires Multiple Bullets
+                else
+                {
+                    //Checks if they have fired all bullets
+                    if(currentNumBulletsFired < attacks[0].bulletCount)
+                    {
+                        //Checks if been long enough
+                        if(currentInBetweenFireCount > attacks[0].timeBetweenBullets)
+                        {
+                            currentInBetweenFireCount = 0;
+                            currentNumBulletsFired++;
+
+                            //Positioning Firing Object
+                            Vector3 difference = player.transform.position - transform.position;
+                            float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                            enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+
+                            Fire(0);
+                        }
+
+                        currentInBetweenFireCount++;
+                    }
+                    //Fired all bullets, resets info
+                    else
+                    {
+                        currentFireCount = 0;
+                        currentNumBulletsFired = 0;
+                        currentInBetweenFireCount = int.MaxValue;
+                    }
+                }
             }
-            else
-            {
-                currentFireCount++;
-            }
+
+            currentFireCount++;
         }
         //If multiple attacks then random choices
         else if(attacks.Length > 1)
@@ -87,20 +125,52 @@ public class EnemyGun : MonoBehaviour
                 //If enemy is in range and has had enough time since last fire
                 if (inRange && currentFireCount > attacks[currentAttack].fireRate)
                 {
-                    currentFireCount = 0;
+                    //When the bullet only fires one shot
+                    if (attacks[currentAttack].bulletCount == 1)
+                    {
+                        currentFireCount = 0;
 
-                    //Positioning Firing Object
-                    Vector3 difference = player.transform.position - transform.position;
-                    float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-                    enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+                        //Positioning Firing Object
+                        Vector3 difference = player.transform.position - transform.position;
+                        float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                        enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
 
-                    Fire(currentAttack);
-                    currentAttack = -1;
+                        Fire(currentAttack);
+                        currentAttack = -1;
+                    }
+                    //Fires Multiple Bullets
+                    else
+                    {
+                        //Checks if they have fired all bullets
+                        if (currentNumBulletsFired < attacks[currentAttack].bulletCount)
+                        {
+                            //Checks if been long enough
+                            if (currentInBetweenFireCount > attacks[currentAttack].timeBetweenBullets)
+                            {
+                                currentInBetweenFireCount = 0;
+                                currentNumBulletsFired++;
+
+                                //Positioning Firing Object
+                                Vector3 difference = player.transform.position - transform.position;
+                                float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                                enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+
+                                Fire(currentAttack);
+                            }
+
+                            currentInBetweenFireCount++;
+                        }
+                        //Fired all bullets, resets info
+                        else
+                        {
+                            currentFireCount = 0;
+                            currentNumBulletsFired = 0;
+                            currentInBetweenFireCount = int.MaxValue;
+                            currentAttack = -1;
+                        }
+                    }
                 }
-                else
-                {
-                    currentFireCount++;
-                }
+                currentFireCount++;
             }
         }
     }
