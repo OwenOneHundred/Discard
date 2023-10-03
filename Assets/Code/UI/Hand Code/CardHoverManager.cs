@@ -21,15 +21,18 @@ public class CardHoverManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private void Update()
     {
-        if (selected)
-        {
-            transform.position = ((Vector2) Camera.main.ScreenToWorldPoint(Input.mousePosition)) + relativePointOfContact;
-        }
-
         if (transform.localScale.x < 1)
         {
             transform.localScale += new Vector3(1, 1, 0) * Time.deltaTime * growRate;
             transform.localScale = new Vector3(Mathf.Clamp(transform.localScale.x, 0, 1), Mathf.Clamp(transform.localScale.y, 0, 1), 1);
+        }
+    }
+
+    public void LateUpdate()
+    {
+        if (selected)
+        {
+            transform.position = (Vector2)Input.mousePosition + relativePointOfContact;
         }
     }
 
@@ -48,7 +51,7 @@ public class CardHoverManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         hm.SelectCard(gameObject);
         selected = true;
         hm.UnhoverCard(gameObject);
-        relativePointOfContact = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        relativePointOfContact = transform.position - Input.mousePosition;
     }
 
     public void OnPointerUp(PointerEventData eventData)

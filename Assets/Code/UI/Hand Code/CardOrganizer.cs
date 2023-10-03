@@ -53,7 +53,7 @@ public class CardOrganizer : MonoBehaviour
         hoveredCardIndex = newHoveredCardIndex;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         for (int i = 0; i < organizedCards.Count;)
         {
