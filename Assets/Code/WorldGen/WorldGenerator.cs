@@ -262,7 +262,7 @@ public class WorldGenerator : MonoBehaviour
                 if (biome == null) { continue; }
                 if (biome.bottomSlope == null) { continue; }
 
-                for (int slopeHeight = 0; slopeHeight < height; slopeHeight++)
+                for (int slopeHeight = -1; slopeHeight < height; slopeHeight++)
                 {
                     slopes.SetTile(current, biome.bottomSlope);
                     raisedGround.SetTile(current, biome.bottomSlope);
