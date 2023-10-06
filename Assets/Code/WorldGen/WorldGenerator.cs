@@ -15,11 +15,11 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField] Tilemap ground;
     [SerializeField] Tilemap raisedGround;
     [SerializeField] Tilemap slopes;
-    [SerializeField] Tilemap water;
 
     [SerializeField] List<Tilemap> structureTilemapsDNR;
 
     [SerializeField] RuleTile rgShadowTile;
+    [SerializeField] Tile connectNotCollideTile;
 
     [SerializeField] int worldSize;
     [SerializeField] int genPerFrame = 20;
@@ -265,7 +265,7 @@ public class WorldGenerator : MonoBehaviour
                 for (int slopeHeight = -1; slopeHeight < height; slopeHeight++)
                 {
                     slopes.SetTile(current, biome.bottomSlope);
-                    raisedGround.SetTile(current, biome.bottomSlope);
+                    raisedGround.SetTile(current, connectNotCollideTile);
                     current += Vector3Int.up;
                 }
             }
