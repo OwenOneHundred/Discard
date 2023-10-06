@@ -15,6 +15,8 @@ public class ProjectileManager : MonoBehaviour
 {
     [SerializeField] int speed = 10;
 
+    [SerializeField] int dmg = 1;
+
     [SerializeField] Vector2 startingPos;
 
     Vector2 direction;
@@ -81,7 +83,11 @@ public class ProjectileManager : MonoBehaviour
         
         Debug.Log("Triggered");
 
-        if(!c.gameObject.tag.Equals("Player")){
+        GameObject obj = c.gameObject;
+
+        string cTag = obj.tag;
+
+        if(!cTag.Equals("Player")){
             Instantiate(explosionEffect,transform.GetChild(0).position,transform.rotation);
 
             Destroy(GameObject.Find(effectName),effectLengthInSeconds);
@@ -89,5 +95,8 @@ public class ProjectileManager : MonoBehaviour
             Destroy(gameObject);
         }
         
+        if(cTag.Equals("Enemy")){
+            obj.GetComponent<EnemyInfo>().hp -= dmg;
+        }
     }
 }

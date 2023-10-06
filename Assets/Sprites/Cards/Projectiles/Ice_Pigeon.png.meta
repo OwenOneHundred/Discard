@@ -1,0 +1,299 @@
+fileFormatVersion: 2
+guid: f2e134e528a5d814ab98bf76ceab3e52
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Ice_Pigeon_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f354a50924a1134d85966440ffe22d0
+      internalID: 1029985368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice_Pigeon_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 160
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1309dc2899adcfa43849fd2ce8a1776c
+      internalID: 873639077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      GrassTileset16x16(Test)_92: 119052187
+      GrassTileset16x16(Test)_37: -236817822
+      GrassTileset16x16(Test)_89: -1611243102
+      GrassTileset16x16(Test)_39: -489208276
+      GrassTileset16x16(Test)_34: -591753760
+      GrassTileset16x16(Test)_105: -461262311
+      GrassTileset16x16(Test)_82: -1734510130
+      GrassTileset16x16(Test)_22: -2130016143
+      GrassTileset16x16(Test)_47: 1298247357
+      GrassTileset16x16(Test)_107: 1911607369
+      GrassTileset16x16(Test)_118: 2125739590
+      GrassTileset16x16(Test)_68: -1032105963
+      GrassTileset16x16(Test)_102: -1751429787
+      GrassTileset16x16(Test)_53: 162925759
+      Ice_Pigeon_1: 873639077
+      GrassTileset16x16(Test)_8: 128770487
+      GrassTileset16x16(Test)_77: -1812919069
+      GrassTileset16x16(Test)_15: 80818639
+      Ice_Pigeon_0: 1029985368
+      GrassTileset16x16(Test)_31: 1658753046
+      GrassTileset16x16(Test)_99: -1420161184
+      GrassTileset16x16(Test)_95: -971271498
+      GrassTileset16x16(Test)_7: -1833391268
+      GrassTileset16x16(Test)_10: -1254738638
+      GrassTileset16x16(Test)_83: -984173885
+      GrassTileset16x16(Test)_62: 498247637
+      GrassTileset16x16(Test)_6: 1023102437
+      GrassTileset16x16(Test)_19: 164975589
+      GrassTileset16x16(Test)_116: -759286867
+      GrassTileset16x16(Test)_104: -600229949
+      GrassTileset16x16(Test)_115: -1771714915
+      GrassTileset16x16(Test)_100: -491083580
+      GrassTileset16x16(Test)_87: -932317057
+      GrassTileset16x16(Test)_97: 2128361672
+      GrassTileset16x16(Test)_109: 1511298282
+      GrassTileset16x16(Test)_60: -1155358590
+      GrassTileset16x16(Test)_111: -396180188
+      GrassTileset16x16(Test)_27: 7127287
+      GrassTileset16x16(Test)_117: -1535789945
+      GrassTileset16x16(Test)_26: 1386792266
+      GrassTileset16x16(Test)_86: 1827987438
+      GrassTileset16x16(Test)_23: -276534074
+      GrassTileset16x16(Test)_1: -608363845
+      GrassTileset16x16(Test)_54: 1350299520
+      GrassTileset16x16(Test)_50: -1472242952
+      GrassTileset16x16(Test)_91: -167048555
+      GrassTileset16x16(Test)_0: 457030725
+      GrassTileset16x16(Test)_78: 613334840
+      GrassTileset16x16(Test)_38: 2077754402
+      GrassTileset16x16(Test)_42: -2021536411
+      GrassTileset16x16(Test)_64: 1805620207
+      GrassTileset16x16(Test)_52: -2097462647
+      GrassTileset16x16(Test)_81: 1577148191
+      GrassTileset16x16(Test)_114: 1618114922
+      GrassTileset16x16(Test)_106: 596102400
+      GrassTileset16x16(Test)_75: 100071257
+      GrassTileset16x16(Test)_88: -326409062
+      GrassTileset16x16(Test)_2: 1081938810
+      GrassTileset16x16(Test)_41: -1162666547
+      GrassTileset16x16(Test)_11: -635909969
+      GrassTileset16x16(Test)_18: 287000329
+      GrassTileset16x16(Test)_113: -1791506603
+      GrassTileset16x16(Test)_16: -155882761
+      GrassTileset16x16(Test)_76: 1279584553
+      GrassTileset16x16(Test)_101: -972682002
+      GrassTileset16x16(Test)_98: 902762475
+      GrassTileset16x16(Test)_43: -46229830
+      GrassTileset16x16(Test)_3: 1343516670
+      GrassTileset16x16(Test)_80: -1843980827
+      GrassTileset16x16(Test)_96: 116498792
+      GrassTileset16x16(Test)_4: -1424599859
+      GrassTileset16x16(Test)_46: -518536298
+      GrassTileset16x16(Test)_59: 712778791
+      GrassTileset16x16(Test)_66: 839728105
+      GrassTileset16x16(Test)_85: 737938030
+      GrassTileset16x16(Test)_45: -1667388738
+      GrassTileset16x16(Test)_58: -1471332906
+      GrassTileset16x16(Test)_73: -1242021267
+      GrassTileset16x16(Test)_79: 1914036952
+      GrassTileset16x16(Test)_20: -1016516325
+      GrassTileset16x16(Test)_90: -755918485
+      GrassTileset16x16(Test)_9: -1590297672
+      GrassTileset16x16(Test)_63: -789573048
+      GrassTileset16x16(Test)_30: 446340899
+      GrassTileset16x16(Test)_108: -491705072
+      GrassTileset16x16(Test)_67: 847922229
+      GrassTileset16x16(Test)_94: -358077781
+      GrassTileset16x16(Test)_28: -1111109946
+      GrassTileset16x16(Test)_55: 1558694344
+      GrassTileset16x16(Test)_35: 1091429914
+      GrassTileset16x16(Test)_40: 1354962000
+      GrassTileset16x16(Test)_14: -1321229214
+      GrassTileset16x16(Test)_49: -1479926587
+      GrassTileset16x16(Test)_5: 271236357
+      GrassTileset16x16(Test)_71: -1436626820
+      GrassTileset16x16(Test)_51: -1247846701
+      GrassTileset16x16(Test)_70: -1126551438
+      GrassTileset16x16(Test)_13: -1708398763
+      GrassTileset16x16(Test)_25: -1496789207
+      GrassTileset16x16(Test)_44: -1029810248
+      GrassTileset16x16(Test)_112: 188888972
+      GrassTileset16x16(Test)_21: 416059890
+      GrassTileset16x16(Test)_93: 1212620600
+      GrassTileset16x16(Test)_110: 597689116
+      Ice_Pigeon_2: -401053517
+      GrassTileset16x16(Test)_57: -61774324
+      GrassTileset16x16(Test)_29: -848336094
+      GrassTileset16x16(Test)_32: -1986379424
+      GrassTileset16x16(Test)_24: -400911037
+      GrassTileset16x16(Test)_65: -500760743
+      GrassTileset16x16(Test)_56: -1532249110
+      GrassTileset16x16(Test)_84: -555299990
+      GrassTileset16x16(Test)_17: -875651567
+      GrassTileset16x16(Test)_72: -1857368978
+      GrassTileset16x16(Test)_69: 1131009881
+      GrassTileset16x16(Test)_103: -1155905413
+      GrassTileset16x16(Test)_61: 810530902
+      GrassTileset16x16(Test)_33: 1486301993
+      GrassTileset16x16(Test)_36: -217992596
+      GrassTileset16x16(Test)_48: -1746662779
+      GrassTileset16x16(Test)_12: -359940629
+      GrassTileset16x16(Test)_74: 1977549689
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
