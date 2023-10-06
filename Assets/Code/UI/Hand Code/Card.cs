@@ -11,4 +11,14 @@ public class Card : ScriptableObject
     public Sprite art;
     public string cost;
     public GameObject attackPrefab;
+
+    public List<CastFunctionABS> castFunctions;
+
+    public virtual void OnPlayed(GameObject card)
+    {
+        foreach (CastFunctionABS func in castFunctions)
+        {
+            func.Cast(card);
+        }
+    }
 }
