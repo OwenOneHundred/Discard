@@ -403,7 +403,7 @@ Canvas:
   m_GameObject: {fileID: 219341721}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 519420038}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
@@ -2067,7 +2067,7 @@ MonoBehaviour:
   uim: {fileID: 219341726}
   co: {fileID: 842922277}
   cardPlayHeight: 120
-  maxHandSize: 5
+  maxHandSize: 8
   initialHandSize: 3
   hand: []
   deck:
@@ -4282,9 +4282,10 @@ MonoBehaviour:
       spawnrate0to1: 0.0001
       occupyTiles: 1
     structures: []
-  Debug_DoNotSpawnObjs: 0
-  Debug_DoNotSpawnHills: 0
-  Debug_DoNotSpawnStructures: 0
+  Debug_DoNotSpawnObjs: 1
+  Debug_DoNotSpawnHills: 1
+  Debug_DoNotSpawnStructures: 1
+  Debug_DoNotSpawnSlopes: 1
 --- !u!114 &1671662866
 MonoBehaviour:
   m_ObjectHideFlags: 0
