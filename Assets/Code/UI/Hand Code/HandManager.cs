@@ -113,7 +113,7 @@ public class HandManager : MonoBehaviour
         drawPile = new List<GameObject>(Deck);
     }
 
-    bool DrawCard()
+    public bool DrawCard()
     {
         if (Hand.Count >= maxHandSize) { return false; }
 
@@ -137,12 +137,25 @@ public class HandManager : MonoBehaviour
             return true;
         }
         return false;
+
+        static void PrepareCardToBeDrawn(GameObject card)
+        {
+            card.GetComponent<RectTransform>().anchoredPosition = new Vector3(-130, 0, 0);
+            card.transform.localScale = new Vector3(0.25f, 0.25f, 1);
+        }
     }
 
-    void PrepareCardToBeDrawn(GameObject card)
+    public void DiscardCard(GameObject card)
     {
-        card.GetComponent<RectTransform>().anchoredPosition = new Vector3(-130, 0, 0);
-        card.transform.localScale = new Vector3(0.25f, 0.25f, 1);
+        Debug.Log("discard called on: " + card.name);
+        DiscardPile = AddAndReturn(DiscardPile, card);
+
+        card.SetActive(false);
+
+        Hand.Remove(card);
+        uim.PlayDiscardAnim(card);
+
+        co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard), selectedCard);
     }
 
     void DrawBarFull(SlowBarFiller sbf) // called by action in update
@@ -163,25 +176,13 @@ public class HandManager : MonoBehaviour
         }
     }
 
-    void DiscardCard(GameObject card)
-    {
-        DiscardPile = AddAndReturn(DiscardPile, card);
-
-        card.SetActive(false);
-
-        Hand.Remove(card);
-        uim.PlayDiscardAnim(card);
-
-        co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard), selectedCard);
-    }
-
     void PlayCard(GameObject card)
     {
         int cardCost = Int32.Parse(card.GetComponent<CardInfo>().scriptableObject.cost);
 
         if (uim.energyBar.slider.value > cardCost)
         {
-            // idk how I'll do the effects of the cards
+            card.GetComponent<CardInfo>().scriptableObject.OnPlayed(card);
 
             Instantiate(card.GetComponent<CardInfo>().scriptableObject.spellPrefab,GameObject.FindGameObjectWithTag("Player").transform);
 

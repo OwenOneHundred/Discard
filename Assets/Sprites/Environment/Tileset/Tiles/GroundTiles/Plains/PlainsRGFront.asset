@@ -120,3 +120,4 @@ MonoBehaviour:
   connectableTiles:
   - {fileID: 11400000, guid: 26b1bd58734bc445196aea5020d036c4, type: 2}
   - {fileID: 11400000, guid: 301c2a4dc55f949f1a37ac06fee7b89b, type: 2}
+  - {fileID: 11400000, guid: fd7f54f25ecee4b36bd9ea984fa04e33, type: 2}

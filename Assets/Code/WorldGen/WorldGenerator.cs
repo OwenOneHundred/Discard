@@ -15,11 +15,11 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField] Tilemap ground;
     [SerializeField] Tilemap raisedGround;
     [SerializeField] Tilemap slopes;
-    [SerializeField] Tilemap water;
 
     [SerializeField] List<Tilemap> structureTilemapsDNR;
 
     [SerializeField] RuleTile rgShadowTile;
+    [SerializeField] Tile connectNotCollideTile;
 
     [SerializeField] int worldSize;
     [SerializeField] int genPerFrame = 20;
@@ -38,6 +38,7 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField] bool Debug_DoNotSpawnObjs = false;
     [SerializeField] bool Debug_DoNotSpawnHills = false;
     [SerializeField] bool Debug_DoNotSpawnStructures = false;
+    [SerializeField] bool Debug_DoNotSpawnSlopes = false;
 
     // Start is called before the first frame update
     void Start()
@@ -249,24 +250,27 @@ public class WorldGenerator : MonoBehaviour
                 }    
             }
 
-            // add slopes
-            int slopeNum = UnityEngine.Random.Range(0, 2);
-            GeneralUtil.ShuffleList(bottomCenters);
-            if (slopeNum > bottomCenters.Count) { slopeNum = bottomCenters.Count; }
-            for (int count = 0; count < slopeNum; count++)
+            if (!Debug_DoNotSpawnSlopes)
             {
-                Vector3Int current = bottomCenters[count];
-
-                Biome biome = GetBiomeAtPos(current);
-
-                if (biome == null) { continue; }
-                if (biome.bottomSlope == null) { continue; }
-
-                for (int slopeHeight = -1; slopeHeight < height; slopeHeight++)
+                // add slopes
+                int slopeNum = UnityEngine.Random.Range(0, 2);
+                GeneralUtil.ShuffleList(bottomCenters);
+                if (slopeNum > bottomCenters.Count) { slopeNum = bottomCenters.Count; }
+                for (int count = 0; count < slopeNum; count++)
                 {
-                    slopes.SetTile(current, biome.bottomSlope);
-                    raisedGround.SetTile(current, biome.bottomSlope);
-                    current += Vector3Int.up;
+                    Vector3Int current = bottomCenters[count];
+
+                    Biome biome = GetBiomeAtPos(current);
+
+                    if (biome == null) { continue; }
+                    if (biome.bottomSlope == null) { continue; }
+
+                    for (int slopeHeight = -1; slopeHeight < height; slopeHeight++)
+                    {
+                        slopes.SetTile(current, biome.bottomSlope);
+                        raisedGround.SetTile(current, connectNotCollideTile);
+                        current += Vector3Int.up;
+                    }
                 }
             }
 

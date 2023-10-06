@@ -885,7 +885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &406506518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,7 +1209,6 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420035}
   - component: {fileID: 519420038}
-  - component: {fileID: 519420037}
   - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
@@ -1248,7 +1247,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f72a5e0615d2743d69a37229429061b1, type: 3}
   m_Name: 
@@ -1286,29 +1285,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &519420037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ComponentVersion: 1
-  m_AssetsPPU: 16
-  m_RefResolutionX: 640
-  m_RefResolutionY: 360
-  m_CropFrame: 4
-  m_GridSnapping: 0
-  m_UpscaleRT: 0
-  m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
 --- !u!20 &519420038
 Camera:
   m_ObjectHideFlags: 0
@@ -1318,8 +1294,8 @@ Camera:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1328,15 +1304,15 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.1791559
+    x: 0
     y: 0
-    width: 2.1223085
-    height: 2.1225116
-  near clip plane: 0.3
+    width: 1
+    height: 1
+  near clip plane: 0.5
   far clip plane: 1000
-  field of view: 26.991467
-  orthographic: 1
-  orthographic size: 11.25
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -2091,7 +2067,7 @@ MonoBehaviour:
   uim: {fileID: 219341726}
   co: {fileID: 842922277}
   cardPlayHeight: 120
-  maxHandSize: 5
+  maxHandSize: 8
   initialHandSize: 3
   hand: []
   deck:
@@ -3248,7 +3224,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1270966957
   m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -4221,11 +4197,11 @@ MonoBehaviour:
   ground: {fileID: 1745739093}
   raisedGround: {fileID: 455356339}
   slopes: {fileID: 1213611296}
-  water: {fileID: 0}
   structureTilemapsDNR:
   - {fileID: 532079630}
   - {fileID: 1322200453}
   rgShadowTile: {fileID: 11400000, guid: cfe5fe8b5574a42e282c2ecc4c9e56f1, type: 2}
+  connectNotCollideTile: {fileID: 11400000, guid: fd7f54f25ecee4b36bd9ea984fa04e33, type: 2}
   worldSize: 100
   genPerFrame: 200
   biomeSize: 200
@@ -4273,7 +4249,29 @@ MonoBehaviour:
     rgFrontR: {fileID: 11400000, guid: 4c88137f8d1d041b19768a1a685be9ff, type: 2}
     bottomSlope: {fileID: 0}
     topSlope: {fileID: 0}
-    hillOdds0to1: 0.2
+    hillOdds0to1: 0.3
+    decorObjects:
+    - name: Cactus
+      prefab: {fileID: 7374663493335591726, guid: a36487ec8174445938548ada0d192313, type: 3}
+      spawnrate0to1: 0.001
+      occupyTiles: 1
+    - name: Rock1
+      prefab: {fileID: 8332976566183827426, guid: 6b062ee6c75154da5be4f906daca33c3, type: 3}
+      spawnrate0to1: 0.0001
+      occupyTiles: 1
+    structures: []
+  - name: RedBiome
+    temperature: 7
+    weight: 1
+    averageNumTilesForStructure: 0
+    groundTile: {fileID: 11400000, guid: 9410a0255913e4abf8ec01c9271707e6, type: 2}
+    raisedGroundTop: {fileID: 11400000, guid: 6c12ecc3b4a95423c86fab27c1cdd64b, type: 2}
+    raisedGroundFront: {fileID: 11400000, guid: 9fd4326a1ca78447ab6b121a0ebb6bd6, type: 2}
+    rgFrontL: {fileID: 11400000, guid: 1b52a75e20d304322ace623331aa100d, type: 2}
+    rgFrontR: {fileID: 11400000, guid: 484e3d5f3084a41209fc7f6f360be70d, type: 2}
+    bottomSlope: {fileID: 0}
+    topSlope: {fileID: 0}
+    hillOdds0to1: 0.3
     decorObjects:
     - name: Cactus
       prefab: {fileID: 7374663493335591726, guid: a36487ec8174445938548ada0d192313, type: 3}
@@ -4287,6 +4285,7 @@ MonoBehaviour:
   Debug_DoNotSpawnObjs: 1
   Debug_DoNotSpawnHills: 1
   Debug_DoNotSpawnStructures: 1
+  Debug_DoNotSpawnSlopes: 1
 --- !u!114 &1671662866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4857,3 +4856,60 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2722491082570292687, guid: 6f9aa51b720564fc8b23479ae77b003f, type: 3}
   m_PrefabInstance: {fileID: 626536405}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9052336081162067479
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9052336080105310458, guid: d10921226c3e8411fbd41dc57f9b1a89, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052336080105310458, guid: d10921226c3e8411fbd41dc57f9b1a89, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052336080105310458, guid: d10921226c3e8411fbd41dc57f9b1a89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052336080105310458, guid: d10921226c3e8411fbd41dc57f9b1a89, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052336080105310458, guid: d10921226c3e8411fbd41dc57f9b1a89, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052336080105310458, guid: d10921226c3e8411fbd41dc57f9b1a89, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052336080105310458, guid: d10921226c3e8411fbd41dc57f9b1a89, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052336080105310458, guid: d10921226c3e8411fbd41dc57f9b1a89, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052336080105310458, guid: d10921226c3e8411fbd41dc57f9b1a89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052336080105310458, guid: d10921226c3e8411fbd41dc57f9b1a89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052336080105310458, guid: d10921226c3e8411fbd41dc57f9b1a89, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052336080105310463, guid: d10921226c3e8411fbd41dc57f9b1a89, type: 3}
+      propertyPath: m_Name
+      value: WoodenTroll
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d10921226c3e8411fbd41dc57f9b1a89, type: 3}

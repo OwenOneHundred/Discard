@@ -65,6 +65,14 @@ MonoBehaviour:
   connectableRTs:
   - {fileID: 11400000, guid: 5e15cb1b74a3e46e88b75170d915e65a, type: 2}
   - {fileID: 11400000, guid: bad8e30c3265f4758be4c2655fcf2120, type: 2}
+  - {fileID: 11400000, guid: 6c12ecc3b4a95423c86fab27c1cdd64b, type: 2}
+  - {fileID: 11400000, guid: 9fd4326a1ca78447ab6b121a0ebb6bd6, type: 2}
+  - {fileID: 11400000, guid: d9e17f34db27944b9895874f1e763501, type: 2}
+  - {fileID: 11400000, guid: e72261d0f966b48f6842657265b3fc6c, type: 2}
   connectableTiles:
   - {fileID: 11400000, guid: 26b1bd58734bc445196aea5020d036c4, type: 2}
   - {fileID: 11400000, guid: 301c2a4dc55f949f1a37ac06fee7b89b, type: 2}
+  - {fileID: 11400000, guid: 1b52a75e20d304322ace623331aa100d, type: 2}
+  - {fileID: 11400000, guid: 484e3d5f3084a41209fc7f6f360be70d, type: 2}
+  - {fileID: 11400000, guid: 45fde19796ad0462180b79e42adc3462, type: 2}
+  - {fileID: 11400000, guid: 4c88137f8d1d041b19768a1a685be9ff, type: 2}
