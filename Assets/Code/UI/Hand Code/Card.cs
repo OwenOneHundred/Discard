@@ -14,11 +14,11 @@ public class Card : ScriptableObject
 
     public List<CastFunctionABS> castFunctions;
 
-    public virtual void OnPlayed()
+    public virtual void OnPlayed(GameObject card)
     {
         foreach (CastFunctionABS func in castFunctions)
         {
-            func.Cast();
+            func.Cast(card);
         }
     }
 }

@@ -182,7 +182,7 @@ public class HandManager : MonoBehaviour
 
         if (uim.energyBar.slider.value > cardCost)
         {
-            card.GetComponent<CardInfo>().scriptableObject.OnPlayed();
+            card.GetComponent<CardInfo>().scriptableObject.OnPlayed(card);
 
             uim.energyBar.slider.value -= cardCost;
 

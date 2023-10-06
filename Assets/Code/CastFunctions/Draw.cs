@@ -7,7 +7,7 @@ public class Draw : CastFunctionABS
 {
     [SerializeField] int count = 1;
 
-    public override void Cast()
+    public override void Cast(GameObject card)
     {
         if (hm == null)
         {
