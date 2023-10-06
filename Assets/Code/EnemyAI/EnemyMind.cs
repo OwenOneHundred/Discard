@@ -12,6 +12,7 @@ public class EnemyMind : MonoBehaviour
     private EnemyInfo enemyInfo;
     private EnemyMovement enemyMovement;
     private EnemyGun enemyGun;
+    private EnemyImager enemyImager;
 
     //Distance to player
     public float distToPlayer;
@@ -43,6 +44,8 @@ public class EnemyMind : MonoBehaviour
         enemyGun = this.gameObject.GetComponent<EnemyGun>();
         enemyGun.inRange = false;
         enemyGun.player = player.transform;
+
+        enemyImager = this.gameObject.GetComponent<EnemyImager>();
     }
 
     // Update is called once per frame
@@ -61,25 +64,30 @@ public class EnemyMind : MonoBehaviour
             else
             {
                 //Activates or Deactives Gun
-                if(distToPlayer < attackDistance)
+                if(distToPlayer <= attackDistance)
                 {
                     inRange = true;
                     enemyGun.inRange = true;
+                    enemyImager.isAttacking = true;
                 }
                 else
                 {
                     inRange = false;
                     enemyGun.inRange = false;
+                    enemyImager.isAttacking = false;
                 }
 
                 //Says if close enough 
                 if(inRange == false)
                 {
                     enemyMovement.atObjective = false;
+                    Debug.Log("Hit");
+                    enemyImager.isMoving = true;
                 }
                 else
                 {
                     enemyMovement.atObjective = true;
+                    enemyImager.isMoving = false;
                 }
             }
         }
@@ -101,10 +109,12 @@ public class EnemyMind : MonoBehaviour
                 if(GetDist(idlePos) < .5f)
                 {
                     enemyMovement.atObjective = true;
+                    enemyImager.isMoving = false;
                 }
                 else
                 {
                     enemyMovement.atObjective = false;
+                    enemyImager.isMoving = true;
                 }
             }
         }

@@ -66,7 +66,7 @@ public class EnemyGun : MonoBehaviour
             if (inRange && currentFireCount > attacks[0].fireRate)
             {
                 //When the bullet only fires one shot
-                if(attacks[0].bulletCount == 1)
+                if (attacks[0].bulletCount == 1)
                 {
                     currentFireCount = 0;
 
@@ -81,10 +81,10 @@ public class EnemyGun : MonoBehaviour
                 else
                 {
                     //Checks if they have fired all bullets
-                    if(currentNumBulletsFired < attacks[0].bulletCount)
+                    if (currentNumBulletsFired < attacks[0].bulletCount)
                     {
                         //Checks if been long enough
-                        if(currentInBetweenFireCount > attacks[0].timeBetweenBullets)
+                        if (currentInBetweenFireCount > attacks[0].timeBetweenBullets)
                         {
                             currentInBetweenFireCount = 0;
                             currentNumBulletsFired++;
@@ -112,7 +112,7 @@ public class EnemyGun : MonoBehaviour
             currentFireCount++;
         }
         //If multiple attacks then random choices
-        else if(attacks.Length > 1)
+        else if (attacks.Length > 1)
         {
             //Give new attack
             if (currentAttack == -1)
@@ -178,12 +178,12 @@ public class EnemyGun : MonoBehaviour
     //Fires the Bullet at the player
     public void Fire(int attackNum)
     {
-        if(attacks[attackNum].dontAngle == true)
+        if (attacks[attackNum].dontAngle == true)
         {
             //Fire
             Instantiate(attacks[attackNum].bullet, enemyTargeter.transform.position, Quaternion.identity);
 
-            if(attacks[attackNum].diesOnFire == true)
+            if (attacks[attackNum].diesOnFire == true)
             {
                 enemyInfo.Death();
             }
