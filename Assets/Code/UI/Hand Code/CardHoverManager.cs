@@ -10,6 +10,7 @@ public class CardHoverManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
     Vector2 relativePointOfContact;
     [SerializeField] float growRate = 1;
 
+
     private void Awake()
     {
         if (hm == null)
@@ -20,15 +21,18 @@ public class CardHoverManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private void Update()
     {
-        if (selected)
-        {
-            transform.position = (Vector2)Input.mousePosition + relativePointOfContact;
-        }
-
         if (transform.localScale.x < 1)
         {
             transform.localScale += new Vector3(1, 1, 0) * Time.deltaTime * growRate;
             transform.localScale = new Vector3(Mathf.Clamp(transform.localScale.x, 0, 1), Mathf.Clamp(transform.localScale.y, 0, 1), 1);
+        }
+    }
+
+    public void LateUpdate()
+    {
+        if (selected)
+        {
+            transform.position = (Vector2)Input.mousePosition + relativePointOfContact;
         }
     }
 
