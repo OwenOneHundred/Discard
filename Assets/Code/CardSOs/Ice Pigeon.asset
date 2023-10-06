@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db44d29891fb8490ead7045661882e4b, type: 3}
-  m_Name: Shockwave
+  m_Name: Ice Pigeon
   m_EditorClassIdentifier: 
-  name: Shockwave
-  description: Launches a small shockwave. Discard your last card.
-  art: {fileID: 21300000, guid: 07e92908843374f76867291f1d0403d6, type: 3}
+  name: Ice Pigeon
+  description: Launch a homing pigeon that applies 3 stacks of slow to enemies in
+    radius on contact.
+  art: {fileID: 889197209, guid: 35cb9ee4069d2fb4184f8925ac8295b9, type: 3}
   cost: 1
-  attackPrefab: {fileID: 2864719928024247890, guid: fb001f0f2a355ea42b8920f8c4395613, type: 3}
-  castFunctions:
-  - {fileID: 11400000, guid: 72bb4f3ff02c946dab779bf85e1d512c, type: 2}
+  attackPrefab: {fileID: 1014261172210766844, guid: 9df2e20b76fba4e47a170151b9bdfcd4, type: 3}
+  castFunctions: []
