@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DiscardFirst
   m_EditorClassIdentifier: 
   count: 1
-  firstOrLast: 0
+  firstOrLast: 1

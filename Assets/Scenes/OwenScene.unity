@@ -1311,7 +1311,7 @@ Camera:
   near clip plane: 0.5
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -4203,7 +4203,7 @@ MonoBehaviour:
   rgShadowTile: {fileID: 11400000, guid: cfe5fe8b5574a42e282c2ecc4c9e56f1, type: 2}
   connectNotCollideTile: {fileID: 11400000, guid: fd7f54f25ecee4b36bd9ea984fa04e33, type: 2}
   worldSize: 100
-  genPerFrame: 200
+  genPerFrame: 100
   biomeSize: 200
   hillSpawnAttempts: 30
   averageHillSize: 80
@@ -4282,9 +4282,9 @@ MonoBehaviour:
       spawnrate0to1: 0.0001
       occupyTiles: 1
     structures: []
-  Debug_DoNotSpawnObjs: 1
-  Debug_DoNotSpawnHills: 1
-  Debug_DoNotSpawnStructures: 1
+  Debug_DoNotSpawnObjs: 0
+  Debug_DoNotSpawnHills: 0
+  Debug_DoNotSpawnStructures: 0
   Debug_DoNotSpawnSlopes: 1
 --- !u!114 &1671662866
 MonoBehaviour:
