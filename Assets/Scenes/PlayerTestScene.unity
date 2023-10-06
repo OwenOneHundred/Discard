@@ -53614,7 +53614,7 @@ Tilemap:
       - {fileID: 1643359262, guid: a883504ad37574bf1a62f779a3474c9e, type: 3}
       - {fileID: 884988598, guid: a883504ad37574bf1a62f779a3474c9e, type: 3}
       - {fileID: 642280579, guid: a883504ad37574bf1a62f779a3474c9e, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 11, y: -20, z: 0}
@@ -53742,7 +53742,7 @@ Tilemap:
       - {fileID: -709259719, guid: 2e228f8277fa747b38d6806287ace7af, type: 3}
       - {fileID: 215809826, guid: 2e228f8277fa747b38d6806287ace7af, type: 3}
       - {fileID: 996637277, guid: 2e228f8277fa747b38d6806287ace7af, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 13, y: -19, z: 0}
@@ -54382,7 +54382,7 @@ Tilemap:
       - {fileID: 1101064861, guid: c15b2ea3936494e2599ad6ec759b160a, type: 3}
       - {fileID: 1361533043, guid: c15b2ea3936494e2599ad6ec759b160a, type: 3}
       - {fileID: 1067777190, guid: c15b2ea3936494e2599ad6ec759b160a, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 11, y: -14, z: 0}
@@ -54606,7 +54606,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 14, y: -12, z: 0}
@@ -54670,7 +54670,7 @@ Tilemap:
       - {fileID: -1132643709, guid: 90d3bdeb672fe4917a3b4284b9adeb9f, type: 3}
       - {fileID: 1664357273, guid: 90d3bdeb672fe4917a3b4284b9adeb9f, type: 3}
       - {fileID: -893667004, guid: 90d3bdeb672fe4917a3b4284b9adeb9f, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 14, y: -11, z: 0}
@@ -54926,7 +54926,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 27, y: 5, z: 0}
@@ -55214,7 +55214,7 @@ Tilemap:
       - {fileID: -1132643709, guid: 90d3bdeb672fe4917a3b4284b9adeb9f, type: 3}
       - {fileID: 1664357273, guid: 90d3bdeb672fe4917a3b4284b9adeb9f, type: 3}
       - {fileID: -893667004, guid: 90d3bdeb672fe4917a3b4284b9adeb9f, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 27, y: 8, z: 0}
@@ -55982,7 +55982,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 16, y: 20, z: 0}
@@ -56222,7 +56222,7 @@ Tilemap:
       - {fileID: 2077261319, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1237957229, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
       - {fileID: -1784583375, guid: 367137cf5c37742dab8e00267887ca49, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 18, y: 21, z: 0}
@@ -57584,6 +57584,8 @@ GameObject:
   - component: {fileID: 1784970665}
   - component: {fileID: 1784970668}
   - component: {fileID: 1784970669}
+  - component: {fileID: 1784970670}
+  - component: {fileID: 1784970671}
   m_Layer: 0
   m_Name: Enemy Base
   m_TagString: Enemy
@@ -57599,7 +57601,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784970663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.5, y: 1.9, z: 0}
+  m_LocalPosition: {x: 7.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57798,6 +57800,53 @@ MonoBehaviour:
     - {fileID: 1070132358, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
     - {fileID: -663848849, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
     timeBetweenAnim: 0f000000
+--- !u!61 &1784970670
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784970663}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.25, y: 1.5}
+  m_EdgeRadius: 0
+--- !u!50 &1784970671
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784970663}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1001 &1827763544
 PrefabInstance:
   m_ObjectHideFlags: 0

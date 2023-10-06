@@ -81,7 +81,6 @@ public class EnemyMind : MonoBehaviour
                 if(inRange == false)
                 {
                     enemyMovement.atObjective = false;
-                    Debug.Log("Hit");
                     enemyImager.isMoving = true;
                 }
                 else
@@ -128,5 +127,15 @@ public class EnemyMind : MonoBehaviour
         float dist = Vector3.Distance(target, currentPos);
 
         return dist;
+    }
+
+    //Does the death stuff of the enemy
+    public void Death()
+    {
+        enemyImager.isDead = true;
+
+        //Disable Collider
+        //Disable Movement
+        //Disable Atatcks
     }
 }

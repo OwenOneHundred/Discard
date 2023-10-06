@@ -7,6 +7,22 @@ public class EnemyInfo : MonoBehaviour
     public int hp;
     public float armor;
 
+    private EnemyMind enemyMind;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        enemyMind = this.gameObject.GetComponent<EnemyMind>();
+    }
+
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.Z))
+        {
+            Death();
+        }
+    }
+
     //Does damage to enemy
     public void Damage(int damageAmount, bool ignoresDamage)
     {
@@ -26,5 +42,6 @@ public class EnemyInfo : MonoBehaviour
     public void Death()
     {
         Debug.Log("Enemy Death");
+        enemyMind.Death();
     }
 }
