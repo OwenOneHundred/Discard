@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 322a2dd8aa66840bd9947bd98e2800da
+guid: 74181adde34b849e098a628c28bb3df2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -101,17 +101,71 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnergyBarWithNumbers-sheet_0
+      name: UI Front_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 160
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4bff5a6867df499fadcdc58bbed20b7
+      internalID: -1889963374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI Front_1
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 90
+        width: 160
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aee0662c67744195a4c0de0b8b2b472
+      internalID: -428000332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI Front_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 40
-        height: 140
+        width: 160
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20ccca5aee4d14271b7a77b9daf65efe
-      internalID: 824266748
+      spriteID: 5fc0314fc1ee4413e985ce1459beffa7
+      internalID: -2040425410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: EnergyBarWithNumbers-sheet_1
+      name: UI Front_3
       rect:
         serializedVersion: 2
-        x: 40
+        x: 160
         y: 0
-        width: 40
-        height: 140
+        width: 160
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,50 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60ff4addd2b864fc49e15b7ca0ac76bb
-      internalID: -314948227
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnergyBarWithNumbers-sheet_2
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 40
-        height: 140
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95d26318d6b10432abf854697e5e1266
-      internalID: -1379901267
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnergyBarWithNumbers-sheet_3
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 0
-        width: 40
-        height: 140
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9f64963b27c554f90b20a3687776817a
-      internalID: -1587344792
+      spriteID: e32e955f54afc4fe0b2a77deceb89dad
+      internalID: 993214375
       vertices: []
       indices: 
       edges: []
@@ -199,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      EnergyBarWithNumbers-sheet_2: -1379901267
-      EnergyBarWithNumbers-sheet_3: -1587344792
-      EnergyBarWithNumbers-sheet_1: -314948227
-      EnergyBarWithNumbers-sheet_0: 824266748
+      UI Front_0: -1889963374
+      UI Front_3: 993214375
+      UI Front_1: -428000332
+      UI Front_2: -2040425410
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

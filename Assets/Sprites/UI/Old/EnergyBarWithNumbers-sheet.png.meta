@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0eeaeae7267234bd6b6aec735b3fe19a
+guid: 322a2dd8aa66840bd9947bd98e2800da
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -101,17 +101,29 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DrawPileNotifCentered_0
+      name: EnergyBarWithNumbers-sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 100
-        height: 100
+        width: 40
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c09663fe155c491f8617dacef897a8e
-      internalID: 444754861
+      spriteID: 20ccca5aee4d14271b7a77b9daf65efe
+      internalID: 824266748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DrawPileNotifCentered_1
+      name: EnergyBarWithNumbers-sheet_1
       rect:
         serializedVersion: 2
-        x: 100
+        x: 40
         y: 0
-        width: 100
-        height: 100
+        width: 40
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f224faa144a0474d8a0c68bf44a1551
-      internalID: -1325388183
+      spriteID: 60ff4addd2b864fc49e15b7ca0ac76bb
+      internalID: -314948227
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DrawPileNotifCentered_2
+      name: EnergyBarWithNumbers-sheet_2
       rect:
         serializedVersion: 2
-        x: 200
+        x: 80
         y: 0
-        width: 100
-        height: 100
+        width: 40
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1134becc051e941728d7d2943e2bce0d
-      internalID: 252071116
+      spriteID: 95d26318d6b10432abf854697e5e1266
+      internalID: -1379901267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DrawPileNotifCentered_3
+      name: EnergyBarWithNumbers-sheet_3
       rect:
         serializedVersion: 2
-        x: 300
+        x: 120
         y: 0
-        width: 100
-        height: 100
+        width: 40
+        height: 140
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e1918511e0364593a81d53d2194035e
-      internalID: -1185631415
+      spriteID: 9f64963b27c554f90b20a3687776817a
+      internalID: -1587344792
       vertices: []
       indices: 
       edges: []
@@ -199,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DrawPileNotifCentered_3: -1185631415
-      DrawPileNotifCentered_0: 444754861
-      DrawPileNotifCentered_2: 252071116
-      DrawPileNotifCentered_1: -1325388183
+      EnergyBarWithNumbers-sheet_2: -1379901267
+      EnergyBarWithNumbers-sheet_3: -1587344792
+      EnergyBarWithNumbers-sheet_1: -314948227
+      EnergyBarWithNumbers-sheet_0: 824266748
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
