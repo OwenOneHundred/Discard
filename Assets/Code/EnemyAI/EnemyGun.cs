@@ -11,7 +11,12 @@ public class EnemyGun : MonoBehaviour
         //What the Enemy is Firing
         public GameObject bullet;
         //How fast they are firing
-        public int fireRate;
+        //Time til start of anim
+        public int preAnimfireRate;
+        //Time til fire from start of anim
+        public int animfireRate;
+        //Time til animOver after firerate
+        public int postAnimfireRate;
         //Kills enemy after attack
         public bool diesOnFire;
         //Stops the bullet from angle towards the player
@@ -32,6 +37,7 @@ public class EnemyGun : MonoBehaviour
     private int currentAttack = -1;
 
     //Fire Rate
+    private int currentAttackPhase;
     private int currentFireCount;
     private int currentNumBulletsFired;
     private int currentInBetweenFireCount = int.MaxValue;
@@ -42,12 +48,14 @@ public class EnemyGun : MonoBehaviour
     public GameObject enemyTargeter;
 
     private EnemyInfo enemyInfo;
+    private EnemyImager enemyImager;
 
     // Start is called before the first frame update
     void Start()
     {
         //Gets Info
         enemyInfo = this.gameObject.GetComponent<EnemyInfo>();
+        enemyImager = this.gameObject.GetComponent<EnemyImager>();
     }
 
     // Update is called 60 times a second
@@ -62,54 +70,19 @@ public class EnemyGun : MonoBehaviour
         //If there are only one attack then does the one attack
         if (attacks.Length == 1)
         {
-            //If enemy is in range and has had enough time since last fire
-            if (inRange && currentFireCount > attacks[0].fireRate)
+            if(currentAttackPhase == 1)
             {
-                //When the bullet only fires one shot
-                if (attacks[0].bulletCount == 1)
-                {
-                    currentFireCount = 0;
-
-                    //Positioning Firing Object
-                    Vector3 difference = player.transform.position - transform.position;
-                    float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-                    enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
-
-                    Fire(0);
-                }
-                //Fires Multiple Bullets
-                else
-                {
-                    //Checks if they have fired all bullets
-                    if (currentNumBulletsFired < attacks[0].bulletCount)
-                    {
-                        //Checks if been long enough
-                        if (currentInBetweenFireCount > attacks[0].timeBetweenBullets)
-                        {
-                            currentInBetweenFireCount = 0;
-                            currentNumBulletsFired++;
-
-                            //Positioning Firing Object
-                            Vector3 difference = player.transform.position - transform.position;
-                            float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-                            enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
-
-                            Fire(0);
-                        }
-
-                        currentInBetweenFireCount++;
-                    }
-                    //Fired all bullets, resets info
-                    else
-                    {
-                        currentFireCount = 0;
-                        currentNumBulletsFired = 0;
-                        currentInBetweenFireCount = int.MaxValue;
-                    }
-                }
+                OneOptionAttackPhase1();
+            }
+            else if(currentAttackPhase == 2)
+            {
+                OneOptionAttackPhase2();
+            }
+            else
+            {
+                OneOptionAttackPhase3();
             }
 
-            currentFireCount++;
         }
         //If multiple attacks then random choices
         else if (attacks.Length > 1)
@@ -123,7 +96,7 @@ public class EnemyGun : MonoBehaviour
             else
             {
                 //If enemy is in range and has had enough time since last fire
-                if (inRange && currentFireCount > attacks[currentAttack].fireRate)
+                if (inRange && currentFireCount > attacks[currentAttack].animfireRate)
                 {
                     //When the bullet only fires one shot
                     if (attacks[currentAttack].bulletCount == 1)
@@ -173,6 +146,72 @@ public class EnemyGun : MonoBehaviour
                 currentFireCount++;
             }
         }
+    }
+
+    //Handles attack if only one option is available
+    //Counts up time with enemy in idle pos
+    public void OneOptionAttackPhase1()
+    {
+
+    }
+
+    //Does the Firing
+    public void OneOptionAttackPhase2()
+    {
+        //If enemy is in range and has had enough time since last fire
+        if (inRange && currentFireCount > attacks[0].animfireRate)
+        {
+            //When the bullet only fires one shot
+            if (attacks[0].bulletCount == 1)
+            {
+                currentFireCount = 0;
+
+                //Positioning Firing Object
+                Vector3 difference = player.transform.position - transform.position;
+                float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+
+                Fire(0);
+            }
+            //Fires Multiple Bullets
+            else
+            {
+                //Checks if they have fired all bullets
+                if (currentNumBulletsFired < attacks[0].bulletCount)
+                {
+                    //Checks if been long enough
+                    if (currentInBetweenFireCount > attacks[0].timeBetweenBullets)
+                    {
+                        currentInBetweenFireCount = 0;
+                        currentNumBulletsFired++;
+
+                        //Positioning Firing Object
+                        Vector3 difference = player.transform.position - transform.position;
+                        float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                        enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+
+                        Fire(0);
+                    }
+
+                    currentInBetweenFireCount++;
+                }
+                //Fired all bullets, resets info
+                else
+                {
+                    currentFireCount = 0;
+                    currentNumBulletsFired = 0;
+                    currentInBetweenFireCount = int.MaxValue;
+                }
+            }
+        }
+
+        currentFireCount++;
+    }
+
+    //
+    public void OneOptionAttackPhase3()
+    {
+
     }
 
     //Fires the Bullet at the player

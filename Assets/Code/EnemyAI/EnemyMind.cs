@@ -13,9 +13,11 @@ public class EnemyMind : MonoBehaviour
     private EnemyMovement enemyMovement;
     private EnemyGun enemyGun;
     private EnemyImager enemyImager;
+    private BoxCollider2D thisBoxCollider;
 
     //Distance to player
     public float distToPlayer;
+    public float angleToPlayer;
 
     //Enemy States
     public bool aggroed;
@@ -46,6 +48,8 @@ public class EnemyMind : MonoBehaviour
         enemyGun.player = player.transform;
 
         enemyImager = this.gameObject.GetComponent<EnemyImager>();
+
+        thisBoxCollider = this.gameObject.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -56,6 +60,7 @@ public class EnemyMind : MonoBehaviour
         //Attacking
         if(aggroed == true)
         {
+            DetermineAngle();
             enemyMovement.objective = player.transform;
             if(distToPlayer >= pacifyDistance)
             {
@@ -68,13 +73,11 @@ public class EnemyMind : MonoBehaviour
                 {
                     inRange = true;
                     enemyGun.inRange = true;
-                    enemyImager.isAttacking = true;
                 }
                 else
                 {
                     inRange = false;
                     enemyGun.inRange = false;
-                    enemyImager.isAttacking = false;
                 }
 
                 //Says if close enough 
@@ -112,6 +115,7 @@ public class EnemyMind : MonoBehaviour
                 }
                 else
                 {
+                    DetermineAngle();
                     enemyMovement.atObjective = false;
                     enemyImager.isMoving = true;
                 }
@@ -129,13 +133,69 @@ public class EnemyMind : MonoBehaviour
         return dist;
     }
 
+    //Gets the angle that is the target to the player
+    public void DetermineAngle()
+    {
+        Vector3 difference = player.transform.position - transform.position;
+        float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
+        //Facing South 
+        if(angle <= -45f && angle >= -135)
+        {
+            enemyImager.direction = 0;
+        }
+        //Facing North
+        else if (angle >= 45f && angle <= 135)
+        {
+            enemyImager.direction = 1;
+        }
+        //Facing East
+        else if (angle < 45f && angle > -45f)
+        {
+            enemyImager.direction = 2;
+        }
+        //Facing West
+        else
+        {
+            enemyImager.direction = 3;
+        }
+
+        /*
+        //Facing North
+        if(angle >= 45f && angle <= 135f)
+        {
+            enemyImager.direction = 1;
+        }
+        //Facing West
+        else if (angle > 135f && angle < 225f)
+        {
+            enemyImager.direction = 3;
+        }
+        //Facing South
+        else if(angle >= 225 && angle <= 315)
+        {
+            enemyImager.direction = 0;
+        }
+        //Facing East
+        else
+        {
+            enemyImager.direction = 2;
+        }
+        */
+    }
+
     //Does the death stuff of the enemy
     public void Death()
     {
         enemyImager.isDead = true;
+        enemyImager.currentSpriteShowing = 0;
+        enemyImager.timeThroughAnim = 0;
 
         //Disable Collider
+        thisBoxCollider.enabled = false;
         //Disable Movement
+        enemyMovement.enabled = false;
         //Disable Atatcks
+        enemyGun.enabled = false;
     }
 }

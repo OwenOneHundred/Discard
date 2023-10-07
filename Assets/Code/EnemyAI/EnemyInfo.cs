@@ -9,6 +9,9 @@ public class EnemyInfo : MonoBehaviour
 
     private EnemyMind enemyMind;
 
+    //Time til enemy is destoryed
+    public float lengthOfDeathAnim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +44,15 @@ public class EnemyInfo : MonoBehaviour
     //Kills Enemy
     public void Death()
     {
-        Debug.Log("Enemy Death");
         enemyMind.Death();
+
+        StartCoroutine("DeathWait");
+    }
+
+    IEnumerator DeathWait()
+    {
+        yield return new WaitForSeconds(lengthOfDeathAnim);
+
+        Destroy(this.gameObject);
     }
 }
