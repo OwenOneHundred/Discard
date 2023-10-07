@@ -184,6 +184,8 @@ public class HandManager : MonoBehaviour
         {
             card.GetComponent<CardInfo>().scriptableObject.OnPlayed(card);
 
+            Instantiate(card.GetComponent<CardInfo>().scriptableObject.spellPrefab,GameObject.FindGameObjectWithTag("Player").transform);
+
             uim.energyBar.slider.value -= cardCost;
 
             DiscardCard(card);
