@@ -27,17 +27,21 @@ public class ProjectileManager : MonoBehaviour
 
     [SerializeField] float effectLengthInSeconds = 0.667f;
 
-    // Start is called before the first frame update
+    Rigidbody2D rb;
+
+
     void Start()
     {
         setUpTransform();
     }
 
-    // Update is called once per frame
+    void FixedUpdate()
+    {
+        projectileMotion(); 
+    }
+
     void Update()
     {
-        projectileMotion();
-
         destroyOutOfBounds();
     }
 
@@ -61,10 +65,14 @@ public class ProjectileManager : MonoBehaviour
         if(worldMousePos.x > startingPos.x) theta = -theta; 
 
         transform.Rotate(0,0,theta,Space.World);
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void projectileMotion(){
-        transform.Translate(Vector2.up * Time.deltaTime * speed);
+        //transform.Translate(Vector2.up * Time.deltaTime * speed);
+
+        rb.MovePosition(rb.position + direction * Time.fixedDeltaTime * speed);
     }
 
     //Destroy Projectile outside of screen. Buffer is 0.2 by default but can be modified in method call.

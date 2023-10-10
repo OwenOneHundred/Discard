@@ -18,4 +18,5 @@ MonoBehaviour:
   art: {fileID: 889197209, guid: 35cb9ee4069d2fb4184f8925ac8295b9, type: 3}
   cost: 1
   attackPrefab: {fileID: 1014261172210766844, guid: 9df2e20b76fba4e47a170151b9bdfcd4, type: 3}
-  castFunctions: []
+  castFunctions:
+  - {fileID: 11400000, guid: 576ef1fbc16302749aa28e2c2cedc088, type: 2}

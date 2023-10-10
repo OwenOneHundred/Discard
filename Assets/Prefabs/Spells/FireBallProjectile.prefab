@@ -102,7 +102,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  playerPos: {x: 0, y: 0}
+  dmg: 1
+  startingPos: {x: 0, y: 0}
   explosionEffect: {fileID: 7187706179279901132, guid: 6f48a8ef243594248a7d4494e03646a2, type: 3}
   effectName: ExplosionEffect(Clone)
   effectLengthInSeconds: 0.667
@@ -150,13 +151,13 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448879121063281211}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
