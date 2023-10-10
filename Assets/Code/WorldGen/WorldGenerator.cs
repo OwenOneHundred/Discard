@@ -4,8 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using static UnityEditor.PlayerSettings;
-using UnityEngine.XR;
 
 public class WorldGenerator : MonoBehaviour
 {
@@ -47,11 +45,19 @@ public class WorldGenerator : MonoBehaviour
         UnityEngine.Random.InitState(seed);
         perlinCenter = new Vector2(UnityEngine.Random.Range(-999999f, 999999f), UnityEngine.Random.Range(-999999f, 999999f));
 
+        SetUpGeneralUtil();
+
         SetUpBiomeHierarchy();
 
         SetUpBiomeWeights();
 
         StartCoroutine(GenerateWorld());
+    }
+
+    void SetUpGeneralUtil()
+    {
+        GeneralUtil.biomes = biomes;
+        GeneralUtil.ground = ground;
     }
 
     void SetUpBiomeHierarchy()

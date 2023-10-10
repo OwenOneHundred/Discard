@@ -14,11 +14,14 @@ public class HandManager : MonoBehaviour
 {
     [SerializeField] UIManager uim;
 
+    GameObject player;
+
     [SerializeField] CardOrganizer co;
 
     [SerializeField] float cardPlayHeight = 4;
     [SerializeField] int maxHandSize = 7;
     [SerializeField] int initialHandSize = 3;
+
 
     protected GameObject selectedCard;
     public GameObject SelectedCard
@@ -97,6 +100,8 @@ public class HandManager : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         ResetDrawPile();
         while (Hand.Count < initialHandSize && DrawPile.Count > 0)
         {
@@ -184,7 +189,7 @@ public class HandManager : MonoBehaviour
         {
             card.GetComponent<CardInfo>().scriptableObject.OnPlayed(card);
 
-            Instantiate(card.GetComponent<CardInfo>().scriptableObject.spellPrefab,GameObject.FindGameObjectWithTag("Player").transform);
+            Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab, player.transform);
 
             uim.energyBar.slider.value -= cardCost;
 
@@ -192,7 +197,7 @@ public class HandManager : MonoBehaviour
         }
         else
         {
-            // not enough energy
+            // not enough energy 
         }
     }
 

@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static WorldGenerator;
+using UnityEngine.Tilemaps;
 
 public static class GeneralUtil
 {
+    public static List<Biome> biomes;
+    public static Tilemap ground;
+
     /// <summary>
     /// Returns index of random float from given list, but with proportionally greater weight given to bigger floats.
     /// </summary>
@@ -44,4 +49,9 @@ public static class GeneralUtil
         }
     }
 
+
+    public static Biome GetBiomeAtPos(Vector3 position)
+    {
+        return biomes.Find(x => x.groundTile == ground.GetTile(ground.WorldToCell(position)));
+    }
 }
