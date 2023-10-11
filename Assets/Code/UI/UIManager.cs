@@ -47,12 +47,14 @@ public class UIManager : MonoBehaviour
 
     public void PlayDiscardShuffleAnim()
     {
+        if (!pileBurstEffect) { return; }
         GameObject newPileBurstEffect = Instantiate(pileBurstEffect, drawPileText.transform.parent.parent);
         Destroy(newPileBurstEffect, 0.2f);
     }
 
     public void PlayDiscardAnim(GameObject card)
     {
+        if (!pileBurstEffect) { return; }
         GameObject newPileBurstEffect = Instantiate(pileBurstEffect, discardPileText.transform.parent.parent);
         Destroy(newPileBurstEffect, 0.2f);
     }
