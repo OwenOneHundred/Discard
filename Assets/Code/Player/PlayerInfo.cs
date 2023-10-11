@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-    [SerializeField]
-    private int hp;
-    //Allows for getting and setting speed 
-    public int Hp
-    {
-        get { return hp; }
-
-        set { hp = value; }
-    }
+    public int hp;
 
     //Damages Player
     public void Damage()
@@ -21,9 +13,7 @@ public class PlayerInfo : MonoBehaviour
 
         if(hp <= 0)
         {
-            Debug.Log("Death");
+            Debug.Log("Player Death");
         }
     }
-
-
 }
