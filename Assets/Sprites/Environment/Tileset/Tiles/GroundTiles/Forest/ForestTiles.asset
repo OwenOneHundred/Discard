@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f0e7ff6e93644597a816934a91df9eb, type: 3}
-  m_Name: PlainsTiles
+  m_Name: ForestTiles
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: -1254738638, guid: 0205fe987d2fc48118fbe7e70a8c5487, type: 3}
   m_DefaultGameObject: {fileID: 0}
@@ -366,5 +366,5 @@ MonoBehaviour:
     - {x: -1, y: -1, z: 0}
     m_RuleTransform: 0
   connectableRTs:
-  - {fileID: 11400000, guid: e4200fec58abe42729cf7dd3e42a3c7f, type: 2}
+  - {fileID: 11400000, guid: 5096702c5901841a7b7f149517ab92bc, type: 2}
   connectableTiles: []

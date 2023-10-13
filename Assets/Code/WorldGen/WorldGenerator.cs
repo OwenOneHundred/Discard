@@ -37,6 +37,7 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField] bool Debug_DoNotSpawnHills = false;
     [SerializeField] bool Debug_DoNotSpawnStructures = false;
     [SerializeField] bool Debug_DoNotSpawnSlopes = false;
+    [SerializeField] bool Debug_DoNotSpawnBorder = false;
 
     [SerializeField] bool Debug_RunGenTimer = false;
     private float worldGenTimer = 0;
@@ -117,6 +118,8 @@ public class WorldGenerator : MonoBehaviour
         if (!Debug_DoNotSpawnStructures) { yield return StartCoroutine(StructureSpawner()); }
 
         if (!Debug_DoNotSpawnObjs) { yield return StartCoroutine(ObjectSpawner()); }
+
+        //if (!Debug_DoNotSpawnBorder) { yield return StartCoroutine(SpawnBorder()); }
 
         if (Debug_RunGenTimer) { Debug.Log("Generation completed in " + (Time.time - worldGenTimer) + " seconds."); }
     }
@@ -302,7 +305,6 @@ public class WorldGenerator : MonoBehaviour
 
         foreach (Hill hill in hills)
         {
-            Debug.Log(hill.bottomLCorners.Count);
             AddHillSides(hill.bottomLCorners, hill.bottomRCorners);
         }
     }
@@ -436,6 +438,21 @@ public class WorldGenerator : MonoBehaviour
         }
     }
 
+    IEnumerator SpawnBorder()
+    {
+        // bottom and top walls
+        for (int x = -worldSize; x < worldSize; x++)
+        {
+            raisedGround.SetTile(new Vector3Int(x, -worldSize, 0), biomes[0].raisedGroundTop);
+            raisedGround.SetTile(new Vector3Int(x, worldSize + 4, 0), biomes[0].raisedGroundTop);
+            for (int yAdjust = -1; yAdjust > -4; yAdjust--)
+            {
+                raisedGround.SetTile(new Vector3Int(x, worldSize + 4 + yAdjust, 0), biomes[0].raisedGroundFront);
+            }
+        }
+        yield return null;
+    }
+
     Vector3Int GetRandomTileOfBiomeViaRandom(Biome biome, int maxAttempts = 300)
     {
         for (int i = 0; i < maxAttempts; i++)
@@ -511,7 +528,7 @@ public class WorldGenerator : MonoBehaviour
 
         public int temperature;
 
-        public int weight = 1;
+        public float weight = 1;
 
         public int averageNumTilesForStructure = 1000;
 
@@ -540,6 +557,9 @@ public class WorldGenerator : MonoBehaviour
 
         [Tooltip("Input the tilemaps for the structure, the center of the structure on the tilemap (if it's not (0, 0)), and the frequency.")]
         public List<Structure> structures;
+
+        public List<MiniSfXManager.Sound> footstepSounds;
+        public MiniSfXManager.Sound ambientNoise;
 
         [System.Serializable]
         public class DecorObject

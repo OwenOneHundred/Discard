@@ -27,7 +27,7 @@ public class MiniSfXManager : MonoBehaviour
     }
 
     // calls aus.Play(), so can only play one sound at a time.
-    public void PlayPrimary(string name)
+    public void PlayMusic(string name)
     {
         Sound sound = clips.Find(x => x.name == name);
         if (sound == null)
@@ -43,6 +43,68 @@ public class MiniSfXManager : MonoBehaviour
         aus.Play();
     }
 
+    public void PlayMusicWithFade(string name)
+    {
+        Sound sound = clips.Find(i => i.name == name);
+        aus.loop = true;
+        aus.volume = 0;
+        aus.clip = sound.clip;
+        aus.Play();
+        StopAllCoroutines();
+        StartCoroutine(StartFade(aus, 1, sound.volume));
+    }
+
+    public void StopMusic()
+    {
+        aus.Stop();
+        StopAllCoroutines();
+    }
+
+    public void StopMusicWithFade(float length = 1)
+    {
+        StopAllCoroutines();
+        StartCoroutine(StartFade(aus, length, 0));
+    }
+
+    public IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
+    {
+        float currentTime = 0;
+        float start = audioSource.volume;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        yield break;
+    }
+
+    public IEnumerator FadeOutAndIn(AudioSource audioSource, AudioClip newClip, float duration, float targetVolume)
+    {
+        float currentTime = 0;
+        float start = audioSource.volume;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            Debug.Log(currentTime);
+            audioSource.volume = Mathf.Lerp(start, 0, currentTime / duration);
+            yield return null;
+        }
+        audioSource.volume = 0;
+        audioSource.clip = newClip;
+        aus.Play();
+
+        currentTime = 0;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(0, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        audioSource.volume = targetVolume;
+
+        yield break;
+    }
 
     [System.Serializable]
     public class Sound
