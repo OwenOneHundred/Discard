@@ -13,6 +13,7 @@ public class WorldGenerator : MonoBehaviour
     [SerializeField] Tilemap ground;
     [SerializeField] Tilemap raisedGround;
     [SerializeField] Tilemap slopes;
+    [SerializeField] Tilemap tallGrassTilemap;
 
     [SerializeField] List<Tilemap> structureTilemapsDNR;
 
@@ -117,9 +118,10 @@ public class WorldGenerator : MonoBehaviour
 
         if (!Debug_DoNotSpawnStructures) { yield return StartCoroutine(StructureSpawner()); }
 
+        // also spawns splotches
         if (!Debug_DoNotSpawnObjs) { yield return StartCoroutine(ObjectSpawner()); }
 
-        //if (!Debug_DoNotSpawnBorder) { yield return StartCoroutine(SpawnBorder()); }
+        if (!Debug_DoNotSpawnBorder) { yield return StartCoroutine(SpawnBorder()); }
 
         if (Debug_RunGenTimer) { Debug.Log("Generation completed in " + (Time.time - worldGenTimer) + " seconds."); }
     }
@@ -418,7 +420,9 @@ public class WorldGenerator : MonoBehaviour
 
                 if (!xValueList.Contains(currentCell))
                 {
-                    RunSpawnObjects(currentCell, GetBiomeAtPos(currentCell));
+                    Biome biomeAtPos = GetBiomeAtPos(currentCell);
+                    RunSpawnSplotches(currentCell, biomeAtPos);
+                    RunSpawnObjects(currentCell, biomeAtPos);
                 }
             }
 
@@ -438,16 +442,41 @@ public class WorldGenerator : MonoBehaviour
         }
     }
 
+    void RunSpawnSplotches(Vector3Int location, Biome biome)
+    {
+        if (biome.tallGrass.tile == null) { return; }
+        if (biome.tallGrass.odds0to1 > UnityEngine.Random.value)
+        {
+            List<Vector3Int> positions = WorldGenUtil.GetClump(location, UnityEngine.Random.Range(15, 22));
+            foreach (Vector3Int pos in positions)
+            {
+                tallGrassTilemap.SetTile(pos, biome.tallGrass.tile);
+                doNotSpawnTiles.Add(pos);
+            }
+        }
+    }
+
     IEnumerator SpawnBorder()
     {
         // bottom and top walls
         for (int x = -worldSize; x < worldSize; x++)
         {
             raisedGround.SetTile(new Vector3Int(x, -worldSize, 0), biomes[0].raisedGroundTop);
-            raisedGround.SetTile(new Vector3Int(x, worldSize + 4, 0), biomes[0].raisedGroundTop);
+            raisedGround.SetTile(new Vector3Int(x, worldSize + 2, 0), biomes[0].raisedGroundTop);
             for (int yAdjust = -1; yAdjust > -4; yAdjust--)
             {
-                raisedGround.SetTile(new Vector3Int(x, worldSize + 4 + yAdjust, 0), biomes[0].raisedGroundFront);
+                raisedGround.SetTile(new Vector3Int(x, -worldSize + yAdjust, 0), biomes[0].raisedGroundTop);
+                raisedGround.SetTile(new Vector3Int(x, worldSize + 2 + yAdjust, 0), biomes[0].raisedGroundFront);
+            }
+        }
+        for (int y = -worldSize; y < worldSize; y++)
+        {
+            raisedGround.SetTile(new Vector3Int(-worldSize, y, 0), biomes[0].raisedGroundTop);
+            raisedGround.SetTile(new Vector3Int(worldSize, y, 0), biomes[0].raisedGroundTop);
+            for (int xAdjust = -1; xAdjust > -4; xAdjust--)
+            {
+                raisedGround.SetTile(new Vector3Int(-worldSize + xAdjust, y, 0), biomes[0].raisedGroundTop);
+                raisedGround.SetTile(new Vector3Int(worldSize - xAdjust, y, 0), biomes[0].raisedGroundTop);
             }
         }
         yield return null;
@@ -558,6 +587,8 @@ public class WorldGenerator : MonoBehaviour
         [Tooltip("Input the tilemaps for the structure, the center of the structure on the tilemap (if it's not (0, 0)), and the frequency.")]
         public List<Structure> structures;
 
+        public Splotch tallGrass;
+
         public List<MiniSfXManager.Sound> footstepSounds;
         public MiniSfXManager.Sound ambientNoise;
 
@@ -600,8 +631,7 @@ public class WorldGenerator : MonoBehaviour
         public class Splotch
         {
             public TileBase tile;
-            public int size;
-            public Tilemap tilemap;
+            public float odds0to1 = 0.0001f;
         }
     }
 

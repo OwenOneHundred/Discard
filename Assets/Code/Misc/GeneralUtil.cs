@@ -54,4 +54,12 @@ public static class GeneralUtil
     {
         return biomes.Find(x => x.groundTile == ground.GetTile(ground.WorldToCell(position)));
     }
+
+    public static float AngleBetween(Vector2 vector1, Vector2 vector2)
+    {
+        float sin = vector1.x * vector2.y - vector2.x * vector1.y;
+        float cos = vector1.x * vector2.x + vector1.y * vector2.y;
+
+        return Mathf.Atan2(sin, cos) * (180 / Mathf.PI);
+    }
 }
