@@ -5,11 +5,43 @@ using UnityEngine;
 public class EnemyInfo : MonoBehaviour
 {
     public int hp;
-    //Allows for getting and setting hp 
-    public int Hp
-    {
-        get { return hp; }
+    public float armor;
 
-        set { hp = value; }
+    private EnemyMind enemyMind;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        enemyMind = this.gameObject.GetComponent<EnemyMind>();
+    }
+
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.Z))
+        {
+            Death();
+        }
+    }
+
+    //Does damage to enemy
+    public void Damage(int damageAmount, bool ignoresDamage)
+    {
+        if(ignoresDamage == false)
+        {
+            damageAmount = (int) ((float)damageAmount * armor);
+        }
+
+        hp -= damageAmount;
+        if(hp <= 0)
+        {
+            Death();
+        }
+    }
+
+    //Kills Enemy
+    public void Death()
+    {
+        Debug.Log("Enemy Death");
+        enemyMind.Death();
     }
 }

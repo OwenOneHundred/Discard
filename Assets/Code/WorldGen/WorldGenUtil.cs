@@ -37,7 +37,7 @@ public static class WorldGenUtil
 
     public static Vector3Int PickRandomTilePos(int worldSize)
     {
-        int safeWorldSize = worldSize - 2;
+        int safeWorldSize = worldSize - 5;
         return new Vector3Int(UnityEngine.Random.Range(-safeWorldSize, safeWorldSize), UnityEngine.Random.Range(-safeWorldSize, safeWorldSize));
     }
 

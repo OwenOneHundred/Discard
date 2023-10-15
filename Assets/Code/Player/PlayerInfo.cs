@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-    [SerializeField]
-    private int hp;
-    //Allows for getting and setting speed 
-    public int Hp
-    {
-        get { return hp; }
-
-        set { hp = value; }
-    }
+    public int hp;
+    [System.NonSerialized] public WorldGenerator.Biome currentBiome;
 
     //Damages Player
     public void Damage()
@@ -21,9 +14,21 @@ public class PlayerInfo : MonoBehaviour
 
         if(hp <= 0)
         {
-            Debug.Log("Death");
+            Debug.Log("Player Death");
         }
     }
 
+    private void Start()
+    {
+        StartCoroutine(CheckBiomePosition());
+    }
 
+    private IEnumerator CheckBiomePosition()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            currentBiome = GeneralUtil.GetBiomeAtPos(transform.position);
+        }
+    }
 }
