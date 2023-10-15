@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db44d29891fb8490ead7045661882e4b, type: 3}
-  m_Name: MoltonFist
+  m_Name: CorrosionField
   m_EditorClassIdentifier: 
-  name: Molton Fist
-  description: Swings a molton fist. 2x damage to flaming enemies.
-  art: {fileID: 21300000, guid: 1c9a596f3560e4dc091c980ba54fde80, type: 3}
+  name: Corrosion Field
+  description: Pinpoint a small area to freeze and chip damage enemies.
+  art: {fileID: 21300000, guid: f16553de521584e58a8ca77e77920f26, type: 3}
   cost: 1
-  attackPrefab: {fileID: 1793976546735483747, guid: 1beff20c1048e4f659f97125cd9fb75c, type: 3}
+  attackPrefab: {fileID: 3943657668046277593, guid: ff9b697e8d90549a99913ef736013df4, type: 3}
   castFunctions: []

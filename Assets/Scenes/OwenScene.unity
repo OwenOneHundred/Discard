@@ -662,6 +662,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7669260853149238852, guid: 6f9aa51b720564fc8b23479ae77b003f, type: 3}
+      propertyPath: scriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: d220e92b31883404fa8516c762428f6a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f9aa51b720564fc8b23479ae77b003f, type: 3}
 --- !u!1 &360742294
@@ -1668,7 +1672,7 @@ PrefabInstance:
     - target: {fileID: 7669260853149238852, guid: 6f9aa51b720564fc8b23479ae77b003f, type: 3}
       propertyPath: scriptableObject
       value: 
-      objectReference: {fileID: 11400000, guid: d220e92b31883404fa8516c762428f6a, type: 2}
+      objectReference: {fileID: 11400000, guid: 801fd46d72d5d4f70aab21228f539078, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f9aa51b720564fc8b23479ae77b003f, type: 3}
 --- !u!1 &628304858
@@ -2234,7 +2238,7 @@ MonoBehaviour:
   clips:
   - name: Draw
     clip: {fileID: 8300000, guid: 78ffd2d6e05444f7cbfa44e1635ee1f8, type: 3}
-    volume: 0.5
+    volume: 0.1
     pitch: 1
     loop: 0
   - name: Hover
@@ -2780,7 +2784,7 @@ PrefabInstance:
     - target: {fileID: 7669260853149238852, guid: 6f9aa51b720564fc8b23479ae77b003f, type: 3}
       propertyPath: scriptableObject
       value: 
-      objectReference: {fileID: 11400000, guid: d220e92b31883404fa8516c762428f6a, type: 2}
+      objectReference: {fileID: 11400000, guid: 86b41460d96b548049fbfa15f194f8f5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f9aa51b720564fc8b23479ae77b003f, type: 3}
 --- !u!1 &1063396083
@@ -3762,6 +3766,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7669260853149238852, guid: 6f9aa51b720564fc8b23479ae77b003f, type: 3}
+      propertyPath: scriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 801fd46d72d5d4f70aab21228f539078, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f9aa51b720564fc8b23479ae77b003f, type: 3}
 --- !u!1 &1322200450
@@ -3986,7 +3994,7 @@ PrefabInstance:
     - target: {fileID: 7669260853149238852, guid: 6f9aa51b720564fc8b23479ae77b003f, type: 3}
       propertyPath: scriptableObject
       value: 
-      objectReference: {fileID: 11400000, guid: d220e92b31883404fa8516c762428f6a, type: 2}
+      objectReference: {fileID: 11400000, guid: 86b41460d96b548049fbfa15f194f8f5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f9aa51b720564fc8b23479ae77b003f, type: 3}
 --- !u!1 &1436204043

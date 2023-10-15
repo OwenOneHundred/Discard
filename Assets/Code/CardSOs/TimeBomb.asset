@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db44d29891fb8490ead7045661882e4b, type: 3}
-  m_Name: MoltonFist
+  m_Name: TimeBomb
   m_EditorClassIdentifier: 
-  name: Molton Fist
-  description: Swings a molton fist. 2x damage to flaming enemies.
-  art: {fileID: 21300000, guid: 1c9a596f3560e4dc091c980ba54fde80, type: 3}
+  name: Time Bomb
+  description: Launch a time bomb that explodes after 2 seconds.
+  art: {fileID: 21300000, guid: be503963781024486aa93afc5e0794c4, type: 3}
   cost: 1
-  attackPrefab: {fileID: 1793976546735483747, guid: 1beff20c1048e4f659f97125cd9fb75c, type: 3}
+  attackPrefab: {fileID: 9156236940424832399, guid: 2c8322f1f9dd349c0b9ef789b48585cb, type: 3}
   castFunctions: []
