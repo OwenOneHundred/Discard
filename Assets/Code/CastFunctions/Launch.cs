@@ -7,6 +7,9 @@ public class Launch : CastFunctionABS
 {
     public override void Cast(GameObject card)
         {
-            Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab,GameObject.FindGameObjectWithTag("Player").transform);
+            if(pt == null) {
+                pt = GameObject.FindGameObjectWithTag("Player").transform;
+            }
+            Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab,pt);
         }
 }

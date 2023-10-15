@@ -27,17 +27,18 @@ public class ProjectileManager : MonoBehaviour
 
     [SerializeField] float effectLengthInSeconds = 0.667f;
 
+    [SerializeField] bool isHoming = false;
+
     Rigidbody2D rb;
 
-
-    void Start()
-    {
+    void Awake() {
         setUpTransform();
     }
 
+
     void FixedUpdate()
     {
-        projectileMotion(); 
+        LaunchMotion(); 
     }
 
     void Update()
@@ -69,10 +70,14 @@ public class ProjectileManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void projectileMotion(){
+    public void LaunchMotion(){
         //transform.Translate(Vector2.up * Time.deltaTime * speed);
 
         rb.MovePosition(rb.position + direction * Time.fixedDeltaTime * speed);
+    }
+
+    public void HomingMotion() {
+        
     }
 
     //Destroy Projectile outside of screen. Buffer is 0.2 by default but can be modified in method call.
@@ -106,5 +111,26 @@ public class ProjectileManager : MonoBehaviour
         if(cTag.Equals("Enemy")){
             obj.GetComponent<EnemyInfo>().hp -= dmg;
         }
+    }
+
+    public GameObject FindClosestEnemy()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector2 position = transform.position;
+        foreach (GameObject go in gos)
+        {
+            Vector2 enemyPos = go.transform.position;
+            Vector2 diff = enemyPos - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        return closest;
     }
 }
