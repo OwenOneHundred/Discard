@@ -14,15 +14,11 @@ public class HandManager : MonoBehaviour
 {
     [SerializeField] UIManager uim;
 
-    GameObject player;
-
     [SerializeField] CardOrganizer co;
-    [SerializeField] MiniSfXManager msfx;
 
     [SerializeField] float cardPlayHeight = 4;
     [SerializeField] int maxHandSize = 7;
     [SerializeField] int initialHandSize = 3;
-
 
     protected GameObject selectedCard;
     public GameObject SelectedCard
@@ -101,8 +97,6 @@ public class HandManager : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-
         ResetDrawPile();
         while (Hand.Count < initialHandSize && DrawPile.Count > 0)
         {
@@ -140,9 +134,6 @@ public class HandManager : MonoBehaviour
             co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard), selectedCard);
 
             drawnCard.transform.SetAsLastSibling();
-
-            msfx.PlaySfX("Draw");
-
             return true;
         }
         return false;
@@ -193,7 +184,7 @@ public class HandManager : MonoBehaviour
         {
             card.GetComponent<CardInfo>().scriptableObject.OnPlayed(card);
 
-            Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab, player.transform);
+            //Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab,GameObject.FindGameObjectWithTag("Player").transform);
 
             uim.energyBar.slider.value -= cardCost;
 
@@ -201,7 +192,7 @@ public class HandManager : MonoBehaviour
         }
         else
         {
-            // not enough energy 
+            // not enough energy
         }
     }
 
@@ -213,8 +204,6 @@ public class HandManager : MonoBehaviour
         card.transform.SetAsLastSibling();
         hoveredCard = card;
         co.UpdateOrganizedCards(Hand, hand.IndexOf(card), null);
-
-        msfx.PlaySfX("Hover");
     }
 
     public void UnhoverCard(GameObject card)
@@ -236,8 +225,6 @@ public class HandManager : MonoBehaviour
     {
         SelectedCard = card;
         co.UpdateOrganizedCards(Hand, 666, card);
-
-        msfx.PlaySfX("Select");
     }
 
     // called when a card is released

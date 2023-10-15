@@ -27,17 +27,22 @@ public class ProjectileManager : MonoBehaviour
 
     [SerializeField] float effectLengthInSeconds = 0.667f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    [SerializeField] bool isHoming = false;
+
+    Rigidbody2D rb;
+
+    void Awake() {
         setUpTransform();
     }
 
-    // Update is called once per frame
+
+    void FixedUpdate()
+    {
+        LaunchMotion(); 
+    }
+
     void Update()
     {
-        projectileMotion();
-
         destroyOutOfBounds();
     }
 
@@ -61,10 +66,18 @@ public class ProjectileManager : MonoBehaviour
         if(worldMousePos.x > startingPos.x) theta = -theta; 
 
         transform.Rotate(0,0,theta,Space.World);
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    public void projectileMotion(){
-        transform.Translate(Vector2.up * Time.deltaTime * speed);
+    public void LaunchMotion(){
+        //transform.Translate(Vector2.up * Time.deltaTime * speed);
+
+        rb.MovePosition(rb.position + direction * Time.fixedDeltaTime * speed);
+    }
+
+    public void HomingMotion() {
+        
     }
 
     //Destroy Projectile outside of screen. Buffer is 0.2 by default but can be modified in method call.
@@ -98,5 +111,26 @@ public class ProjectileManager : MonoBehaviour
         if(cTag.Equals("Enemy")){
             obj.GetComponent<EnemyInfo>().hp -= dmg;
         }
+    }
+
+    public GameObject FindClosestEnemy()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector2 position = transform.position;
+        foreach (GameObject go in gos)
+        {
+            Vector2 enemyPos = go.transform.position;
+            Vector2 diff = enemyPos - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        return closest;
     }
 }
