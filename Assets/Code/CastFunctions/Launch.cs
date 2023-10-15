@@ -10,6 +10,6 @@ public class Launch : CastFunctionABS
             if(pt == null) {
                 pt = GameObject.FindGameObjectWithTag("Player").transform;
             }
-            Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab,pt);
+            Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab,pt.position,Quaternion.identity);
         }
 }
