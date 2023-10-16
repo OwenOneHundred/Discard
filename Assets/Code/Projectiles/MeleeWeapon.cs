@@ -21,6 +21,7 @@ public class MeleeWeapon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
         angleToMouse = GeneralUtil.AngleBetween(Vector2.up, Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
         weaponTransform = transform.GetChild(0);
         startWeaponOffset = weaponTransform.localPosition;

@@ -30,6 +30,7 @@ public class HandManager : MonoBehaviour
             {
                 selectedCard = value;
                 co.selectedCard = value;
+                if (selectedCard != null) { co.selectedCardRectTransform = value.GetComponent<RectTransform>(); }
             }
         }
     }
@@ -103,7 +104,7 @@ public class HandManager : MonoBehaviour
             DrawCard();
         }
 
-        co.UpdateOrganizedCards(Hand, Hand.IndexOf(hoveredCard), selectedCard);
+        co.UpdateOrganizedCards(Hand, Hand.IndexOf(hoveredCard));
 
         uim.CDBar.onFill += DrawBarFull;
     }
@@ -131,7 +132,7 @@ public class HandManager : MonoBehaviour
             Hand.Add(drawnCard);
             drawnCard.SetActive(true);
             DrawPile = RemoveAndReturn(DrawPile, drawnCard);
-            co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard), selectedCard);
+            co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard));
 
             drawnCard.transform.SetAsLastSibling();
             return true;
@@ -155,7 +156,7 @@ public class HandManager : MonoBehaviour
         Hand.Remove(card);
         uim.PlayDiscardAnim(card);
 
-        co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard), selectedCard);
+        co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard));
     }
 
     void DrawBarFull(SlowBarFiller sbf) // called by action in update
@@ -184,7 +185,7 @@ public class HandManager : MonoBehaviour
         {
             card.GetComponent<CardInfo>().scriptableObject.OnPlayed(card);
 
-            //Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab,GameObject.FindGameObjectWithTag("Player").transform);
+            // Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab, GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
 
             uim.energyBar.slider.value -= cardCost;
 
@@ -203,7 +204,7 @@ public class HandManager : MonoBehaviour
         originalSiblingIndex = card.transform.GetSiblingIndex();
         card.transform.SetAsLastSibling();
         hoveredCard = card;
-        co.UpdateOrganizedCards(Hand, hand.IndexOf(card), null);
+        co.UpdateOrganizedCards(Hand, hand.IndexOf(card));
     }
 
     public void UnhoverCard(GameObject card)
@@ -217,14 +218,14 @@ public class HandManager : MonoBehaviour
         }
 
         hoveredCard = null;
-        co.UpdateOrganizedCards(Hand, 666, selectedCard);
+        co.UpdateOrganizedCards(Hand, 666);
     }
 
     // called when a card is clicked
     public void SelectCard(GameObject card)
     {
         SelectedCard = card;
-        co.UpdateOrganizedCards(Hand, 666, card);
+        co.UpdateOrganizedCards(Hand, 666);
     }
 
     // called when a card is released
@@ -238,7 +239,7 @@ public class HandManager : MonoBehaviour
         }
         else
         {
-            co.UpdateOrganizedCards(Hand, 666, null);
+            co.UpdateOrganizedCards(Hand, 666);
         }
     }
 

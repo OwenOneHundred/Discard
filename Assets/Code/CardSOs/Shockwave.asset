@@ -19,3 +19,4 @@ MonoBehaviour:
   attackPrefab: {fileID: 2864719928024247890, guid: fb001f0f2a355ea42b8920f8c4395613, type: 3}
   castFunctions:
   - {fileID: 11400000, guid: 72bb4f3ff02c946dab779bf85e1d512c, type: 2}
+  - {fileID: 11400000, guid: 4b24f5fd065f241698a4d8947d2f4456, type: 2}

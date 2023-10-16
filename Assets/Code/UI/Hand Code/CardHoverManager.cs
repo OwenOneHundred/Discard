@@ -28,14 +28,6 @@ public class CardHoverManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         }
     }
 
-    public void LateUpdate()
-    {
-        if (selected)
-        {
-            transform.position = (Vector2)Input.mousePosition + relativePointOfContact;
-        }
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         hm.HoverCard(gameObject);
