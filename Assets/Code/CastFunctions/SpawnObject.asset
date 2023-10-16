@@ -10,6 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02bcbd7f7fa96439691ec96624b8c1e0, type: 3}
-  m_Name: 0.1secSpawnObject
+  m_Name: SpawnObject
   m_EditorClassIdentifier: 
-  delay: 0.1

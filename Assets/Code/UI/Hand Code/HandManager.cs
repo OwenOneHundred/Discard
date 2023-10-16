@@ -19,6 +19,7 @@ public class HandManager : MonoBehaviour
     [SerializeField] float cardPlayHeight = 4;
     [SerializeField] int maxHandSize = 7;
     [SerializeField] int initialHandSize = 3;
+    [SerializeField] GameObject targetObject;
 
     protected GameObject selectedCard;
     public GameObject SelectedCard
@@ -226,12 +227,14 @@ public class HandManager : MonoBehaviour
     {
         SelectedCard = card;
         co.UpdateOrganizedCards(Hand, 666);
+        targetObject.SetActive(true);
     }
 
     // called when a card is released
     public void DeselectCard(GameObject card)
     {
         SelectedCard = null;
+        targetObject.SetActive(false);
 
         if (Input.mousePosition.y > cardPlayHeight)
         {
