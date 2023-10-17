@@ -37,9 +37,7 @@ public class TargetScript : MonoBehaviour
 
     public void ChangeSprite(Card.Style newStyle, Sprite sprite)
     {
-        Debug.Log("here");
         style = newStyle;
-        Debug.Log("sprite: " + sprite + ", sr: " + sr);
 
         if (sprite == null)
         {
@@ -49,7 +47,5 @@ public class TargetScript : MonoBehaviour
         {
             sr.sprite = sprite;
         }
-
-        Debug.Log("here3");
     }
 }

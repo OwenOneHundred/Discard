@@ -49,7 +49,6 @@ public class MeleeWeapon : MonoBehaviour
             hitbox.enabled = true;
             while (timer < swing.swingTime)
             {
-                Debug.Log("swingtime: " + swing.swingTime);
                 timer += Time.deltaTime;
 
                 if (swing.swingOutwardMovement != Vector2.zero)

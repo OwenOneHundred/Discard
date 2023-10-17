@@ -20,6 +20,8 @@ public class HandManager : MonoBehaviour
     [SerializeField] int maxHandSize = 7;
     [SerializeField] int initialHandSize = 3;
     [SerializeField] GameObject targetObject;
+    [SerializeField] RectTransform discardPilePos;
+    [SerializeField] RectTransform drawPilePos;
     TargetScript ts;
 
     protected GameObject selectedCard;
@@ -138,6 +140,7 @@ public class HandManager : MonoBehaviour
             drawnCard.SetActive(true);
             DrawPile = RemoveAndReturn(DrawPile, drawnCard);
             co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard));
+            StartCoroutine(DrawCardAnimation(drawnCard));
 
             drawnCard.transform.SetAsLastSibling();
             return true;
@@ -156,12 +159,52 @@ public class HandManager : MonoBehaviour
         Debug.Log("discard called on: " + card.name);
         DiscardPile = AddAndReturn(DiscardPile, card);
 
-        card.SetActive(false);
-
         Hand.Remove(card);
         uim.PlayDiscardAnim(card);
 
+        StartCoroutine(DiscardCardAnimation(card));
+
         co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard));
+    }
+
+    IEnumerator DiscardCardAnimation(GameObject card)
+    {
+        CardInfo ci = card.GetComponent<CardInfo>();
+        RectTransform crt = card.GetComponent<RectTransform>();
+        while (Vector2.Distance(crt.position, discardPilePos.position) > 0.01f)
+        {
+            // if you drew this card instantly, stop this animation
+            if (hand.Contains(card)) { yield break; }
+
+            // move toward discard pile
+            crt.position = Vector2.MoveTowards(crt.position, discardPilePos.position, 3200f * Time.deltaTime);
+
+            // if not totally shrunk yet, shrink
+            if (crt.localScale.x > 0.25f)
+            {
+                crt.localScale -= 3 * Time.deltaTime * new Vector3(1, 1, 0);
+                crt.localScale = new Vector3(Mathf.Clamp(crt.localScale.x, 0, 1), Mathf.Clamp(crt.localScale.y, 0, 1), 1);
+            }
+
+            yield return null;
+        }
+
+
+
+        // disable
+        card.SetActive(false);
+    }
+
+    IEnumerator DrawCardAnimation(GameObject card)
+    {
+        CardInfo ci = card.GetComponent<CardInfo>();
+        RectTransform crt = card.GetComponent<RectTransform>();
+        while (crt.localScale.x < 1)
+        {
+            crt.localScale += 3 * Time.deltaTime * new Vector3(1, 1, 0);
+            crt.localScale = new Vector3(Mathf.Clamp(crt.localScale.x, 0, 1), Mathf.Clamp(crt.localScale.y, 0, 1), 1);
+            yield return null;
+        }
     }
 
     void DrawBarFull(SlowBarFiller sbf) // called by action in update

@@ -109,7 +109,7 @@ MonoBehaviour:
   - {fileID: 1710426762, guid: 5ed374dcb88b94b6c9c3b5786c9033a5, type: 3}
   - {fileID: -234403942, guid: 5ed374dcb88b94b6c9c3b5786c9033a5, type: 3}
   - {fileID: 1970147732, guid: 5ed374dcb88b94b6c9c3b5786c9033a5, type: 3}
-  time: 1.5
+  time: 3
   explosion: {fileID: 7187706179279901132, guid: 47c73bb0179e946d49c2a053d6db33ba, type: 3}
   explosionLifetime: 0.5
   speed: 1700

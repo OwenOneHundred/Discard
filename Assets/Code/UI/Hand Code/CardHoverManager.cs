@@ -6,23 +6,12 @@ using UnityEngine.EventSystems;
 public class CardHoverManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler, IPointerDownHandler
 {
     [SerializeField] HandManager hm;
-    [SerializeField] float growRate = 1;
-
 
     private void Awake()
     {
         if (hm == null)
         {
             hm = transform.GetComponentInParent<HandManager>();
-        }
-    }
-
-    private void Update()
-    {
-        if (transform.localScale.x < 1)
-        {
-            transform.localScale += new Vector3(1, 1, 0) * Time.deltaTime * growRate;
-            transform.localScale = new Vector3(Mathf.Clamp(transform.localScale.x, 0, 1), Mathf.Clamp(transform.localScale.y, 0, 1), 1);
         }
     }
 
