@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "CardFunctions/SpawnObject")]
 public class SpawnObject : CastFunctionABS
 {
-    [SerializeField] float delay = 0;
+    [SerializeField] float destroyTime;
+    [SerializeField] bool pointTowardMouse = false;
 
     public override void Cast(GameObject card)
     {
@@ -13,20 +14,16 @@ public class SpawnObject : CastFunctionABS
             pt = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
-        if (delay != 0)
+        GameObject obj = Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab, pt.position, Quaternion.identity);
+        if (pointTowardMouse)
         {
-            pt.GetComponent<PlayerMovement>().StartCoroutine(Timer(card)); // this line is extremely shit LOL this breaks super hard if we ever destroy the player
-        }
-        else
-        {
-            Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab, pt.position, Quaternion.identity);
+            Vector3 normalizedDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - pt.position).normalized;
+            obj.transform.rotation = Quaternion.Euler(new Vector3 (0, 0, GeneralUtil.AngleBetween(Vector2.up, normalizedDirection)));
         }
 
-    }
-
-    IEnumerator Timer(GameObject card)
-    {
-        yield return new WaitForSeconds(delay);
-        Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab, pt.position, Quaternion.identity);
+        if (destroyTime != 0)
+        {
+            Destroy(obj, destroyTime);
+        }
     }
 }

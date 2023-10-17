@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 public class CardHoverManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler, IPointerDownHandler
 {
     [SerializeField] HandManager hm;
-    bool selected = false;
-    Vector2 relativePointOfContact;
     [SerializeField] float growRate = 1;
 
 
@@ -41,16 +39,14 @@ public class CardHoverManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void OnPointerDown(PointerEventData eventData)
     {
         hm.SelectCard(gameObject);
-        selected = true;
         hm.UnhoverCard(gameObject);
-        relativePointOfContact = transform.position - Input.mousePosition;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        hm.DeselectCard(gameObject);
-        hm.HoverCard(gameObject);
-        selected = false;
-        relativePointOfContact = Vector2.zero;
+        if (!hm.DeselectCard(gameObject))
+        {
+            hm.HoverCard(gameObject);
+        }
     }
 }

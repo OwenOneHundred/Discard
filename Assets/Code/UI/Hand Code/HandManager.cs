@@ -20,6 +20,7 @@ public class HandManager : MonoBehaviour
     [SerializeField] int maxHandSize = 7;
     [SerializeField] int initialHandSize = 3;
     [SerializeField] GameObject targetObject;
+    TargetScript ts;
 
     protected GameObject selectedCard;
     public GameObject SelectedCard
@@ -32,11 +33,12 @@ public class HandManager : MonoBehaviour
                 selectedCard = value;
                 co.selectedCard = value;
                 if (selectedCard != null) { co.selectedCardRectTransform = value.GetComponent<RectTransform>(); }
+                else { co.selectedCardRectTransform = null; }
             }
         }
     }
 
-    private GameObject hoveredCard;
+    public GameObject hoveredCard;
 
     private int originalSiblingIndex;
 
@@ -108,6 +110,8 @@ public class HandManager : MonoBehaviour
         co.UpdateOrganizedCards(Hand, Hand.IndexOf(hoveredCard));
 
         uim.CDBar.onFill += DrawBarFull;
+
+        ts = targetObject.GetComponent<TargetScript>();
     }
 
     void ResetDrawPile()
@@ -186,8 +190,6 @@ public class HandManager : MonoBehaviour
         {
             card.GetComponent<CardInfo>().scriptableObject.OnPlayed(card);
 
-            // Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab, GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
-
             uim.energyBar.slider.value -= cardCost;
 
             DiscardCard(card);
@@ -226,24 +228,27 @@ public class HandManager : MonoBehaviour
     public void SelectCard(GameObject card)
     {
         SelectedCard = card;
+        CardInfo cardScript = card.GetComponent<CardInfo>();
         co.UpdateOrganizedCards(Hand, 666);
         targetObject.SetActive(true);
+        ts.ChangeSprite(cardScript.scriptableObject.style, cardScript.scriptableObject.targetSprite);
     }
 
-    // called when a card is released
-    public void DeselectCard(GameObject card)
+    // called when a card is released, returns if it was played
+    public bool DeselectCard(GameObject card)
     {
+        bool toReturn = false;
         SelectedCard = null;
         targetObject.SetActive(false);
 
         if (Input.mousePosition.y > cardPlayHeight)
         {
             PlayCard(card);
+            toReturn = true;
         }
-        else
-        {
-            co.UpdateOrganizedCards(Hand, 666);
-        }
+
+        co.UpdateOrganizedCards(Hand, 666);
+        return toReturn;
     }
 
     List<T> RemoveAndReturn<T>(List<T> list, T toRemove)

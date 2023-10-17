@@ -11,6 +11,15 @@ public class Card : ScriptableObject
     public Sprite art;
     public string cost;
     public GameObject attackPrefab;
+    public Style style;
+
+    [Header("Leave blank for default.")]
+    public Sprite targetSprite = null;
+
+    public enum Style
+    {
+        launch, pinpoint, homing, melee
+    }
 
     public List<CastFunctionABS> castFunctions;
 

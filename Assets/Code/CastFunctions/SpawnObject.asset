@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02bcbd7f7fa96439691ec96624b8c1e0, type: 3}
   m_Name: SpawnObject
   m_EditorClassIdentifier: 
+  destroyTime: 0
+  pointTowardMouse: 0

@@ -6,7 +6,7 @@ using UnityEngine;
 public class OneProjectilePerCardInHand : CastFunctionABS
 {
     [SerializeField] float timeBetween;
-    [SerializeField] GameObject shuriken;
+    [SerializeField] GameObject prefab;
     [SerializeField] float speed;
     [SerializeField] float spinSpeed;
     [SerializeField] float randomAngleChange;
@@ -29,7 +29,7 @@ public class OneProjectilePerCardInHand : CastFunctionABS
         int cardCount = hm.Hand.Count;
         for (int i = 0; i < cardCount; i++)
         {
-            GameObject newShuriken = Instantiate(shuriken, pt.position, pt.rotation); // GetChild(0) ???
+            GameObject newShuriken = Instantiate(prefab, pt.position, pt.rotation); // GetChild(0) ???
             Rigidbody2D projRB = newShuriken.GetComponent<Rigidbody2D>();
             Vector3 normalizedDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - pt.position).normalized;
 

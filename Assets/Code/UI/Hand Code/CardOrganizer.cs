@@ -13,7 +13,7 @@ public class CardOrganizer : MonoBehaviour
     List<GameObject> organizedCards = new List<GameObject>();
     List<RectTransform> organizedCardRects = new List<RectTransform>();
     [SerializeField] RectTransform cardGlow;
-    int hoveredCardIndex = 666;
+    private int hoveredCardIndex = 666;
     public GameObject selectedCard = null;
     public RectTransform selectedCardRectTransform = null;
     [SerializeField] float additionalTilt = 15;
@@ -33,6 +33,7 @@ public class CardOrganizer : MonoBehaviour
     {
         organizedCards = new List<GameObject>(allCardsInHand);
         organizedCardRects = organizedCards.Select(o => o.GetComponent<RectTransform>()).ToList();
+        hoveredCardIndex = newHoveredCardIndex;
 
         int budgetEnum = 0;
         foreach (GameObject card in allCardsInHand)
@@ -57,8 +58,6 @@ public class CardOrganizer : MonoBehaviour
         {
             cardGlow.gameObject.SetActive(false);
         }
-
-        hoveredCardIndex = newHoveredCardIndex;
     }
 
     private void LateUpdate()
@@ -92,7 +91,7 @@ public class CardOrganizer : MonoBehaviour
             }
         }
         else
-        {
+        { // if card is selected, move card glow
             cardGlow.anchoredPosition = selectedCardRectTransform.anchoredPosition;
         }
 

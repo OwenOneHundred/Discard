@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db44d29891fb8490ead7045661882e4b, type: 3}
-  m_Name: MoltonFist
+  m_Name: Chasm
   m_EditorClassIdentifier: 
-  name: Molton Fist
-  description: Swings a molton fist. 2x damage to flaming enemies.
-  art: {fileID: 21300000, guid: 1c9a596f3560e4dc091c980ba54fde80, type: 3}
-  cost: 1
-  attackPrefab: {fileID: 1793976546735483747, guid: 1beff20c1048e4f659f97125cd9fb75c, type: 3}
-  style: 3
+  name: Chasm
+  description: Open a chasm ending in a large explosion.
+  art: {fileID: 21300000, guid: 2c4b2551e03cc4276908747113e5da4c, type: 3}
+  cost: 2
+  attackPrefab: {fileID: 5538728013179822623, guid: 0f026fe26d574497ea8ed2cf925e1347, type: 3}
+  style: 0
+  targetSprite: {fileID: 0}
   castFunctions:
-  - {fileID: 11400000, guid: 4b24f5fd065f241698a4d8947d2f4456, type: 2}
+  - {fileID: 11400000, guid: ae97e4d7af94142339d26b341e4e6e21, type: 2}

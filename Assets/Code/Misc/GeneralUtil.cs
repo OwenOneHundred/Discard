@@ -62,4 +62,11 @@ public static class GeneralUtil
 
         return Mathf.Atan2(sin, cos) * (180 / Mathf.PI);
     }
+
+    public static Vector2 AngleToVector2(float angle)
+    {
+        angle += 90;
+        return new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+    }
+
 }
