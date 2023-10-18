@@ -171,6 +171,8 @@ public class HandManager : MonoBehaviour
     {
         CardInfo ci = card.GetComponent<CardInfo>();
         RectTransform crt = card.GetComponent<RectTransform>();
+
+        card.GetComponent<CardHoverManager>().interactable = false;
         while (Vector2.Distance(crt.position, discardPilePos.position) > 0.01f)
         {
             // if you drew this card instantly, stop this animation
@@ -189,8 +191,6 @@ public class HandManager : MonoBehaviour
             yield return null;
         }
 
-
-
         // disable
         card.SetActive(false);
     }
@@ -205,6 +205,7 @@ public class HandManager : MonoBehaviour
             crt.localScale = new Vector3(Mathf.Clamp(crt.localScale.x, 0, 1), Mathf.Clamp(crt.localScale.y, 0, 1), 1);
             yield return null;
         }
+        card.GetComponent<CardHoverManager>().interactable = true;
     }
 
     void DrawBarFull(SlowBarFiller sbf) // called by action in update

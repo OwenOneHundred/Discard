@@ -86,7 +86,6 @@ public class MiniSfXManager : MonoBehaviour
         while (currentTime < duration)
         {
             currentTime += Time.deltaTime;
-            Debug.Log(currentTime);
             audioSource.volume = Mathf.Lerp(start, 0, currentTime / duration);
             yield return null;
         }

@@ -35,6 +35,8 @@ public class TargetScript : MonoBehaviour
         }
     }
 
+
+    // do not use this yet, it doesn't actually work because it doesn't affect the animator
     public void ChangeSprite(Card.Style newStyle, Sprite sprite)
     {
         style = newStyle;
