@@ -37,7 +37,7 @@ public class EnemyGun : MonoBehaviour
     private int currentAttack = -1;
 
     //Fire Rate
-    private int currentAttackPhase;
+    public int currentAttackPhase;
     private int currentFireCount;
     private int currentNumBulletsFired;
     private int currentInBetweenFireCount = int.MaxValue;
@@ -82,68 +82,21 @@ public class EnemyGun : MonoBehaviour
             {
                 OneOptionAttackPhase3();
             }
-
         }
         //If multiple attacks then random choices
         else if (attacks.Length > 1)
         {
-            //Give new attack
-            if (currentAttack == -1)
+            if (currentAttackPhase == 1)
             {
-                currentAttack = Random.Range(0, attacks.Length);
-                currentFireCount++;
+                MultiOptionAttackPhase1();
+            }
+            else if (currentAttackPhase == 2)
+            {
+                MultiOptionAttackPhase2();
             }
             else
             {
-                //If enemy is in range and has had enough time since last fire
-                if (inRange && currentFireCount > attacks[currentAttack].animfireRate)
-                {
-                    //When the bullet only fires one shot
-                    if (attacks[currentAttack].bulletCount == 1)
-                    {
-                        currentFireCount = 0;
-
-                        //Positioning Firing Object
-                        Vector3 difference = player.transform.position - transform.position;
-                        float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-                        enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
-
-                        Fire(currentAttack);
-                        currentAttack = -1;
-                    }
-                    //Fires Multiple Bullets
-                    else
-                    {
-                        //Checks if they have fired all bullets
-                        if (currentNumBulletsFired < attacks[currentAttack].bulletCount)
-                        {
-                            //Checks if been long enough
-                            if (currentInBetweenFireCount > attacks[currentAttack].timeBetweenBullets)
-                            {
-                                currentInBetweenFireCount = 0;
-                                currentNumBulletsFired++;
-
-                                //Positioning Firing Object
-                                Vector3 difference = player.transform.position - transform.position;
-                                float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-                                enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
-
-                                Fire(currentAttack);
-                            }
-
-                            currentInBetweenFireCount++;
-                        }
-                        //Fired all bullets, resets info
-                        else
-                        {
-                            currentFireCount = 0;
-                            currentNumBulletsFired = 0;
-                            currentInBetweenFireCount = int.MaxValue;
-                            currentAttack = -1;
-                        }
-                    }
-                }
-                currentFireCount++;
+                MultiOptionAttackPhase3();
             }
         }
     }
@@ -152,9 +105,21 @@ public class EnemyGun : MonoBehaviour
     //Counts up time with enemy in idle pos
     public void OneOptionAttackPhase1()
     {
-
+        if(inRange && currentFireCount > attacks[0].preAnimfireRate)
+        {
+            currentFireCount = 0;
+            currentAttackPhase++;
+            enemyImager.isAttacking = true;
+            enemyImager.attackCount = 0;
+            enemyImager.ResetAnim();
+        }
+        else
+        {
+            currentFireCount++;
+        }
     }
 
+    //Handles attack if only one option is available
     //Does the Firing
     public void OneOptionAttackPhase2()
     {
@@ -165,6 +130,7 @@ public class EnemyGun : MonoBehaviour
             if (attacks[0].bulletCount == 1)
             {
                 currentFireCount = 0;
+                currentAttackPhase++;
 
                 //Positioning Firing Object
                 Vector3 difference = player.transform.position - transform.position;
@@ -198,6 +164,7 @@ public class EnemyGun : MonoBehaviour
                 //Fired all bullets, resets info
                 else
                 {
+                    currentAttackPhase++;
                     currentFireCount = 0;
                     currentNumBulletsFired = 0;
                     currentInBetweenFireCount = int.MaxValue;
@@ -208,11 +175,122 @@ public class EnemyGun : MonoBehaviour
         currentFireCount++;
     }
 
-    //
+    //Handles attack if only one option is available
+    //Loops over time for bost shot anim
     public void OneOptionAttackPhase3()
     {
-
+        if (inRange && currentFireCount > attacks[0].preAnimfireRate)
+        {
+            currentFireCount = 0;
+            currentAttackPhase = 1;
+            enemyImager.isAttacking = false;
+        }
+        else
+        {
+            currentFireCount++;
+        }
     }
+
+    //Handles attack if several options are available
+    //Counts up time with enemy in idle pos
+    public void MultiOptionAttackPhase1()
+    {
+        //Gives Attack Type
+        //Give new attack
+        if (currentAttack == -1)
+        {
+            currentAttack = Random.Range(0, attacks.Length);
+        }
+
+
+        if (inRange && currentFireCount > attacks[currentAttack].preAnimfireRate)
+        {
+            currentFireCount = 0;
+            currentAttackPhase++;
+            enemyImager.isAttacking = true;
+            enemyImager.attackCount = currentAttack;
+            enemyImager.ResetAnim();
+        }
+        else
+        {
+            currentFireCount++;
+        }
+    }
+
+    //Handles attack if several options are available
+    //Does the Firing
+    public void MultiOptionAttackPhase2()
+    {
+        //If enemy is in range and has had enough time since last fire
+        if (inRange && currentFireCount > attacks[currentAttack].animfireRate)
+        {
+            //When the bullet only fires one shot
+            if (attacks[currentAttack].bulletCount == 1)
+            {
+                currentFireCount = 0;
+                currentAttackPhase++;
+
+                //Positioning Firing Object
+                Vector3 difference = player.transform.position - transform.position;
+                float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+
+                Fire(currentAttack);
+            }
+            //Fires Multiple Bullets
+            else
+            {
+                //Checks if they have fired all bullets
+                if (currentNumBulletsFired < attacks[currentAttack].bulletCount)
+                {
+                    //Checks if been long enough
+                    if (currentInBetweenFireCount > attacks[currentAttack].timeBetweenBullets)
+                    {
+                        currentInBetweenFireCount = 0;
+                        currentNumBulletsFired++;
+
+                        //Positioning Firing Object
+                        Vector3 difference = player.transform.position - transform.position;
+                        float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                        enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+
+                        Fire(currentAttack);
+                    }
+
+                    currentInBetweenFireCount++;
+                }
+                //Fired all bullets, resets info
+                else
+                {
+                    currentAttackPhase++;
+                    currentFireCount = 0;
+                    currentNumBulletsFired = 0;
+                    currentInBetweenFireCount = int.MaxValue;
+                }
+            }
+        }
+
+        currentFireCount++;
+    }
+
+    //Handles attack if several options are available
+    //Counts up time with enemy in idle pos
+    public void MultiOptionAttackPhase3()
+    {
+        if (inRange && currentFireCount > attacks[0].preAnimfireRate)
+        {
+            currentFireCount = 0;
+            currentAttackPhase = 1;
+            enemyImager.isAttacking = false;
+            enemyImager.attackCount = 0;
+            currentAttack = -1;
+        }
+        else
+        {
+            currentFireCount++;
+        }
+    }
+
 
     //Fires the Bullet at the player
     public void Fire(int attackNum)

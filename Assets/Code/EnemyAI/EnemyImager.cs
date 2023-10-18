@@ -9,6 +9,7 @@ public class EnemyImager : MonoBehaviour
     {
         public Sprite[] sprites;
         public int[] timeBetweenAnim;
+        public Vector3 targetVector;
     }
 
     //Info to determine anim
@@ -17,7 +18,11 @@ public class EnemyImager : MonoBehaviour
     public bool isDead;
     public bool isMoving;
     public bool isAttacking;
+    // Int value that indicates what attakc number is being used
+    public int attackCount;
     public SpriteRenderer enemySpriteRenderer;
+    public GameObject targetObj;
+    public BoxCollider2D boxCollider2D;
 
     //Stuff for playing through animation
     public int timeThroughAnim;
@@ -71,6 +76,7 @@ public class EnemyImager : MonoBehaviour
     //Animates enemy based on sprite sanimation 
     public void Animate(SpriteAnimation spriteAnimation)
     {
+        //Sets Sprites
         int timeToWait = spriteAnimation.timeBetweenAnim[0];
         if(spriteAnimation.timeBetweenAnim.Length > 1)
         {
@@ -99,12 +105,23 @@ public class EnemyImager : MonoBehaviour
         {
             timeThroughAnim++;
         }
+
+        //Sets Target Point
+        if(spriteAnimation.targetVector.x != 69f)
+        {
+            targetObj.transform.localPosition = spriteAnimation.targetVector;
+        }
+        else
+        {
+            //Sets Idle Pos
+            targetObj.transform.localPosition = idleAnimation.targetVector;
+        }
     }
 
     //Animates Idle
     public void AnimateIdle()
     {
-        enemySpriteRenderer.sprite = idleAnimation.sprites[0];
+        enemySpriteRenderer.sprite = idleAnimation.sprites[direction];
     }
 
     //Animates Walk
@@ -135,25 +152,13 @@ public class EnemyImager : MonoBehaviour
     //Animates Attack 
     public void AnimateAttack()
     {
-        if (direction == 0)
+        if(attackAnimations.Length <= 4)
         {
-            Animate(attackAnimations[0]);
-        }
-        else if (direction == 1)
-        {
-            Animate(attackAnimations[1]);
-        }
-        else if (direction == 2)
-        {
-            Animate(attackAnimations[2]);
-        }
-        else if (direction == 3)
-        {
-            Animate(attackAnimations[3]);
+            Animate(attackAnimations[direction]);
         }
         else
         {
-            Debug.Log("Idle");
+            Animate(attackAnimations[direction + (4 * attackCount)]);
         }
     }
 
@@ -180,6 +185,13 @@ public class EnemyImager : MonoBehaviour
         {
             Debug.Log("Idle");
         }
+    }
+
+    //Ensure next anim starts at begining frame
+    public void ResetAnim()
+    {
+        timeThroughAnim = 0;
+        currentSpriteShowing = 0;
     }
 
 }

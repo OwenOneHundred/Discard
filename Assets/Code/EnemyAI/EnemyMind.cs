@@ -78,18 +78,28 @@ public class EnemyMind : MonoBehaviour
                 {
                     inRange = false;
                     enemyGun.inRange = false;
+                    enemyGun.currentAttackPhase = 1;
+                    enemyImager.isAttacking = false;
                 }
 
                 //Says if close enough 
                 if(inRange == false)
                 {
                     enemyMovement.atObjective = false;
-                    enemyImager.isMoving = true;
+                    if (enemyImager.isMoving == false)
+                    {
+                        enemyImager.isMoving = true;
+                        enemyImager.ResetAnim();
+                    }
                 }
                 else
                 {
                     enemyMovement.atObjective = true;
-                    enemyImager.isMoving = false;
+                    if (enemyImager.isMoving == true)
+                    {
+                        enemyImager.isMoving = false;
+                        enemyImager.ResetAnim();
+                    }
                 }
             }
         }
@@ -111,13 +121,21 @@ public class EnemyMind : MonoBehaviour
                 if(GetDist(idlePos) < .5f)
                 {
                     enemyMovement.atObjective = true;
-                    enemyImager.isMoving = false;
+                    if (enemyImager.isMoving == true)
+                    {
+                        enemyImager.isMoving = false;
+                        enemyImager.ResetAnim();
+                    }
                 }
                 else
                 {
                     DetermineAngle();
                     enemyMovement.atObjective = false;
-                    enemyImager.isMoving = true;
+                    if (enemyImager.isMoving == false)
+                    {
+                        enemyImager.isMoving = true;
+                        enemyImager.ResetAnim();
+                    }
                 }
             }
         }
@@ -159,37 +177,13 @@ public class EnemyMind : MonoBehaviour
         {
             enemyImager.direction = 3;
         }
-
-        /*
-        //Facing North
-        if(angle >= 45f && angle <= 135f)
-        {
-            enemyImager.direction = 1;
-        }
-        //Facing West
-        else if (angle > 135f && angle < 225f)
-        {
-            enemyImager.direction = 3;
-        }
-        //Facing South
-        else if(angle >= 225 && angle <= 315)
-        {
-            enemyImager.direction = 0;
-        }
-        //Facing East
-        else
-        {
-            enemyImager.direction = 2;
-        }
-        */
     }
 
     //Does the death stuff of the enemy
     public void Death()
     {
         enemyImager.isDead = true;
-        enemyImager.currentSpriteShowing = 0;
-        enemyImager.timeThroughAnim = 0;
+        enemyImager.ResetAnim();
 
         //Disable Collider
         thisBoxCollider.enabled = false;
