@@ -143,6 +143,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8479106366790060653}
   - component: {fileID: 8479106366790060654}
+  - component: {fileID: 2233135273802000978}
+  - component: {fileID: 1718018915930393063}
   m_Layer: 0
   m_Name: Spear
   m_TagString: Untagged
@@ -202,3 +204,46 @@ MonoBehaviour:
     swingOutwardMovement: {x: 1, y: 10}
   endEffect: {fileID: 1034927117136786302, guid: 1b99798f397984c2ba8198350b96ed3a, type: 3}
   hitbox: {fileID: 7503617895305686292}
+--- !u!114 &2233135273802000978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8479106366790060652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da102ebe587a44ebb870fb8eb9b4d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedHitbox: {fileID: 7503617895305686292}
+  damage: 50
+  knockback: 900
+  KbOutInsteadOfBack: 0
+  forwardIsUp: 1
+  style: 3
+  damageType: 2
+  secondaryEffects: []
+  onHitPS: {fileID: 0}
+  canHitMultipleTimes: 1
+--- !u!50 &1718018915930393063
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8479106366790060652}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

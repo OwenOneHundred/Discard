@@ -48,16 +48,18 @@ public class BouncingProjectile : MonoBehaviour
             yield return null;
         }
 
+        yield return null;
         Destroy(gameObject);
     }
 
-    void Bounce()
+    IEnumerator Bounce()
     {
+        yield return null;
         currentTarget = SearchForTarget();
         Destroy(Instantiate(onBouncePS, transform.position, Quaternion.identity), 5);
         if (currentTarget == null)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0.05f);
         }
         else
         {
@@ -96,7 +98,7 @@ public class BouncingProjectile : MonoBehaviour
         if (collision == currentTarget && Vector2.Distance(transform.position, collision.transform.position) < detectionRange.bounds.extents.x / 3) // technically this is REALLY shit code, because extreme lag would cause this projectile to despawn immediately when moving toward its target, but that probably wont happen
         {
             alreadyHit.Add(collision.gameObject);
-            Bounce();
+            StartCoroutine(Bounce());
         }
     }
 

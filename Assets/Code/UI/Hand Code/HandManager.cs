@@ -156,7 +156,6 @@ public class HandManager : MonoBehaviour
 
     public void DiscardCard(GameObject card)
     {
-        Debug.Log("discard called on: " + card.name);
         DiscardPile = AddAndReturn(DiscardPile, card);
 
         Hand.Remove(card);

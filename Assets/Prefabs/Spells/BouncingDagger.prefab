@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8680354825458320520}
   - component: {fileID: -5670477797959579960}
   - component: {fileID: 6704368683871812112}
+  - component: {fileID: -4465946228763084125}
   m_Layer: 0
   m_Name: BouncingDagger
   m_TagString: Untagged
@@ -279,3 +280,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 13
+--- !u!114 &-4465946228763084125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4541302433429228365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da102ebe587a44ebb870fb8eb9b4d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedHitbox: {fileID: 765619509727818872}
+  damage: 40
+  knockback: 300
+  KbOutInsteadOfBack: 0
+  forwardIsUp: 1
+  style: 2
+  damageType: 2
+  secondaryEffects: []
+  onHitPS: {fileID: 0}

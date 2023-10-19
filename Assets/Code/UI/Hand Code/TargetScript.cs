@@ -32,6 +32,9 @@ public class TargetScript : MonoBehaviour
             case Card.Style.pinpoint:
                 transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
                 break;
+            default:
+                transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
+                break;
         }
     }
 

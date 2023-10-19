@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1548653496010928568}
   - component: {fileID: 2088101387848303805}
   - component: {fileID: 2282405100919074123}
+  - component: {fileID: 191748749612396062}
   m_Layer: 0
   m_Name: Shuriken1
   m_TagString: Untagged
@@ -4904,3 +4905,24 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &191748749612396062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4419619589222490486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da102ebe587a44ebb870fb8eb9b4d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedHitbox: {fileID: 984871336846669402}
+  damage: 30
+  knockback: 70
+  KbOutInsteadOfBack: 0
+  forwardIsUp: 0
+  style: 0
+  damageType: 2
+  secondaryEffects: []
+  onHitPS: {fileID: 0}

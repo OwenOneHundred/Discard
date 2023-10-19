@@ -5,7 +5,7 @@ using UnityEngine;
 public class TimeBomb : MonoBehaviour
 {
     // this doesn't handle hitboxes at all, that's expected to be handled by explosions
-    // at the moment time (Sunday, Oct 15, 1am) there are no hitboxes on time bombs.
+    // at the moment time (Sunday, Oct 18, 3am) there are no hitboxes on time bombs.
 
     [SerializeField] List<Sprite> timerSpritesHitboxSizes;
 

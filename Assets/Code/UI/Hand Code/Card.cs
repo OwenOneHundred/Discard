@@ -18,12 +18,12 @@ public class Card : ScriptableObject
 
     public enum Style
     {
-        launch, pinpoint, homing, melee
+        launch, pinpoint, homing, melee, None
     }
 
     public List<CastFunctionABS> castFunctions;
 
-    public virtual void OnPlayed(GameObject card)
+    public void OnPlayed(GameObject card)
     {
         foreach (CastFunctionABS func in castFunctions)
         {
