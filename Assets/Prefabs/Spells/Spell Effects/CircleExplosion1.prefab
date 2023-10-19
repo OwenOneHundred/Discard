@@ -258,5 +258,7 @@ MonoBehaviour:
   forwardIsUp: 0
   style: 0
   damageType: 0
-  secondaryEffects: []
+  secondaryEffects:
+  - {fileID: 11400000, guid: 200e1953b8df542d8a3206d1d5155458, type: 2}
   onHitPS: {fileID: 0}
+  canHitMultipleTimes: 0

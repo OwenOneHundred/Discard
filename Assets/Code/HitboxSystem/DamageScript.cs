@@ -6,11 +6,11 @@ using System.Linq;
 // parent for scripts attached to enemies that handle being damaged
 public class DamageScript : MonoBehaviour
 {
-    List<SecondaryEffect> secondaryEffects = new List<SecondaryEffect>();
+    public List<SecondaryEffectInfo> seInfo = new List<SecondaryEffectInfo>();
     List<GameObject> alreadyHit = new List<GameObject>();
     public Rigidbody2D rb;
     public float kbMultiplier = 1;
-    public float health = 100; // test
+    public float health = 100;
 
     // available to be overwritten.
     public virtual void ReduceHealth(float damage)
@@ -19,15 +19,17 @@ public class DamageScript : MonoBehaviour
     }
 
     // called by HitboxManager when this object touches a hitbox
-    public void OnHit(List<SecondaryEffect> newEffects, float damage, Vector3 knockback, Card.Style cardStyle, GameObject attacker, bool canHitMultTimes = false)
+    public void OnHit(List<SecondaryEffect> newEffects, float damage, Vector3 knockback, Card.Style cardStyle, GameObject attacker)
     {
-        if (!canHitMultTimes)
-        {
-            if (alreadyHit.Contains(attacker)) { return; }
-            List<GameObject> temp = alreadyHit.Where(x => x == null).ToList();
-            foreach (GameObject toRemove in temp) { alreadyHit.Remove(toRemove); }
-            alreadyHit.Add(attacker);
-        }
+        // if already hit by this hurtbox, return
+        if (alreadyHit.Contains(attacker)) { return; }
+
+        // check list and remove if null (for storage reasons)
+        List<GameObject> temp = alreadyHit.Where(x => x == null).ToList();
+        foreach (GameObject toRemove in temp) { alreadyHit.Remove(toRemove); }
+
+        // add hitbox to already hit list
+        alreadyHit.Add(attacker);
 
         foreach (SecondaryEffect newEffect in newEffects)
         {
@@ -41,17 +43,19 @@ public class DamageScript : MonoBehaviour
     // called by OnHit when a secondary effect is added. Doesn't add the effect if there's an existing effect with more 
     protected bool TryAddSecondaryEffect(SecondaryEffect newEffect)
     {
-        newEffect.OnApply();
-
-        SecondaryEffect existingEffect = secondaryEffects.Find(x => x == newEffect);
-        if (existingEffect == null)
+        SecondaryEffectInfo existingSEInfo = seInfo.Find(x => x.effect == newEffect);
+        if (existingSEInfo == null)
         {
-            secondaryEffects.Add(newEffect);
+            newEffect.OnApply(gameObject);
+            seInfo.Add(new SecondaryEffectInfo(newEffect, newEffect.time));
             return true;
         }
-        if (existingEffect.time < newEffect.time)
+
+        // if tried applying effect but effect already existed, if timer is longer on new version, apply new version
+        SecondaryEffect existingEffect = existingSEInfo.effect;
+        if (existingSEInfo.timer < newEffect.time)
         {
-            secondaryEffects.Add(newEffect);
+            existingSEInfo.timer = newEffect.time;
             return true;
         }
 
@@ -60,24 +64,37 @@ public class DamageScript : MonoBehaviour
 
     protected void UpdateEffects()
     {
-        if (secondaryEffects.Count == 0) { return; }
-        List<SecondaryEffect> seCopy = new List<SecondaryEffect>(secondaryEffects);
-        foreach (SecondaryEffect effect in seCopy)
+        if (seInfo.Count == 0) { return; }
+        List<SecondaryEffectInfo> seCopy = new List<SecondaryEffectInfo>(seInfo);
+        foreach (SecondaryEffectInfo info in seCopy)
         {
-            effect.EveryFrame();
-            if (effect.time <= 0)
+            info.effect.EveryFrame(gameObject);
+            if (info.timer <= 0)
             {
-                effect.OnEnd();
-                secondaryEffects.Remove(effect);
+                info.effect.OnEnd(gameObject);
+                seInfo.Remove(info);
             }
+            info.timer -= Time.deltaTime;
         }
     }
 
     // reduces timers on secondary effects and calls their EveryFrame functions
     // not passed to children; must be added manually
-    private void Update()
+    public virtual void Update()
     {
         UpdateEffects();
+    }
+
+    [System.Serializable]
+    public class SecondaryEffectInfo
+    {
+        public SecondaryEffectInfo(SecondaryEffect effect1, float timer1)
+        {
+            effect = effect1; timer = timer1;
+        }
+
+        public SecondaryEffect effect;
+        public float timer;
     }
 
 }

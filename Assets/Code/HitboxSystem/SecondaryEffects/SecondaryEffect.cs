@@ -14,17 +14,17 @@ public abstract class SecondaryEffect : ScriptableObject
     public bool canStack = false;
     public int stackNumber = 1;
 
-    public virtual void OnApply()
+    public virtual void OnApply(GameObject enemy)
     {
 
     }
 
-    public virtual void EveryFrame()
+    public virtual void EveryFrame(GameObject enemy)
     {
 
     }
 
-    public virtual void OnEnd()
+    public virtual void OnEnd(GameObject enemy)
     {
 
     }

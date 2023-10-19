@@ -16,7 +16,7 @@ public class HitboxManager : MonoBehaviour
     [SerializeField] bool forwardIsUp = false;
 
     [SerializeField] Card.Style style;
-    [SerializeField] DamageType damageType = DamageType.None;
+    [SerializeField] DamageType damageType;
     [SerializeField] List<SecondaryEffect> secondaryEffects;
     [SerializeField] GameObject onHitPS;
     [SerializeField] bool canHitMultipleTimes = false;
@@ -32,7 +32,7 @@ public class HitboxManager : MonoBehaviour
                 Instantiate(onHitPS, transform.position, Quaternion.identity);
             }
 
-            damageScript.OnHit(secondaryEffects, damage, CalculateKB(collision.transform.position), style, gameObject, canHitMultipleTimes);
+            damageScript.OnHit(secondaryEffects, damage, CalculateKB(collision.transform.position), style, gameObject);
         }
     }
 
