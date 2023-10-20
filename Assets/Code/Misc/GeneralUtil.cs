@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static WorldGenerator;
+using UnityEngine.Tilemaps;
 
 public static class GeneralUtil
 {
+    public static List<Biome> biomes;
+    public static Tilemap ground;
+
     /// <summary>
     /// Returns index of random float from given list, but with proportionally greater weight given to bigger floats.
     /// </summary>
@@ -42,6 +47,26 @@ public static class GeneralUtil
             ts[i] = ts[r];
             ts[r] = tmp;
         }
+    }
+
+
+    public static Biome GetBiomeAtPos(Vector3 position)
+    {
+        return biomes.Find(x => x.groundTile == ground.GetTile(ground.WorldToCell(position)));
+    }
+
+    public static float AngleBetween(Vector2 vector1, Vector2 vector2)
+    {
+        float sin = vector1.x * vector2.y - vector2.x * vector1.y;
+        float cos = vector1.x * vector2.x + vector1.y * vector2.y;
+
+        return Mathf.Atan2(sin, cos) * (180 / Mathf.PI);
+    }
+
+    public static Vector2 AngleToVector2(float angle)
+    {
+        angle += 90;
+        return new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
     }
 
 }

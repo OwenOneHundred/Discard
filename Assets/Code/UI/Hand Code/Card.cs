@@ -11,10 +11,19 @@ public class Card : ScriptableObject
     public Sprite art;
     public string cost;
     public GameObject attackPrefab;
+    public Style style;
+
+    [Header("Leave blank for default.")]
+    public RuntimeAnimatorController targetAnimator = null;
+
+    public enum Style
+    {
+        launch, pinpoint, homing, melee, None
+    }
 
     public List<CastFunctionABS> castFunctions;
 
-    public virtual void OnPlayed(GameObject card)
+    public void OnPlayed(GameObject card)
     {
         foreach (CastFunctionABS func in castFunctions)
         {

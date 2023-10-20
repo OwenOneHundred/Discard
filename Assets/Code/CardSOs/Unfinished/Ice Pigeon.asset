@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db44d29891fb8490ead7045661882e4b, type: 3}
+  m_Name: Ice Pigeon
+  m_EditorClassIdentifier: 
+  name: Ice Pigeon
+  description: Launch a homing pigeon that applies 3 stacks of slow to enemies in
+    radius on contact.
+  art: {fileID: 889197209, guid: 35cb9ee4069d2fb4184f8925ac8295b9, type: 3}
+  cost: 1
+  attackPrefab: {fileID: 1014261172210766844, guid: 9df2e20b76fba4e47a170151b9bdfcd4, type: 3}
+  style: 2
+  castFunctions:
+  - {fileID: 11400000, guid: 576ef1fbc16302749aa28e2c2cedc088, type: 2}

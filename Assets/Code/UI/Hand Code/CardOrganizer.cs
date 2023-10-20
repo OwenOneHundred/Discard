@@ -12,8 +12,10 @@ public class CardOrganizer : MonoBehaviour
 {
     List<GameObject> organizedCards = new List<GameObject>();
     List<RectTransform> organizedCardRects = new List<RectTransform>();
-    int hoveredCardIndex = 666;
+    [SerializeField] RectTransform cardGlow;
+    private int hoveredCardIndex = 666;
     public GameObject selectedCard = null;
+    public RectTransform selectedCardRectTransform = null;
     [SerializeField] float additionalTilt = 15;
     [SerializeField] float edgeDecline = 0.03f;
     [SerializeField] float cardWidth = 15;
@@ -27,10 +29,11 @@ public class CardOrganizer : MonoBehaviour
     // Any time cards are moved into or out of the hand
     // Any time a card is selected or deselected
     // Any time a card is hovered or unhovered
-    public void UpdateOrganizedCards(List<GameObject> allCardsInHand, int newHoveredCardIndex, GameObject selectedCard)
+    public void UpdateOrganizedCards(List<GameObject> allCardsInHand, int newHoveredCardIndex)
     {
         organizedCards = new List<GameObject>(allCardsInHand);
         organizedCardRects = organizedCards.Select(o => o.GetComponent<RectTransform>()).ToList();
+        hoveredCardIndex = newHoveredCardIndex;
 
         int budgetEnum = 0;
         foreach (GameObject card in allCardsInHand)
@@ -44,13 +47,17 @@ public class CardOrganizer : MonoBehaviour
         {
             allCardsInHand[newHoveredCardIndex].transform.SetAsLastSibling();
         }
-
         if (selectedCard != null)
         {
-            organizedCards.Remove(selectedCard);
-        }
+            cardGlow.gameObject.SetActive(true);
+            cardGlow.transform.SetAsLastSibling();
 
-        hoveredCardIndex = newHoveredCardIndex;
+            selectedCard.transform.SetAsLastSibling();
+        }
+        else if (cardGlow.gameObject.activeInHierarchy)
+        {
+            cardGlow.gameObject.SetActive(false);
+        }
     }
 
     private void LateUpdate()
@@ -75,21 +82,18 @@ public class CardOrganizer : MonoBehaviour
 
         int indextoorder = IndexToOrder(index, organizedCards.Count);
 
-        // rotate if not hovered
-        if (hoveredCardIndex != index)
+        // rotate if not selected
+        if (selectedCard != organizedCards[index])
         {
             if (card.transform.rotation.eulerAngles.z != -additionalTilt * indextoorder)
             {
                 card.transform.rotation = Quaternion.Euler(0, 0, Mathf.MoveTowardsAngle(card.transform.rotation.eulerAngles.z, -additionalTilt * indextoorder, rotationSpeed));
             }
         }
-
-        // move
-        //if ((Vector2)card.transform.position != goalPosition)
-        //{
-        //    card.transform.position = Vector2.MoveTowards(card.transform.position, goalPosition,
-        //        cardspeed * Vector2.Distance(card.transform.position, goalPosition));
-        //}
+        else
+        { // if card is selected, move card glow
+            cardGlow.anchoredPosition = selectedCardRectTransform.anchoredPosition;
+        }
 
         // move
         Vector3 cardAnchorPos = organizedCardRects[index].anchoredPosition;
@@ -105,11 +109,17 @@ public class CardOrganizer : MonoBehaviour
     {
         int indextoorder = IndexToOrder(index, organizedCards.Count);
 
+        // bool cardIsSelectedCard = organizedCards.IndexOf(selectedCard) == index;
+
         if (organizedCards.Count % 2 == 0)
         {
             return
                 // first part is the base position. This is center if card is not selected; center + hoveredAdjustment if card is selected
-                center + (hoveredCardIndex == index ? hoveredAdjustment : Vector2.zero) +
+                center +
+
+                (hoveredCardIndex == index ? hoveredAdjustment : Vector2.zero) +
+
+                // (cardIsSelectedCard ? hoveredAdjustment : Vector2.zero) +
 
                 new Vector2(cardWidth * indextoorder + ((cardWidth / 2) * (indextoorder > 0 ? -1 : 1)),
 
@@ -118,7 +128,11 @@ public class CardOrganizer : MonoBehaviour
         else
         {
             return
-                center + (hoveredCardIndex == index ? hoveredAdjustment : Vector2.zero) +
+                center +
+
+                (hoveredCardIndex == index ? hoveredAdjustment : Vector2.zero) +
+
+                // (cardIsSelectedCard ? hoveredAdjustment : Vector2.zero) +
 
                 new Vector2(cardWidth * indextoorder,
 

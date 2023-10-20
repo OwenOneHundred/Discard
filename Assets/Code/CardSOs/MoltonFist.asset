@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db44d29891fb8490ead7045661882e4b, type: 3}
+  m_Name: MoltonFist
+  m_EditorClassIdentifier: 
+  name: Molton Fist
+  description: Swings a molton fist. 2x damage to flaming enemies.
+  art: {fileID: 21300000, guid: 1c9a596f3560e4dc091c980ba54fde80, type: 3}
+  cost: 1
+  attackPrefab: {fileID: 1793976546735483747, guid: 1beff20c1048e4f659f97125cd9fb75c, type: 3}
+  style: 3
+  castFunctions:
+  - {fileID: 11400000, guid: 4b24f5fd065f241698a4d8947d2f4456, type: 2}

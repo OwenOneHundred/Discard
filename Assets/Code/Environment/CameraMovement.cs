@@ -10,6 +10,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
+            player = GameObject.Find("Player").transform;
         player = GameObject.Find("Player").transform;
 
     }

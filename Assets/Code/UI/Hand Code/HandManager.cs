@@ -19,6 +19,10 @@ public class HandManager : MonoBehaviour
     [SerializeField] float cardPlayHeight = 4;
     [SerializeField] int maxHandSize = 7;
     [SerializeField] int initialHandSize = 3;
+    [SerializeField] GameObject targetObject;
+    [SerializeField] RectTransform discardPilePos;
+    [SerializeField] RectTransform drawPilePos;
+    TargetScript ts;
 
     protected GameObject selectedCard;
     public GameObject SelectedCard
@@ -30,11 +34,13 @@ public class HandManager : MonoBehaviour
             {
                 selectedCard = value;
                 co.selectedCard = value;
+                if (selectedCard != null) { co.selectedCardRectTransform = value.GetComponent<RectTransform>(); }
+                else { co.selectedCardRectTransform = null; }
             }
         }
     }
 
-    private GameObject hoveredCard;
+    public GameObject hoveredCard;
 
     private int originalSiblingIndex;
 
@@ -103,9 +109,11 @@ public class HandManager : MonoBehaviour
             DrawCard();
         }
 
-        co.UpdateOrganizedCards(Hand, Hand.IndexOf(hoveredCard), selectedCard);
+        co.UpdateOrganizedCards(Hand, Hand.IndexOf(hoveredCard));
 
         uim.CDBar.onFill += DrawBarFull;
+
+        ts = targetObject.GetComponent<TargetScript>();
     }
 
     void ResetDrawPile()
@@ -131,7 +139,8 @@ public class HandManager : MonoBehaviour
             Hand.Add(drawnCard);
             drawnCard.SetActive(true);
             DrawPile = RemoveAndReturn(DrawPile, drawnCard);
-            co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard), selectedCard);
+            co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard));
+            StartCoroutine(DrawCardAnimation(drawnCard));
 
             drawnCard.transform.SetAsLastSibling();
             return true;
@@ -147,15 +156,55 @@ public class HandManager : MonoBehaviour
 
     public void DiscardCard(GameObject card)
     {
-        Debug.Log("discard called on: " + card.name);
         DiscardPile = AddAndReturn(DiscardPile, card);
-
-        card.SetActive(false);
 
         Hand.Remove(card);
         uim.PlayDiscardAnim(card);
 
-        co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard), selectedCard);
+        StartCoroutine(DiscardCardAnimation(card));
+
+        co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard));
+    }
+
+    IEnumerator DiscardCardAnimation(GameObject card)
+    {
+        CardInfo ci = card.GetComponent<CardInfo>();
+        RectTransform crt = card.GetComponent<RectTransform>();
+
+        card.GetComponent<CardHoverManager>().interactable = false;
+        while (Vector2.Distance(crt.position, discardPilePos.position) > 0.01f)
+        {
+            // if you drew this card instantly, stop this animation
+            if (hand.Contains(card)) { yield break; }
+
+            // move toward discard pile
+            crt.position = Vector2.MoveTowards(crt.position, discardPilePos.position, 3200f * Time.deltaTime);
+
+            // if not totally shrunk yet, shrink
+            if (crt.localScale.x > 0.25f)
+            {
+                crt.localScale -= 3 * Time.deltaTime * new Vector3(1, 1, 0);
+                crt.localScale = new Vector3(Mathf.Clamp(crt.localScale.x, 0, 1), Mathf.Clamp(crt.localScale.y, 0, 1), 1);
+            }
+
+            yield return null;
+        }
+
+        // disable
+        card.SetActive(false);
+    }
+
+    IEnumerator DrawCardAnimation(GameObject card)
+    {
+        CardInfo ci = card.GetComponent<CardInfo>();
+        RectTransform crt = card.GetComponent<RectTransform>();
+        while (crt.localScale.x < 1)
+        {
+            crt.localScale += 3 * Time.deltaTime * new Vector3(1, 1, 0);
+            crt.localScale = new Vector3(Mathf.Clamp(crt.localScale.x, 0, 1), Mathf.Clamp(crt.localScale.y, 0, 1), 1);
+            yield return null;
+        }
+        card.GetComponent<CardHoverManager>().interactable = true;
     }
 
     void DrawBarFull(SlowBarFiller sbf) // called by action in update
@@ -201,7 +250,7 @@ public class HandManager : MonoBehaviour
         originalSiblingIndex = card.transform.GetSiblingIndex();
         card.transform.SetAsLastSibling();
         hoveredCard = card;
-        co.UpdateOrganizedCards(Hand, hand.IndexOf(card), null);
+        co.UpdateOrganizedCards(Hand, hand.IndexOf(card));
     }
 
     public void UnhoverCard(GameObject card)
@@ -215,29 +264,34 @@ public class HandManager : MonoBehaviour
         }
 
         hoveredCard = null;
-        co.UpdateOrganizedCards(Hand, 666, selectedCard);
+        co.UpdateOrganizedCards(Hand, 666);
     }
 
     // called when a card is clicked
     public void SelectCard(GameObject card)
     {
         SelectedCard = card;
-        co.UpdateOrganizedCards(Hand, 666, card);
+        CardInfo cardScript = card.GetComponent<CardInfo>();
+        co.UpdateOrganizedCards(Hand, 666);
+        targetObject.SetActive(true);
+        ts.ChangeAnimator(cardScript.scriptableObject.targetAnimator, cardScript.scriptableObject.style);
     }
 
-    // called when a card is released
-    public void DeselectCard(GameObject card)
+    // called when a card is released, returns if it was played
+    public bool DeselectCard(GameObject card)
     {
+        bool toReturn = false;
         SelectedCard = null;
+        targetObject.SetActive(false);
 
         if (Input.mousePosition.y > cardPlayHeight)
         {
             PlayCard(card);
+            toReturn = true;
         }
-        else
-        {
-            co.UpdateOrganizedCards(Hand, 666, null);
-        }
+
+        co.UpdateOrganizedCards(Hand, 666);
+        return toReturn;
     }
 
     List<T> RemoveAndReturn<T>(List<T> list, T toRemove)
