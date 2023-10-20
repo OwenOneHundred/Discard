@@ -6,6 +6,8 @@ public class BouncingProjectile : MonoBehaviour
 {
     [Header("Assign a circlecollider2d to serve as the area to search for a target.")]
     [SerializeField] CircleCollider2D detectionRange;
+    [Header("Assign a circlecollider2d for actual collision.")]
+    [SerializeField] Collider2D actualCollider;
 
     [SerializeField] int bounces;
     [SerializeField] float turnSpeed = 1;
@@ -95,7 +97,7 @@ public class BouncingProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision == currentTarget && Vector2.Distance(transform.position, collision.transform.position) < detectionRange.bounds.extents.x / 3) // technically this is REALLY shit code, because extreme lag would cause this projectile to despawn immediately when moving toward its target, but that probably wont happen
+        if (collision == currentTarget && actualCollider.IsTouching(collision))
         {
             alreadyHit.Add(collision.gameObject);
             StartCoroutine(Bounce());

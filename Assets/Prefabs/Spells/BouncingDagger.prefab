@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRange: {fileID: 6704368683871812112}
+  actualCollider: {fileID: 765619509727818872}
   bounces: 3
   turnSpeed: 300
   speed: 15
