@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 858952111617275664}
   - component: {fileID: -8526384630713727626}
   m_Layer: 0
-  m_Name: TargetPrefab
+  m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,3 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd93cc6fe12bb4d95bc85906fe815c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultController: {fileID: 9100000, guid: 67d1602ef53694ec195c0893696a6275, type: 2}

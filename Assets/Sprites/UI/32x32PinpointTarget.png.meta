@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 58e8ae28bc5b741bd9a8ce98493456fc
+guid: 8e1f39adfb09048f9b0a16ea1188f60b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Numbers_0
+      name: 32x32PinpointTarget_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 20
-        width: 6
-        height: 8
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ccd584a6c81a43f59c6434742793131
-      internalID: 2115613438
+      spriteID: cf6319a6c0cd44620b530b3e2772b289
+      internalID: 334517954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Numbers_1
+      name: 32x32PinpointTarget_1
       rect:
         serializedVersion: 2
-        x: 21
-        y: 20
-        width: 6
-        height: 8
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9ef27a82d9b54fc8915834d81350b80
-      internalID: 196629733
+      spriteID: ffbf4ff35a34941c3af46700095539c1
+      internalID: -1756114615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Numbers_2
+      name: 32x32PinpointTarget_2
       rect:
         serializedVersion: 2
-        x: 38
-        y: 20
-        width: 5
-        height: 8
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3295dd7065e24f8f88fb7d218035e4e
-      internalID: -2022920669
+      spriteID: 4dc831a01cd8b4126965e90a8f963903
+      internalID: -404594413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Numbers_3
+      name: 32x32PinpointTarget_3
       rect:
         serializedVersion: 2
-        x: 53
-        y: 20
-        width: 6
-        height: 8
+        x: 96
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,134 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 857cf88fc6a3642eca45edf8c1cb9d43
-      internalID: 1226983572
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Numbers_4
-      rect:
-        serializedVersion: 2
-        x: 69
-        y: 20
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 90b23e42bb77b4c328d839251932a99c
-      internalID: -1814178187
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Numbers_5
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 4
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e468dc751dcd48d8899815ea13506f0
-      internalID: -1441737921
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Numbers_6
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 4
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 235305e0eb5084b39886a2745755d2f8
-      internalID: -146647620
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Numbers_7
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 4
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 552edd36e46c44bf6aa9fb8443321c7a
-      internalID: -1561340411
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Numbers_8
-      rect:
-        serializedVersion: 2
-        x: 53
-        y: 4
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d1f411e5282947bfaa9a73a63ec2d0c
-      internalID: 1575697840
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Numbers_9
-      rect:
-        serializedVersion: 2
-        x: 69
-        y: 4
-        width: 6
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1cadfd6e610404814a91190c42e11904
-      internalID: 1453460187
+      spriteID: b99b0ccc53b414ff1b2848e58ffbbea9
+      internalID: 601485519
       vertices: []
       indices: 
       edges: []
@@ -337,16 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Numbers_6: -146647620
-      Numbers_5: -1441737921
-      Numbers_7: -1561340411
-      Numbers_3: 1226983572
-      Numbers_8: 1575697840
-      Numbers_2: -2022920669
-      Numbers_4: -1814178187
-      Numbers_9: 1453460187
-      Numbers_1: 196629733
-      Numbers_0: 2115613438
+      32x32PinpointTarget_1: -1756114615
+      32x32PinpointTarget_2: -404594413
+      32x32PinpointTarget_3: 601485519
+      32x32PinpointTarget_0: 334517954
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

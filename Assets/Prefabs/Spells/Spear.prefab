@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   associatedHitbox: {fileID: 7503617895305686292}
-  damage: 50
+  damage: 50678
   knockback: 900
   KbOutInsteadOfBack: 0
   forwardIsUp: 1

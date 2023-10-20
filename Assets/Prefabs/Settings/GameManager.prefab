@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6565756605833071103}
-  - component: {fileID: 6565756605833071100}
+  - component: {fileID: 6735310317193525773}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6565756605833071100
+--- !u!114 &6735310317193525773
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,16 +41,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6565756605833071101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dee331e3462c9470d831216151037493, type: 3}
+  m_Script: {fileID: 11500000, guid: e7c5ad18e19ab4b30a7c80cb1e7504ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commonWeight: 100
-  commonCards:
-  - cardSO: {fileID: 11400000, guid: 5226f958097384a88baf5c850cfb1a6c, type: 2}
-    oddsWeight: 1
-  - cardSO: {fileID: 11400000, guid: 5e64968d848044a54ac5ec565a80c41b, type: 2}
-    oddsWeight: 1
-  uncommonWeight: 20
-  uncommonCards: []
-  rareWeight: 5
-  rareCards: []
+  numberSprites: []
+  spacing: 0.5
+  numberPrefab: {fileID: 0}

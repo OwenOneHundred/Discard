@@ -11,11 +11,24 @@ public class DamageScript : MonoBehaviour
     public Rigidbody2D rb;
     public float kbMultiplier = 1;
     public float health = 100;
+    GameObject gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager");
+    }
 
     // available to be overwritten.
-    public virtual void ReduceHealth(float damage)
+    public virtual void OnReduceHealth(float damage)
     {
         health -= damage;
+
+    }
+
+    void CalculateDamage(float damage)
+    {
+        gameManager.GetComponent<TextControl>().CreateDamageText(transform.position, Color.red, Mathf.FloorToInt(damage));
+        OnReduceHealth(damage);
     }
 
     // called by HitboxManager when this object touches a hitbox
@@ -36,7 +49,7 @@ public class DamageScript : MonoBehaviour
             TryAddSecondaryEffect(newEffect);
         }
 
-        ReduceHealth(damage);
+        CalculateDamage(damage);
         rb.AddForce(knockback * kbMultiplier);
     }
 
@@ -96,5 +109,4 @@ public class DamageScript : MonoBehaviour
         public SecondaryEffect effect;
         public float timer;
     }
-
 }

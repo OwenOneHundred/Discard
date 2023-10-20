@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class TargetScript : MonoBehaviour
 {
-    [SerializeField] Sprite defaultSprite;
+    [SerializeField] RuntimeAnimatorController defaultController;
     GameObject player;
     Card.Style style;
-    SpriteRenderer sr;
+    Animator anim;
 
     private void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         gameObject.SetActive(false);
     }
@@ -40,17 +40,17 @@ public class TargetScript : MonoBehaviour
 
 
     // do not use this yet, it doesn't actually work because it doesn't affect the animator
-    public void ChangeSprite(Card.Style newStyle, Sprite sprite)
-    {
+    public void ChangeAnimator(RuntimeAnimatorController newController, Card.Style newStyle)
+    {   
         style = newStyle;
 
-        if (sprite == null)
+        if (newController == null)
         {
-            sr.sprite = defaultSprite;
+            anim.runtimeAnimatorController = defaultController;
         }
         else
         {
-            sr.sprite = sprite;
+            anim.runtimeAnimatorController = newController;
         }
     }
 }

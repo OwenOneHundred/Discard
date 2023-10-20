@@ -14,7 +14,7 @@ public class Card : ScriptableObject
     public Style style;
 
     [Header("Leave blank for default.")]
-    public Sprite targetSprite = null;
+    public RuntimeAnimatorController targetAnimator = null;
 
     public enum Style
     {

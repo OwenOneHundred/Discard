@@ -274,7 +274,7 @@ public class HandManager : MonoBehaviour
         CardInfo cardScript = card.GetComponent<CardInfo>();
         co.UpdateOrganizedCards(Hand, 666);
         targetObject.SetActive(true);
-        ts.ChangeSprite(cardScript.scriptableObject.style, cardScript.scriptableObject.targetSprite);
+        ts.ChangeAnimator(cardScript.scriptableObject.targetAnimator, cardScript.scriptableObject.style);
     }
 
     // called when a card is released, returns if it was played
