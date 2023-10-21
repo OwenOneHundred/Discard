@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public EnemyMind enemyMind;
+
     public bool atObjective;
 
     public Transform objective;
     public Vector3 objectiveV3;
     public float speed;
+
+    //Used for Modifing speed
     //0 means no change, 1 means no speed
     private float speedModifier = 0;
     public int modifierCount = 0;
+    //1 means not frozen, 0 means frozen
+    private float isFrozen = 1;
 
     //-1-Idle, 0-South, 1-North, 2-East, 3-West
     public Transform vectorCheckPoint;
@@ -21,38 +27,52 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            PauseMove(true);
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            PauseMove(false);
+        }
+
         //Moves Enemy Object towards objective if no at it already
         if (atObjective != true && (objective != null || objectiveV3 != null))
         {
-            //Checks East direction
-            if (NodeCheck(2))
+            float modifedSpeed = speed * (1 - speedModifier) * isFrozen;
+
+            if(modifedSpeed > 0f)
             {
-                transform.position += new Vector3(0f, .001f, 0f);
-            }
-            //Checks West direction
-            else if (NodeCheck(3))
-            {
-                transform.position += new Vector3(0f, .001f, 0f);
-            }
-            //Checks South direction
-            else if (NodeCheck(0))
-            {
-                transform.position += new Vector3(.001f, 0f, 0f);
-            }
-            //Checks North direction
-            else if (NodeCheck(1))
-            {
-                transform.position += new Vector3(.001f, 0f, 0f);
-            }
-            else
-            {
-                if (objective != null)
+                //Checks East direction
+                if (NodeCheck(2))
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, objective.position, (speed * (1 - speedModifier)) * Time.deltaTime);
+                    transform.position += new Vector3(0f, .001f, 0f);
                 }
-                else if (objectiveV3 != null)
+                //Checks West direction
+                else if (NodeCheck(3))
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, objectiveV3, (speed * (1 - speedModifier)) * Time.deltaTime);
+                    transform.position += new Vector3(0f, .001f, 0f);
+                }
+                //Checks South direction
+                else if (NodeCheck(0))
+                {
+                    transform.position += new Vector3(.001f, 0f, 0f);
+                }
+                //Checks North direction
+                else if (NodeCheck(1))
+                {
+                    transform.position += new Vector3(.001f, 0f, 0f);
+                }
+                else
+                {
+                    if (objective != null)
+                    {
+                        transform.position = Vector2.MoveTowards(transform.position, objective.position, modifedSpeed * Time.deltaTime);
+                    }
+                    else if (objectiveV3 != null)
+                    {
+                        transform.position = Vector2.MoveTowards(transform.position, objectiveV3, modifedSpeed * Time.deltaTime);
+                    }
                 }
             }
         }
@@ -123,8 +143,19 @@ public class EnemyMovement : MonoBehaviour
     }
 
     //Pause enemy movment, enemy attack and enemy image
-    public void PauseMove()
+    public void PauseMove(bool toFreeze)
     {
-
+        //Needs to Freeze
+        if(toFreeze)
+        {
+            isFrozen = 0.0f;
+            enemyMind.Freeze(false);
+        }
+        //Needs to Unfreeze
+        else
+        {
+            isFrozen = 1.0f;
+            enemyMind.Freeze(true);
+        }
     }
 }

@@ -2721,7 +2721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1071921578
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4387,11 +4387,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd73badba6f8482f8cc1b49650ee7ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyMind: {fileID: 0}
   atObjective: 1
   objective: {fileID: 0}
   objectiveV3: {x: 0, y: 0, z: 0}
   speed: 2.5
-  modiferCount: 0
+  modifierCount: 0
   vectorCheckPoint: {fileID: 1232461852}
   barrierMask:
     serializedVersion: 2
