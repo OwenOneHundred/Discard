@@ -9,6 +9,7 @@ TagManager:
   - TallGrass
   - FirePS
   - InactivePS
+  - Barrier
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Barrier
   - 
   - 
   - 

@@ -9,18 +9,20 @@ public class EnemyMovement : MonoBehaviour
     public Transform objective;
     public Vector3 objectiveV3;
     public float speed;
+    //0 means no change, 1 means no speed
+    private float speedModifer = 0;
+    public int modiferCount = 0;
 
     //-1-Idle, 0-South, 1-North, 2-East, 3-West
     public Transform vectorCheckPoint;
     public LayerMask barrierMask;
     public float distanceToBarrierCheck;
 
-
     // Update is called once per frame
     void Update()
     {
         //Moves Enemy Object towards objective if no at it already
-        if(atObjective != true && (objective != null || objectiveV3 != null))
+        if (atObjective != true && (objective != null || objectiveV3 != null))
         {
             //Checks East direction
             if (NodeCheck(2))
@@ -46,11 +48,11 @@ public class EnemyMovement : MonoBehaviour
             {
                 if (objective != null)
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, objective.position, speed * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, objective.position, (speed * (1 - speedModifer)) * Time.deltaTime);
                 }
                 else if (objectiveV3 != null)
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, objectiveV3, speed * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, objectiveV3, (speed * (1 - speedModifer)) * Time.deltaTime);
                 }
             }
         }
@@ -101,5 +103,22 @@ public class EnemyMovement : MonoBehaviour
         }
 
         return false;
+    }
+
+    //Increases or deceases
+    //A postive value makes it faster, a negativ eone makes it slower
+    public void ChangeSpeedModifer(float speedModChange)
+    {
+        speedModifer = speedModifer + speedModChange;
+        speedModifer = Mathf.Clamp(speedModifer, 0f, 1f);
+
+        if(speedModChange > 0)
+        {
+            modiferCount++;
+        }
+        else
+        {
+            modiferCount--;
+        }
     }
 }
