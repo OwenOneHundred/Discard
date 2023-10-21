@@ -10,14 +10,14 @@ public class SlowScript : SecondaryEffect
 
     public override void OnApply(GameObject enemy)
     {
-        enemy.GetComponent<EnemyMovement>().ChangeSpeedModifer(decreaseMultiplier);
+        enemy.GetComponent<EnemyMovement>().ChangeSpeedModifier(decreaseMultiplier);
 
         TryAddPS(enemy, psPrefab);
     }
 
     public override void OnEnd(GameObject enemy)
     {
-        enemy.GetComponent<EnemyMovement>().ChangeSpeedModifer(-decreaseMultiplier);
+        enemy.GetComponent<EnemyMovement>().ChangeSpeedModifier(-decreaseMultiplier);
 
         TryRemovePS(enemy, psPrefab);
     }

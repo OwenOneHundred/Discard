@@ -107,7 +107,7 @@ public class EnemyMovement : MonoBehaviour
 
     //Increases or deceases
     //A postive value makes it faster, a negativ eone makes it slower
-    public void ChangeSpeedModifer(float speedModChange)
+    public void ChangeSpeedModifier(float speedModChange)
     {
         speedModifer = speedModifer + speedModChange;
         speedModifer = Mathf.Clamp(speedModifer, 0f, 1f);
