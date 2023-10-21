@@ -21,6 +21,8 @@ public class HitboxManager : MonoBehaviour
     [SerializeField] GameObject onHitPS;
     [SerializeField] bool canHitMultipleTimes = false;
 
+    public int hitboxNumber = 0;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out DamageScript damageScript))
@@ -32,7 +34,7 @@ public class HitboxManager : MonoBehaviour
                 Instantiate(onHitPS, transform.position, Quaternion.identity);
             }
 
-            damageScript.OnHit(secondaryEffects, damage, CalculateKB(collision.transform.position), style, gameObject);
+            damageScript.Hit(secondaryEffects, damage, CalculateKB(collision.transform.position), style, gameObject, hitboxNumber, canHitMultipleTimes);
         }
     }
 
@@ -46,6 +48,11 @@ public class HitboxManager : MonoBehaviour
         {
             return forwardIsUp ? transform.up * knockback : Vector3.right * knockback;
         }
+    }
+
+    public void RefreshHitbox()
+    {
+        hitboxNumber += 1;
     }
 
     public enum DamageType

@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1270966957
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 1684895903, guid: 22d4321d54b47403f83cca344e6b20dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -121,14 +121,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   associatedHitbox: {fileID: 6170559650814537853}
   damage: 80
-  knockback: 5000
+  knockback: 1500
   KbOutInsteadOfBack: 1
   forwardIsUp: 0
   style: 1
   damageType: 2
   secondaryEffects: []
   onHitPS: {fileID: 0}
-  canHitMultipleTimes: 0
+  canHitMultipleTimes: 1
+  hitboxNumber: 0
 --- !u!58 &6170559650814537853
 CircleCollider2D:
   m_ObjectHideFlags: 0

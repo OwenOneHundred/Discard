@@ -7,7 +7,7 @@ using System.Linq;
 public class DamageScript : MonoBehaviour
 {
     public List<SecondaryEffectInfo> seInfo = new List<SecondaryEffectInfo>();
-    List<GameObject> alreadyHit = new List<GameObject>();
+    List<Pair<GameObject, int>> alreadyHit = new List<Pair<GameObject, int>>();
     public Rigidbody2D rb;
     public float kbMultiplier = 1;
     public float health = 100;
@@ -32,17 +32,34 @@ public class DamageScript : MonoBehaviour
     }
 
     // called by HitboxManager when this object touches a hitbox
-    public void OnHit(List<SecondaryEffect> newEffects, float damage, Vector3 knockback, Card.Style cardStyle, GameObject attacker)
+    public void Hit(List<SecondaryEffect> newEffects, float damage, Vector3 knockback, Card.Style cardStyle, GameObject attacker, int hitboxNum, bool ignoreAlreadyHit = false)
     {
-        // if already hit by this hurtbox, return
-        if (alreadyHit.Contains(attacker)) { return; }
+        if (!ignoreAlreadyHit)
+        {
+            // if already hit by this hurtbox and number, return
+            var existing = alreadyHit.Find(x => x.left == attacker);
+            if (existing != null) // if already hit by this hitbox
+            {
+                Debug.Log("existing num: " + existing.right + "   vs   hitbox num: " + hitboxNum);
+                if (existing.right == hitboxNum) // if same number
+                {
+                    return;
+                }
+                existing.right = hitboxNum; // otherwise set number to new number and continue
+            }
+            else
+            {
+                // add hitbox to already hit list
+                if (attacker != null)
+                {
+                    alreadyHit.Add(new Pair<GameObject, int>(attacker, hitboxNum));
+                }
+            }
+        }
 
         // check list and remove if null (for storage reasons)
-        List<GameObject> temp = alreadyHit.Where(x => x == null).ToList();
-        foreach (GameObject toRemove in temp) { alreadyHit.Remove(toRemove); }
-
-        // add hitbox to already hit list
-        alreadyHit.Add(attacker);
+        List<Pair<GameObject, int>> temp = alreadyHit.Where(x => x.left == null).ToList();
+        foreach (Pair<GameObject, int> toRemove in temp) { alreadyHit.Remove(toRemove); }
 
         foreach (SecondaryEffect newEffect in newEffects)
         {
@@ -81,7 +98,9 @@ public class DamageScript : MonoBehaviour
         List<SecondaryEffectInfo> seCopy = new List<SecondaryEffectInfo>(seInfo);
         foreach (SecondaryEffectInfo info in seCopy)
         {
-            info.effect.EveryFrame(gameObject);
+            // reduce health by value returned by EveryFrame
+            health -= info.effect.EveryFrame(gameObject);
+
             if (info.timer <= 0)
             {
                 info.effect.OnEnd(gameObject);

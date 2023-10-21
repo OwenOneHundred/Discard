@@ -124,7 +124,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8479106365273919969}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -188,6 +188,7 @@ MonoBehaviour:
     swingDegrees: 45
     endPauseTime: 0.1
     swingOutwardMovement: {x: 1, y: 6}
+    refreshHitbox: 0
   - swingDirection1orNeg1: -1
     windUpTime: 0
     windUpDegrees: 0
@@ -195,6 +196,7 @@ MonoBehaviour:
     swingDegrees: 45
     endPauseTime: 0.1
     swingOutwardMovement: {x: 1, y: 6}
+    refreshHitbox: 1
   - swingDirection1orNeg1: 1
     windUpTime: 0
     windUpDegrees: 0
@@ -202,8 +204,10 @@ MonoBehaviour:
     swingDegrees: 20
     endPauseTime: 0.4
     swingOutwardMovement: {x: 1, y: 10}
+    refreshHitbox: 1
   endEffect: {fileID: 1034927117136786302, guid: 1b99798f397984c2ba8198350b96ed3a, type: 3}
   hitbox: {fileID: 7503617895305686292}
+  hitboxManager: {fileID: 2233135273802000978}
 --- !u!114 &2233135273802000978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   associatedHitbox: {fileID: 7503617895305686292}
-  damage: 50678
+  damage: 100
   knockback: 900
   KbOutInsteadOfBack: 0
   forwardIsUp: 1
@@ -225,7 +229,8 @@ MonoBehaviour:
   damageType: 2
   secondaryEffects: []
   onHitPS: {fileID: 0}
-  canHitMultipleTimes: 1
+  canHitMultipleTimes: 0
+  hitboxNumber: 0
 --- !u!50 &1718018915930393063
 Rigidbody2D:
   serializedVersion: 4

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class TextControl : MonoBehaviour
@@ -29,16 +30,18 @@ public class TextControl : MonoBehaviour
             for (int i = 0; i < number.ToString().Length; i++)
             {
                 int order = IndexToOrder(i, stringVer.Length);
-                Instantiate(numberPrefab, position + new Vector2(spacing * (order + (order < 0 ? 0.5f : -0.5f)), 0), Quaternion.identity, newParent.transform)
-                    .GetComponent<SpriteRenderer>().sprite = sprites[i];
+                GameObject newNumber = Instantiate(numberPrefab, position + new Vector2(spacing * (order + (order < 0 ? 0.5f : -0.5f)), 0), Quaternion.identity, newParent.transform);
+                newNumber.GetComponent<SpriteRenderer>().sprite = sprites[i];
+                newNumber.GetComponent<SpriteRenderer>().color = color;
             }
         }
         else
         {
             for (int i = 0; i < number.ToString().Length; i++)
             {
-                Instantiate(numberPrefab, position + new Vector2(spacing * IndexToOrder(i, stringVer.Length), 0), Quaternion.identity, newParent.transform)
-                    .GetComponent<SpriteRenderer>().sprite = sprites[i];
+                GameObject newNumber = Instantiate(numberPrefab, position + new Vector2(spacing * IndexToOrder(i, stringVer.Length), 0), Quaternion.identity, newParent.transform);
+                newNumber.GetComponent<SpriteRenderer>().sprite = sprites[i];
+                newNumber.GetComponent<SpriteRenderer>().color = color;
             }
         }
 
