@@ -10,8 +10,8 @@ public class EnemyMovement : MonoBehaviour
     public Vector3 objectiveV3;
     public float speed;
     //0 means no change, 1 means no speed
-    private float speedModifer = 0;
-    public int modiferCount = 0;
+    private float speedModifier = 0;
+    public int modifierCount = 0;
 
     //-1-Idle, 0-South, 1-North, 2-East, 3-West
     public Transform vectorCheckPoint;
@@ -48,11 +48,11 @@ public class EnemyMovement : MonoBehaviour
             {
                 if (objective != null)
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, objective.position, (speed * (1 - speedModifer)) * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, objective.position, (speed * (1 - speedModifier)) * Time.deltaTime);
                 }
                 else if (objectiveV3 != null)
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, objectiveV3, (speed * (1 - speedModifer)) * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(transform.position, objectiveV3, (speed * (1 - speedModifier)) * Time.deltaTime);
                 }
             }
         }
@@ -109,16 +109,22 @@ public class EnemyMovement : MonoBehaviour
     //A postive value makes it faster, a negativ eone makes it slower
     public void ChangeSpeedModifier(float speedModChange)
     {
-        speedModifer = speedModifer + speedModChange;
-        speedModifer = Mathf.Clamp(speedModifer, 0f, 1f);
+        speedModifier = speedModifier + speedModChange;
+        speedModifier = Mathf.Clamp(speedModifier, 0f, 1f);
 
         if(speedModChange > 0)
         {
-            modiferCount++;
+            modifierCount++;
         }
         else
         {
-            modiferCount--;
+            modifierCount--;
         }
+    }
+
+    //Pause enemy movment, enemy attack and enemy image
+    public void PauseMove()
+    {
+
     }
 }
