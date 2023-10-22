@@ -39,8 +39,8 @@ public class PauseMenu : MonoBehaviour
    {
     if (Input.GetKeyDown(KeyCode.Escape))
     {
-
-     Debug.Log("esc was pressed");
+        Pause();
+         Debug.Log("esc was pressed");
     
     }
    }
