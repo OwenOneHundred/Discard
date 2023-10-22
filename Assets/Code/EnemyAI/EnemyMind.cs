@@ -200,6 +200,6 @@ public class EnemyMind : MonoBehaviour
         //Disable Atatcks
         enemyGun.enabled = isFrozen;
         //Disables Anim
-        enemyImager.enabled = isFrozen;
+        enemyImager.canAnimate = isFrozen;
     }
 }

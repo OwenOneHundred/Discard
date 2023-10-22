@@ -12,6 +12,9 @@ public class EnemyImager : MonoBehaviour
         public Vector3 targetVector;
     }
 
+    //if false does not animate items, exludes death anim 
+    public bool canAnimate;
+
     //Info to determine anim
     //-1-Idle, 0-South, 1-North, 2-East, 3-West
     public int direction = -1;
@@ -50,26 +53,30 @@ public class EnemyImager : MonoBehaviour
             currentAnim = 3;
             AnimateDeath();
         }
-        else if (isAttacking == true && (isAnimDone == true || currentAnim == 2))
+
+        if(canAnimate && isDead == false)
         {
-            currentAnim = 2;
-            AnimateAttack();
-        }
-        /*else if ((isMoving == true && isAnimDone == true) || currentAnim == 1)
-        {
-            currentAnim = 1;
-            AnimateWalk();
-        }*/
-        else if(isMoving == true)
-        {
-            AnimateWalk();
-        }
-        //If not the other options then must by idle
-        else
-        {
-            currentAnim = 0;
-            AnimateIdle();
-            isAnimDone = true;
+            if (isAttacking == true && (isAnimDone == true || currentAnim == 2))
+            {
+                currentAnim = 2;
+                AnimateAttack();
+            }
+            /*else if ((isMoving == true && isAnimDone == true) || currentAnim == 1)
+            {
+                currentAnim = 1;
+                AnimateWalk();
+            }*/
+            else if (isMoving == true)
+            {
+                AnimateWalk();
+            }
+            //If not the other options then must by idle
+            else
+            {
+                currentAnim = 0;
+                AnimateIdle();
+                isAnimDone = true;
+            }
         }
     }
 

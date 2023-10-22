@@ -18,6 +18,8 @@ public class EnemyMovement : MonoBehaviour
     public int modifierCount = 0;
     //1 means not frozen, 0 means frozen
     private float isFrozen = 1;
+    private int frozenCount;
+    public SpriteRenderer enemyImageRenderer;
 
     //-1-Idle, 0-South, 1-North, 2-East, 3-West
     public Transform vectorCheckPoint;
@@ -149,13 +151,22 @@ public class EnemyMovement : MonoBehaviour
         if(toFreeze)
         {
             isFrozen = 0.0f;
+            frozenCount++;
             enemyMind.Freeze(false);
+            enemyImageRenderer.color = new Color(.5f, 1f, 1f, 1f);
+        }
+        //If enemy has been frozen multiple times
+        else if(frozenCount > 1)
+        {
+            frozenCount--;
         }
         //Needs to Unfreeze
         else
         {
+            frozenCount--;
             isFrozen = 1.0f;
             enemyMind.Freeze(true);
+            enemyImageRenderer.color = new Color(1f, 1f, 1f, 1f);
         }
     }
 }

@@ -4392,7 +4392,8 @@ MonoBehaviour:
   objective: {fileID: 0}
   objectiveV3: {x: 0, y: 0, z: 0}
   speed: 2.5
-  modifierCount: 0
+  modifierCount: -549
+  enemyImageRenderer: {fileID: 1300449816}
   vectorCheckPoint: {fileID: 1232461852}
   barrierMask:
     serializedVersion: 2
@@ -4477,6 +4478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e019bf2162a14817aa410835445b3f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canAnimate: 1
   direction: 0
   isDead: 0
   isMoving: 0
