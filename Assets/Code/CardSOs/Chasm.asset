@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Chasm
   m_EditorClassIdentifier: 
   name: Chasm
-  description: Open a chasm ending in a large explosion. Deals 50 damage.
+  description: Open a chasm ending in a large explosion. Deals # damage.
   art: {fileID: 21300000, guid: 2c4b2551e03cc4276908747113e5da4c, type: 3}
   cost: 2
   attackPrefab: {fileID: 5538728013179822623, guid: 0f026fe26d574497ea8ed2cf925e1347, type: 3}
   style: 0
-  damage: 50
+  damageType: 2
+  baseDamage: 500
   targetAnimator: {fileID: 0}
   castFunctions:
   - {fileID: 11400000, guid: ae97e4d7af94142339d26b341e4e6e21, type: 2}

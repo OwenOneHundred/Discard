@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnChainlightning : MonoBehaviour
 {
-    [SerializeField] float damage = 10;
+    [SerializeField] float damage = 20;
 
     [SerializeField] int maxConnections;
     [SerializeField] float connectionRange = 5;

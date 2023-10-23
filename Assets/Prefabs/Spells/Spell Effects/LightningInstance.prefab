@@ -45,3 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lrPrefab: {fileID: 3882198150029979958, guid: a540f5f8e40fb4d8596b61cecc208127, type: 3}
+  secondaryEffects:
+  - {fileID: 11400000, guid: 384831997ed51478dbd88a8747b6fb08, type: 2}

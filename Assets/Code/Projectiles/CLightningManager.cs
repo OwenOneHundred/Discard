@@ -8,6 +8,7 @@ public class CLightningManager : MonoBehaviour
     Transform previousEnemy;
 
     [SerializeField] GameObject lrPrefab;
+    [SerializeField] List<SecondaryEffect> secondaryEffects;
 
     float damage = 10;
     int maxConnections;
@@ -35,7 +36,7 @@ public class CLightningManager : MonoBehaviour
 
             alreadyHit.Add(closestEnemy);
 
-            closestEnemy.GetComponent<DamageScript>().Hit(null, damage, Vector3.zero, BuffManager.Style.None, null, 0, false);
+            closestEnemy.GetComponent<DamageScript>().Hit(secondaryEffects, damage, Vector3.zero, BuffManager.Style.None, null, 0, false);
 
             LineRenderer lightningLine = Instantiate(lrPrefab).GetComponent<LineRenderer>();
             lightningLine.positionCount = 2;

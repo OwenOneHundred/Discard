@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: TimeBomb
   m_EditorClassIdentifier: 
   name: Time Bomb
-  description: Launch a time bomb that explodes after three seconds. Deals 35 damage.
+  description: Launch a time bomb that explodes after 3 seconds. Deals # damage.
   art: {fileID: 21300000, guid: be503963781024486aa93afc5e0794c4, type: 3}
   cost: 1
   attackPrefab: {fileID: 9156236940424832399, guid: 2c8322f1f9dd349c0b9ef789b48585cb, type: 3}
   style: 0
-  damage: 35
+  damageType: 2
+  baseDamage: 375
   targetAnimator: {fileID: 0}
   castFunctions:
   - {fileID: 11400000, guid: 4b24f5fd065f241698a4d8947d2f4456, type: 2}
