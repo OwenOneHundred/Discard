@@ -40,6 +40,7 @@ public class EnemyMind : MonoBehaviour
         enemyInfo = this.gameObject.GetComponent<EnemyInfo>();
 
         enemyMovement = this.gameObject.GetComponent<EnemyMovement>();
+        enemyMovement.enemyMind = this.gameObject.GetComponent<EnemyMind>();
         enemyMovement.atObjective = true;
         enemyMovement.objectiveV3 = idlePos;
 
@@ -191,5 +192,14 @@ public class EnemyMind : MonoBehaviour
         enemyMovement.enabled = false;
         //Disable Atatcks
         enemyGun.enabled = false;
+    }
+
+    //Freezes enemy attack and enemy imager
+    public void Freeze(bool isFrozen)
+    {
+        //Disable Atatcks
+        enemyGun.enabled = isFrozen;
+        //Disables Anim
+        enemyImager.canAnimate = isFrozen;
     }
 }
