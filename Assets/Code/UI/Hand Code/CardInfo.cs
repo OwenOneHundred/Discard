@@ -6,11 +6,44 @@ using UnityEngine.UI;
 public class CardInfo : MonoBehaviour
 {
     public Card scriptableObject;
+    BuffManager bm;
+    TMPro.TextMeshProUGUI description;
+
+    public float actualDamage = 0;
 
     private void Start()
     {
+        bm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<BuffManager>();
+        description = transform.GetChild(2).GetComponent<TMPro.TextMeshProUGUI>();
+
         transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = scriptableObject.name;
         transform.GetChild(1).GetComponent<Image>().sprite = scriptableObject.art;
-        transform.GetChild(2).GetComponent<TMPro.TextMeshProUGUI>().text = scriptableObject.description;
+
+        description.text = scriptableObject.description;
+
+        UpdateDamage();
     }
+
+    // Very important function. Sets all the damages for the hitboxes on this card. Called on card drawn in HandManager and when buff effects added or removed.
+    public void UpdateDamage()
+    {
+        if (bm == null) { bm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<BuffManager>(); }
+        if (description == null) { description = transform.GetChild(2).GetComponent<TMPro.TextMeshProUGUI>(); ; }
+
+        actualDamage = scriptableObject.baseDamage * bm.GetStyleMultiplier(scriptableObject.style) * bm.GetDamageTypeMultiplier(scriptableObject.damageType);
+
+        string text = description.text;
+        int firstIndex = text.IndexOf('#');
+        if (firstIndex == -1) { return; }
+
+        int index = firstIndex;
+        int lastIndex = index + 1;
+
+        text = text.Replace("#", (int)actualDamage + "");
+        text = text.Insert(firstIndex - 1, "<color=#" + ColorUtility.ToHtmlStringRGB(bm.GetStyleColor(scriptableObject.style)) + ">");
+        text = text.Insert(lastIndex + 14 + (actualDamage + "").Length, "</color>");
+
+        description.text = text;
+    }
+
 }

@@ -11,6 +11,7 @@ TagManager:
   - InactivePS
   - Barrier
   - SlowPS
+  - GameManager
   layers:
   - Default
   - TransparentFX

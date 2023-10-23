@@ -10,9 +10,11 @@ public class OneProjectilePerCardInHand : CastFunctionABS
     [SerializeField] float speed;
     [SerializeField] float spinSpeed;
     [SerializeField] float randomAngleChange;
+    GameObject cardSO;
 
     public override void Cast(GameObject card)
     {
+        cardSO = card;
         if (pt == null)
         {
             pt = GameObject.FindGameObjectWithTag("Player").transform;
@@ -30,6 +32,7 @@ public class OneProjectilePerCardInHand : CastFunctionABS
         for (int i = 0; i < cardCount; i++)
         {
             GameObject newShuriken = Instantiate(prefab, pt.position, pt.rotation); // GetChild(0) ???
+            SetUpObject(newShuriken, cardSO);
             Rigidbody2D projRB = newShuriken.GetComponent<Rigidbody2D>();
             Vector3 normalizedDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - pt.position).normalized;
 

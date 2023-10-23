@@ -6,22 +6,24 @@ public class HitboxManager : MonoBehaviour
 {
     [SerializeField] Collider2D associatedHitbox;
 
-    [SerializeField] float damage;
-
     [SerializeField] float knockback = 5000;
 
     [SerializeField] bool KbOutInsteadOfBack = false;
 
-    [Tooltip("For knockback, by default, forward is Vector3.right. This makes forward Vector3.up.")]
+    [Tooltip("For knockback, by default, forward is Vector3.right. Check this box to make forward Vector3.up.")]
     [SerializeField] bool forwardIsUp = false;
 
-    [SerializeField] Card.Style style;
-    [SerializeField] DamageType damageType;
+    [SerializeField] BuffManager.Style style;
+    [SerializeField] BuffManager.DamageType damageType;
     [SerializeField] List<SecondaryEffect> secondaryEffects;
     [SerializeField] GameObject onHitPS;
     [SerializeField] bool canHitMultipleTimes = false;
 
     public int hitboxNumber = 0;
+
+    [Header("These are for special cases. \n Damage is usually set according to the damage in CardSO unless unique damage is checked.")]
+    public bool uniqueDamage = false;
+    public float damage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -53,10 +55,5 @@ public class HitboxManager : MonoBehaviour
     public void RefreshHitbox()
     {
         hitboxNumber += 1;
-    }
-
-    public enum DamageType
-    {
-        Explosion, Lightning, None
     }
 }

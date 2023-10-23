@@ -6,7 +6,7 @@ public class TargetScript : MonoBehaviour
 {
     [SerializeField] RuntimeAnimatorController defaultController;
     GameObject player;
-    Card.Style style;
+    BuffManager.Style style;
     Animator anim;
 
     private void Start()
@@ -20,16 +20,16 @@ public class TargetScript : MonoBehaviour
     {
         switch (style)
         {
-            case Card.Style.launch:
+            case BuffManager.Style.launch:
                 transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
                 break;
-            case Card.Style.homing:
+            case BuffManager.Style.homing:
                 transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
                 break;
-            case Card.Style.melee:
+            case BuffManager.Style.melee:
                 transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
                 break;
-            case Card.Style.pinpoint:
+            case BuffManager.Style.pinpoint:
                 transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + new Vector3(0, 0, 10);
                 break;
             default:
@@ -40,7 +40,7 @@ public class TargetScript : MonoBehaviour
 
 
     // do not use this yet, it doesn't actually work because it doesn't affect the animator
-    public void ChangeAnimator(RuntimeAnimatorController newController, Card.Style newStyle)
+    public void ChangeAnimator(RuntimeAnimatorController newController, BuffManager.Style newStyle)
     {   
         style = newStyle;
 

@@ -15,6 +15,7 @@ public class PinpointObject : CastFunctionABS
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         GameObject obj = Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab, new Vector3(mousePos.x, mousePos.y, 0), Quaternion.identity);
+        SetUpObject(obj, card);
 
         if (destroyTime != 0)
         {

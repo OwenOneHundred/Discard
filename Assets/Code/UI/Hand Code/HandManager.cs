@@ -151,6 +151,7 @@ public class HandManager : MonoBehaviour
         {
             card.GetComponent<RectTransform>().anchoredPosition = new Vector3(-130, 0, 0);
             card.transform.localScale = new Vector3(0.25f, 0.25f, 1);
+            card.GetComponent<CardInfo>().UpdateDamage();
         }
     }
 

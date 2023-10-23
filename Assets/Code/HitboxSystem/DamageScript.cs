@@ -25,14 +25,15 @@ public class DamageScript : MonoBehaviour
 
     }
 
-    void CalculateDamage(float damage)
+    void DealDamage(float damage)
     {
         gameManager.GetComponent<TextControl>().CreateDamageText(transform.position, Color.red, Mathf.FloorToInt(damage));
         OnReduceHealth(damage);
     }
 
     // called by HitboxManager when this object touches a hitbox
-    public void Hit(List<SecondaryEffect> newEffects, float damage, Vector3 knockback, Card.Style cardStyle, GameObject attacker, int hitboxNum, bool ignoreAlreadyHit = false)
+    // returns if the hit was registered or ignored
+    public bool Hit(List<SecondaryEffect> newEffects, float damage, Vector3 knockback, BuffManager.Style cardStyle, GameObject attacker, int hitboxNum, bool ignoreAlreadyHit = false)
     {
         if (!ignoreAlreadyHit)
         {
@@ -40,10 +41,9 @@ public class DamageScript : MonoBehaviour
             var existing = alreadyHit.Find(x => x.left == attacker);
             if (existing != null) // if already hit by this hitbox
             {
-                Debug.Log("existing num: " + existing.right + "   vs   hitbox num: " + hitboxNum);
                 if (existing.right == hitboxNum) // if same number
                 {
-                    return;
+                    return false;
                 }
                 existing.right = hitboxNum; // otherwise set number to new number and continue
             }
@@ -61,13 +61,17 @@ public class DamageScript : MonoBehaviour
         List<Pair<GameObject, int>> temp = alreadyHit.Where(x => x.left == null).ToList();
         foreach (Pair<GameObject, int> toRemove in temp) { alreadyHit.Remove(toRemove); }
 
-        foreach (SecondaryEffect newEffect in newEffects)
+        if (newEffects != null)
         {
-            TryAddSecondaryEffect(newEffect);
+            foreach (SecondaryEffect newEffect in newEffects)
+            {
+                TryAddSecondaryEffect(newEffect);
+            }
         }
 
-        CalculateDamage(damage);
+        DealDamage(damage);
         rb.AddForce(knockback * kbMultiplier);
+        return true;
     }
 
     // called by OnHit when a secondary effect is added. Doesn't add the effect if there's an existing effect with more 

@@ -15,6 +15,7 @@ public class SpawnObject : CastFunctionABS
         }
 
         GameObject obj = Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab, pt.position, Quaternion.identity);
+        SetUpObject(obj, card);
         if (pointTowardMouse)
         {
             Vector3 normalizedDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - pt.position).normalized;

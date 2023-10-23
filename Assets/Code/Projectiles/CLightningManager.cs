@@ -3,37 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class ChainLightning : MonoBehaviour
+public class CLightningManager : MonoBehaviour
 {
-    [SerializeField] int maxTriggers = 1;
-    int triggerCount = 0;
-
-    [SerializeField] int maxConnections;
-    [SerializeField] float connectionRange = 5;
-    List<GameObject> alreadyHit;
-    [SerializeField] float damage = 10;
-
     Transform previousEnemy;
 
-   [SerializeField] GameObject lrPrefab;
+    [SerializeField] GameObject lrPrefab;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    float damage = 10;
+    int maxConnections;
+    float connectionRange = 5;
+
+    List<GameObject> alreadyHit = new List<GameObject>();
+
+    public void OnStart(float damage1, int maxConnections1, float connectionRange1, GameObject initialCollision)
     {
-        if (!collision.CompareTag("Enemy") || triggerCount >= maxTriggers || alreadyHit.Contains(collision.gameObject))
-        {
-            return;
-        }
-
-        maxTriggers += 1;
-
-        previousEnemy = collision.transform;
+        damage = damage1; maxConnections = maxConnections1; connectionRange = connectionRange1;
+        alreadyHit.Add(initialCollision);
+        previousEnemy = initialCollision.transform;
         StartCoroutine(Lightning());
     }
 
     IEnumerator Lightning()
     {
+        yield return new WaitForSeconds(0.2f);
         int connections = 0;
-        while(connections < connectionRange)
+        while(connections < maxConnections)
         {
             GameObject closestEnemy = GetClosestNewEnemy(connectionRange);
 
@@ -41,16 +35,22 @@ public class ChainLightning : MonoBehaviour
 
             alreadyHit.Add(closestEnemy);
 
-            closestEnemy.GetComponent<DamageScript>().Hit(null, damage, Vector3.zero, Card.Style.None, null, 0, false);
+            closestEnemy.GetComponent<DamageScript>().Hit(null, damage, Vector3.zero, BuffManager.Style.None, null, 0, false);
 
             LineRenderer lightningLine = Instantiate(lrPrefab).GetComponent<LineRenderer>();
             lightningLine.positionCount = 2;
             lightningLine.SetPosition(0, previousEnemy.position);
-            lightningLine.SetPosition(0, closestEnemy.transform.position);
-            Destroy(lightningLine.gameObject, 2);
+            lightningLine.SetPosition(1, closestEnemy.transform.position);
+            Destroy(lightningLine.gameObject, 0.2f);
 
-            yield return new WaitForSeconds(1);
+            previousEnemy = closestEnemy.transform;
+
+            connections += 1;
+
+            yield return new WaitForSeconds(0.2f);
         }
+
+        Destroy(gameObject);
     }
 
     GameObject GetClosestNewEnemy(float range = 99999)
