@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f263f9a9b3746beb1ec88869148a7c, type: 3}
   m_Name: Freeze0.5Sec
   m_EditorClassIdentifier: 
-  effectType: 0
-  time: 5
+  effectType: 2
+  time: 0.5

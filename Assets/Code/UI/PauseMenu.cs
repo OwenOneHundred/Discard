@@ -7,42 +7,45 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject _pauseMenu;
+    bool paused = false;
     
-   public void StartGame()
-   {
-    SceneManager.LoadScene(1);
-   }
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
     
     public void QuitGame()
     {
         Application.Quit();
     }
 
-    
-
-   public void Pause()
-   {
-    Time.timeScale = 0f;
-    _pauseMenu.SetActive(true);
-  
-   }
-
-
-   public void ResumeButton()
-   {
-    Time.timeScale = 1.0f;
-    _pauseMenu.SetActive(false);
-
-   }
-
-   public void Update()
-   {
-    if (Input.GetKeyDown(KeyCode.Escape))
+    public void Pause()
     {
-        Pause();
-         Debug.Log("esc was pressed");
-    
+        Time.timeScale = 0f;
+        _pauseMenu.SetActive(true);
+        paused = true;
     }
-   }
+
+    public void ResumeButton()
+    {
+        Time.timeScale = 1.0f;
+        _pauseMenu.SetActive(false);
+        paused = false;
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (paused)
+            {
+                ResumeButton();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
 
 }
