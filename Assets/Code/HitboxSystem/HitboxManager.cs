@@ -15,7 +15,7 @@ public class HitboxManager : MonoBehaviour
 
     [SerializeField] BuffManager.Style style;
     [SerializeField] BuffManager.DamageType damageType;
-    [SerializeField] List<SecondaryEffect> secondaryEffects;
+    [SerializeField] List<StatusEffect> secondaryEffects;
     [SerializeField] GameObject onHitPS;
     [SerializeField] bool canHitMultipleTimes = false;
 

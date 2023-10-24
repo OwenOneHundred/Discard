@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Movement Stuff
     private Rigidbody2D rb;
-    private Vector2 movement;
+    public Vector2 movement;
 
     // Start is called before the first frame update
     void Start()

@@ -8,7 +8,7 @@ public class CLightningManager : MonoBehaviour
     Transform previousEnemy;
 
     [SerializeField] GameObject lrPrefab;
-    [SerializeField] List<SecondaryEffect> secondaryEffects;
+    [SerializeField] List<StatusEffect> secondaryEffects;
 
     float damage = 10;
     int maxConnections;

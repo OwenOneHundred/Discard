@@ -7,19 +7,19 @@ public class CardInfo : MonoBehaviour
 {
     public Card scriptableObject;
     BuffManager bm;
-    TMPro.TextMeshProUGUI description;
+    TMPro.TextMeshProUGUI tmpro;
 
     public float actualDamage = 0;
 
     private void Start()
     {
         bm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<BuffManager>();
-        description = transform.GetChild(2).GetComponent<TMPro.TextMeshProUGUI>();
+        tmpro = transform.GetChild(2).GetComponent<TMPro.TextMeshProUGUI>();
 
         transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = scriptableObject.name;
         transform.GetChild(1).GetComponent<Image>().sprite = scriptableObject.art;
 
-        description.text = scriptableObject.description;
+        tmpro.text = scriptableObject.description;
 
         UpdateDamage();
     }
@@ -28,11 +28,11 @@ public class CardInfo : MonoBehaviour
     public void UpdateDamage()
     {
         if (bm == null) { bm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<BuffManager>(); }
-        if (description == null) { description = transform.GetChild(2).GetComponent<TMPro.TextMeshProUGUI>(); ; }
+        if (tmpro == null) { tmpro = transform.GetChild(2).GetComponent<TMPro.TextMeshProUGUI>(); ; }
 
         actualDamage = scriptableObject.baseDamage * bm.GetStyleMultiplier(scriptableObject.style) * bm.GetDamageTypeMultiplier(scriptableObject.damageType);
 
-        string text = description.text;
+        string text = scriptableObject.description;
         int firstIndex = text.IndexOf('#');
         if (firstIndex == -1) { return; }
 
@@ -43,7 +43,7 @@ public class CardInfo : MonoBehaviour
         text = text.Insert(firstIndex - 1, "<color=#" + ColorUtility.ToHtmlStringRGB(bm.GetStyleColor(scriptableObject.style)) + ">");
         text = text.Insert(lastIndex + 14 + (actualDamage + "").Length, "</color>");
 
-        description.text = text;
+        tmpro.text = text;
     }
 
 }

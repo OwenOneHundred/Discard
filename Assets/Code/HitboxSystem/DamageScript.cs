@@ -33,7 +33,7 @@ public class DamageScript : MonoBehaviour
 
     // called by HitboxManager when this object touches a hitbox
     // returns if the hit was registered or ignored
-    public bool Hit(List<SecondaryEffect> newEffects, float damage, Vector3 knockback, BuffManager.Style cardStyle, GameObject attacker, int hitboxNum, bool ignoreAlreadyHit = false)
+    public bool Hit(List<StatusEffect> newEffects, float damage, Vector3 knockback, BuffManager.Style cardStyle, GameObject attacker, int hitboxNum, bool ignoreAlreadyHit = false)
     {
         if (!ignoreAlreadyHit)
         {
@@ -63,7 +63,7 @@ public class DamageScript : MonoBehaviour
 
         if (newEffects != null)
         {
-            foreach (SecondaryEffect newEffect in newEffects)
+            foreach (StatusEffect newEffect in newEffects)
             {
                 TryAddSecondaryEffect(newEffect);
             }
@@ -75,7 +75,7 @@ public class DamageScript : MonoBehaviour
     }
 
     // called by OnHit when a secondary effect is added. Doesn't add the effect if there's an existing effect with more 
-    protected bool TryAddSecondaryEffect(SecondaryEffect newEffect)
+    protected bool TryAddSecondaryEffect(StatusEffect newEffect)
     {
         SecondaryEffectInfo existingSEInfo = seInfo.Find(x => x.effect == newEffect);
         if (existingSEInfo == null)
@@ -86,7 +86,7 @@ public class DamageScript : MonoBehaviour
         }
 
         // if tried applying effect but effect already existed, if timer is longer on new version, apply new version
-        SecondaryEffect existingEffect = existingSEInfo.effect;
+        StatusEffect existingEffect = existingSEInfo.effect;
         if (existingSEInfo.timer < newEffect.time)
         {
             existingSEInfo.timer = newEffect.time;
@@ -124,12 +124,12 @@ public class DamageScript : MonoBehaviour
     [System.Serializable]
     public class SecondaryEffectInfo
     {
-        public SecondaryEffectInfo(SecondaryEffect effect1, float timer1)
+        public SecondaryEffectInfo(StatusEffect effect1, float timer1)
         {
             effect = effect1; timer = timer1;
         }
 
-        public SecondaryEffect effect;
+        public StatusEffect effect;
         public float timer;
     }
 }

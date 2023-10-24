@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "SecondaryEffects/Slow")]
-public class SlowScript : SecondaryEffect
+public class SlowScript : StatusEffect
 {
     [SerializeField] GameObject psPrefab;
     [SerializeField] float decreaseMultiplier;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "SecondaryEffects/Fire")]
-public class FireScript : SecondaryEffect
+public class FireScript : StatusEffect
 {
     [SerializeField] GameObject psPrefab;
     [SerializeField] float damagePerSecond = 5;

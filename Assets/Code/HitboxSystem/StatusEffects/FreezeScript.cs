@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "SecondaryEffects/Freeze")]
-public class FreezeScript : SecondaryEffect
+public class FreezeScript : StatusEffect
 {
     public override void OnApply(GameObject enemy)
     {
