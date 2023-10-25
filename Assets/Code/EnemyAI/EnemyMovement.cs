@@ -22,14 +22,15 @@ public class EnemyMovement : MonoBehaviour
     public SpriteRenderer enemyImageRenderer;
 
     //-1-Idle, 0-South, 1-North, 2-East, 3-West
-    public Transform vectorCheckPoint;
+    private int movingAroundDir;
+    public Transform[] vectorCheckPoints;
     public LayerMask barrierMask;
     public float distanceToBarrierCheck;
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             PauseMove(true);
         }
@@ -43,37 +44,45 @@ public class EnemyMovement : MonoBehaviour
         {
             float modifedSpeed = speed * (1 - speedModifier) * isFrozen;
 
-            if(modifedSpeed > 0f)
+            if (modifedSpeed > 0f)
             {
-                //Checks East direction
-                if (NodeCheck(2))
+                //Checks if enemy is moving around
+                if (movingAroundDir != -1)
                 {
-                    transform.position += new Vector3(0f, .001f, 0f);
-                }
-                //Checks West direction
-                else if (NodeCheck(3))
-                {
-                    transform.position += new Vector3(0f, .001f, 0f);
-                }
-                //Checks South direction
-                else if (NodeCheck(0))
-                {
-                    transform.position += new Vector3(.001f, 0f, 0f);
-                }
-                //Checks North direction
-                else if (NodeCheck(1))
-                {
-                    transform.position += new Vector3(.001f, 0f, 0f);
+
                 }
                 else
                 {
-                    if (objective != null)
+                    //Checks East direction
+                    if (NodeCheck(2))
                     {
-                        transform.position = Vector2.MoveTowards(transform.position, objective.position, modifedSpeed * Time.deltaTime);
+                        movingAroundDir = 2;
                     }
-                    else if (objectiveV3 != null)
+                    //Checks West direction
+                    else if (NodeCheck(3))
                     {
-                        transform.position = Vector2.MoveTowards(transform.position, objectiveV3, modifedSpeed * Time.deltaTime);
+                        movingAroundDir = 3;
+                    }
+                    //Checks South direction
+                    else if (NodeCheck(0))
+                    {
+                        movingAroundDir = 0;
+                    }
+                    //Checks North direction
+                    else if (NodeCheck(1))
+                    {
+                        movingAroundDir = 3;
+                    }
+                    else
+                    {
+                        if (objective != null)
+                        {
+                            transform.position = Vector2.MoveTowards(transform.position, objective.position, modifedSpeed * Time.deltaTime);
+                        }
+                        else if (objectiveV3 != null)
+                        {
+                            transform.position = Vector2.MoveTowards(transform.position, objectiveV3, modifedSpeed * Time.deltaTime);
+                        }
                     }
                 }
             }
@@ -84,9 +93,9 @@ public class EnemyMovement : MonoBehaviour
     public bool NodeCheck(int nodeToCheck)
     {
         //South
-        if(nodeToCheck == 0)
+        if (nodeToCheck == 0)
         {
-            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoint.position, Vector2.down, distanceToBarrierCheck, barrierMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, distanceToBarrierCheck, barrierMask);
             if (hit.collider != null)
             {
                 Debug.Log("Hit South");
@@ -96,7 +105,7 @@ public class EnemyMovement : MonoBehaviour
         //North
         else if (nodeToCheck == 1)
         {
-            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoint.position, Vector2.up, distanceToBarrierCheck, barrierMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, distanceToBarrierCheck, barrierMask);
             if (hit.collider != null)
             {
                 Debug.Log("Hit North");
@@ -104,9 +113,9 @@ public class EnemyMovement : MonoBehaviour
             }
         }
         //East
-        else if(nodeToCheck == 2)
+        else if (nodeToCheck == 2)
         {
-            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoint.position, Vector2.left, distanceToBarrierCheck, barrierMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, distanceToBarrierCheck, barrierMask);
             if (hit.collider != null)
             {
                 Debug.Log("Hit East");
@@ -116,7 +125,7 @@ public class EnemyMovement : MonoBehaviour
         //West
         else if (nodeToCheck == 3)
         {
-            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoint.position, Vector2.right, distanceToBarrierCheck, barrierMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, distanceToBarrierCheck, barrierMask);
             if (hit.collider != null)
             {
                 Debug.Log("Hit West");
@@ -127,6 +136,17 @@ public class EnemyMovement : MonoBehaviour
         return false;
     }
 
+    //Moves enemy in the right dir and checks for movement done
+    //directions 
+    public void MoveAround(int direction)
+    {
+        //South Move
+        if (direction == 0)
+        {
+
+        }
+    }
+
     //Increases or deceases
     //A postive value makes it faster, a negativ eone makes it slower
     public void ChangeSpeedModifier(float speedModChange)
@@ -134,7 +154,7 @@ public class EnemyMovement : MonoBehaviour
         speedModifier = speedModifier + speedModChange;
         speedModifier = Mathf.Clamp(speedModifier, 0f, 1f);
 
-        if(speedModChange > 0)
+        if (speedModChange > 0)
         {
             modifierCount++;
         }
@@ -148,7 +168,7 @@ public class EnemyMovement : MonoBehaviour
     public void PauseMove(bool toFreeze)
     {
         //Needs to Freeze
-        if(toFreeze)
+        if (toFreeze)
         {
             isFrozen = 0.0f;
             frozenCount++;
@@ -156,7 +176,7 @@ public class EnemyMovement : MonoBehaviour
             enemyImageRenderer.color = new Color(.5f, 1f, 1f, 1f);
         }
         //If enemy has been frozen multiple times
-        else if(frozenCount > 1)
+        else if (frozenCount > 1)
         {
             frozenCount--;
         }
