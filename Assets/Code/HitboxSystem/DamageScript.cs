@@ -25,15 +25,18 @@ public class DamageScript : MonoBehaviour
 
     }
 
-    void DealDamage(float damage)
+    void DealDamage(float damage, bool doNotSpawnNumber = false)
     {
-        gameManager.GetComponent<TextControl>().CreateDamageText(transform.position, Color.red, Mathf.FloorToInt(damage));
+        if (!doNotSpawnNumber)
+        {
+            gameManager.GetComponent<TextControl>().CreateDamageText(transform.position, Color.red, Mathf.FloorToInt(damage));
+        }
         OnReduceHealth(damage);
     }
 
     // called by HitboxManager when this object touches a hitbox
     // returns if the hit was registered or ignored
-    public bool Hit(List<StatusEffect> newEffects, float damage, Vector3 knockback, BuffManager.Style cardStyle, GameObject attacker, int hitboxNum, bool ignoreAlreadyHit = false)
+    public bool Hit(float damage = 0, Vector3 knockback = default, List<StatusEffect> newEffects = null, BuffManager.Style cardStyle = BuffManager.Style.None, GameObject attacker = null, int hitboxNum = 0, bool ignoreAlreadyHit = false, bool doNotSpawnNumber = false)
     {
         if (!ignoreAlreadyHit)
         {
@@ -69,7 +72,7 @@ public class DamageScript : MonoBehaviour
             }
         }
 
-        DealDamage(damage);
+        DealDamage(damage, doNotSpawnNumber);
         rb.AddForce(knockback * kbMultiplier);
         return true;
     }
@@ -103,7 +106,11 @@ public class DamageScript : MonoBehaviour
         foreach (SecondaryEffectInfo info in seCopy)
         {
             // reduce health by value returned by EveryFrame
-            health -= info.effect.EveryFrame(gameObject);
+            float damageRecorded = info.effect.EveryFrame(gameObject);
+            if (damageRecorded > 0)
+            {
+                Hit(damage: damageRecorded, doNotSpawnNumber: true);
+            }
 
             if (info.timer <= 0)
             {

@@ -41,13 +41,13 @@ public static class WorldGenUtil
         return new Vector3Int(UnityEngine.Random.Range(-safeWorldSize, safeWorldSize), UnityEngine.Random.Range(-safeWorldSize, safeWorldSize));
     }
 
-    public static List<Vector3Int> GetSurroundingTilePositions(Vector3Int center, bool includeCenter = true, bool includeDiagonals = true)
+    public static List<Vector3Int> GetSurroundingTilePositions(Vector3Int center, bool includeCenter = true, bool includeDiagonals = true, int distance = 1)
     {
         List<Vector3Int> toReturn = new List<Vector3Int>();
 
-        for (int x = -1; x <= 1; x++)
+        for (int x = -distance; x <= distance; x++)
         {
-            for (int y = -1; y <= 1; y++)
+            for (int y = -distance; y <= distance; y++)
             {
                 if (x != 0 && y != 0 && !includeDiagonals) { continue; }
                 if (x == 0 && y == 0 && !includeCenter) { continue; }

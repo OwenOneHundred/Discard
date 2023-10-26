@@ -20,7 +20,7 @@ public class SpawnChainlightning : MonoBehaviour
         {
             return;
         }
-        if (!collision.GetComponent<DamageScript>().Hit(null, damage, Vector3.zero, BuffManager.Style.None, null, 0, false))
+        if (!collision.GetComponent<DamageScript>().Hit(damage))
         {
             return;
         }

@@ -436,6 +436,23 @@ public class WorldGenerator : MonoBehaviour
         {
             if (UnityEngine.Random.value < decorObject.spawnrate0to1)
             {
+                if (decorObject.radius > 1)
+                {
+                    bool breakbool = false;
+                    foreach (Vector3Int surroundingPos in WorldGenUtil.GetSurroundingTilePositions(location, true, true, decorObject.radius - 1))
+                    {
+                        if (doNotSpawnTiles.Contains(surroundingPos))
+                        {
+                            breakbool = true;
+                            break;
+                        }
+                    }
+                    if (breakbool)
+                    {
+                        continue;
+                    }
+                }
+
                 Instantiate(decorObject.prefab, location + new Vector3(0.5f, 0.5f), Quaternion.identity, decorObject.typeParent).tag = "DecorObj";
                 return;
             }
@@ -598,7 +615,8 @@ public class WorldGenerator : MonoBehaviour
             public string name;
             public GameObject prefab;
             public float spawnrate0to1;
-            public bool occupyTiles = true;
+            [Tooltip("Size of the object. Minimum 1.")]
+            public int radius = 1;
             [System.NonSerialized] public Transform typeParent;
         }
 

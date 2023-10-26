@@ -464,7 +464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274171822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.24, y: 0.93, z: 0}
   m_LocalScale: {x: 0.75, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2218,7 +2218,7 @@ MonoBehaviour:
   connectNotCollideTile: {fileID: 11400000, guid: fd7f54f25ecee4b36bd9ea984fa04e33, type: 2}
   worldSize: 150
   genPerFrame: 100
-  biomeSize: 400
+  biomeSize: 350
   hillSpawnAttempts: 20
   averageHillSize: 70
   biomes:
@@ -2238,43 +2238,67 @@ MonoBehaviour:
     - name: GrassTree1
       prefab: {fileID: 5617630101433742802, guid: 4ecc7fc49b9784a86951d310903213d3, type: 3}
       spawnrate0to1: 0.007
-      occupyTiles: 1
+      radius: 1
     - name: GrassTree2
       prefab: {fileID: 5617630101433742802, guid: 0bb104cbabecb4ef093522313841b13a, type: 3}
       spawnrate0to1: 0.006
-      occupyTiles: 1
+      radius: 1
     - name: BallSackRock
       prefab: {fileID: 8977054856528659909, guid: dd21b3410d7704469915740f54f7076f, type: 3}
       spawnrate0to1: 0.0005
-      occupyTiles: 1
+      radius: 1
     - name: Bush1
       prefab: {fileID: 4615869062275174336, guid: f4a8851a8fb2045d0b15a8840ceb9d0d, type: 3}
       spawnrate0to1: 0.0015
-      occupyTiles: 1
+      radius: 1
     - name: Bush2
       prefab: {fileID: 1542180046370141507, guid: 2c6976eb0e1e04bd2adabc482f563d62, type: 3}
       spawnrate0to1: 0.001
-      occupyTiles: 1
+      radius: 1
     - name: FallenTree
       prefab: {fileID: 5913711783434107695, guid: df327b4aebdcc489a98d3852598e5af3, type: 3}
       spawnrate0to1: 0.0008
-      occupyTiles: 1
+      radius: 1
     - name: MALORD
       prefab: {fileID: 4770687659313724075, guid: e759819a6d69d48eaad8c7990528a935, type: 3}
       spawnrate0to1: 0.0007
-      occupyTiles: 1
+      radius: 1
     - name: SmallRock
       prefab: {fileID: 906600181055882956, guid: 6c31f746a45da4890bf21e212efb4bc1, type: 3}
       spawnrate0to1: 0.0006
-      occupyTiles: 1
+      radius: 1
     - name: TallRock
       prefab: {fileID: 3105612825457359972, guid: 1236ffd8fac90471da3f4276225f771f, type: 3}
       spawnrate0to1: 0.0005
-      occupyTiles: 1
+      radius: 1
     - name: TreeStump
       prefab: {fileID: 1490785668773056894, guid: 6588de2ea9ed64fdd8f9998cfd625a5e, type: 3}
       spawnrate0to1: 0.0005
-      occupyTiles: 1
+      radius: 1
+    - name: BigRuin
+      prefab: {fileID: 2011909485578315447, guid: df334446f4d004497a690f63f1f1734b, type: 3}
+      spawnrate0to1: 0.00004
+      radius: 3
+    - name: TRuin
+      prefab: {fileID: 8221794481109198685, guid: a3e1c8db650d94f8eb13e66ca47a1064, type: 3}
+      spawnrate0to1: 0.00004
+      radius: 3
+    - name: Tablet1
+      prefab: {fileID: 563811140953615439, guid: 735dac2f849bd4401a2a5c3964b5c094, type: 3}
+      spawnrate0to1: 0.000008
+      radius: 2
+    - name: Tablet2
+      prefab: {fileID: 7135170262361516567, guid: d41f98164a02446f1a2b2b41c755d541, type: 3}
+      spawnrate0to1: 0.000008
+      radius: 2
+    - name: Tablet3
+      prefab: {fileID: 1721682578330368626, guid: f32a3181860654771bad08cfcec5af4f, type: 3}
+      spawnrate0to1: 0.000008
+      radius: 2
+    - name: Tablet4
+      prefab: {fileID: 2005972555472744183, guid: 1065732f8ec2c4d7db948d2a8fbd1ab8, type: 3}
+      spawnrate0to1: 0.000008
+      radius: 2
     structures: []
     tallGrass:
       tile: {fileID: 11400000, guid: 1f1f347d49fe44d318ef2df22c3a9ad7, type: 2}
@@ -2302,43 +2326,67 @@ MonoBehaviour:
     - name: GrassTree1
       prefab: {fileID: 5617630101433742802, guid: 4ecc7fc49b9784a86951d310903213d3, type: 3}
       spawnrate0to1: 0.0007
-      occupyTiles: 1
+      radius: 1
     - name: GrassTree2
       prefab: {fileID: 5617630101433742802, guid: 0bb104cbabecb4ef093522313841b13a, type: 3}
       spawnrate0to1: 0.0006
-      occupyTiles: 1
+      radius: 1
     - name: BallSackRock
       prefab: {fileID: 8977054856528659909, guid: dd21b3410d7704469915740f54f7076f, type: 3}
       spawnrate0to1: 0.0002
-      occupyTiles: 1
+      radius: 1
     - name: Bush1
       prefab: {fileID: 4615869062275174336, guid: f4a8851a8fb2045d0b15a8840ceb9d0d, type: 3}
       spawnrate0to1: 0.0002
-      occupyTiles: 1
+      radius: 1
     - name: Bush2
       prefab: {fileID: 1542180046370141507, guid: 2c6976eb0e1e04bd2adabc482f563d62, type: 3}
       spawnrate0to1: 0.0002
-      occupyTiles: 1
+      radius: 1
     - name: FallenTree
       prefab: {fileID: 5913711783434107695, guid: df327b4aebdcc489a98d3852598e5af3, type: 3}
       spawnrate0to1: 0.0001
-      occupyTiles: 1
+      radius: 1
     - name: MALORD
       prefab: {fileID: 4770687659313724075, guid: e759819a6d69d48eaad8c7990528a935, type: 3}
       spawnrate0to1: 0.00005
-      occupyTiles: 1
+      radius: 1
     - name: SmallRock
       prefab: {fileID: 906600181055882956, guid: 6c31f746a45da4890bf21e212efb4bc1, type: 3}
       spawnrate0to1: 0.0002
-      occupyTiles: 1
+      radius: 1
     - name: TallRock
       prefab: {fileID: 3105612825457359972, guid: 1236ffd8fac90471da3f4276225f771f, type: 3}
       spawnrate0to1: 0.0001
-      occupyTiles: 1
+      radius: 1
     - name: TreeStump
       prefab: {fileID: 1490785668773056894, guid: 6588de2ea9ed64fdd8f9998cfd625a5e, type: 3}
       spawnrate0to1: 0.00008
-      occupyTiles: 1
+      radius: 1
+    - name: BigRuin
+      prefab: {fileID: 2011909485578315447, guid: df334446f4d004497a690f63f1f1734b, type: 3}
+      spawnrate0to1: 0.00007
+      radius: 3
+    - name: TRuin
+      prefab: {fileID: 8221794481109198685, guid: a3e1c8db650d94f8eb13e66ca47a1064, type: 3}
+      spawnrate0to1: 0.00007
+      radius: 3
+    - name: Tablet1
+      prefab: {fileID: 563811140953615439, guid: 735dac2f849bd4401a2a5c3964b5c094, type: 3}
+      spawnrate0to1: 0.00003
+      radius: 2
+    - name: Tablet2
+      prefab: {fileID: 7135170262361516567, guid: d41f98164a02446f1a2b2b41c755d541, type: 3}
+      spawnrate0to1: 0.00003
+      radius: 2
+    - name: Tablet3
+      prefab: {fileID: 1721682578330368626, guid: f32a3181860654771bad08cfcec5af4f, type: 3}
+      spawnrate0to1: 0.00003
+      radius: 2
+    - name: Tablet4
+      prefab: {fileID: 2005972555472744183, guid: 1065732f8ec2c4d7db948d2a8fbd1ab8, type: 3}
+      spawnrate0to1: 0.00003
+      radius: 2
     structures: []
     tallGrass:
       tile: {fileID: 11400000, guid: 1f1f347d49fe44d318ef2df22c3a9ad7, type: 2}
@@ -2366,7 +2414,7 @@ MonoBehaviour:
     - name: Cactus
       prefab: {fileID: 7374663493335591726, guid: a36487ec8174445938548ada0d192313, type: 3}
       spawnrate0to1: 0.001
-      occupyTiles: 1
+      radius: 1
     structures: []
     tallGrass:
       tile: {fileID: 0}
@@ -2394,11 +2442,19 @@ MonoBehaviour:
     - name: RedTree1
       prefab: {fileID: 5617630101433742802, guid: dd6e104a5e7214a08957ca74a6b81bc1, type: 3}
       spawnrate0to1: 0.005
-      occupyTiles: 1
+      radius: 1
     - name: BigRedTree
       prefab: {fileID: 5617630101433742802, guid: b69da8a07273443b9bc45076c7edec2f, type: 3}
       spawnrate0to1: 0.005
-      occupyTiles: 1
+      radius: 1
+    - name: Crystal1
+      prefab: {fileID: 4995421881426681566, guid: 451f336551bce498d8f85e9bed74fa70, type: 3}
+      spawnrate0to1: 0.0003
+      radius: 2
+    - name: Crystal2
+      prefab: {fileID: 4961634420769152223, guid: 22aec3598511441e08972a61f5281dfd, type: 3}
+      spawnrate0to1: 0.0002
+      radius: 2
     structures: []
     tallGrass:
       tile: {fileID: 11400000, guid: 0911442672e794d8dbf5c6399d006ddc, type: 2}
@@ -2411,7 +2467,7 @@ MonoBehaviour:
       pitch: 0
       loop: 0
   Debug_DoNotSpawnObjs: 0
-  Debug_DoNotSpawnHills: 1
+  Debug_DoNotSpawnHills: 0
   Debug_DoNotSpawnStructures: 1
   Debug_DoNotSpawnSlopes: 1
   Debug_DoNotSpawnBorder: 1
@@ -2935,11 +2991,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8686770304516353431, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8686770304516353431, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8686770304705238785, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: targetObject
@@ -2947,15 +3003,15 @@ PrefabInstance:
       objectReference: {fileID: 1403739197}
     - target: {fileID: 8686770304883739857, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8686770304883739857, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8686770304883739857, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8686770305193020856, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: m_Pivot.x
@@ -3049,17 +3105,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 8686770305193020860, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8686770305478081080, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8686770305478081080, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8686770305478081080, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}

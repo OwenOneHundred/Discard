@@ -36,7 +36,7 @@ public class HitboxManager : MonoBehaviour
                 Instantiate(onHitPS, transform.position, Quaternion.identity);
             }
 
-            damageScript.Hit(secondaryEffects, damage, CalculateKB(collision.transform.position), style, gameObject, hitboxNumber, canHitMultipleTimes);
+            damageScript.Hit(damage, CalculateKB(collision.transform.position), secondaryEffects, style, gameObject, hitboxNumber, canHitMultipleTimes);
         }
     }
 
