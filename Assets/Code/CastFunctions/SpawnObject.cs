@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CardFunctions/SpawnObject")]
-public class SpawnObject : CastFunctionABS
+public class SpawnObject : CastFunctionAbstract
 {
     [SerializeField] float destroyTime;
     [SerializeField] bool pointTowardMouse = false;

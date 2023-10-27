@@ -20,11 +20,11 @@ public class Card : ScriptableObject
     [Header("Leave blank for default.")]
     public RuntimeAnimatorController targetAnimator = null;
 
-    public List<CastFunctionABS> castFunctions;
+    public List<CastFunctionAbstract> castFunctions;
 
     public void OnPlayed(GameObject card)
     {
-        foreach (CastFunctionABS func in castFunctions)
+        foreach (CastFunctionAbstract func in castFunctions)
         {
             func.Cast(card);
         }

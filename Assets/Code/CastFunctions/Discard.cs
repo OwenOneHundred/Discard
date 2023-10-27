@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CardFunctions/Discard")]
-public class Discard : CastFunctionABS
+public class Discard : CastFunctionAbstract
 {
     [SerializeField] int count = 1;
 

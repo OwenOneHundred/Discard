@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class CastFunctionABS : ScriptableObject
+public abstract class CastFunctionAbstract : ScriptableObject
 {
     public static HandManager hm;
     public static Transform pt;

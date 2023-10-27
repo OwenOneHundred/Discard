@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CardFunctions/Launch")]
-public class Launch : CastFunctionABS
+public class Launch : CastFunctionAbstract
 {
     public override void Cast(GameObject card)
         {

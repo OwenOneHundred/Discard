@@ -14,6 +14,11 @@ public class BuffManager : MonoBehaviour
         spellBuffs.Add(spellBuff);
     }
 
+    public void RemoveSpellBuff(SpellBuff spellBuff)
+    {
+        spellBuffs.Remove(spellBuff);
+    }
+
     public float GetStyleMultiplier(Style style)
     {
         float multiplier = 1;

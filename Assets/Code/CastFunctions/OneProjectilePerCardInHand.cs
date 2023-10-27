@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CardFunctions/OneProjectileForEachCardInHand")]
-public class OneProjectilePerCardInHand : CastFunctionABS
+public class OneProjectilePerCardInHand : CastFunctionAbstract
 {
     [SerializeField] float timeBetween;
     [SerializeField] GameObject prefab;

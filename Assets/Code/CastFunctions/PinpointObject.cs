@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CardFunctions/PinpointObject")]
-public class PinpointObject : CastFunctionABS
+public class PinpointObject : CastFunctionAbstract
 {
     [SerializeField] float destroyTime;
 
