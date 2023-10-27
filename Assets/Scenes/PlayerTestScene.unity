@@ -4392,9 +4392,9 @@ MonoBehaviour:
   objective: {fileID: 0}
   objectiveV3: {x: 0, y: 0, z: 0}
   speed: 2.5
-  modifierCount: -549
+  modifierCount: 0
   enemyImageRenderer: {fileID: 1300449816}
-  vectorCheckPoint: {fileID: 1232461852}
+  vectorCheckPoints: []
   barrierMask:
     serializedVersion: 2
     m_Bits: 64
