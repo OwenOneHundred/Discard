@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CardFunctions/Draw")]
-public class Draw : CastFunctionABS
+public class Draw : CastFunctionAbstract
 {
     [SerializeField] int count = 1;
 

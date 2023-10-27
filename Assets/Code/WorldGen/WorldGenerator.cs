@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static UnityEditor.PlayerSettings;
 
 public class WorldGenerator : MonoBehaviour
 {
@@ -124,6 +125,8 @@ public class WorldGenerator : MonoBehaviour
         if (!Debug_DoNotSpawnBorder) { yield return StartCoroutine(SpawnBorder()); }
 
         if (Debug_RunGenTimer) { Debug.Log("Generation completed in " + (Time.time - worldGenTimer) + " seconds."); }
+
+        //System.GC.Collect();
     }
 
     IEnumerator GenerateBiomeTiles(int generationRange, Vector2 positionToGenerate)
@@ -383,8 +386,11 @@ public class WorldGenerator : MonoBehaviour
         int budgetEnum = 0;
         foreach (Transform i in newTilemaps.transform)
         {
+            if (!i.TryGetComponent(out Tilemap fromTilemap)) {
+                Instantiate(i.gameObject, selectedPosition + i.transform.position, Quaternion.identity);
+                continue;
+            }
             Tilemap toTilemap = structureTilemapsDNR[budgetEnum];
-            Tilemap fromTilemap = i.GetComponent<Tilemap>();
 
             fromTilemap.CompressBounds();
 
@@ -397,6 +403,11 @@ public class WorldGenerator : MonoBehaviour
                 for (int y = yVector.x; y <= yVector.y; y++)
                 {
                     Vector3Int pos = new Vector3Int(x, y, 0);
+                    if (fromTilemap.GetTile(pos) == null)
+                    {
+                        continue;
+                    }
+
                     toTilemap.SetTile(pos - structure.center + selectedPosition, fromTilemap.GetTile(pos));
                     doNotSpawnTiles.Add(pos);
                 }
@@ -436,6 +447,23 @@ public class WorldGenerator : MonoBehaviour
         {
             if (UnityEngine.Random.value < decorObject.spawnrate0to1)
             {
+                if (decorObject.radius > 1)
+                {
+                    bool breakbool = false;
+                    foreach (Vector3Int surroundingPos in WorldGenUtil.GetSurroundingTilePositions(location, true, true, decorObject.radius - 1))
+                    {
+                        if (doNotSpawnTiles.Contains(surroundingPos))
+                        {
+                            breakbool = true;
+                            break;
+                        }
+                    }
+                    if (breakbool)
+                    {
+                        continue;
+                    }
+                }
+
                 Instantiate(decorObject.prefab, location + new Vector3(0.5f, 0.5f), Quaternion.identity, decorObject.typeParent).tag = "DecorObj";
                 return;
             }
@@ -598,7 +626,8 @@ public class WorldGenerator : MonoBehaviour
             public string name;
             public GameObject prefab;
             public float spawnrate0to1;
-            public bool occupyTiles = true;
+            [Tooltip("Size of the object. Minimum 1.")]
+            public int radius = 1;
             [System.NonSerialized] public Transform typeParent;
         }
 
@@ -615,7 +644,7 @@ public class WorldGenerator : MonoBehaviour
                 if (prefab == null) { return biggestBounds; }
                 foreach (Transform trans in prefab.transform)
                 {
-                    Tilemap tilemap = trans.GetComponent<Tilemap>();
+                    if (!trans.TryGetComponent(out Tilemap tilemap)) { continue; }
                     tilemap.CompressBounds();
                     if (biggestBounds == null) { biggestBounds = tilemap.cellBounds; }
                     if (tilemap.cellBounds.size.magnitude > biggestBounds.size.magnitude)

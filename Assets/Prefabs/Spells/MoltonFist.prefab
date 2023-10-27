@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1793976546735483745}
   - component: {fileID: 3097652364311850228}
   - component: {fileID: 2615428232356447874}
+  - component: {fileID: 3868972792763604710}
   m_Layer: 0
   m_Name: MoltonFist
   m_TagString: Untagged
@@ -55,8 +56,10 @@ MonoBehaviour:
     swingDegrees: 180
     endPauseTime: 0.2
     swingOutwardMovement: {x: 2, y: 1}
+    refreshHitbox: 0
   endEffect: {fileID: 1034927117136786302, guid: 1b99798f397984c2ba8198350b96ed3a, type: 3}
   hitbox: {fileID: 1793976547685527761}
+  hitboxManager: {fileID: 0}
 --- !u!114 &3097652364311850228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,10 +79,10 @@ MonoBehaviour:
   forwardIsUp: 1
   style: 3
   damageType: 2
-  secondaryEffects:
-  - {fileID: 11400000, guid: 200e1953b8df542d8a3206d1d5155458, type: 2}
+  secondaryEffects: []
   onHitPS: {fileID: 0}
   canHitMultipleTimes: 0
+  hitboxNumber: 0
 --- !u!50 &2615428232356447874
 Rigidbody2D:
   serializedVersion: 4
@@ -101,6 +104,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3868972792763604710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793976546735483747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc7164cabd574ed78c50e7486d20df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  maxConnections: 10
+  connectionRange: 20
+  maxTriggers: 3
+  CLManagerPrefab: {fileID: 4747032807159833549, guid: 9f9d43ec6aa3748918eaa1341f79dc03, type: 3}
 --- !u!1 &1793976547685527790
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,13 +10,13 @@ public class MeleeWeapon : MonoBehaviour
 
     [SerializeField] GameObject endEffect;
     [SerializeField] Collider2D hitbox;
+    [SerializeField] HitboxManager hitboxManager;
 
     // for use in code
     float startDegrees;
     float angleToMouse;
     Transform weaponTransform;
     Vector2 startWeaponOffset;
-    Vector2 actualOutwardMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +47,7 @@ public class MeleeWeapon : MonoBehaviour
             timer = 0;
             startDegrees = transform.rotation.eulerAngles.z;
             hitbox.enabled = true;
+            if (swing.refreshHitbox) { hitboxManager.hitboxNumber += 1; }
             while (timer < swing.swingTime)
             {
                 timer += Time.deltaTime;
@@ -97,5 +98,7 @@ public class MeleeWeapon : MonoBehaviour
         public float swingDegrees;
         public float endPauseTime;
         public Vector2 swingOutwardMovement;
+        public bool refreshHitbox;
+        
     }
 }

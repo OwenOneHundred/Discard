@@ -19,5 +19,6 @@ MonoBehaviour:
   cost: 1
   attackPrefab: {fileID: 1014261172210766844, guid: 9df2e20b76fba4e47a170151b9bdfcd4, type: 3}
   style: 2
+  targetAnimator: {fileID: 0}
   castFunctions:
-  - {fileID: 11400000, guid: 576ef1fbc16302749aa28e2c2cedc088, type: 2}
+  - {fileID: 11400000, guid: 2b1734fecb98348f68b02ccf7070358b, type: 2}

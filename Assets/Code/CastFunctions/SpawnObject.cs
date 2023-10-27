@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CardFunctions/SpawnObject")]
-public class SpawnObject : CastFunctionABS
+public class SpawnObject : CastFunctionAbstract
 {
     [SerializeField] float destroyTime;
     [SerializeField] bool pointTowardMouse = false;
@@ -15,6 +15,7 @@ public class SpawnObject : CastFunctionABS
         }
 
         GameObject obj = Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab, pt.position, Quaternion.identity);
+        SetUpObject(obj, card);
         if (pointTowardMouse)
         {
             Vector3 normalizedDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - pt.position).normalized;

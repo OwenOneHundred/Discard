@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6565756605833071103}
   - component: {fileID: 6735310317193525773}
+  - component: {fileID: 528607435}
+  - component: {fileID: 528607436}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,6 +46,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c5ad18e19ab4b30a7c80cb1e7504ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberSprites: []
+  numberSprites:
+  - {fileID: 2115613438, guid: 58e8ae28bc5b741bd9a8ce98493456fc, type: 3}
+  - {fileID: 196629733, guid: 58e8ae28bc5b741bd9a8ce98493456fc, type: 3}
+  - {fileID: -2022920669, guid: 58e8ae28bc5b741bd9a8ce98493456fc, type: 3}
+  - {fileID: 1226983572, guid: 58e8ae28bc5b741bd9a8ce98493456fc, type: 3}
+  - {fileID: -1814178187, guid: 58e8ae28bc5b741bd9a8ce98493456fc, type: 3}
+  - {fileID: -1441737921, guid: 58e8ae28bc5b741bd9a8ce98493456fc, type: 3}
+  - {fileID: -146647620, guid: 58e8ae28bc5b741bd9a8ce98493456fc, type: 3}
+  - {fileID: -1561340411, guid: 58e8ae28bc5b741bd9a8ce98493456fc, type: 3}
+  - {fileID: 1575697840, guid: 58e8ae28bc5b741bd9a8ce98493456fc, type: 3}
+  - {fileID: 1453460187, guid: 58e8ae28bc5b741bd9a8ce98493456fc, type: 3}
   spacing: 0.5
-  numberPrefab: {fileID: 0}
+  numberPrefab: {fileID: 575179468651624703, guid: e0d634882930145b483189038626e36e, type: 3}
+--- !u!114 &528607435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6565756605833071101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d68b221727734e829b4ce8c4f72fed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &528607436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6565756605833071101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f272867534f4d1dac4afefe34733cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellBuffs: []
+  stylesAndColors:
+  - left: 0
+    right:
+      serializedVersion: 2
+      rgba: 10526975
+  - left: 1
+    right:
+      serializedVersion: 2
+      rgba: 10089215
+  - left: 2
+    right:
+      serializedVersion: 2
+      rgba: 9895844
+  - left: 3
+    right:
+      serializedVersion: 2
+      rgba: 16756123
+  - left: 4
+    right:
+      serializedVersion: 2
+      rgba: 10921638

@@ -108,6 +108,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scriptableObject: {fileID: 11400000, guid: 5226f958097384a88baf5c850cfb1a6c, type: 2}
+  stylesAndColors:
+  - left: 0
+    right:
+      serializedVersion: 2
+      rgba: 16736057
+  - left: 1
+    right:
+      serializedVersion: 2
+      rgba: 3912191
+  - left: 2
+    right:
+      serializedVersion: 2
+      rgba: 6160127
+  - left: 3
+    right:
+      serializedVersion: 2
+      rgba: 5329407
+  - left: 4
+    right:
+      serializedVersion: 2
+      rgba: 10000536
 --- !u!1 &2722491083545424957
 GameObject:
   m_ObjectHideFlags: 0

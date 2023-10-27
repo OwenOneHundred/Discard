@@ -4918,12 +4918,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   associatedHitbox: {fileID: 984871336846669402}
-  damage: 30
-  knockback: 300
-  KbOutInsteadOfBack: 0
+  knockback: 50
+  KbOutInsteadOfBack: 1
   forwardIsUp: 0
   style: 0
   damageType: 2
   secondaryEffects: []
   onHitPS: {fileID: 0}
   canHitMultipleTimes: 0
+  hitboxNumber: 0
+  uniqueDamage: 0
+  damage: 30

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CardFunctions/Launch")]
-public class Launch : CastFunctionABS
+public class Launch : CastFunctionAbstract
 {
     public override void Cast(GameObject card)
         {
             if(pt == null) {
                 pt = GameObject.FindGameObjectWithTag("Player").transform;
             }
-            Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab,pt.position,Quaternion.identity);
+            SetUpObject(Instantiate(card.GetComponent<CardInfo>().scriptableObject.attackPrefab, pt.position, Quaternion.identity), card);
         }
 }

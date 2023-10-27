@@ -11,21 +11,20 @@ public class Card : ScriptableObject
     public Sprite art;
     public string cost;
     public GameObject attackPrefab;
-    public Style style;
+    public BuffManager.Style style;
+    public BuffManager.DamageType damageType;
+    BuffManager bm;
+
+    public float baseDamage;
 
     [Header("Leave blank for default.")]
     public RuntimeAnimatorController targetAnimator = null;
 
-    public enum Style
-    {
-        launch, pinpoint, homing, melee, None
-    }
-
-    public List<CastFunctionABS> castFunctions;
+    public List<CastFunctionAbstract> castFunctions;
 
     public void OnPlayed(GameObject card)
     {
-        foreach (CastFunctionABS func in castFunctions)
+        foreach (CastFunctionAbstract func in castFunctions)
         {
             func.Cast(card);
         }

@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: CorrosionField
   m_EditorClassIdentifier: 
   name: Corrosion Field
-  description: Pinpoint a small area to freeze and chip damage enemies.
+  description: Pinpoint a small area to freeze and chip damage enemies. # DPS.
   art: {fileID: 21300000, guid: f16553de521584e58a8ca77e77920f26, type: 3}
   cost: 1
   attackPrefab: {fileID: 3943657668046277593, guid: ff9b697e8d90549a99913ef736013df4, type: 3}
   style: 1
+  damageType: 2
+  baseDamage: 0
+  targetAnimator: {fileID: 0}
   castFunctions:
   - {fileID: 11400000, guid: 4b24f5fd065f241698a4d8947d2f4456, type: 2}

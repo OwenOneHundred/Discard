@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: MoltonFist
   m_EditorClassIdentifier: 
   name: Molton Fist
-  description: Swings a molton fist. 2x damage to flaming enemies.
+  description: Swings a molton fist. Double damage to flaming enemies. Deals # damage.
   art: {fileID: 21300000, guid: 1c9a596f3560e4dc091c980ba54fde80, type: 3}
   cost: 1
   attackPrefab: {fileID: 1793976546735483747, guid: 1beff20c1048e4f659f97125cd9fb75c, type: 3}
   style: 3
+  damageType: 2
+  baseDamage: 420
+  targetAnimator: {fileID: 0}
   castFunctions:
   - {fileID: 11400000, guid: 4b24f5fd065f241698a4d8947d2f4456, type: 2}

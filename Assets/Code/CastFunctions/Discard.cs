@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "CardFunctions/Discard")]
-public class Discard : CastFunctionABS
+public class Discard : CastFunctionAbstract
 {
     [SerializeField] int count = 1;
 
@@ -12,7 +12,6 @@ public class Discard : CastFunctionABS
 
     public override void Cast(GameObject card)
     {
-        Debug.Log("cast called");
         if (hm == null)
         {
             hm = GameObject.Find("Hand").GetComponent<HandManager>();
@@ -25,7 +24,6 @@ public class Discard : CastFunctionABS
                 if (hm.Hand.Count <= 1) { return; }
 
                 List<GameObject> handCopy = new List<GameObject>(hm.Hand);
-                Debug.Log(card);
                 handCopy.Remove(card);
 
                 hm.DiscardCard(handCopy[0]);
@@ -38,7 +36,6 @@ public class Discard : CastFunctionABS
                 if (hm.Hand.Count <= 1) { return; }
 
                 List<GameObject> handCopy = new List<GameObject>(hm.Hand);
-                Debug.Log(card);
                 handCopy.Remove(card);
 
                 hm.DiscardCard(handCopy[^1]);
