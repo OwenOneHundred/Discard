@@ -18,11 +18,10 @@ public class EnemyMovement : MonoBehaviour
     public int modifierCount = 0;
     //1 means not frozen, 0 means frozen
     private float isFrozen = 1;
-    private int frozenCount;
     public SpriteRenderer enemyImageRenderer;
 
     //-1-Idle, 0-South, 1-North, 2-East, 3-West
-    private int movingAroundDir;
+    private int movingAroundDir = -1;
     public Transform[] vectorCheckPoints;
     public LayerMask barrierMask;
     public float distanceToBarrierCheck;
@@ -49,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
                 //Checks if enemy is moving around
                 if (movingAroundDir != -1)
                 {
-
+                    MoveAround(modifedSpeed);
                 }
                 else
                 {
@@ -71,7 +70,7 @@ public class EnemyMovement : MonoBehaviour
                     //Checks North direction
                     else if (NodeCheck(1))
                     {
-                        movingAroundDir = 3;
+                        movingAroundDir = 1;
                     }
                     else
                     {
@@ -98,7 +97,7 @@ public class EnemyMovement : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, distanceToBarrierCheck, barrierMask);
             if (hit.collider != null)
             {
-                Debug.Log("Hit South");
+                Debug.Log("Start South");
                 return true;
             }
         }
@@ -108,7 +107,7 @@ public class EnemyMovement : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, distanceToBarrierCheck, barrierMask);
             if (hit.collider != null)
             {
-                Debug.Log("Hit North");
+                Debug.Log("Start North");
                 return true;
             }
         }
@@ -118,7 +117,7 @@ public class EnemyMovement : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, distanceToBarrierCheck, barrierMask);
             if (hit.collider != null)
             {
-                Debug.Log("Hit East");
+                Debug.Log("Start East");
                 return true;
             }
         }
@@ -128,22 +127,60 @@ public class EnemyMovement : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, distanceToBarrierCheck, barrierMask);
             if (hit.collider != null)
             {
-                Debug.Log("Hit West");
+                Debug.Log("Start West");
                 return true;
             }
         }
-
         return false;
     }
 
-    //Moves enemy in the right dir and checks for movement done
-    //directions 
-    public void MoveAround(int direction)
+    //Moves enemy around barrier til there is no more barrier 
+    //Directions: -1-Idle, 0-South, 1-North, 2-East, 3-West
+    public void MoveAround(float modifedSpeed)
     {
         //South Move
-        if (direction == 0)
+        if (movingAroundDir == 0)
         {
-
+            transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.left, (modifedSpeed * Time.deltaTime));
+            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoints[0].position, Vector2.down, distanceToBarrierCheck+1f, barrierMask);
+            Debug.DrawRay(vectorCheckPoints[0].position, Vector2.down);
+            if (hit.collider == null)
+            {
+                movingAroundDir = -1;
+            }
+        }
+        //North Move
+        else if (movingAroundDir == 1)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.left, (modifedSpeed * Time.deltaTime));
+            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoints[1].position, Vector2.up, distanceToBarrierCheck + .5f, barrierMask);
+            Debug.DrawRay(vectorCheckPoints[1].position, Vector2.up);
+            if (hit.collider == null)
+            {
+                movingAroundDir = -1;
+            }
+        }
+        //East Move
+        else if(movingAroundDir == 2)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.down, (modifedSpeed * Time.deltaTime));
+            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoints[2].position, Vector2.left, distanceToBarrierCheck + .5f, barrierMask);
+            Debug.DrawRay(vectorCheckPoints[2].position, Vector2.left);
+            if (hit.collider == null)
+            {
+                movingAroundDir = -1;
+            }
+        }
+        //West Move
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.down, (modifedSpeed * Time.deltaTime));
+            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoints[3].position, Vector2.right, distanceToBarrierCheck + .5f, barrierMask);
+            Debug.DrawRay(vectorCheckPoints[3].position, Vector2.right);
+            if (hit.collider == null)
+            {
+                movingAroundDir = -1;
+            }
         }
     }
 
@@ -171,19 +208,12 @@ public class EnemyMovement : MonoBehaviour
         if (toFreeze)
         {
             isFrozen = 0.0f;
-            frozenCount++;
             enemyMind.Freeze(false);
             enemyImageRenderer.color = new Color(.5f, 1f, 1f, 1f);
-        }
-        //If enemy has been frozen multiple times
-        else if (frozenCount > 1)
-        {
-            frozenCount--;
         }
         //Needs to Unfreeze
         else
         {
-            frozenCount--;
             isFrozen = 1.0f;
             enemyMind.Freeze(true);
             enemyImageRenderer.color = new Color(1f, 1f, 1f, 1f);
