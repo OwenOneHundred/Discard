@@ -10,7 +10,7 @@ public abstract class StatusEffect : ScriptableObject
     }
 
     public EffectType effectType;
-    public float time = 5;
+    public float timer = 5;
 
     public virtual void OnApply(GameObject enemy)
     {

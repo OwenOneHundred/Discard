@@ -13,6 +13,7 @@ using System.Linq;
 public class HandManager : MonoBehaviour
 {
     [SerializeField] UIManager uim;
+    [SerializeField] BuffManager bm;
 
     [SerializeField] CardOrganizer co;
 
@@ -143,15 +144,20 @@ public class HandManager : MonoBehaviour
             StartCoroutine(DrawCardAnimation(drawnCard));
 
             drawnCard.transform.SetAsLastSibling();
+
+            foreach (GameObject go in Hand)
+            {
+                go.GetComponent<CardInfo>().UpdateDamage();
+            }
+
             return true;
         }
         return false;
 
-        static void PrepareCardToBeDrawn(GameObject card)
+        void PrepareCardToBeDrawn(GameObject card)
         {
             card.GetComponent<RectTransform>().anchoredPosition = new Vector3(-130, 0, 0);
             card.transform.localScale = new Vector3(0.25f, 0.25f, 1);
-            card.GetComponent<CardInfo>().UpdateDamage();
         }
     }
 
@@ -165,6 +171,11 @@ public class HandManager : MonoBehaviour
         StartCoroutine(DiscardCardAnimation(card));
 
         co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard));
+
+        foreach (GameObject go in Hand)
+        {
+            go.GetComponent<CardInfo>().UpdateDamage();
+        }
     }
 
     IEnumerator DiscardCardAnimation(GameObject card)
@@ -228,11 +239,15 @@ public class HandManager : MonoBehaviour
 
     void PlayCard(GameObject card)
     {
-        int cardCost = Int32.Parse(card.GetComponent<CardInfo>().scriptableObject.cost);
+        CardInfo cardInfo = card.GetComponent<CardInfo>();
+        int cardCost = Int32.Parse(cardInfo.scriptableObject.cost);
 
-        if (uim.energyBar.slider.value > cardCost)
+        if (uim.energyBar.slider.value >= cardCost)
         {
-            card.GetComponent<CardInfo>().scriptableObject.OnPlayed(card);
+            if (cardInfo.scriptableObject.isBoomerang) { bm.consecutiveBoomerangs += 1; }
+            else { bm.consecutiveBoomerangs = 0; }
+
+            cardInfo.scriptableObject.OnPlayed(card);
 
             uim.energyBar.slider.value -= cardCost;
 

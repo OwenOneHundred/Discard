@@ -370,7 +370,6 @@ public class WorldGenerator : MonoBehaviour
                 foreach (Biome.Structure structure in biome.structures) { structureWeights.Add(structure.weightInBiome); }
 
                 Biome.Structure selectedStructure = biome.structures[GeneralUtil.RandomWeighted(structureWeights)];
-                Debug.Log(selectedStructure.GetBiggestBounds().size);
                 SpawnStructure(selectedStructure, GetRandomFreeAreaInBiomeViaRandom(biome, selectedStructure.GetBiggestBounds().size));
 
                 yield return null;
@@ -381,7 +380,6 @@ public class WorldGenerator : MonoBehaviour
     void SpawnStructure(Biome.Structure structure, Vector3Int selectedPosition)
     {
         GameObject newTilemaps = Instantiate(structure.prefab);
-        Debug.Log("Spawn structure at " + selectedPosition);
 
         int budgetEnum = 0;
         foreach (Transform i in newTilemaps.transform)
