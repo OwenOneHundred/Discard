@@ -18,18 +18,18 @@ public class EnemyMovement : MonoBehaviour
     public int modifierCount = 0;
     //1 means not frozen, 0 means frozen
     private float isFrozen = 1;
-    private int frozenCount;
     public SpriteRenderer enemyImageRenderer;
 
     //-1-Idle, 0-South, 1-North, 2-East, 3-West
-    public Transform vectorCheckPoint;
+    private int movingAroundDir = -1;
+    public Transform[] vectorCheckPoints;
     public LayerMask barrierMask;
     public float distanceToBarrierCheck;
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             PauseMove(true);
         }
@@ -43,37 +43,45 @@ public class EnemyMovement : MonoBehaviour
         {
             float modifedSpeed = speed * (1 - speedModifier) * isFrozen;
 
-            if(modifedSpeed > 0f)
+            if (modifedSpeed > 0f)
             {
-                //Checks East direction
-                if (NodeCheck(2))
+                //Checks if enemy is moving around
+                if (movingAroundDir != -1)
                 {
-                    transform.position += new Vector3(0f, .001f, 0f);
-                }
-                //Checks West direction
-                else if (NodeCheck(3))
-                {
-                    transform.position += new Vector3(0f, .001f, 0f);
-                }
-                //Checks South direction
-                else if (NodeCheck(0))
-                {
-                    transform.position += new Vector3(.001f, 0f, 0f);
-                }
-                //Checks North direction
-                else if (NodeCheck(1))
-                {
-                    transform.position += new Vector3(.001f, 0f, 0f);
+                    MoveAround(modifedSpeed);
                 }
                 else
                 {
-                    if (objective != null)
+                    //Checks East direction
+                    if (NodeCheck(2))
                     {
-                        transform.position = Vector2.MoveTowards(transform.position, objective.position, modifedSpeed * Time.deltaTime);
+                        movingAroundDir = 2;
                     }
-                    else if (objectiveV3 != null)
+                    //Checks West direction
+                    else if (NodeCheck(3))
                     {
-                        transform.position = Vector2.MoveTowards(transform.position, objectiveV3, modifedSpeed * Time.deltaTime);
+                        movingAroundDir = 3;
+                    }
+                    //Checks South direction
+                    else if (NodeCheck(0))
+                    {
+                        movingAroundDir = 0;
+                    }
+                    //Checks North direction
+                    else if (NodeCheck(1))
+                    {
+                        movingAroundDir = 1;
+                    }
+                    else
+                    {
+                        if (objective != null)
+                        {
+                            transform.position = Vector2.MoveTowards(transform.position, objective.position, modifedSpeed * Time.deltaTime);
+                        }
+                        else if (objectiveV3 != null)
+                        {
+                            transform.position = Vector2.MoveTowards(transform.position, objectiveV3, modifedSpeed * Time.deltaTime);
+                        }
                     }
                 }
             }
@@ -84,47 +92,96 @@ public class EnemyMovement : MonoBehaviour
     public bool NodeCheck(int nodeToCheck)
     {
         //South
-        if(nodeToCheck == 0)
+        if (nodeToCheck == 0)
         {
-            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoint.position, Vector2.down, distanceToBarrierCheck, barrierMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, distanceToBarrierCheck, barrierMask);
             if (hit.collider != null)
             {
-                Debug.Log("Hit South");
+                Debug.Log("Start South");
                 return true;
             }
         }
         //North
         else if (nodeToCheck == 1)
         {
-            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoint.position, Vector2.up, distanceToBarrierCheck, barrierMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, distanceToBarrierCheck, barrierMask);
             if (hit.collider != null)
             {
-                Debug.Log("Hit North");
+                Debug.Log("Start North");
                 return true;
             }
         }
         //East
-        else if(nodeToCheck == 2)
+        else if (nodeToCheck == 2)
         {
-            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoint.position, Vector2.left, distanceToBarrierCheck, barrierMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, distanceToBarrierCheck, barrierMask);
             if (hit.collider != null)
             {
-                Debug.Log("Hit East");
+                Debug.Log("Start East");
                 return true;
             }
         }
         //West
         else if (nodeToCheck == 3)
         {
-            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoint.position, Vector2.right, distanceToBarrierCheck, barrierMask);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, distanceToBarrierCheck, barrierMask);
             if (hit.collider != null)
             {
-                Debug.Log("Hit West");
+                Debug.Log("Start West");
                 return true;
             }
         }
-
         return false;
+    }
+
+    //Moves enemy around barrier til there is no more barrier 
+    //Directions: -1-Idle, 0-South, 1-North, 2-East, 3-West
+    public void MoveAround(float modifedSpeed)
+    {
+        //South Move
+        if (movingAroundDir == 0)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.left, (modifedSpeed * Time.deltaTime));
+            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoints[0].position, Vector2.down, distanceToBarrierCheck+1f, barrierMask);
+            Debug.DrawRay(vectorCheckPoints[0].position, Vector2.down);
+            if (hit.collider == null)
+            {
+                movingAroundDir = -1;
+            }
+        }
+        //North Move
+        else if (movingAroundDir == 1)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.left, (modifedSpeed * Time.deltaTime));
+            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoints[1].position, Vector2.up, distanceToBarrierCheck + .5f, barrierMask);
+            Debug.DrawRay(vectorCheckPoints[1].position, Vector2.up);
+            if (hit.collider == null)
+            {
+                movingAroundDir = -1;
+            }
+        }
+        //East Move
+        else if(movingAroundDir == 2)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.down, (modifedSpeed * Time.deltaTime));
+            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoints[2].position, Vector2.left, distanceToBarrierCheck + .5f, barrierMask);
+            Debug.DrawRay(vectorCheckPoints[2].position, Vector2.left);
+            if (hit.collider == null)
+            {
+                movingAroundDir = -1;
+            }
+        }
+        //West Move
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.down, (modifedSpeed * Time.deltaTime));
+            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoints[3].position, Vector2.right, distanceToBarrierCheck + .5f, barrierMask);
+            Debug.DrawRay(vectorCheckPoints[3].position, Vector2.right);
+            if (hit.collider == null)
+            {
+                movingAroundDir = -1;
+            }
+        }
     }
 
     //Increases or deceases
@@ -134,7 +191,7 @@ public class EnemyMovement : MonoBehaviour
         speedModifier = speedModifier + speedModChange;
         speedModifier = Mathf.Clamp(speedModifier, 0f, 1f);
 
-        if(speedModChange > 0)
+        if (speedModChange > 0)
         {
             modifierCount++;
         }
@@ -148,22 +205,15 @@ public class EnemyMovement : MonoBehaviour
     public void PauseMove(bool toFreeze)
     {
         //Needs to Freeze
-        if(toFreeze)
+        if (toFreeze)
         {
             isFrozen = 0.0f;
-            frozenCount++;
             enemyMind.Freeze(false);
             enemyImageRenderer.color = new Color(.5f, 1f, 1f, 1f);
-        }
-        //If enemy has been frozen multiple times
-        else if(frozenCount > 1)
-        {
-            frozenCount--;
         }
         //Needs to Unfreeze
         else
         {
-            frozenCount--;
             isFrozen = 1.0f;
             enemyMind.Freeze(true);
             enemyImageRenderer.color = new Color(1f, 1f, 1f, 1f);
