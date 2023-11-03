@@ -87,10 +87,10 @@ public class EnemyMovement : MonoBehaviour
             //Determines Direction of Movement
             Vector3 difference = player.transform.position - transform.position;
             float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-            if (angle >= 270f && angle <= 90f)
-                movingDirection = 0;
-            else
+            if (angle >= 270f || angle <= 90f)
                 movingDirection = 1;
+            else
+                movingDirection = 0;
 
             return true;
         }
@@ -103,10 +103,10 @@ public class EnemyMovement : MonoBehaviour
             //Determines Direction of Movement
             Vector3 difference = player.transform.position - transform.position;
             float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-            if (angle >= 270f && angle <= 90f)
-                movingDirection = 0;
-            else
+            if (angle >= 270f || angle <= 90f)
                 movingDirection = 1;
+            else
+                movingDirection = 0;
 
             return true;
         }
