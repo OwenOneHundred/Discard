@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7177336749794460069}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -0.5, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8479106365273919970}
   - component: {fileID: 8479106365273919965}
-  - component: {fileID: 7503617895305686292}
+  - component: {fileID: 8780758549195727604}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -106,33 +106,33 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ac87d6654682a44dfa2380bb7be55a15, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44b252435aab04458b108db9e0222bb8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 8, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &7503617895305686292
+--- !u!70 &8780758549195727604
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8479106365273919969}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.025, y: 0}
-  m_Size: {x: 0.9, y: 4}
-  m_Direction: 0
+  m_Offset: {x: -0.024056915, y: 0.00000071812366}
+  m_Size: {x: 3.2872133, y: 1.3464984}
+  m_Direction: 1
 --- !u!1 &8479106366790060652
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,10 +143,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8479106366790060653}
   - component: {fileID: 8479106366790060654}
-  - component: {fileID: 2233135273802000978}
-  - component: {fileID: 1718018915930393063}
+  - component: {fileID: 403470402625047511}
+  - component: {fileID: 5003634585291161316}
   m_Layer: 0
-  m_Name: Spear
+  m_Name: Keybrand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,39 +182,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swings:
   - swingDirection1orNeg1: 1
-    windUpTime: 0.2
-    windUpDegrees: 0
-    swingTime: 0.2
-    swingDegrees: 45
-    endPauseTime: 0.1
-    swingOutwardMovement: {x: 1, y: 6}
+    windUpTime: 0.3
+    windUpDegrees: 15
+    swingTime: 0.3
+    swingDegrees: 220
+    endPauseTime: 0.02
+    swingOutwardMovement: {x: 0, y: 0}
     refreshHitbox: 0
     swingSound: {fileID: 0}
   - swingDirection1orNeg1: -1
     windUpTime: 0
     windUpDegrees: 0
-    swingTime: 0.2
-    swingDegrees: 45
-    endPauseTime: 0.1
-    swingOutwardMovement: {x: 1, y: 6}
+    swingTime: 0.3
+    swingDegrees: 220
+    endPauseTime: 0.02
+    swingOutwardMovement: {x: 0, y: 0}
     refreshHitbox: 1
     swingSound: {fileID: 0}
   - swingDirection1orNeg1: 1
     windUpTime: 0
     windUpDegrees: 0
     swingTime: 0.3
-    swingDegrees: 20
-    endPauseTime: 0.4
-    swingOutwardMovement: {x: 1, y: 10}
+    swingDegrees: 220
+    endPauseTime: 0.2
+    swingOutwardMovement: {x: 0, y: 0}
     refreshHitbox: 1
     swingSound: {fileID: 0}
-  endEffect: {fileID: 1034927117136786302, guid: 1b99798f397984c2ba8198350b96ed3a, type: 3}
-  hitbox: {fileID: 7503617895305686292}
-  hitboxManager: {fileID: 2233135273802000978}
+  endEffect: {fileID: 0}
+  hitbox: {fileID: 8780758549195727604}
+  hitboxManager: {fileID: 403470402625047511}
   aus: {fileID: 0}
-  rb: {fileID: 1718018915930393063}
+  rb: {fileID: 5003634585291161316}
   doNotDisableHitbox: 0
---- !u!114 &2233135273802000978
+--- !u!114 &403470402625047511
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,18 +226,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9da102ebe587a44ebb870fb8eb9b4d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  associatedHitbox: {fileID: 7503617895305686292}
-  knockback: 900
-  KbOutInsteadOfBack: 0
-  forwardIsUp: 1
+  associatedHitbox: {fileID: 8780758549195727604}
+  knockback: 1000
+  KbOutInsteadOfBack: 1
+  forwardIsUp: 0
   style: 3
   damageType: 2
   statusEffectData: []
-  onHitEffect: {fileID: 0}
-  effectLifetime: 1
+  onHitEffect: {fileID: 3369644740303421294, guid: 02d12e1e5d66f45aebcec8e6be7ea5dc, type: 3}
+  effectLifetime: 0.6
   canHitMultipleTimes: 0
-  damage: 100
---- !u!50 &1718018915930393063
+  damage: 0
+--- !u!50 &5003634585291161316
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

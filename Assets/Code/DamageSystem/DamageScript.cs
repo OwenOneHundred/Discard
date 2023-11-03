@@ -12,16 +12,19 @@ public class DamageScript : MonoBehaviour
     public float kbMultiplier = 1;
     public float health = 100;
     GameObject gameManager;
+    EnemyHealthBarManager ehbm;
 
     private void Start()
     {
         gameManager = GameObject.Find("GameManager");
+        ehbm = GetComponent<EnemyHealthBarManager>();
     }
 
     // available to be overwritten.
     public virtual void OnReduceHealth(float damage)
     {
         health -= damage;
+        if (ehbm != null) { ehbm.OnHit(health); }
     }
 
     void DealDamage(float damage, bool doNotSpawnNumber = false)

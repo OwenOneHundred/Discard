@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static LootManager;
-using static UnityEngine.Rendering.DebugUI;
 
 public class MeleeWeapon : MonoBehaviour
 {
@@ -12,6 +10,7 @@ public class MeleeWeapon : MonoBehaviour
     [SerializeField] Collider2D hitbox;
     [SerializeField] HitboxManager hitboxManager;
     [SerializeField] AudioSource aus;
+    [SerializeField] Rigidbody2D rb;
 
     [SerializeField] bool doNotDisableHitbox = false;
 

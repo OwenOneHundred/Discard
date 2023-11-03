@@ -5003,6 +5003,7 @@ MonoBehaviour:
   hitbox: {fileID: 363795784080843059}
   hitboxManager: {fileID: 3099556451044852942}
   aus: {fileID: 3761271479101181617}
+  rb: {fileID: 4295680604367512394}
   doNotDisableHitbox: 1
 --- !u!114 &3099556451044852942
 MonoBehaviour:
@@ -5017,7 +5018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   associatedHitbox: {fileID: 363795784080843059}
-  knockback: 600
+  knockback: 200
   KbOutInsteadOfBack: 1
   forwardIsUp: 0
   style: 3
