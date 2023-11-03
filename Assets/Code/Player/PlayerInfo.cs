@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
-    public int hp;
+    public float hp;
     [System.NonSerialized] public WorldGenerator.Biome currentBiome;
 
     //Damages Player
@@ -12,7 +12,7 @@ public class PlayerInfo : MonoBehaviour
     {
         hp--;
 
-        if(hp <= 0)
+        if(hp <= 0f)
         {
             Debug.Log("Player Death");
         }
