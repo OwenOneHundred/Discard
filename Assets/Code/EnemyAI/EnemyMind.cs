@@ -43,6 +43,7 @@ public class EnemyMind : MonoBehaviour
         enemyMovement.enemyMind = this.gameObject.GetComponent<EnemyMind>();
         enemyMovement.atObjective = true;
         enemyMovement.objectiveV3 = idlePos;
+        enemyMovement.player = player;
 
         enemyGun = this.gameObject.GetComponent<EnemyGun>();
         enemyGun.inRange = false;
