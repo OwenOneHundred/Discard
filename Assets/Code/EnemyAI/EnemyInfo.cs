@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyInfo : MonoBehaviour
 {
-    public int hp;
-    public float armor;
+    public float hp;
 
     private EnemyMind enemyMind;
+    private DamageScript damageScript;
 
     //Time til enemy is destoryed
     public float lengthOfDeathAnim;
@@ -16,6 +16,7 @@ public class EnemyInfo : MonoBehaviour
     void Start()
     {
         enemyMind = this.gameObject.GetComponent<EnemyMind>();
+        damageScript = this.gameObject.GetComponent<DamageScript>();
     }
 
     void Update()
@@ -27,13 +28,8 @@ public class EnemyInfo : MonoBehaviour
     }
 
     //Does damage to enemy
-    public void Damage(int damageAmount, bool ignoresDamage)
+    public void Damage(float damageAmount)
     {
-        if(ignoresDamage == false)
-        {
-            damageAmount = (int) ((float)damageAmount * armor);
-        }
-
         hp -= damageAmount;
         if(hp <= 0)
         {
