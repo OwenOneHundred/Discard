@@ -14,16 +14,25 @@ public class HitboxManager : MonoBehaviour
     [SerializeField] bool forwardIsUp = false;
 
     [SerializeField] BuffManager.Style style;
-    [SerializeField] BuffManager.DamageType damageType;
-    [SerializeField] List<StatusEffect> secondaryEffects;
-    [SerializeField] GameObject onHitPS;
+    [SerializeField] BuffManager.StatusEffect damageType;
+    [System.NonSerialized] public List<StatusEffect> statusEffects = new List<StatusEffect>();
+    [SerializeField] List<StatusEffect> statusEffectData;
+
+    [SerializeField] GameObject onHitEffect;
+    [SerializeField] float effectLifetime = 1;
     [SerializeField] bool canHitMultipleTimes = false;
 
-    public int hitboxNumber = 0;
+    [System.NonSerialized] public int hitboxNumber = 0;
 
-    [Header("These are for special cases. \n Damage is usually set according to the damage in CardSO unless unique damage is checked.")]
-    public bool uniqueDamage = false;
     public float damage;
+
+    private void Awake()
+    {
+        foreach (StatusEffect i in statusEffectData)
+        {
+            statusEffects.Add(Instantiate(i));
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,12 +40,12 @@ public class HitboxManager : MonoBehaviour
         {
             if (!associatedHitbox.IsTouching(collision)) { return; }
 
-            if (onHitPS != null)
+            if (onHitEffect != null)
             {
-                Instantiate(onHitPS, transform.position, Quaternion.identity);
+                Destroy(Instantiate(onHitEffect, collision.transform.position, Quaternion.identity), effectLifetime);
             }
 
-            damageScript.Hit(damage, CalculateKB(collision.transform.position), secondaryEffects, style, gameObject, hitboxNumber, canHitMultipleTimes);
+            damageScript.Hit(damage, CalculateKB(collision.transform.position), statusEffects, style, gameObject, hitboxNumber, canHitMultipleTimes);
         }
     }
 

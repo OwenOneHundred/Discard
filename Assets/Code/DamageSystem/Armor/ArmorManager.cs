@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class ArmorManager : MonoBehaviour
 {
+    [SerializeField] GameObject armorItemPrefab;
+
     BuffManager bm;
 
-    public Armor helmet;
-    public Armor chestplate;
-    public Armor leggings;
-
-    Dictionary<Armor.ArmorType, Armor> armorTypeDict = new();
+    [SerializeField] Dictionary<Armor.ArmorType, Armor> armorTypeDict = new();
     private void Awake()
     {
-        armorTypeDict.Add(Armor.ArmorType.helmet, helmet);
-        armorTypeDict.Add(Armor.ArmorType.chestplate, chestplate);
-        armorTypeDict.Add(Armor.ArmorType.leggings, leggings);
+        armorTypeDict.Add(Armor.ArmorType.helmet, null);
+        armorTypeDict.Add(Armor.ArmorType.chestplate, null);
+        armorTypeDict.Add(Armor.ArmorType.leggings, null);
     }
 
     private void Start()
@@ -28,6 +26,7 @@ public class ArmorManager : MonoBehaviour
     /// </summary>
     public bool TryAddArmor(Armor newArmor)
     {
+        Debug.Log("Try add armor: " + newArmor.armorType);
         if (armorTypeDict[newArmor.armorType] == null)
         {
             armorTypeDict[newArmor.armorType] = newArmor;
@@ -51,6 +50,7 @@ public class ArmorManager : MonoBehaviour
     /// </summary>
     public Armor ForceArmorOnSlot(Armor newArmor)
     {
+        Debug.Log("force armor on slot");
         Armor oldArmor = armorTypeDict[newArmor.armorType];
         RemoveArmor(newArmor.armorType);
         TryAddArmor(newArmor);
@@ -67,10 +67,17 @@ public class ArmorManager : MonoBehaviour
 
     private void RemoveArmorBuffs(Armor armor)
     {
+        if (armor == null) { return; }
         foreach (SpellBuff spellBuff in armor.spellBuffs)
         {
             bm.RemoveSpellBuff(spellBuff);
         }
     }
 
+    public ArmorItem CreateArmorItem(Armor armor, Vector2 pos)
+    {
+        ArmorItem toReturn = Instantiate(armorItemPrefab, pos, Quaternion.identity).GetComponent<ArmorItem>();
+        toReturn.SetUp(armor);
+        return toReturn;
+    }
 }

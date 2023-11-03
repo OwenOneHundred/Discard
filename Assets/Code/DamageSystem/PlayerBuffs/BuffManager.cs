@@ -5,6 +5,8 @@ using System.Linq;
 
 public class BuffManager : MonoBehaviour
 {
+    public int consecutiveBoomerangs = 0;
+
     [SerializeField] List<SpellBuff> spellBuffs = new List<SpellBuff>();
 
     public List<Pair<Style, Color32>> stylesAndColors;
@@ -33,12 +35,12 @@ public class BuffManager : MonoBehaviour
         return multiplier;
     }
 
-    public float GetDamageTypeMultiplier(DamageType damageType)
+    public float GetDamageTypeMultiplier(StatusEffect damageType)
     {
         float multiplier = 1;
         foreach (SpellBuff buff in spellBuffs)
         {
-            Pair<DamageType, float> info = buff.damageTypeMultipliers.Find(x => x.left == damageType);
+            Pair<StatusEffect, float> info = buff.damageTypeMultipliers.Find(x => x.left == damageType);
             if (info != null)
             {
                 multiplier *= info.right;
@@ -60,9 +62,9 @@ public class BuffManager : MonoBehaviour
         return stylesAndColors.Find(x => x.left == style).right;
     }
 
-    public enum DamageType
+    public enum StatusEffect
     {
-        Explosion, Lightning, None
+        Fire, Lightning, None
     }
 
     public enum Style

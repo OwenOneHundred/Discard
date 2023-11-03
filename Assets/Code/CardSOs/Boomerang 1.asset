@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db44d29891fb8490ead7045661882e4b, type: 3}
+  m_Name: Boomerang 1
+  m_EditorClassIdentifier: 
+  name: Boomerang 1
+  description: Launch a small boomerang. 1.5x damage per consecutive boomerang.
+  art: {fileID: 21300000, guid: 6865bf79b0bf9487fae0252e8fba68b2, type: 3}
+  cost: 1
+  attackPrefab: {fileID: 2321280582114706463, guid: e24f412831c5f4abeaa0aae8115c2176, type: 3}
+  style: 0
+  damageType: 2
+  isBoomerang: 1
+  baseDamage: 50
+  targetAnimator: {fileID: 0}
+  castFunctions:
+  - {fileID: 11400000, guid: 35337137de62741bdb7cb1295509de7a, type: 2}
+  - {fileID: 11400000, guid: 2b1734fecb98348f68b02ccf7070358b, type: 2}

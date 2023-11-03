@@ -10,14 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db44d29891fb8490ead7045661882e4b, type: 3}
-  m_Name: BlackenedFlames
+  m_Name: RingOfFire
   m_EditorClassIdentifier: 
   name: Blackened Flames
-  description: Release an explosion of fire with high knockback.
+  description: Deal # damage to all enemies in a circle of fire. Double damage for
+    each fire card in your hand.
   art: {fileID: 21300000, guid: 2720aae052abe435b9d21b5d19bc1ce2, type: 3}
   cost: 1
-  attackPrefab: {fileID: 7889540517638296302, guid: 138434e0a908845bebc5b8325e434dab, type: 3}
-  style: 4
-  targetSprite: {fileID: 0}
+  attackPrefab: {fileID: 4339319923300016609, guid: 01e072acb1b7c426da1cdf44b4117ad9, type: 3}
+  style: 1
+  damageType: 0
+  baseDamage: 100
+  targetAnimator: {fileID: 0}
   castFunctions:
-  - {fileID: 11400000, guid: e06d568ea73a44775a46eb1de9128f51, type: 2}
+  - {fileID: 11400000, guid: df88ccaf157e64f39b81c04c5645a485, type: 2}
+  - {fileID: 11400000, guid: a44dc2d967c574ed8b0e3e0cfc128d74, type: 2}

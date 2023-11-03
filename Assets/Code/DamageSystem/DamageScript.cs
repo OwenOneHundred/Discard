@@ -6,23 +6,25 @@ using System.Linq;
 // parent for scripts attached to enemies that handle being damaged
 public class DamageScript : MonoBehaviour
 {
-    public List<SecondaryEffectInfo> seInfo = new List<SecondaryEffectInfo>();
+    public List<StatusEffect> activeStatusEffects = new List<StatusEffect>();
     List<Pair<GameObject, int>> alreadyHit = new List<Pair<GameObject, int>>();
     public Rigidbody2D rb;
     public float kbMultiplier = 1;
     public float health = 100;
     GameObject gameManager;
+    EnemyHealthBarManager ehbm;
 
     private void Start()
     {
         gameManager = GameObject.Find("GameManager");
+        ehbm = GetComponent<EnemyHealthBarManager>();
     }
 
     // available to be overwritten.
     public virtual void OnReduceHealth(float damage)
     {
         health -= damage;
-
+        if (ehbm != null) { ehbm.OnHit(health); }
     }
 
     void DealDamage(float damage, bool doNotSpawnNumber = false)
@@ -68,7 +70,7 @@ public class DamageScript : MonoBehaviour
         {
             foreach (StatusEffect newEffect in newEffects)
             {
-                TryAddSecondaryEffect(newEffect);
+                TryAddStatusEffect(newEffect);
             }
         }
 
@@ -78,21 +80,20 @@ public class DamageScript : MonoBehaviour
     }
 
     // called by OnHit when a secondary effect is added. Doesn't add the effect if there's an existing effect with more 
-    protected bool TryAddSecondaryEffect(StatusEffect newEffect)
+    protected bool TryAddStatusEffect(StatusEffect newEffect)
     {
-        SecondaryEffectInfo existingSEInfo = seInfo.Find(x => x.effect == newEffect);
-        if (existingSEInfo == null)
+        StatusEffect existingEffect = activeStatusEffects.Find(x => x.effectType == newEffect.effectType);
+        if (existingEffect == null)
         {
             newEffect.OnApply(gameObject);
-            seInfo.Add(new SecondaryEffectInfo(newEffect, newEffect.time));
+            activeStatusEffects.Add(Instantiate(newEffect));
             return true;
         }
 
         // if tried applying effect but effect already existed, if timer is longer on new version, apply new version
-        StatusEffect existingEffect = existingSEInfo.effect;
-        if (existingSEInfo.timer < newEffect.time)
+        if (existingEffect.timer < newEffect.timer)
         {
-            existingSEInfo.timer = newEffect.time;
+            existingEffect.timer = newEffect.timer;
             return true;
         }
 
@@ -101,23 +102,23 @@ public class DamageScript : MonoBehaviour
 
     protected void UpdateEffects()
     {
-        if (seInfo.Count == 0) { return; }
-        List<SecondaryEffectInfo> seCopy = new List<SecondaryEffectInfo>(seInfo);
-        foreach (SecondaryEffectInfo info in seCopy)
+        if (activeStatusEffects.Count == 0) { return; }
+        List<StatusEffect> activeEffectsCopy = new List<StatusEffect>(activeStatusEffects);
+        foreach (StatusEffect se in activeEffectsCopy)
         {
             // reduce health by value returned by EveryFrame
-            float damageRecorded = info.effect.EveryFrame(gameObject);
+            float damageRecorded = se.EveryFrame(gameObject);
             if (damageRecorded > 0)
             {
                 Hit(damage: damageRecorded, doNotSpawnNumber: true);
             }
 
-            if (info.timer <= 0)
+            if (se.timer <= 0)
             {
-                info.effect.OnEnd(gameObject);
-                seInfo.Remove(info);
+                se.OnEnd(gameObject);
+                activeStatusEffects.Remove(se);
             }
-            info.timer -= Time.deltaTime;
+            se.timer -= Time.deltaTime;
         }
     }
 
@@ -126,17 +127,5 @@ public class DamageScript : MonoBehaviour
     public virtual void Update()
     {
         UpdateEffects();
-    }
-
-    [System.Serializable]
-    public class SecondaryEffectInfo
-    {
-        public SecondaryEffectInfo(StatusEffect effect1, float timer1)
-        {
-            effect = effect1; timer = timer1;
-        }
-
-        public StatusEffect effect;
-        public float timer;
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class FireScript : StatusEffect
 {
     [SerializeField] GameObject psPrefab;
-    [SerializeField] float damagePerSecond = 5;
+    public float damagePerSecond = 5;
 
     public override void OnApply(GameObject enemy)
     {

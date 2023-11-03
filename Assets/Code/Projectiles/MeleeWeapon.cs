@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static LootManager;
-using static UnityEngine.Rendering.DebugUI;
 
 public class MeleeWeapon : MonoBehaviour
 {
@@ -11,6 +9,10 @@ public class MeleeWeapon : MonoBehaviour
     [SerializeField] GameObject endEffect;
     [SerializeField] Collider2D hitbox;
     [SerializeField] HitboxManager hitboxManager;
+    [SerializeField] AudioSource aus;
+    [SerializeField] Rigidbody2D rb;
+
+    [SerializeField] bool doNotDisableHitbox = false;
 
     // for use in code
     float startDegrees;
@@ -48,6 +50,7 @@ public class MeleeWeapon : MonoBehaviour
             startDegrees = transform.rotation.eulerAngles.z;
             hitbox.enabled = true;
             if (swing.refreshHitbox) { hitboxManager.hitboxNumber += 1; }
+            if (swing.swingSound != null) { aus.PlayOneShot(swing.swingSound); }
             while (timer < swing.swingTime)
             {
                 timer += Time.deltaTime;
@@ -75,7 +78,11 @@ public class MeleeWeapon : MonoBehaviour
             }
 
             // Stop
-            hitbox.enabled = false;
+            if (!doNotDisableHitbox)
+            {
+                hitbox.enabled = false;
+            }
+
             yield return new WaitForSeconds(swing.endPauseTime);
         }
 
@@ -99,6 +106,7 @@ public class MeleeWeapon : MonoBehaviour
         public float endPauseTime;
         public Vector2 swingOutwardMovement;
         public bool refreshHitbox;
+        public AudioClip swingSound;
         
     }
 }

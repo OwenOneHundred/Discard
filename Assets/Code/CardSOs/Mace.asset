@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db44d29891fb8490ead7045661882e4b, type: 3}
+  m_Name: Mace
+  m_EditorClassIdentifier: 
+  name: Mace
+  description: Melee with a large, slow mace.
+  art: {fileID: 21300000, guid: 71ce4974cdca0439e8d08f0938cf687d, type: 3}
+  cost: 2
+  attackPrefab: {fileID: 8479106366790060652, guid: 2917f7caedefa423a972967489cda60f, type: 3}
+  style: 3
+  damageType: 2
+  isBoomerang: 0
+  baseDamage: 800
+  targetAnimator: {fileID: 0}
+  castFunctions:
+  - {fileID: 11400000, guid: 4b24f5fd065f241698a4d8947d2f4456, type: 2}

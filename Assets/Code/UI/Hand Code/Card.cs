@@ -12,8 +12,9 @@ public class Card : ScriptableObject
     public string cost;
     public GameObject attackPrefab;
     public BuffManager.Style style;
-    public BuffManager.DamageType damageType;
+    public BuffManager.StatusEffect damageType;
     BuffManager bm;
+    public bool isBoomerang;
 
     public float baseDamage;
 

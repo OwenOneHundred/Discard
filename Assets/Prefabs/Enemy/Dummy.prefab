@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6896413639012327716}
   - component: {fileID: 6896413639012327722}
   - component: {fileID: 6896413639012327719}
+  - component: {fileID: 6492301170137362105}
   m_Layer: 0
   m_Name: Dummy
   m_TagString: Enemy
@@ -146,6 +147,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e01292c901784475794751149239df74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeStatusEffects: []
   rb: {fileID: 6896413639012327722}
   kbMultiplier: 1
-  health: 100
+  health: 10000
+--- !u!114 &6492301170137362105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6896413639012327721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac20ee0b4ac3481e86152056555eedd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarPrefab: {fileID: 3342849277324897131, guid: 4468471c7075540e2b7bc562ccbdd220, type: 3}
+  height: 1.5
+  healthPerDivider: 10
+  divider: {fileID: 8928164637401432583, guid: 351e79a256961495db839511042cd13c, type: 3}
+  maxDividers: 10
+  barWidth: 320

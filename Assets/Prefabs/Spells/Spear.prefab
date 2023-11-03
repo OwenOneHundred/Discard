@@ -189,6 +189,7 @@ MonoBehaviour:
     endPauseTime: 0.1
     swingOutwardMovement: {x: 1, y: 6}
     refreshHitbox: 0
+    swingSound: {fileID: 0}
   - swingDirection1orNeg1: -1
     windUpTime: 0
     windUpDegrees: 0
@@ -197,6 +198,7 @@ MonoBehaviour:
     endPauseTime: 0.1
     swingOutwardMovement: {x: 1, y: 6}
     refreshHitbox: 1
+    swingSound: {fileID: 0}
   - swingDirection1orNeg1: 1
     windUpTime: 0
     windUpDegrees: 0
@@ -205,9 +207,13 @@ MonoBehaviour:
     endPauseTime: 0.4
     swingOutwardMovement: {x: 1, y: 10}
     refreshHitbox: 1
+    swingSound: {fileID: 0}
   endEffect: {fileID: 1034927117136786302, guid: 1b99798f397984c2ba8198350b96ed3a, type: 3}
   hitbox: {fileID: 7503617895305686292}
   hitboxManager: {fileID: 2233135273802000978}
+  aus: {fileID: 0}
+  rb: {fileID: 1718018915930393063}
+  doNotDisableHitbox: 0
 --- !u!114 &2233135273802000978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,16 +227,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   associatedHitbox: {fileID: 7503617895305686292}
-  damage: 100
   knockback: 900
   KbOutInsteadOfBack: 0
   forwardIsUp: 1
   style: 3
   damageType: 2
-  secondaryEffects: []
-  onHitPS: {fileID: 0}
+  statusEffectData: []
+  onHitEffect: {fileID: 0}
+  effectLifetime: 1
   canHitMultipleTimes: 0
-  hitboxNumber: 0
+  damage: 100
 --- !u!50 &1718018915930393063
 Rigidbody2D:
   serializedVersion: 4
