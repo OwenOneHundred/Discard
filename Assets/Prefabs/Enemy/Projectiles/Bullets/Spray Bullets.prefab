@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7604253712578189719}
   m_Layer: 0
-  m_Name: Wooden Troll Bullet
+  m_Name: Spray Bullets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
