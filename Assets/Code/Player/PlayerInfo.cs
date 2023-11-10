@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerInfo : MonoBehaviour
 {
     public float hp;
+    public Slider hpSlider; 
     [System.NonSerialized] public WorldGenerator.Biome currentBiome;
 
     //Damages Player
     public void Damage()
     {
         hp--;
+        hpSlider.value = hp;
 
         if(hp <= 0f)
         {
@@ -20,6 +22,8 @@ public class PlayerInfo : MonoBehaviour
 
     private void Start()
     {
+        hpSlider.maxValue = hp;
+        hpSlider.value = hp;
         StartCoroutine(CheckBiomePosition());
     }
 

@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inRange: 1
+  currentlyFiring: 0
   attacks:
   - bullet: {fileID: 3473074796746414181, guid: 342d052d52f984921b678d93a5a164ad, type: 3}
     preAnimfireRate: 60
@@ -578,7 +579,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1276913965, guid: eb2f6065b811e4b638184646f2e666b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
