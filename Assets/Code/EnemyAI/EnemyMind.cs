@@ -76,7 +76,7 @@ public class EnemyMind : MonoBehaviour
                     inRange = true;
                     enemyGun.inRange = true;
                 }
-                else
+                else if(enemyGun.currentlyFiring == false)
                 {
                     inRange = false;
                     enemyGun.inRange = false;

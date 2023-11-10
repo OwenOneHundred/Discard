@@ -30,6 +30,7 @@ public class EnemyGun : MonoBehaviour
 
     //In attack range of player
     public bool inRange;
+    public bool currentlyFiring;
 
     //Attacks
     public Attack[] attacks;
@@ -145,6 +146,7 @@ public class EnemyGun : MonoBehaviour
                 //Checks if they have fired all bullets
                 if (currentNumBulletsFired < attacks[0].bulletCount)
                 {
+                    currentlyFiring = true;
                     //Checks if been long enough
                     if (currentInBetweenFireCount > attacks[0].timeBetweenBullets)
                     {
@@ -168,6 +170,7 @@ public class EnemyGun : MonoBehaviour
                     currentFireCount = 0;
                     currentNumBulletsFired = 0;
                     currentInBetweenFireCount = int.MaxValue;
+                    currentlyFiring = false;
                 }
             }
         }
@@ -243,6 +246,7 @@ public class EnemyGun : MonoBehaviour
                 //Checks if they have fired all bullets
                 if (currentNumBulletsFired < attacks[currentAttack].bulletCount)
                 {
+                    currentlyFiring = true;
                     //Checks if been long enough
                     if (currentInBetweenFireCount > attacks[currentAttack].timeBetweenBullets)
                     {
@@ -262,6 +266,7 @@ public class EnemyGun : MonoBehaviour
                 //Fired all bullets, resets info
                 else
                 {
+                    currentlyFiring = false;
                     currentAttackPhase++;
                     currentFireCount = 0;
                     currentNumBulletsFired = 0;
