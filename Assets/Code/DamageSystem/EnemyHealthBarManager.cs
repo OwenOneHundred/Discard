@@ -54,4 +54,9 @@ public class EnemyHealthBarManager : MonoBehaviour
             newDividerRT.anchoredPosition = new Vector2((distanceBetweenDividers * i) - (barWidth / 2) + barOffset, 5);
         }
     }
+
+    public void Death()
+    {
+        Destroy(slider.gameObject);
+    }
 }

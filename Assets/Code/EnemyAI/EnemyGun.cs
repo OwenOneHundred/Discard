@@ -46,7 +46,7 @@ public class EnemyGun : MonoBehaviour
     //Objs Needed--------
     //Gotten from enemy mind
     public Transform player;
-    public GameObject enemyTargeter;
+    public GameObject[] enemyTargeter;
 
     private EnemyInfo enemyInfo;
     private EnemyImager enemyImager;
@@ -133,11 +133,6 @@ public class EnemyGun : MonoBehaviour
                 currentFireCount = 0;
                 currentAttackPhase++;
 
-                //Positioning Firing Object
-                Vector3 difference = player.transform.position - transform.position;
-                float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-                enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
-
                 Fire(0);
             }
             //Fires Multiple Bullets
@@ -152,11 +147,6 @@ public class EnemyGun : MonoBehaviour
                     {
                         currentInBetweenFireCount = 0;
                         currentNumBulletsFired++;
-
-                        //Positioning Firing Object
-                        Vector3 difference = player.transform.position - transform.position;
-                        float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-                        enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
 
                         Fire(0);
                     }
@@ -182,7 +172,7 @@ public class EnemyGun : MonoBehaviour
     //Loops over time for bost shot anim
     public void OneOptionAttackPhase3()
     {
-        if (inRange && currentFireCount > attacks[0].preAnimfireRate)
+        if (inRange && currentFireCount > attacks[0].postAnimfireRate)
         {
             currentFireCount = 0;
             currentAttackPhase = 1;
@@ -233,11 +223,6 @@ public class EnemyGun : MonoBehaviour
                 currentFireCount = 0;
                 currentAttackPhase++;
 
-                //Positioning Firing Object
-                Vector3 difference = player.transform.position - transform.position;
-                float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-                enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
-
                 Fire(currentAttack);
             }
             //Fires Multiple Bullets
@@ -252,11 +237,6 @@ public class EnemyGun : MonoBehaviour
                     {
                         currentInBetweenFireCount = 0;
                         currentNumBulletsFired++;
-
-                        //Positioning Firing Object
-                        Vector3 difference = player.transform.position - transform.position;
-                        float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-                        enemyTargeter.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
 
                         Fire(currentAttack);
                     }
@@ -303,7 +283,10 @@ public class EnemyGun : MonoBehaviour
         if (attacks[attackNum].dontAngle == true)
         {
             //Fire
-            Instantiate(attacks[attackNum].bullet, enemyTargeter.transform.position, Quaternion.identity);
+            foreach (GameObject tar in enemyTargeter)
+            {
+                Instantiate(attacks[attackNum].bullet, tar.transform.position, Quaternion.identity);
+            }
 
             if (attacks[attackNum].diesOnFire == true)
             {
@@ -312,8 +295,16 @@ public class EnemyGun : MonoBehaviour
         }
         else
         {
+            //Positioning Firing Object
+            Vector3 difference = player.transform.position - transform.position;
+            float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+
             //Fire
-            Instantiate(attacks[attackNum].bullet, enemyTargeter.transform.position, enemyTargeter.transform.rotation);
+            foreach (GameObject tar in enemyTargeter)
+            {
+                tar.transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
+                Instantiate(attacks[attackNum].bullet, tar.transform.position, tar.transform.rotation);
+            }
 
             if (attacks[attackNum].diesOnFire == true)
             {

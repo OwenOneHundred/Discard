@@ -148,6 +148,7 @@ public class DamageScript : MonoBehaviour
     {
         yield return new WaitForSeconds(lengthOfDeathAnim);
 
+        ehbm.Death();
         Destroy(this.gameObject);
     }
 }

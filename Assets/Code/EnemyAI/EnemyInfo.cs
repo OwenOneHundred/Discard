@@ -19,14 +19,6 @@ public class EnemyInfo : MonoBehaviour
         damageScript = this.gameObject.GetComponent<DamageScript>();
     }
 
-    void Update()
-    {
-        if(Input.GetKey(KeyCode.Z))
-        {
-            Death();
-        }
-    }
-
     //Does damage to enemy
     public void Damage(float damageAmount)
     {
