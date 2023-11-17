@@ -1714,7 +1714,8 @@ MonoBehaviour:
   barrierMask:
     serializedVersion: 2
     m_Bits: 64
-  timeToSpawn: 90
+  timesToSpawn: fa000000b400000096000000780000005a000000
+  countOfEnemies: 190000000f0000000a0000000500000000000000
   minSpawnY: 15
   minSpawnX: 25
   forestEnemies:

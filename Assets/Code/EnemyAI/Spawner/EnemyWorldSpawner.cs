@@ -11,8 +11,11 @@ public class EnemyWorldSpawner : MonoBehaviour
     private RaycastHit2D pointChecker;
     public LayerMask barrierMask;
 
-    //Spawn Stuff 
-    public int timeToSpawn;
+    //Spawn Stuff
+    public static int enemyCount;
+    public int currentRate;
+    public int[] timesToSpawn;
+    public int[] countOfEnemies;
     public float minSpawnY;
     public float minSpawnX;
 
@@ -32,7 +35,7 @@ public class EnemyWorldSpawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(currentTime >= timeToSpawn)
+        if(currentTime >= timesToSpawn[currentRate])
         {
             currentTime = 0;
             int spawnValue = 0;
@@ -69,16 +72,11 @@ public class EnemyWorldSpawner : MonoBehaviour
     //Spawns Enemy in Game
     public void SpawnEnemy(GameObject enemyToSpawn)
     {
-        int countUp = 0;
         Vector3 spawnPoint = DetermineSpawnPoint();
-        while(IsVaildPoint(spawnPoint) == false && countUp <= 10)
-        {
-            spawnPoint = DetermineSpawnPoint();
-            countUp++;
-        }
-        Debug.Log(countUp);
 
         Instantiate(enemyToSpawn, spawnPoint + transform.position, Quaternion.identity);
+        enemyCount++;
+        CheckRate();
     }
 
     //Returns a point in the game world where the enemy can spawn 
@@ -93,28 +91,24 @@ public class EnemyWorldSpawner : MonoBehaviour
         //Northern Spawn
         if (locationZone == 0)
         {
-            Debug.Log("Northern");
             xValue = Random.Range(-minSpawnX, minSpawnX);
             yValue = minSpawnY + Random.Range(-1f, 1f);
         }
         //Eastern Spawn
         else if(locationZone == 1)
         {
-            Debug.Log("Eastern");
             xValue = minSpawnX + Random.Range(-1f, 1f);
             yValue = Random.Range(-minSpawnY, minSpawnY);
         }
         //Southern Spawn
         else if (locationZone == 2)
         {
-            Debug.Log("Southern");
             xValue = Random.Range(-minSpawnX, minSpawnX);
             yValue = -minSpawnY + Random.Range(-1f, 1f);
         }
         //Western Spawn
         else
         {
-            Debug.Log("Western");
             xValue = -minSpawnX + Random.Range(-1f, 1f); ;
             yValue = Random.Range(-minSpawnY, minSpawnY);
         }
@@ -132,5 +126,17 @@ public class EnemyWorldSpawner : MonoBehaviour
             return true;
 
         return false;
+    }
+
+    //Checks if the player
+    public void CheckRate()
+    {
+        for(int i = countOfEnemies.Length-1; i >= 0; i--)
+        {
+            if(enemyCount >= countOfEnemies[i])
+            {
+                currentRate = i;
+            }
+        }
     }
 }

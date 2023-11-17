@@ -49,6 +49,7 @@ public class EnemyInfo : MonoBehaviour
     {
         yield return new WaitForSeconds(lengthOfDeathAnim);
 
+        EnemyWorldSpawner.enemyCount--;
         Destroy(this.gameObject);
     }
 }
