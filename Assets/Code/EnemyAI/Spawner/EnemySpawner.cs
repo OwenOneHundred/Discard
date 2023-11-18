@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        SpawnEnemies();
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour
             for(int j = 0; j < enemyCount[i]; i++)
             {
                 GameObject tempEnemy = Instantiate(enemies[i], DetermineSpawnPoint() + transform.position, Quaternion.identity);
-                tempEnemy.GetComponent<EnemyInfo>().isLocal = true;
+                tempEnemy.GetComponent<DamageScript>().isLocal = true;
             }
         }
     }
@@ -46,6 +46,37 @@ public class EnemySpawner : MonoBehaviour
     //Returns a point in the game world where the enemy can spawn 
     public Vector3 DetermineSpawnPoint()
     {
-        return new Vector3(0f, 0f, 0f);
+        //Determines the zone of the enemy that it is spawned it in
+        //0-North, 1-East, 2-South, 3-West
+        int locationZone = Random.Range(0, 4);
+        float xValue = 0f;
+        float yValue = 0f;
+
+        //Northern Spawn
+        if (locationZone == 0)
+        {
+            xValue = Random.Range(-minSpawnX, minSpawnX);
+            yValue = minSpawnY + Random.Range(-1f, 1f);
+        }
+        //Eastern Spawn
+        else if (locationZone == 1)
+        {
+            xValue = minSpawnX + Random.Range(-1f, 1f);
+            yValue = Random.Range(-minSpawnY, minSpawnY);
+        }
+        //Southern Spawn
+        else if (locationZone == 2)
+        {
+            xValue = Random.Range(-minSpawnX, minSpawnX);
+            yValue = -minSpawnY + Random.Range(-1f, 1f);
+        }
+        //Western Spawn
+        else
+        {
+            xValue = -minSpawnX + Random.Range(-1f, 1f); ;
+            yValue = Random.Range(-minSpawnY, minSpawnY);
+        }
+
+        return new Vector3(xValue, yValue, 0f);
     }
 }

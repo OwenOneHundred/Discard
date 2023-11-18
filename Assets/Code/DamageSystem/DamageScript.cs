@@ -11,6 +11,7 @@ public class DamageScript : MonoBehaviour
     public Rigidbody2D rb;
     public float kbMultiplier = 1;
     public float health = 100;
+    public bool isLocal;
     GameObject gameManager;
     EnemyHealthBarManager ehbm;
 
@@ -147,7 +148,10 @@ public class DamageScript : MonoBehaviour
     IEnumerator DeathWait()
     {
         yield return new WaitForSeconds(lengthOfDeathAnim);
-
+        if (isLocal == false)
+        {
+            EnemyWorldSpawner.enemyCount--;
+        }
         ehbm.Death();
         Destroy(this.gameObject);
     }
