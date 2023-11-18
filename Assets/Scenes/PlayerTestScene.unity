@@ -1681,7 +1681,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183328909}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e31cf783e3c374ef4b4a731ab5b0c56b, type: 3}
   m_Name: 
@@ -1714,6 +1714,7 @@ MonoBehaviour:
   barrierMask:
     serializedVersion: 2
     m_Bits: 64
+  rareOdds: 50
   currentRate: 0
   timesToSpawn: fa000000b400000096000000780000005a000000
   countOfEnemies: 190000000f0000000a0000000500000000000000
@@ -1722,68 +1723,13 @@ MonoBehaviour:
   forestEnemies:
   - {fileID: 8957488655061449159, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
   plainsEnemies:
-  - {fileID: 3516262469844880634, guid: ce0f1db52cdea43ce8f6456822a1a629, type: 3}
+  - {fileID: 6896413639012327721, guid: 674a0e3a10bad4deab77a77e7fd8ec9c, type: 3}
   desertEnemies:
   - {fileID: 6896413639012327721, guid: 674a0e3a10bad4deab77a77e7fd8ec9c, type: 3}
   redBiomeEnemies:
   - {fileID: 6896413639012327721, guid: 674a0e3a10bad4deab77a77e7fd8ec9c, type: 3}
---- !u!1001 &1293711599
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8957488655061449159, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
-      propertyPath: m_Name
-      value: Wooden Troll Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957488655061449160, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957488655061449160, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957488655061449160, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957488655061449160, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957488655061449160, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957488655061449160, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957488655061449160, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957488655061449160, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957488655061449160, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957488655061449160, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8957488655061449160, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
+  rareEnemies:
+  - {fileID: 3516262469844880634, guid: ce0f1db52cdea43ce8f6456822a1a629, type: 3}
 --- !u!1 &1394311527
 GameObject:
   m_ObjectHideFlags: 0

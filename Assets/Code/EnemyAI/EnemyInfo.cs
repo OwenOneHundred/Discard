@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyInfo : MonoBehaviour
 {
     public float hp;
+    //Indicates if enemy was spawned in at a Spawner
+    public bool isLocal;
 
     private EnemyMind enemyMind;
     private DamageScript damageScript;
@@ -41,7 +43,10 @@ public class EnemyInfo : MonoBehaviour
     {
         yield return new WaitForSeconds(lengthOfDeathAnim);
 
-        EnemyWorldSpawner.enemyCount--;
+        if(isLocal == false)
+        {
+            EnemyWorldSpawner.enemyCount--;
+        }
         Destroy(this.gameObject);
     }
 }

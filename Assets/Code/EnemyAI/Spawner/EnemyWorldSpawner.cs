@@ -10,6 +10,7 @@ public class EnemyWorldSpawner : MonoBehaviour
     private int currentTime = 0;
     private RaycastHit2D pointChecker;
     public LayerMask barrierMask;
+    public int rareOdds;
 
     //Spawn Stuff
     public static int enemyCount;
@@ -24,6 +25,7 @@ public class EnemyWorldSpawner : MonoBehaviour
     public GameObject[] plainsEnemies;
     public GameObject[] desertEnemies;
     public GameObject[] redBiomeEnemies;
+    public GameObject[] rareEnemies;
 
     // Start is called before the first frame update
     void Awake()
@@ -40,28 +42,41 @@ public class EnemyWorldSpawner : MonoBehaviour
             currentTime = 0;
             int spawnValue = 0;
 
-            //Determine Enemy
-            currentBiome = GeneralUtil.GetBiomeAtPos(player.transform.position);
-            //currentBiome = "Forest";
-            if(currentBiome.name == "Forest")
+            //Rolls Odds of a rare enemy
+            int rareRoll = Random.Range(0, rareOdds + 1);
+            //Spawns Rare Enemy
+            if(rareRoll == rareOdds)
             {
-                spawnValue = Random.Range(0, forestEnemies.Length);
+                spawnValue = Random.Range(0, rareEnemies.Length);
+                SpawnEnemy(rareEnemies[spawnValue]);
             }
-            else if (currentBiome.name == "Plains")
-            {
-                spawnValue = Random.Range(0, plainsEnemies.Length);
-            }
-            else if (currentBiome.name == "Desert")
-            {
-                spawnValue = Random.Range(0, desertEnemies.Length);
-            }
+            //Spawns Enviroment Enemy
             else
             {
-                spawnValue = Random.Range(0, redBiomeEnemies.Length);
+                //Determine Enemy
+                currentBiome = GeneralUtil.GetBiomeAtPos(player.transform.position);
+                //currentBiome = "Forest";
+                if (currentBiome.name == "Forest")
+                {
+                    spawnValue = Random.Range(0, forestEnemies.Length);
+                    SpawnEnemy(forestEnemies[spawnValue]);
+                }
+                else if (currentBiome.name == "Plains")
+                {
+                    spawnValue = Random.Range(0, plainsEnemies.Length);
+                    SpawnEnemy(plainsEnemies[spawnValue]);
+                }
+                else if (currentBiome.name == "Desert")
+                {
+                    spawnValue = Random.Range(0, desertEnemies.Length);
+                    SpawnEnemy(desertEnemies[spawnValue]);
+                }
+                else
+                {
+                    spawnValue = Random.Range(0, redBiomeEnemies.Length);
+                    SpawnEnemy(redBiomeEnemies[spawnValue]);
+                }
             }
-
-            //Spawn Enemy
-            SpawnEnemy(forestEnemies[0]);
         }
         else
         {
@@ -74,7 +89,7 @@ public class EnemyWorldSpawner : MonoBehaviour
     {
         Vector3 spawnPoint = DetermineSpawnPoint();
 
-        Instantiate(enemyToSpawn, spawnPoint + transform.position, Quaternion.identity);
+        Instantiate(enemyToSpawn, spawnPoint + player.transform.position, Quaternion.identity);
         enemyCount++;
         CheckRate();
     }
