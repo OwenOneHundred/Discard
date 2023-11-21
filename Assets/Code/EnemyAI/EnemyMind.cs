@@ -13,6 +13,7 @@ public class EnemyMind : MonoBehaviour
     private EnemyMovement enemyMovement;
     private EnemyGun enemyGun;
     private EnemyImager enemyImager;
+    private DamageScript damageScript;
     private BoxCollider2D thisBoxCollider;
 
     //Distance to player
@@ -24,6 +25,7 @@ public class EnemyMind : MonoBehaviour
     public bool inRange;
 
     //Distance Goals
+    public float deathDistance;
     public float agroeDistance;
     public float pacifyDistance;
     public float attackDistance;
@@ -51,6 +53,8 @@ public class EnemyMind : MonoBehaviour
 
         enemyImager = this.gameObject.GetComponent<EnemyImager>();
 
+        damageScript = this.gameObject.GetComponent<DamageScript>();
+
         thisBoxCollider = this.gameObject.GetComponent<BoxCollider2D>();
     }
 
@@ -58,6 +62,11 @@ public class EnemyMind : MonoBehaviour
     void Update()
     {
         distToPlayer = GetDist(player.transform.position);
+        //To Far from player 
+        if(distToPlayer >= deathDistance)
+        {
+            damageScript.OnReduceHealth(damageScript.health);
+        }
 
         //Attacking
         if(aggroed == true)

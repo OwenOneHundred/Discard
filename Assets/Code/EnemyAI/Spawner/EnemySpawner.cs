@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    //Point for enemies to be spawned around
-    public Transform hubTransform;
-
     //Number of enemies to spawn
     public GameObject[] enemies;
     public int[] enemyCount;
@@ -35,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
     {
         for(int i = 0; i < enemies.Length; i++)
         {
-            for(int j = 0; j < enemyCount[i]; i++)
+            for(int j = 0; j < enemyCount[i]; j++)
             {
                 GameObject tempEnemy = Instantiate(enemies[i], DetermineSpawnPoint() + transform.position, Quaternion.identity);
                 tempEnemy.GetComponent<DamageScript>().isLocal = true;
@@ -56,24 +53,24 @@ public class EnemySpawner : MonoBehaviour
         if (locationZone == 0)
         {
             xValue = Random.Range(-minSpawnX, minSpawnX);
-            yValue = minSpawnY + Random.Range(-1f, 1f);
+            yValue = minSpawnY + Random.Range(-2f, 2f);
         }
         //Eastern Spawn
         else if (locationZone == 1)
         {
-            xValue = minSpawnX + Random.Range(-1f, 1f);
+            xValue = minSpawnX + Random.Range(-2f, 2f);
             yValue = Random.Range(-minSpawnY, minSpawnY);
         }
         //Southern Spawn
         else if (locationZone == 2)
         {
             xValue = Random.Range(-minSpawnX, minSpawnX);
-            yValue = -minSpawnY + Random.Range(-1f, 1f);
+            yValue = -minSpawnY + Random.Range(-2f, 2f);
         }
         //Western Spawn
         else
         {
-            xValue = -minSpawnX + Random.Range(-1f, 1f); ;
+            xValue = -minSpawnX + Random.Range(-2f, 2f); ;
             yValue = Random.Range(-minSpawnY, minSpawnY);
         }
 

@@ -237,6 +237,7 @@ MonoBehaviour:
   angleToPlayer: 0
   aggroed: 0
   inRange: 0
+  deathDistance: 30
   agroeDistance: 10
   pacifyDistance: 18
   attackDistance: 8
@@ -468,6 +469,7 @@ MonoBehaviour:
   rb: {fileID: 8957488655061449167}
   kbMultiplier: 1
   health: 100
+  isLocal: 0
   lengthOfDeathAnim: 1.5
 --- !u!114 &8957488655061449170
 MonoBehaviour:
