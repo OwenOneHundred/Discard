@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    //Player object
+    public GameObject player;
+
     //Number of enemies to spawn
     public GameObject[] enemies;
     public int[] enemyCount;
@@ -13,29 +16,44 @@ public class EnemySpawner : MonoBehaviour
     public float minSpawnX;
 
     //Current Informmations
-    //public GameObject 
+    public GameObject[] allEnemies;
+    public int maxEnemies;
 
     // Start is called before the first frame update
     void Start()
     {
-        SpawnEnemies();
+        player = GameObject.FindGameObjectWithTag("Player");
+        for(int i = 0; i < enemyCount.Length; i++)
+        {
+            maxEnemies = maxEnemies + enemyCount[i];
+        }
+        allEnemies = new GameObject[maxEnemies];
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(GetDist(player.transform.position) <= 25f)
+        {
+            SpawnEnemies();
+        }
     }
 
     //Spawns in the enemies for the spawner
     public void SpawnEnemies()
     {
+        int countThrough = 0; 
         for(int i = 0; i < enemies.Length; i++)
         {
             for(int j = 0; j < enemyCount[i]; j++)
             {
-                GameObject tempEnemy = Instantiate(enemies[i], DetermineSpawnPoint() + transform.position, Quaternion.identity);
-                tempEnemy.GetComponent<DamageScript>().isLocal = true;
+                if(allEnemies[countThrough] == null)
+                {
+                    GameObject tempEnemy = Instantiate(enemies[i], DetermineSpawnPoint() + transform.position, Quaternion.identity);
+                    tempEnemy.GetComponent<DamageScript>().isLocal = true;
+                    allEnemies[countThrough] = tempEnemy;
+                }
+                countThrough++;
             }
         }
     }
@@ -75,5 +93,14 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return new Vector3(xValue, yValue, 0f);
+    }
+
+    //Returns the distance between the player and the enemy
+    public float GetDist(Vector3 target)
+    {
+        Vector3 currentPos = transform.position;
+        float dist = Vector3.Distance(target, currentPos);
+
+        return dist;
     }
 }

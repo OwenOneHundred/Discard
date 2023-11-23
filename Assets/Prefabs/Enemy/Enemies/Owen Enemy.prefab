@@ -392,32 +392,40 @@ MonoBehaviour:
     targetVector: {x: 1.45, y: 1.05, z: 0}
   deathAnimations:
   - sprites:
-    - {fileID: 1015143631, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: -1753548800, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: -899514436, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: -1939650837, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    timeBetweenAnim: 0f0000000f0000000f0000002d000000
+    - {fileID: 680131690, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: 2126930290, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: -1194181492, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: -1822151437, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: -1898961308, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: 473384678, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    timeBetweenAnim: 0f0000000f0000000f0000000f0000000f0000002d000000
     targetVector: {x: 69, y: 0, z: 0}
   - sprites:
-    - {fileID: -632916134, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 1821492986, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 1070132358, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: -663848849, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    timeBetweenAnim: 0f0000000f0000000f0000002d000000
+    - {fileID: 680131690, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: 2126930290, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: -1194181492, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: -1822151437, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: -1898961308, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: 473384678, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    timeBetweenAnim: 0f0000000f0000000f0000000f0000000f0000002d000000
     targetVector: {x: 69, y: 0, z: 0}
   - sprites:
-    - {fileID: 397591650, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 935873661, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 1806229090, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 540409837, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    timeBetweenAnim: 0f0000000f0000000f0000002d000000
+    - {fileID: 680131690, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: 2126930290, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: -1194181492, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: -1822151437, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: -1898961308, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: 473384678, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    timeBetweenAnim: 0f0000000f0000000f0000000f0000000f0000002d000000
     targetVector: {x: 69, y: 0, z: 0}
   - sprites:
-    - {fileID: -1583008315, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 1578233691, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 709527525, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 1585902499, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    timeBetweenAnim: 0f0000000f0000000f0000002d000000
+    - {fileID: 680131690, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: 2126930290, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: -1194181492, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: -1822151437, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: -1898961308, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    - {fileID: 473384678, guid: 304f575c4c5594e76aef9eb0b2cea987, type: 3}
+    timeBetweenAnim: 0f0000000f0000000f0000000f0000000f0000002d000000
     targetVector: {x: 69, y: 0, z: 0}
 --- !u!114 &3516262469844880620
 MonoBehaviour:
@@ -436,7 +444,7 @@ MonoBehaviour:
   kbMultiplier: 1
   health: 250
   isLocal: 0
-  lengthOfDeathAnim: 1.5
+  lengthOfDeathAnim: 2
 --- !u!114 &3516262469844880623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -635,7 +643,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.2857144, y: 2.2857144}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
