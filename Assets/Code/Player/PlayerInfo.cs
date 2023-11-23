@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerInfo : MonoBehaviour
 {
-    public int hp;
+    public float hp;
+    public Slider hpSlider; 
     [System.NonSerialized] public WorldGenerator.Biome currentBiome;
 
     //Damages Player
     public void Damage()
     {
         hp--;
+        hpSlider.value = hp;
 
-        if(hp <= 0)
+        if(hp <= 0f)
         {
             Debug.Log("Player Death");
         }
@@ -20,6 +22,8 @@ public class PlayerInfo : MonoBehaviour
 
     private void Start()
     {
+        hpSlider.maxValue = hp;
+        hpSlider.value = hp;
         StartCoroutine(CheckBiomePosition());
     }
 

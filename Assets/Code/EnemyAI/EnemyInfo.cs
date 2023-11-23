@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EnemyInfo : MonoBehaviour
 {
-    public int hp;
-    public float armor;
+    public float hp;
+    //Indicates if enemy was spawned in at a Spawner
+    public bool isLocal;
 
     private EnemyMind enemyMind;
+    private DamageScript damageScript;
 
     //Time til enemy is destoryed
     public float lengthOfDeathAnim;
@@ -16,24 +18,12 @@ public class EnemyInfo : MonoBehaviour
     void Start()
     {
         enemyMind = this.gameObject.GetComponent<EnemyMind>();
-    }
-
-    void Update()
-    {
-        if(Input.GetKey(KeyCode.Z))
-        {
-            Death();
-        }
+        damageScript = this.gameObject.GetComponent<DamageScript>();
     }
 
     //Does damage to enemy
-    public void Damage(int damageAmount, bool ignoresDamage)
+    public void Damage(float damageAmount)
     {
-        if(ignoresDamage == false)
-        {
-            damageAmount = (int) ((float)damageAmount * armor);
-        }
-
         hp -= damageAmount;
         if(hp <= 0)
         {
@@ -53,6 +43,10 @@ public class EnemyInfo : MonoBehaviour
     {
         yield return new WaitForSeconds(lengthOfDeathAnim);
 
+        if(isLocal == false)
+        {
+            EnemyWorldSpawner.enemyCount--;
+        }
         Destroy(this.gameObject);
     }
 }

@@ -11,13 +11,20 @@ public class DamageScript : MonoBehaviour
     public Rigidbody2D rb;
     public float kbMultiplier = 1;
     public float health = 100;
+    public bool isLocal;
     GameObject gameManager;
     EnemyHealthBarManager ehbm;
+
+    //Stuff used for Death
+    //Time til enemy is destoryed
+    public float lengthOfDeathAnim;
+    private EnemyMind enemyMind;
 
     private void Start()
     {
         gameManager = GameObject.Find("GameManager");
         ehbm = GetComponent<EnemyHealthBarManager>();
+        enemyMind = GetComponent<EnemyMind>();
     }
 
     // available to be overwritten.
@@ -25,6 +32,10 @@ public class DamageScript : MonoBehaviour
     {
         health -= damage;
         if (ehbm != null) { ehbm.OnHit(health); }
+        if (health <= 0){
+            enemyMind.Death();
+            StartCoroutine("DeathWait");
+        }
     }
 
     void DealDamage(float damage, bool doNotSpawnNumber = false)
@@ -124,5 +135,21 @@ public class DamageScript : MonoBehaviour
     public virtual void Update()
     {
         UpdateEffects();
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            OnReduceHealth(25f);
+        }
+    }
+
+    //The time need to wait for death animation
+    IEnumerator DeathWait()
+    {
+        yield return new WaitForSeconds(lengthOfDeathAnim);
+        if (isLocal == false)
+        {
+            EnemyWorldSpawner.enemyCount--;
+        }
+        ehbm.Death();
+        Destroy(this.gameObject);
     }
 }

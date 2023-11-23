@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public EnemyMind enemyMind;
+    public GameObject player;
 
     public bool atObjective;
 
@@ -22,7 +23,11 @@ public class EnemyMovement : MonoBehaviour
 
     //-1-Idle, 0-South, 1-North, 2-East, 3-West
     private int movingAroundDir = -1;
+    //-1: No Direction, 0-Left/Up, 1-Right/Down
+    private int movingDirection = -1;
+    //0-Right of Enemy, 1-Left of Enemy, 2-Top of Enemy, 3-Below of Enemy
     public Transform[] vectorCheckPoints;
+    private RaycastHit2D hit;
     public LayerMask barrierMask;
     public float distanceToBarrierCheck;
 
@@ -52,27 +57,9 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else
                 {
-                    //Checks East direction
-                    if (NodeCheck(2))
-                    {
-                        movingAroundDir = 2;
-                    }
-                    //Checks West direction
-                    else if (NodeCheck(3))
-                    {
-                        movingAroundDir = 3;
-                    }
-                    //Checks South direction
-                    else if (NodeCheck(0))
-                    {
-                        movingAroundDir = 0;
-                    }
-                    //Checks North direction
-                    else if (NodeCheck(1))
-                    {
-                        movingAroundDir = 1;
-                    }
-                    else
+                    NodeCheck();
+
+                    if(NodeCheck() == false)
                     {
                         if (objective != null)
                         {
@@ -89,47 +76,71 @@ public class EnemyMovement : MonoBehaviour
     }
 
     //Checks if nodes are blocked
-    public bool NodeCheck(int nodeToCheck)
+    public bool NodeCheck()
     {
         //South
-        if (nodeToCheck == 0)
+        RaycastHit2D hitNode = Physics2D.Raycast(transform.position, Vector2.down, distanceToBarrierCheck, barrierMask);
+        if (hitNode.collider != null)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, distanceToBarrierCheck, barrierMask);
-            if (hit.collider != null)
-            {
-                Debug.Log("Start South");
-                return true;
-            }
+            movingAroundDir = 0;
+
+            //Determines Direction of Movement
+            Vector3 difference = player.transform.position - transform.position;
+            float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            if (angle >= 270f || angle <= 90f)
+                movingDirection = 1;
+            else
+                movingDirection = 0;
+
+            return true;
         }
         //North
-        else if (nodeToCheck == 1)
+        hitNode = Physics2D.Raycast(transform.position, Vector2.up, distanceToBarrierCheck, barrierMask);
+        if (hitNode.collider != null)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, distanceToBarrierCheck, barrierMask);
-            if (hit.collider != null)
-            {
-                Debug.Log("Start North");
-                return true;
-            }
+            movingAroundDir = 1;
+
+            //Determines Direction of Movement
+            Vector3 difference = player.transform.position - transform.position;
+            float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            if (angle >= 270f || angle <= 90f)
+                movingDirection = 1;
+            else
+                movingDirection = 0;
+
+            return true;
         }
         //East
-        else if (nodeToCheck == 2)
+        hitNode = Physics2D.Raycast(transform.position, Vector2.left, distanceToBarrierCheck, barrierMask);
+        if (hitNode.collider != null)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.left, distanceToBarrierCheck, barrierMask);
-            if (hit.collider != null)
-            {
-                Debug.Log("Start East");
-                return true;
-            }
+            movingAroundDir = 2;
+
+            //Determines Direction of Movement
+            Vector3 difference = player.transform.position - transform.position;
+            float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            if (angle >= 0f && angle <= 180f)
+                movingDirection = 0;
+            else
+                movingDirection = 1;
+
+            return true;
         }
         //West
-        else if (nodeToCheck == 3)
+        hitNode = Physics2D.Raycast(transform.position, Vector2.right, distanceToBarrierCheck, barrierMask);
+        if (hitNode.collider != null)
         {
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, distanceToBarrierCheck, barrierMask);
-            if (hit.collider != null)
-            {
-                Debug.Log("Start West");
-                return true;
-            }
+            movingAroundDir = 3;
+
+            //Determines Direction of Movement
+            Vector3 difference = player.transform.position - transform.position;
+            float angle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            if (angle >= 0f && angle <= 180f)
+                movingDirection = 0;
+            else
+                movingDirection = 1;
+
+            return true;
         }
         return false;
     }
@@ -141,45 +152,97 @@ public class EnemyMovement : MonoBehaviour
         //South Move
         if (movingAroundDir == 0)
         {
-            transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.left, (modifedSpeed * Time.deltaTime));
-            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoints[0].position, Vector2.down, distanceToBarrierCheck+1f, barrierMask);
-            Debug.DrawRay(vectorCheckPoints[0].position, Vector2.down);
+            //Moving Left
+            if (movingDirection == 0)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.left, (modifedSpeed * Time.deltaTime));
+                hit = Physics2D.Raycast(vectorCheckPoints[0].position, Vector2.down, distanceToBarrierCheck + 1f, barrierMask);
+                Debug.DrawRay(vectorCheckPoints[0].position, Vector2.down);
+            }
+            //Moving Right
+            else if (movingDirection == 1)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.right, (modifedSpeed * Time.deltaTime));
+                hit = Physics2D.Raycast(vectorCheckPoints[1].position, Vector2.down, distanceToBarrierCheck + 1f, barrierMask);
+                Debug.DrawRay(vectorCheckPoints[1].position, Vector2.down);
+            }
+
             if (hit.collider == null)
             {
                 movingAroundDir = -1;
+                movingDirection = -1;
             }
         }
         //North Move
         else if (movingAroundDir == 1)
         {
-            transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.left, (modifedSpeed * Time.deltaTime));
-            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoints[1].position, Vector2.up, distanceToBarrierCheck + .5f, barrierMask);
-            Debug.DrawRay(vectorCheckPoints[1].position, Vector2.up);
+            //Moving Left
+            if (movingDirection == 0)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.left, (modifedSpeed * Time.deltaTime));
+                hit = Physics2D.Raycast(vectorCheckPoints[0].position, Vector2.up, distanceToBarrierCheck + 1f, barrierMask);
+                Debug.DrawRay(vectorCheckPoints[0].position, Vector2.up);
+            }
+            //Moving Right
+            else if (movingDirection == 1)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.right, (modifedSpeed * Time.deltaTime));
+                hit = Physics2D.Raycast(vectorCheckPoints[1].position, Vector2.up, distanceToBarrierCheck + 1f, barrierMask);
+                Debug.DrawRay(vectorCheckPoints[1].position, Vector2.up);
+            }
+
             if (hit.collider == null)
             {
                 movingAroundDir = -1;
+                movingDirection = -1;
             }
         }
         //East Move
         else if(movingAroundDir == 2)
         {
-            transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.down, (modifedSpeed * Time.deltaTime));
-            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoints[2].position, Vector2.left, distanceToBarrierCheck + .5f, barrierMask);
-            Debug.DrawRay(vectorCheckPoints[2].position, Vector2.left);
+            //Moving up
+            if (movingDirection == 0)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.up, (modifedSpeed * Time.deltaTime));
+                hit = Physics2D.Raycast(vectorCheckPoints[3].position, Vector2.left, distanceToBarrierCheck + 1f, barrierMask);
+                Debug.DrawRay(vectorCheckPoints[3].position, Vector2.left);
+            }
+            //Moving down
+            else if (movingDirection == 1)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.down, (modifedSpeed * Time.deltaTime));
+                hit = Physics2D.Raycast(vectorCheckPoints[2].position, Vector2.left, distanceToBarrierCheck + 1f, barrierMask);
+                Debug.DrawRay(vectorCheckPoints[2].position, Vector2.left);
+            }
+
             if (hit.collider == null)
             {
                 movingAroundDir = -1;
+                movingDirection = -1;
             }
         }
         //West Move
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.down, (modifedSpeed * Time.deltaTime));
-            RaycastHit2D hit = Physics2D.Raycast(vectorCheckPoints[3].position, Vector2.right, distanceToBarrierCheck + .5f, barrierMask);
-            Debug.DrawRay(vectorCheckPoints[3].position, Vector2.right);
+            //Moving up
+            if (movingDirection == 0)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.up, (modifedSpeed * Time.deltaTime));
+                hit = Physics2D.Raycast(vectorCheckPoints[3].position, Vector2.right, distanceToBarrierCheck + 1f, barrierMask);
+                Debug.DrawRay(vectorCheckPoints[3].position, Vector2.right);
+            }
+            //Moving down
+            else if (movingDirection == 1)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, transform.position + Vector3.down, (modifedSpeed * Time.deltaTime));
+                hit = Physics2D.Raycast(vectorCheckPoints[2].position, Vector2.right, distanceToBarrierCheck + 1f, barrierMask);
+                Debug.DrawRay(vectorCheckPoints[2].position, Vector2.right);
+            }
+
             if (hit.collider == null)
             {
                 movingAroundDir = -1;
+                movingDirection = -1;
             }
         }
     }
