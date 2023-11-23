@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 4795511552536449272}
   - component: {fileID: 4795511552536449273}
   - component: {fileID: 4795511552536449274}
-  - component: {fileID: 4795511552536449275}
+  - component: {fileID: -872051237421195452}
+  - component: {fileID: -2509027532855481741}
+  - component: {fileID: 242010033778458401}
   m_Layer: 0
   m_Name: Snowball
   m_TagString: Untagged
@@ -28,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4795511552536449268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,7 +104,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
---- !u!114 &4795511552536449275
+--- !u!114 &-872051237421195452
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,20 +113,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 4795511552536449268}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9da102ebe587a44ebb870fb8eb9b4d62, type: 3}
+  m_Script: {fileID: 11500000, guid: f3a4575ec61f24e248da6f7b156437d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  associatedHitbox: {fileID: 4795511552536449274}
-  knockback: 1400
-  KbOutInsteadOfBack: 1
-  forwardIsUp: 0
-  style: 0
-  damageType: 2
-  secondaryEffects:
-  - {fileID: 11400000, guid: c339b6ab43322478aba1b5d0d53ad5ac, type: 2}
-  - {fileID: 11400000, guid: 384831997ed51478dbd88a8747b6fb08, type: 2}
-  onHitPS: {fileID: 0}
-  canHitMultipleTimes: 0
-  hitboxNumber: 0
-  uniqueDamage: 0
-  damage: 0
+--- !u!114 &-2509027532855481741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4795511552536449268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d73828f19a6642b39632df337f08312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toSpawnOnDeath: {fileID: 7132965115118913360, guid: cdea4d9ec48ec48c8a7583394696be2c, type: 3}
+  deathObjMultiplier: 1
+  lifetime: 0.6
+--- !u!50 &242010033778458401
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4795511552536449268}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

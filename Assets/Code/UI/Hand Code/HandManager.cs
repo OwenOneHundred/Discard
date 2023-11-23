@@ -24,6 +24,7 @@ public class HandManager : MonoBehaviour
     [SerializeField] RectTransform discardPilePos;
     [SerializeField] RectTransform drawPilePos;
     TargetScript ts;
+    [SerializeField] GameObject cardPrefab;
 
     protected GameObject selectedCard;
     public GameObject SelectedCard
@@ -308,6 +309,15 @@ public class HandManager : MonoBehaviour
 
         co.UpdateOrganizedCards(Hand, 666);
         return toReturn;
+    }
+
+    public void AddCardToDeck(Card card)
+    {
+        GameObject newCard = Instantiate(cardPrefab, transform);
+        newCard.GetComponent<CardInfo>().scriptableObject = card;
+        newCard.GetComponent<CardInfo>().SetUp();
+        newCard.SetActive(false);
+        Deck.Add(newCard);
     }
 
     List<T> RemoveAndReturn<T>(List<T> list, T toRemove)

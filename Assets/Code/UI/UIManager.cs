@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject pileBurstEffect;
     [SerializeField] Vector2 drawShuffleEffectOffset;
 
+    public GameObject cardSelectionUI;
+
     [SerializeField] List<Sprite> energyBarNumbers;
 
     [SerializeField] List<BarCap> barCaps;

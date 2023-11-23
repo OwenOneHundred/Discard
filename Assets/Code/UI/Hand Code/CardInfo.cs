@@ -15,6 +15,14 @@ public class CardInfo : MonoBehaviour
 
     private void Start()
     {
+        if (scriptableObject != null)
+        {
+            SetUp();
+        }
+    }
+
+    public void SetUp()
+    {
         int cost = int.Parse(scriptableObject.cost);
         bm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<BuffManager>();
         tmpro = transform.GetChild(2).GetComponent<TMPro.TextMeshProUGUI>();

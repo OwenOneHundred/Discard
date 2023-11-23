@@ -10,14 +10,28 @@ public class SlowScript : StatusEffect
 
     public override void OnApply(GameObject enemy)
     {
-        enemy.GetComponent<EnemyMovement>().ChangeSpeedModifier(decreaseMultiplier);
+        if (enemy.TryGetComponent(out EnemyMovement em))
+        {
+            em.ChangeSpeedModifier(decreaseMultiplier);
+        }
+        else
+        {
+            Debug.Log("Could not slow " + enemy.name + " because it does not have an EnemyMovement component.");
+        }
 
         TryAddPS(enemy, psPrefab);
     }
 
     public override void OnEnd(GameObject enemy)
     {
-        enemy.GetComponent<EnemyMovement>().ChangeSpeedModifier(-decreaseMultiplier);
+        if (enemy.TryGetComponent(out EnemyMovement em))
+        {
+            em.ChangeSpeedModifier(-decreaseMultiplier);
+        }
+        else
+        {
+            Debug.Log("Could not slow " + enemy.name + " because it does not have an EnemyMovement component.");
+        }
 
         TryRemovePS(enemy, psPrefab);
     }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Fire5Sec
   m_EditorClassIdentifier: 
   effectType: 0
-  time: 5
+  timer: 5
   psPrefab: {fileID: 1631204839684626909, guid: cb73160240f2c4fcba39fd77cef64599, type: 3}
-  damagePerSecond: 50
+  damagePerSecond: 100
