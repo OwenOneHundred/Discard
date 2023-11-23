@@ -119,8 +119,6 @@ public class CardOrganizer : MonoBehaviour
 
                 (hoveredCardIndex == index ? hoveredAdjustment : Vector2.zero) +
 
-                // (cardIsSelectedCard ? hoveredAdjustment : Vector2.zero) +
-
                 new Vector2(cardWidth * indextoorder + ((cardWidth / 2) * (indextoorder > 0 ? -1 : 1)),
 
                 -edgeDecline * Mathf.Abs(indextoorder));
@@ -131,8 +129,6 @@ public class CardOrganizer : MonoBehaviour
                 center +
 
                 (hoveredCardIndex == index ? hoveredAdjustment : Vector2.zero) +
-
-                // (cardIsSelectedCard ? hoveredAdjustment : Vector2.zero) +
 
                 new Vector2(cardWidth * indextoorder,
 

@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1270966957
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: -885114698, guid: 681b61b4754ec4a47907fb6294ae6187, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -155,16 +155,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   associatedHitbox: {fileID: 4456225976309858148}
-  knockback: 5000
+  knockback: 200
   KbOutInsteadOfBack: 1
   forwardIsUp: 0
   style: 0
   damageType: 2
-  secondaryEffects:
-  - {fileID: 11400000, guid: c339b6ab43322478aba1b5d0d53ad5ac, type: 2}
+  statusEffectData:
   - {fileID: 11400000, guid: 384831997ed51478dbd88a8747b6fb08, type: 2}
-  onHitPS: {fileID: 0}
+  - {fileID: 11400000, guid: c339b6ab43322478aba1b5d0d53ad5ac, type: 2}
+  onHitEffect: {fileID: 0}
+  effectLifetime: 1
   canHitMultipleTimes: 0
-  hitboxNumber: 0
-  uniqueDamage: 0
   damage: 0

@@ -11,9 +11,6 @@ public class TimeBomb : MonoBehaviour
 
     [SerializeField] float time;
 
-    [SerializeField] GameObject explosion;
-    [SerializeField] float explosionLifetime = 1;
-
     [SerializeField] float speed;
 
     float timer = 0;
@@ -37,7 +34,8 @@ public class TimeBomb : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        Destroy(Instantiate(explosion, transform.position, Quaternion.identity), explosionLifetime);
+
+        GetComponent<ExplosionManager>().OnDeath();
         Destroy(gameObject);
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8507335235221244802}
   - component: {fileID: 1467410733201146856}
   - component: {fileID: 1827276070070115325}
+  - component: {fileID: -4826366198043785577}
   m_Layer: 0
   m_Name: TimerBomb
   m_TagString: Untagged
@@ -134,3 +135,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4826366198043785577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9156236940424832399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d73828f19a6642b39632df337f08312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toSpawnOnDeath: {fileID: 7187706179279901132, guid: 47c73bb0179e946d49c2a053d6db33ba, type: 3}
+  deathObjMultiplier: 1

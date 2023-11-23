@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db44d29891fb8490ead7045661882e4b, type: 3}
+  m_Name: Snowball
+  m_EditorClassIdentifier: 
+  name: Snowball
+  description: Launch a snowball that slows enemy in an area on hit.
+  art: {fileID: 21300000, guid: a094a2a568dc84c459e174c4eb0a9151, type: 3}
+  cost: 1
+  attackPrefab: {fileID: 4795511552536449268, guid: c1d53c5bbacba46a2a9375c8191a7a0c, type: 3}
+  style: 0
+  damageType: 2
+  isBoomerang: 0
+  baseDamage: 250
+  targetAnimator: {fileID: 0}
+  castFunctions:
+  - {fileID: 11400000, guid: 5336560853ef64466ae33eff748efe85, type: 2}

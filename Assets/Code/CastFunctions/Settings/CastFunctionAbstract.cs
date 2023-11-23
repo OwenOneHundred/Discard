@@ -30,6 +30,11 @@ public abstract class CastFunctionAbstract : ScriptableObject
             hm.damage = cardInfo.actualDamage;
         }
 
+        if (obj.TryGetComponent<ExplosionManager>(out ExplosionManager em))
+        {
+            em.OnSpawn(cardInfo.actualDamage);
+        }
+
         bm.OnProjectileSpawned(obj, card);
     }
 }

@@ -119,10 +119,7 @@ public class DamageScript : MonoBehaviour
         {
             // reduce health by value returned by EveryFrame
             float damageRecorded = se.EveryFrame(gameObject);
-            if (damageRecorded > 0)
-            {
-                Hit(damage: damageRecorded, doNotSpawnNumber: true);
-            }
+            Hit(damage: damageRecorded, doNotSpawnNumber: true, ignoreAlreadyHit: true);
 
             if (se.timer <= 0)
             {

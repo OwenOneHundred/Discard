@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2924974232456636074}
   - component: {fileID: -3829494775058720065}
-  - component: {fileID: -8573577751396066445}
   - component: {fileID: -3368549618845170664}
   - component: {fileID: 6904109006855013535}
   - component: {fileID: 2544952667050864208}
+  - component: {fileID: 1492408518855987308}
+  - component: {fileID: 1451123057855142934}
   m_Layer: 0
   m_Name: FireBallProjectile
   m_TagString: Untagged
@@ -89,24 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-8573577751396066445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 448879121063281211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d09b0f2c90902340b46bda3ed2a96bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  dmg: 1
-  startingPos: {x: 0, y: 0}
-  explosionEffect: {fileID: 7187706179279901132, guid: 6f48a8ef243594248a7d4494e03646a2, type: 3}
-  effectName: ExplosionEffect(Clone)
-  effectLengthInSeconds: 0.667
 --- !u!95 &-3368549618845170664
 Animator:
   serializedVersion: 5
@@ -164,6 +147,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1492408518855987308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448879121063281211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3a4575ec61f24e248da6f7b156437d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1451123057855142934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448879121063281211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d73828f19a6642b39632df337f08312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toSpawnOnDeath: {fileID: 7187706179279901132, guid: 6f48a8ef243594248a7d4494e03646a2, type: 3}
+  deathObjMultiplier: 0
+  lifetime: 1
 --- !u!1 &7743178773130922117
 GameObject:
   m_ObjectHideFlags: 0
