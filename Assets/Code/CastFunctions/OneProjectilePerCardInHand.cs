@@ -34,7 +34,7 @@ public class OneProjectilePerCardInHand : CastFunctionAbstract
             GameObject newShuriken = Instantiate(prefab, pt.position, pt.rotation); // GetChild(0) ???
             SetUpObject(newShuriken, cardSO);
             Rigidbody2D projRB = newShuriken.GetComponent<Rigidbody2D>();
-            Vector3 normalizedDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - pt.position).normalized;
+            Vector2 normalizedDirection = ((Vector2) (Camera.main.ScreenToWorldPoint(Input.mousePosition) - pt.position)).normalized;
 
             projRB.velocity = Quaternion.AngleAxis(Random.Range(-randomAngleChange, randomAngleChange), Vector3.forward) * normalizedDirection * speed;
             projRB.angularVelocity = spinSpeed;

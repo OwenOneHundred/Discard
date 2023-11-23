@@ -19,7 +19,7 @@ public class SpawnObject : CastFunctionAbstract
         SetUpObject(obj, card);
         if (pointTowardMouse)
         {
-            Vector3 normalizedDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - pt.position).normalized;
+            Vector2 normalizedDirection = ((Vector2) (Camera.main.ScreenToWorldPoint(Input.mousePosition) - pt.position)).normalized;
             obj.transform.rotation = Quaternion.Euler(new Vector3 (0, 0, GeneralUtil.AngleBetween(Vector2.up, normalizedDirection)));
             if (speed > 0)
             {
