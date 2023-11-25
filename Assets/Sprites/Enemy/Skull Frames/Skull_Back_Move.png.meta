@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c839d24446fb64c64b46a86e78db3bf3
+guid: 715031a25978f4e3f8e00df1f45d0157
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,253 +117,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skull_Front_Death_0
+      name: Skull_Back_Move_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 8
-        width: 64
-        height: 64
+        y: 0
+        width: 17
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7faa7d95f8ae748d39c238333adc5157
-      internalID: 875350744
+      spriteID: 7c4c8aded6f3642f0b4fc5012340d8fb
+      internalID: 1942449988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Death_1
+      name: Skull_Back_Move_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 8
-        width: 64
-        height: 64
+        x: 17
+        y: 0
+        width: 17
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33f0c404d9b58458f8ae89c70729d112
-      internalID: -1813522983
+      spriteID: 69c22ea35721a4e1f8e087ae3df5a3f8
+      internalID: -1754959693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Death_2
+      name: Skull_Back_Move_2
       rect:
         serializedVersion: 2
-        x: 128
-        y: 8
-        width: 64
-        height: 64
+        x: 34
+        y: 0
+        width: 17
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df888dfe57e9c477bbfa4e70dcbab85a
-      internalID: -1064932970
+      spriteID: 3e5e10c342c814623860622263693e43
+      internalID: -2136563006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Death_3
+      name: Skull_Back_Move_3
       rect:
         serializedVersion: 2
-        x: 192
-        y: 8
-        width: 64
-        height: 64
+        x: 51
+        y: 0
+        width: 17
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 076c79798a2dc4ca58d1b64fb3cd4d07
-      internalID: -378094558
+      spriteID: 72e0153d3cf8f4741a070f59e7dc5129
+      internalID: -866804389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Death_4
+      name: Skull_Back_Move_4
       rect:
         serializedVersion: 2
-        x: 256
-        y: 8
-        width: 64
-        height: 64
+        x: 68
+        y: 0
+        width: 17
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85f74901f374c45648634b6c9e42f27e
-      internalID: -902302086
+      spriteID: e7ee681515a194d10a9769e235832fa0
+      internalID: 1146541372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Death_5
+      name: Skull_Back_Move_5
       rect:
         serializedVersion: 2
-        x: 320
-        y: 8
-        width: 64
-        height: 64
+        x: 85
+        y: 0
+        width: 17
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4be1b8ee510834e79b56e2c47e629b84
-      internalID: 1392685203
+      spriteID: d6bfeb84f338a453182b5909147a84f7
+      internalID: -1509280014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Death_6
+      name: Skull_Back_Move_6
       rect:
         serializedVersion: 2
-        x: 384
-        y: 8
-        width: 64
-        height: 64
+        x: 102
+        y: 0
+        width: 17
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a23f178c8ec0b47dcaa9f36a837be98c
-      internalID: -1106453714
+      spriteID: 9a4ea77a0dbd44c55a1dbb3fef55c68e
+      internalID: 559107882
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Death_7
+      name: Skull_Back_Move_7
       rect:
         serializedVersion: 2
-        x: 448
-        y: 8
-        width: 64
-        height: 64
+        x: 119
+        y: 0
+        width: 17
+        height: 31
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f982b019388a44cf0bba1937dda8d839
-      internalID: 1867237181
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Skull_Front_Death_8
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 8
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 40b82710ec8b34fa891d8ce09f4bc642
-      internalID: 461639387
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Skull_Front_Death_9
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 8
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dadcd7ea746dc42d2ae4dfe896a6e7f6
-      internalID: 1104831341
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Skull_Front_Death_10
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 8
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dcd366d9a778b47f195326697ef930da
-      internalID: -1641230135
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Skull_Front_Death_11
-      rect:
-        serializedVersion: 2
-        x: 704
-        y: 8
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07f80628374724727b76b3f36a7271b6
-      internalID: -272227274
+      spriteID: a9db8bdb4de77416798cc9e6e719b55b
+      internalID: 477163515
       vertices: []
       indices: 
       edges: []
@@ -379,18 +295,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Skull_Front_Death_2: -1064932970
-      Skull_Front_Death_6: -1106453714
-      Skull_Front_Death_1: -1813522983
-      Skull_Front_Death_3: -378094558
-      Skull_Front_Death_8: 461639387
-      Skull_Front_Death_4: -902302086
-      Skull_Front_Death_7: 1867237181
-      Skull_Front_Death_11: -272227274
-      Skull_Front_Death_5: 1392685203
-      Skull_Front_Death_0: 875350744
-      Skull_Front_Death_9: 1104831341
-      Skull_Front_Death_10: -1641230135
+      Skull_Back_Move_2: -2136563006
+      Skull_Back_Move_5: -1509280014
+      Skull_Back_Move_0: 1942449988
+      Skull_Back_Move_6: 559107882
+      Skull_Back_Move_3: -866804389
+      Skull_Back_Move_4: 1146541372
+      Skull_Back_Move_7: 477163515
+      Skull_Back_Move_1: -1754959693
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

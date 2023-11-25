@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 58c95357a4f224ef28e7f9df7de10a19
+guid: 8080de2f443b64ebe83d00755a6345ab
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skull_Front_Move_0
+      name: Skull_Side_Move_Left_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 17
-        height: 31
+        width: 22
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7f92f9a0fbfc4e65b42e96a36b72795
-      internalID: 645719104
+      spriteID: 752dca291e7c240669616382ff773b97
+      internalID: 255118587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Move_1
+      name: Skull_Side_Move_Left_1
       rect:
         serializedVersion: 2
-        x: 17
+        x: 22
         y: 0
-        width: 17
-        height: 31
+        width: 22
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69039fd8a0be04bd5bd7542402cc0f1e
-      internalID: 1922569437
+      spriteID: 64fa92e264ca84d2c8ee9c99fdedc15e
+      internalID: 315124619
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Move_2
+      name: Skull_Side_Move_Left_2
       rect:
         serializedVersion: 2
-        x: 34
+        x: 44
         y: 0
-        width: 17
-        height: 31
+        width: 22
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfed85ea242da4df4ab55424c40f1732
-      internalID: 1422887573
+      spriteID: 5f7b2fdca7f7a4b77b7dede77d267f35
+      internalID: 1708107535
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Move_3
+      name: Skull_Side_Move_Left_3
       rect:
         serializedVersion: 2
-        x: 51
+        x: 66
         y: 0
-        width: 17
-        height: 31
+        width: 22
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6907c292d74d144c4a33ee3aa4292143
-      internalID: 684895629
+      spriteID: 6287b1012b36d4c9282e29cbe978d348
+      internalID: 486579144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Move_4
+      name: Skull_Side_Move_Left_4
       rect:
         serializedVersion: 2
-        x: 68
+        x: 88
         y: 0
-        width: 17
-        height: 31
+        width: 22
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,71 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae50ffa0b26134ddba8a8111cb68af1e
-      internalID: -154746822
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Skull_Front_Move_5
-      rect:
-        serializedVersion: 2
-        x: 85
-        y: 0
-        width: 17
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 666c624db56a44cb59b1aac6f4381dbd
-      internalID: 1173692123
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Skull_Front_Move_6
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 0
-        width: 17
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb2406c7be9254a2ca2810bee171af83
-      internalID: 1643481013
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Skull_Front_Move_7
-      rect:
-        serializedVersion: 2
-        x: 119
-        y: 0
-        width: 17
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 359a9444d672546c3b60da17c8192a6d
-      internalID: 197663265
+      spriteID: b1aa205aca5b74495a7ec2ce825a1eb1
+      internalID: -1087156382
       vertices: []
       indices: 
       edges: []
@@ -295,14 +232,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Skull_Front_Move_0: 645719104
-      Skull_Front_Move_2: 1422887573
-      Skull_Front_Move_4: -154746822
-      Skull_Front_Move_6: 1643481013
-      Skull_Front_Move_5: 1173692123
-      Skull_Front_Move_7: 197663265
-      Skull_Front_Move_3: 684895629
-      Skull_Front_Move_1: 1922569437
+      Skull_Side_Move_Left_1: 315124619
+      Skull_Side_Move_Left_0: 255118587
+      Skull_Side_Move_Left_4: -1087156382
+      Skull_Side_Move_Left_2: 1708107535
+      Skull_Side_Move_Left_3: 486579144
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

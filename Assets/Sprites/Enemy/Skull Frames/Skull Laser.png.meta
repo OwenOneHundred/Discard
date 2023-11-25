@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 59687a7a86e524f89acf40dfca46c988
+guid: 640c9230a1dea4827b4b448504b7c383
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skull_Front_Laser_0
+      name: Skull Laser_0
       rect:
         serializedVersion: 2
-        x: 576
+        x: 122
         y: 0
-        width: 64
-        height: 152
+        width: 122
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fd019efd7c14412f956a06517027511
-      internalID: 357245218
+      spriteID: e7488a54a5ae343a1800c0d0c1d59eba
+      internalID: -2001934923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Laser_1
+      name: Skull Laser_1
       rect:
         serializedVersion: 2
-        x: 640
+        x: 244
         y: 0
-        width: 64
-        height: 152
+        width: 122
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0959ff0ccc70a4f849b4079ca9832d68
-      internalID: -1944207998
+      spriteID: dd381dc0f0b054f0fb15c9b847984b62
+      internalID: -275942279
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Laser_2
+      name: Skull Laser_2
       rect:
         serializedVersion: 2
-        x: 704
+        x: 366
         y: 0
-        width: 64
-        height: 152
+        width: 122
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7d1e56476830486eadcd96c74443ba8
-      internalID: -1501958988
+      spriteID: aa17ae2efdedc47b18964bc540dd09ab
+      internalID: 637659004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Laser_3
+      name: Skull Laser_3
       rect:
         serializedVersion: 2
-        x: 768
+        x: 488
         y: 0
-        width: 64
-        height: 152
+        width: 122
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ac497b6fe80e497eaf7a50ca37d5fae
-      internalID: -89295208
+      spriteID: 15088f88df8a44464957bee49c2ad6a3
+      internalID: 1272914221
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Laser_4
+      name: Skull Laser_4
       rect:
         serializedVersion: 2
-        x: 832
+        x: 610
         y: 0
-        width: 64
-        height: 152
+        width: 122
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 949e4b805c2154e0caa353b576941703
-      internalID: 476988043
+      spriteID: 83bc3c97ecd1049e481e16b5e4388dd6
+      internalID: -1551937892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Laser_5
+      name: Skull Laser_5
       rect:
         serializedVersion: 2
-        x: 896
+        x: 732
         y: 0
-        width: 64
-        height: 152
+        width: 122
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,20 +236,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31efb600fcd7f4a958ef2042545906fc
-      internalID: -1289504004
+      spriteID: a5479f4b64e224c5c85df52e6ec38bdf
+      internalID: -767290546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Laser_6
+      name: Skull Laser_6
       rect:
         serializedVersion: 2
-        x: 960
+        x: 854
         y: 0
-        width: 64
-        height: 152
+        width: 122
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,20 +257,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6015d490d250d4d6facdc1e8804cfa82
-      internalID: 943459840
+      spriteID: f0dc6fa9c71054fa78c55eb0dd8eeb9b
+      internalID: -1396329863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Laser_7
+      name: Skull Laser_7
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 976
         y: 0
-        width: 64
-        height: 152
+        width: 122
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,20 +278,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f11459e633e24b72b0db15a59fcec37
-      internalID: 743958387
+      spriteID: 9609cb6b460374c599bc4747b96cdaed
+      internalID: -1634002417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Laser_8
+      name: Skull Laser_8
       rect:
         serializedVersion: 2
-        x: 1088
+        x: 1098
         y: 0
-        width: 64
-        height: 152
+        width: 122
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,20 +299,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a285b2e53be54dce847e60c51cd9fce
-      internalID: 1619133099
+      spriteID: 2499764e0b75048a8a43fa2cd6999f3d
+      internalID: 1703876015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Laser_9
+      name: Skull Laser_9
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1220
         y: 0
-        width: 64
-        height: 152
+        width: 122
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,20 +320,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 574d832d1d2b248f0b1ba2404ec7cf73
-      internalID: 662938036
+      spriteID: cf9f2546069944e2093e0e17b51643f6
+      internalID: 1705750119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Laser_10
+      name: Skull Laser_10
       rect:
         serializedVersion: 2
-        x: 1216
+        x: 1342
         y: 0
-        width: 64
-        height: 152
+        width: 122
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -341,8 +341,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2bc06450f5684451b1750a677dcada3
-      internalID: 1501192461
+      spriteID: fdcd5a3ff2c6d4f2dbf5eb1b9e911eb9
+      internalID: -697926956
       vertices: []
       indices: 
       edges: []
@@ -358,17 +358,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Skull_Front_Laser_10: 1501192461
-      Skull_Front_Laser_5: -1289504004
-      Skull_Front_Laser_0: 357245218
-      Skull_Front_Laser_1: -1944207998
-      Skull_Front_Laser_7: 743958387
-      Skull_Front_Laser_8: 1619133099
-      Skull_Front_Laser_6: 943459840
-      Skull_Front_Laser_4: 476988043
-      Skull_Front_Laser_3: -89295208
-      Skull_Front_Laser_9: 662938036
-      Skull_Front_Laser_2: -1501958988
+      Skull Laser_9: 1705750119
+      Skull Laser_0: -2001934923
+      Skull Laser_10: -697926956
+      Skull Laser_5: -767290546
+      Skull Laser_7: -1634002417
+      Skull Laser_4: -1551937892
+      Skull Laser_8: 1703876015
+      Skull Laser_1: -275942279
+      Skull Laser_3: 1272914221
+      Skull Laser_2: 637659004
+      Skull Laser_6: -1396329863
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
