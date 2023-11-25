@@ -11,6 +11,10 @@ public class UIManager : MonoBehaviour
     Slider energyBarSlider;
     [SerializeField] TMPro.TextMeshProUGUI drawPileText;
     [SerializeField] TMPro.TextMeshProUGUI discardPileText;
+    [SerializeField] RectTransform drawPileRT;
+    [SerializeField] RectTransform discardPileRT;
+    [SerializeField] RectTransform healthBarRT;
+    [SerializeField] RectTransform energyBarRT;
 
     [SerializeField] GameObject discardEffect;
     [SerializeField] Vector2 discardEffectOffset;
@@ -92,6 +96,30 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+
+    public bool MoveUIOnscreen()
+    {
+        drawPileRT.anchoredPosition = Vector2.MoveTowards(drawPileRT.anchoredPosition, Vector2.zero, 100 * Time.deltaTime);
+        discardPileRT.anchoredPosition = Vector2.MoveTowards(discardPileRT.anchoredPosition, Vector2.zero, 100 * Time.deltaTime);
+
+        healthBarRT.anchoredPosition = Vector2.MoveTowards(healthBarRT.anchoredPosition, Vector2.zero, 100 * Time.deltaTime);
+        energyBarRT.anchoredPosition = Vector2.MoveTowards(energyBarRT.anchoredPosition, Vector2.zero, 100 * Time.deltaTime);
+
+        return Vector2.Distance(discardPileRT.anchoredPosition, Vector2.zero) < 0.0001f;
+    }
+
+    public bool MoveUIOffscreen()
+    {
+        drawPileRT.anchoredPosition = Vector2.MoveTowards(drawPileRT.anchoredPosition, new Vector2(0, -40), 100 * Time.deltaTime);
+        discardPileRT.anchoredPosition = Vector2.MoveTowards(discardPileRT.anchoredPosition, new Vector2(0, -40), 100 * Time.deltaTime);
+
+        healthBarRT.anchoredPosition = Vector2.MoveTowards(healthBarRT.anchoredPosition, new Vector2(0, 30), 100 * Time.deltaTime);
+        energyBarRT.anchoredPosition = Vector2.MoveTowards(energyBarRT.anchoredPosition, new Vector2(0, 30), 100 * Time.deltaTime);
+
+        return Vector2.Distance(discardPileRT.anchoredPosition, new Vector2(0, -40)) < 0.0001f;
+    }
+
+
 
     [System.Serializable]
     public class BarCap

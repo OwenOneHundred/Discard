@@ -20,7 +20,7 @@ public class TimeBomb : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         StartCoroutine(Countdown());
-        GetComponent<Rigidbody2D>().AddForce((Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized * speed);
+        GetComponent<Rigidbody2D>().AddForce(((Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)).normalized * speed);
     }
 
     IEnumerator Countdown()

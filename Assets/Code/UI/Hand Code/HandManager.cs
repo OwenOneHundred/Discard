@@ -26,6 +26,8 @@ public class HandManager : MonoBehaviour
     TargetScript ts;
     [SerializeField] GameObject cardPrefab;
 
+    bool handOpen = true;
+
     protected GameObject selectedCard;
     public GameObject SelectedCard
     {
@@ -103,7 +105,28 @@ public class HandManager : MonoBehaviour
 
     private static System.Random rng = new System.Random();
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            StartCoroutine(PutHandAway());
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            StartCoroutine(TakeHandOut());
+        }
+    }
+
     private void Start()
+    {
+        SetUpHand();
+
+        uim.CDBar.onFill += DrawBarFull;
+
+        ts = targetObject.GetComponent<TargetScript>();
+    }
+
+    void SetUpHand()
     {
         ResetDrawPile();
         while (Hand.Count < initialHandSize && DrawPile.Count > 0)
@@ -112,15 +135,14 @@ public class HandManager : MonoBehaviour
         }
 
         co.UpdateOrganizedCards(Hand, Hand.IndexOf(hoveredCard));
-
-        uim.CDBar.onFill += DrawBarFull;
-
-        ts = targetObject.GetComponent<TargetScript>();
     }
 
     void ResetDrawPile()
     {
-        drawPile = new List<GameObject>(Deck);
+        List<GameObject> deckCopy = new List<GameObject>(Deck);
+        GeneralUtil.ShuffleList(deckCopy);
+        DrawPile = new List<GameObject>(deckCopy);
+        DiscardPile = new List<GameObject>();
     }
 
     public bool DrawCard()
@@ -142,9 +164,12 @@ public class HandManager : MonoBehaviour
             drawnCard.SetActive(true);
             DrawPile = RemoveAndReturn(DrawPile, drawnCard);
             co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard));
-            StartCoroutine(DrawCardAnimation(drawnCard));
 
             drawnCard.transform.SetAsLastSibling();
+            int lastSiblingIndex = drawnCard.transform.GetSiblingIndex();
+            drawnCard.transform.SetAsFirstSibling();
+
+            StartCoroutine(DrawCardAnimation(drawnCard, lastSiblingIndex));
 
             foreach (GameObject go in Hand)
             {
@@ -207,24 +232,35 @@ public class HandManager : MonoBehaviour
         card.SetActive(false);
     }
 
-    IEnumerator DrawCardAnimation(GameObject card)
+    IEnumerator DrawCardAnimation(GameObject card, int lastSiblingIndex)
     {
         CardInfo ci = card.GetComponent<CardInfo>();
         RectTransform crt = card.GetComponent<RectTransform>();
+        Transform cardTrans = card.transform;
         while (crt.localScale.x < 1)
         {
             crt.localScale += 3 * Time.deltaTime * new Vector3(1, 1, 0);
             crt.localScale = new Vector3(Mathf.Clamp(crt.localScale.x, 0, 1), Mathf.Clamp(crt.localScale.y, 0, 1), 1);
             yield return null;
         }
+
+        cardTrans.SetAsLastSibling();
+        if (cardTrans.GetSiblingIndex() > lastSiblingIndex)
+        {
+            cardTrans.SetSiblingIndex(lastSiblingIndex);
+        }
+
         card.GetComponent<CardHoverManager>().interactable = true;
     }
 
     void DrawBarFull(SlowBarFiller sbf) // called by action in update
     {
-        if (DrawCard())
+        if (handOpen)
         {
-            sbf.slider.value = 0;
+            if (DrawCard())
+            {
+                sbf.slider.value = 0;
+            }
         }
     }
 
@@ -318,6 +354,28 @@ public class HandManager : MonoBehaviour
         newCard.GetComponent<CardInfo>().SetUp();
         newCard.SetActive(false);
         Deck.Add(newCard);
+    }
+
+    IEnumerator PutHandAway()
+    {
+        handOpen = false;
+        List<GameObject> handCopy = new List<GameObject>(Hand);
+        foreach (GameObject i in handCopy)
+        {
+            DiscardCard(i);
+            yield return null;
+        }
+
+        while (!uim.MoveUIOffscreen()) { yield return null; }
+    }
+
+    IEnumerator TakeHandOut()
+    {
+        SetUpHand();
+
+        while (!uim.MoveUIOnscreen()) { yield return null; }
+
+        handOpen = true;
     }
 
     List<T> RemoveAndReturn<T>(List<T> list, T toRemove)
