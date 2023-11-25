@@ -20,9 +20,14 @@ public class DamageScript : MonoBehaviour
     public float lengthOfDeathAnim;
     private EnemyMind enemyMind;
 
+    //Card Reward Death
+    private LootManager lootManager;
+    public GameObject cardReward;
+
     private void Start()
     {
         gameManager = GameObject.Find("GameManager");
+        lootManager = gameManager.GetComponent<LootManager>();
         ehbm = GetComponent<EnemyHealthBarManager>();
         enemyMind = GetComponent<EnemyMind>();
     }
@@ -33,7 +38,10 @@ public class DamageScript : MonoBehaviour
         health -= damage;
         if (ehbm != null) { ehbm.OnHit(health); }
         if (health <= 0){
-            enemyMind.Death();
+            if(enemyMind != null)
+            {
+                enemyMind.Death();
+            }
             StartCoroutine("DeathWait");
         }
     }
@@ -148,6 +156,11 @@ public class DamageScript : MonoBehaviour
         if (isLocal == false)
         {
             EnemyWorldSpawner.enemyCount--;
+        }
+        if(lootManager != null && cardReward != null)
+        {
+            GameObject tempCardR = Instantiate(cardReward, transform.position, Quaternion.identity);
+            tempCardR.GetComponent<CardRewardObj>().offeredCards.Add(lootManager.GetLootCardBySpecifiedWeights(.5f, .3f, .2f));
         }
         ehbm.Death();
         Destroy(this.gameObject);
