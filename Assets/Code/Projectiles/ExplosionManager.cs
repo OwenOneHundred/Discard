@@ -6,7 +6,6 @@ public class ExplosionManager : MonoBehaviour
 {
     [SerializeField] GameObject toSpawnOnDeath;
     [SerializeField] float deathObjMultiplier = 1;
-    [SerializeField] float lifetime = 1;
     float actualDamage;
     
     public void OnDeath()
@@ -15,7 +14,7 @@ public class ExplosionManager : MonoBehaviour
         Debug.Log("ActualDamage = " + actualDamage);
         if (newObj.TryGetComponent(out HitboxManager hbm))
         {
-            hbm.damage = actualDamage;
+            hbm.damage = actualDamage * deathObjMultiplier;
         }
     }
 
