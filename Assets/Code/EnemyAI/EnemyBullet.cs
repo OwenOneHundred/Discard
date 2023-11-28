@@ -8,6 +8,8 @@ public class EnemyBullet : MonoBehaviour
 
     public float timeRemove;
 
+    public bool dontDestroy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,13 +33,19 @@ public class EnemyBullet : MonoBehaviour
     {
         if (other.tag == "Barrier")
         {
-            Destroy(this.gameObject);
+            if (dontDestroy == false)
+            {
+                Destroy(this.gameObject);
+            }
         }
 
         if (other.tag == "Player")
         {
             other.gameObject.GetComponent<PlayerInfo>().Damage();
-            Destroy(this.gameObject);
+            if (dontDestroy == false)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
