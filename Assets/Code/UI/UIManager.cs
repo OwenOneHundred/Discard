@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject pileBurstEffect;
     [SerializeField] Vector2 drawShuffleEffectOffset;
 
+    [SerializeField] CardMenu cm;
+
     public GameObject cardSelectionUI;
 
     [SerializeField] List<Sprite> energyBarNumbers;
@@ -74,6 +76,10 @@ public class UIManager : MonoBehaviour
     {
         ChangeEnergyBarNumbers();
         MoveBarCaps();
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            cm.Open = !cm.Open;
+        }
     }
 
     void ChangeEnergyBarNumbers()
@@ -118,8 +124,6 @@ public class UIManager : MonoBehaviour
 
         return Vector2.Distance(discardPileRT.anchoredPosition, new Vector2(0, -40)) < 0.0001f;
     }
-
-
 
     [System.Serializable]
     public class BarCap

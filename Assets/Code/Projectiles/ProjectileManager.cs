@@ -27,8 +27,6 @@ public class ProjectileManager : MonoBehaviour
 
     [SerializeField] float effectLengthInSeconds = 0.667f;
 
-    [SerializeField] bool isHoming = false;
-
     Rigidbody2D rb;
 
     void Awake() {
