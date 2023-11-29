@@ -171,10 +171,7 @@ public class HandManager : MonoBehaviour
 
             StartCoroutine(DrawCardAnimation(drawnCard, lastSiblingIndex));
 
-            foreach (GameObject go in Hand)
-            {
-                go.GetComponent<CardInfo>().UpdateDamage();
-            }
+            UpdateCardDamages();
 
             return true;
         }
@@ -198,6 +195,11 @@ public class HandManager : MonoBehaviour
 
         co.UpdateOrganizedCards(Hand, hand.IndexOf(hoveredCard));
 
+        UpdateCardDamages();
+    }
+
+    public void UpdateCardDamages()
+    {
         foreach (GameObject go in Hand)
         {
             go.GetComponent<CardInfo>().UpdateDamage();

@@ -19,7 +19,8 @@ MonoBehaviour:
   attackPrefab: {fileID: 4541302433429228365, guid: be422d84b0e9e45318b047e8ce6ba367, type: 3}
   style: 0
   damageType: 2
-  baseDamage: 200
+  isBoomerang: 0
+  baseDamage: 80
   targetAnimator: {fileID: 0}
   castFunctions:
   - {fileID: 11400000, guid: 2b1734fecb98348f68b02ccf7070358b, type: 2}

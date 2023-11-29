@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: MicroMissle
   description: Instantly pinpoint a small explosion.
-  art: {fileID: 0}
-  cost: 0
-  attackPrefab: {fileID: 0}
+  art: {fileID: 21300000, guid: 202b94cb6006a404b9d750597877aa15, type: 3}
+  cost: 1
+  attackPrefab: {fileID: 5373518167653388371, guid: 93e877b57189840f895964763fec57c2, type: 3}
   style: 1
-  damageType: 2
+  damageType: 0
   isBoomerang: 0
-  baseDamage: 0
+  baseDamage: 90
   targetAnimator: {fileID: 0}
-  castFunctions: []
+  castFunctions:
+  - {fileID: 11400000, guid: 9a8acdf08000e43a28f16144d916486d, type: 2}

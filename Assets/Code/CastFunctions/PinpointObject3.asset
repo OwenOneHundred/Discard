@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22d8e083dd9444f9e9bc4258eb8b8437, type: 3}
-  m_Name: 2xLaunch
+  m_Script: {fileID: 11500000, guid: 8ad9163944f4d45a6a973a8f04df19fe, type: 3}
+  m_Name: PinpointObject3
   m_EditorClassIdentifier: 
-  styleDamageMultipliers:
-  - left: 0
-    right: 2
-  damageTypeMultipliers: []
+  destroyTime: 3
