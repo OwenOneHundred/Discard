@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6735310317193525773}
   - component: {fileID: 528607435}
   - component: {fileID: 528607436}
+  - component: {fileID: 1460374983}
+  - component: {fileID: 1460374984}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -83,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f272867534f4d1dac4afefe34733cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  consecutiveBoomerangs: 0
   spellBuffs: []
   stylesAndColors:
   - left: 0
@@ -105,3 +108,42 @@ MonoBehaviour:
     right:
       serializedVersion: 2
       rgba: 10921638
+--- !u!114 &1460374983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6565756605833071101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8f43cd6ff92a4558ae10534a32f94cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armorItemPrefab: {fileID: 1335669795576363226, guid: 500bae91943484ed7ba5d8ad9e56d555, type: 3}
+--- !u!114 &1460374984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6565756605833071101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dee331e3462c9470d831216151037493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commonWeight: 0
+  commonCards:
+  - cardSO: {fileID: 11400000, guid: c7c09443e294049ba993b43e58a0eb19, type: 2}
+    oddsWeight: 1
+  - cardSO: {fileID: 11400000, guid: c7c09443e294049ba993b43e58a0eb19, type: 2}
+    oddsWeight: 1
+  uncommonWeight: 0
+  uncommonCards:
+  - cardSO: {fileID: 0}
+    oddsWeight: 0
+  rareWeight: 0
+  rareCards:
+  - cardSO: {fileID: 0}
+    oddsWeight: 0
