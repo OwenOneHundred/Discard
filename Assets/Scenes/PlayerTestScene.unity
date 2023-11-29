@@ -2505,6 +2505,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4290501022507652429, guid: fe2323d68afce4e8aa20a8dc30088ff8, type: 3}
+      propertyPath: m_LinearDrag
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe2323d68afce4e8aa20a8dc30088ff8, type: 3}
 --- !u!1 &1949171233
@@ -2683,6 +2687,10 @@ PrefabInstance:
       propertyPath: deathPanel
       value: 
       objectReference: {fileID: 1740010682}
+    - target: {fileID: 6642607665648479525, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6642607665648479527, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
       propertyPath: m_RootOrder
       value: 7
