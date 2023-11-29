@@ -37,7 +37,7 @@ public class EnemyWorldSpawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(currentTime >= timesToSpawn[currentRate])
+        if(player != null && currentTime >= timesToSpawn[currentRate])
         {
             currentTime = 0;
             int spawnValue = 0;
