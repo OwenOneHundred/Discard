@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 37187db9d72dd4da89043c91282c1e06
+guid: 258aac4bd7d954889b529276359c6846
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skull_Side_Death_Left_0
+      name: Skull_Side_Death_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b81f07bc434c9476eb8a1143c933f2c6
-      internalID: 2017827409
+      spriteID: 0e2a02c5ee82540248d5ca5bad8d7e58
+      internalID: 565462224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Side_Death_Left_1
+      name: Skull_Side_Death_1
       rect:
         serializedVersion: 2
         x: 52
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c39031a7ad1a747248bd18c877cc5d3a
-      internalID: 1577483493
+      spriteID: 70a1ccca8aea146979da10afdcb65f7a
+      internalID: -1420382963
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Side_Death_Left_2
+      name: Skull_Side_Death_2
       rect:
         serializedVersion: 2
         x: 104
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2f7679921121447da4d5851b5ac9a12
-      internalID: -1932474268
+      spriteID: f1f5c565c169141d2b2067a1fa9ed7f7
+      internalID: -1186660846
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Side_Death_Left_3
+      name: Skull_Side_Death_3
       rect:
         serializedVersion: 2
         x: 156
@@ -194,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3161e7c3ccd342ec8eb4c35ac3b88f3
-      internalID: 2052094217
+      spriteID: c197be51634d742dd84928201f716b38
+      internalID: -1772238622
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Side_Death_Left_4
+      name: Skull_Side_Death_4
       rect:
         serializedVersion: 2
         x: 208
@@ -215,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9543b08f7fb0a4788b05e7fd10727bb4
-      internalID: -1774618549
+      spriteID: a682e6a27857a4a7db04710cca588e15
+      internalID: -1716650944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Side_Death_Left_5
+      name: Skull_Side_Death_5
       rect:
         serializedVersion: 2
         x: 260
@@ -236,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a2b717310a9444db981372b4f5842cc
-      internalID: 609934951
+      spriteID: 2708c9eabff32447c88e36f35cb7908a
+      internalID: -362764552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Side_Death_Left_6
+      name: Skull_Side_Death_6
       rect:
         serializedVersion: 2
         x: 312
@@ -257,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8a9b0b1dddb54444ab60901f6c758cb
-      internalID: -2008785361
+      spriteID: c9779b89e827a4df587b5d564ecf0478
+      internalID: -595097065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Side_Death_Left_7
+      name: Skull_Side_Death_7
       rect:
         serializedVersion: 2
         x: 364
@@ -278,14 +278,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31427bdc36a474c3c8a1f21bd95c4d4c
-      internalID: 913818485
+      spriteID: 2bf5a82feeab44ac4bb678784c5b9d39
+      internalID: 925490020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Side_Death_Left_8
+      name: Skull_Side_Death_8
       rect:
         serializedVersion: 2
         x: 416
@@ -299,14 +299,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa130875c03c346c9969e78a8a4872ae
-      internalID: 610861530
+      spriteID: 06d95197bcdeb42718808d63ce29b3fe
+      internalID: -674792518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Side_Death_Left_9
+      name: Skull_Side_Death_9
       rect:
         serializedVersion: 2
         x: 468
@@ -320,14 +320,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b2d444ba92c0486a819006d5aea8f6c
-      internalID: -1921522216
+      spriteID: fe21d13543c5d4eeab498ace1f2747f9
+      internalID: -1124387796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Side_Death_Left_10
+      name: Skull_Side_Death_10
       rect:
         serializedVersion: 2
         x: 520
@@ -341,14 +341,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 413a13ef04e0547fb9e03492a8d6df27
-      internalID: 1255360553
+      spriteID: 53b7764029d9f4d3180dbd8e1cf1002a
+      internalID: 566659919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Side_Death_Left_11
+      name: Skull_Side_Death_11
       rect:
         serializedVersion: 2
         x: 572
@@ -362,8 +362,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a12f0f012db134f018a0fcbbb071dc21
-      internalID: 112576902
+      spriteID: d2a8bf487e53146718256fab4ed8846a
+      internalID: 1062779279
       vertices: []
       indices: 
       edges: []
@@ -379,18 +379,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Skull_Side_Death_Left_11: 112576902
-      Skull_Side_Death_Left_0: 2017827409
-      Skull_Side_Death_Left_3: 2052094217
-      Skull_Side_Death_Left_9: -1921522216
-      Skull_Side_Death_Left_7: 913818485
-      Skull_Side_Death_Left_8: 610861530
-      Skull_Side_Death_Left_5: 609934951
-      Skull_Side_Death_Left_6: -2008785361
-      Skull_Side_Death_Left_1: 1577483493
-      Skull_Side_Death_Left_10: 1255360553
-      Skull_Side_Death_Left_2: -1932474268
-      Skull_Side_Death_Left_4: -1774618549
+      Skull_Side_Death_6: -595097065
+      Skull_Side_Death_4: -1716650944
+      Skull_Side_Death_0: 565462224
+      Skull_Side_Death_11: 1062779279
+      Skull_Side_Death_1: -1420382963
+      Skull_Side_Death_7: 925490020
+      Skull_Side_Death_9: -1124387796
+      Skull_Side_Death_2: -1186660846
+      Skull_Side_Death_3: -1772238622
+      Skull_Side_Death_5: -362764552
+      Skull_Side_Death_10: 566659919
+      Skull_Side_Death_8: -674792518
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

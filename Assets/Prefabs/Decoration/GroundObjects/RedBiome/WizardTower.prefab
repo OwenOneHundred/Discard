@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5801661672610858480}
   - component: {fileID: 4819546130394912174}
   - component: {fileID: 7324660551958607159}
+  - component: {fileID: 1685966472}
   m_Layer: 0
   m_Name: WizardTower
   m_TagString: Untagged
@@ -186,3 +187,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0000000012417729, y: 0.010416747}
   m_Size: {x: 4.500003, y: 2.2096245}
   m_Direction: 1
+--- !u!114 &1685966472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8734911657378256631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c56952ff99414641aed6b5e48f25362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  enemies:
+  - {fileID: 8957488655061449159, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
+  enemyCount: 03000000
+  minSpawnY: 5
+  minSpawnX: 5
+  allEnemies: []
+  maxEnemies: 0

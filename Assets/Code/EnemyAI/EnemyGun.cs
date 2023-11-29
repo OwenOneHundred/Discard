@@ -26,6 +26,10 @@ public class EnemyGun : MonoBehaviour
         public int bulletCount;
         //Amount of time between bullets being fired
         public int timeBetweenBullets;
+        //Stops angles gun after certain point
+        public bool stopAngleShort;
+        //Causes the enemy to not move
+        public bool dontMoveDuringAttack;
     }
 
     //In attack range of player
@@ -46,6 +50,7 @@ public class EnemyGun : MonoBehaviour
     //Objs Needed--------
     //Gotten from enemy mind
     public Transform player;
+    public Vector3 playerPosAtStopAngle;
     public GameObject[] enemyTargeter;
 
     private EnemyInfo enemyInfo;
@@ -113,6 +118,18 @@ public class EnemyGun : MonoBehaviour
             enemyImager.isAttacking = true;
             enemyImager.attackCount = 0;
             enemyImager.ResetAnim();
+            if(attacks[0].stopAngleShort == true)
+            {
+                playerPosAtStopAngle = player.transform.position;
+            }
+            else
+            {
+                playerPosAtStopAngle = new Vector3(0f, 0f, 1f);
+            }
+            if (attacks[0].dontMoveDuringAttack == true)
+            {
+                currentlyFiring = true;
+            }
         }
         else
         {
@@ -164,7 +181,6 @@ public class EnemyGun : MonoBehaviour
                 }
             }
         }
-
         currentFireCount++;
     }
 
@@ -177,6 +193,10 @@ public class EnemyGun : MonoBehaviour
             currentFireCount = 0;
             currentAttackPhase = 1;
             enemyImager.isAttacking = false;
+            if (attacks[0].dontMoveDuringAttack == true)
+            {
+                currentlyFiring = false;
+            }
         }
         else
         {
@@ -203,6 +223,18 @@ public class EnemyGun : MonoBehaviour
             enemyImager.isAttacking = true;
             enemyImager.attackCount = currentAttack;
             enemyImager.ResetAnim();
+            if (attacks[currentAttack].stopAngleShort == true)
+            {
+                playerPosAtStopAngle = player.transform.position;
+            }
+            else
+            {
+                playerPosAtStopAngle = new Vector3(0f,0f,1f);
+            }
+            if(attacks[currentAttack].dontMoveDuringAttack == true)
+            {
+                currentlyFiring = true;
+            }
         }
         else
         {
@@ -246,11 +278,11 @@ public class EnemyGun : MonoBehaviour
                 //Fired all bullets, resets info
                 else
                 {
-                    currentlyFiring = false;
                     currentAttackPhase++;
                     currentFireCount = 0;
                     currentNumBulletsFired = 0;
                     currentInBetweenFireCount = int.MaxValue;
+                    currentlyFiring = false;
                 }
             }
         }
@@ -269,6 +301,10 @@ public class EnemyGun : MonoBehaviour
             enemyImager.isAttacking = false;
             enemyImager.attackCount = 0;
             currentAttack = -1;
+            if (attacks[currentAttack].dontMoveDuringAttack == true)
+            {
+                currentlyFiring = false;
+            }
         }
         else
         {
@@ -296,8 +332,14 @@ public class EnemyGun : MonoBehaviour
         else
         {
             //Positioning Firing Object
-            Vector3 difference = player.transform.position - transform.position;
+            Vector3 difference = player.transform.position - enemyTargeter[0].transform.position;
             float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            //Moves it if supossed to start early
+            if (playerPosAtStopAngle.z == 0f)
+            {
+                difference = playerPosAtStopAngle - enemyTargeter[0].transform.position;
+                rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+            }
 
             //Fire
             foreach (GameObject tar in enemyTargeter)

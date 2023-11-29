@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f9e4e4af12f1427a9456187f82c32ba
+guid: a6f9baf2fe0b0488385e874c61c94089
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skull_Front_Attack_0
+      name: Skull_Side_Attack_Right_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9afa22228485f4f1faf6fc0b7fd0b719
-      internalID: -859672727
+      spriteID: 08b45640e32e745e48e3b1fdd40ba468
+      internalID: 1395640311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_1
+      name: Skull_Side_Attack_Right_1
       rect:
         serializedVersion: 2
-        x: 61
+        x: 58
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d933517f84eb42b0bf3d6552e78d411
-      internalID: -1818021834
+      spriteID: abe880b6d357a46f2bb779ea3f81b396
+      internalID: -737303282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_2
+      name: Skull_Side_Attack_Right_2
       rect:
         serializedVersion: 2
-        x: 122
+        x: 116
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b5935b4efb2a44b7b53dd5d64f0a1f7
-      internalID: 460649186
+      spriteID: 42eaf5c35d6544a4285a11f149aecee4
+      internalID: -1901219113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_3
+      name: Skull_Side_Attack_Right_3
       rect:
         serializedVersion: 2
-        x: 183
+        x: 174
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb451e72c4f4044d5bfcc2177e5bd665
-      internalID: -1579405674
+      spriteID: 5129b9a3149cb4b29a79cd3a46425d8c
+      internalID: 312793601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_4
+      name: Skull_Side_Attack_Right_4
       rect:
         serializedVersion: 2
-        x: 244
+        x: 232
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +215,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 251e8de65e54542dba2919f2e6dd4648
-      internalID: -1240226330
+      spriteID: 20f1d80bacda448838fd115b9b335143
+      internalID: 780865742
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_5
+      name: Skull_Side_Attack_Right_5
       rect:
         serializedVersion: 2
-        x: 305
+        x: 290
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,20 +236,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53131413a059c43cfacb91fdcb09dfa0
-      internalID: -288698580
+      spriteID: 1c753a79cf1ac4bc4ae92c422879271b
+      internalID: -1199267833
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_6
+      name: Skull_Side_Attack_Right_6
       rect:
         serializedVersion: 2
-        x: 366
+        x: 348
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,20 +257,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 638caba51205f4d0c905894672166a44
-      internalID: -359896732
+      spriteID: 73379b010e5564ca78f8bd21db223156
+      internalID: -2136304843
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_7
+      name: Skull_Side_Attack_Right_7
       rect:
         serializedVersion: 2
-        x: 427
+        x: 406
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,20 +278,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01b32249edef7425faf1dd8bf98bc2ee
-      internalID: -1745506470
+      spriteID: a687902128c844b63961bd1731828964
+      internalID: -950199868
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_8
+      name: Skull_Side_Attack_Right_8
       rect:
         serializedVersion: 2
-        x: 488
+        x: 464
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,20 +299,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6476c1e607e5042acbdc6268be9a5354
-      internalID: -56214663
+      spriteID: 1888ee4c909814d689b8c71fd7e433c1
+      internalID: 1887118529
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_9
+      name: Skull_Side_Attack_Right_9
       rect:
         serializedVersion: 2
-        x: 549
+        x: 522
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,20 +320,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf19ca89848ea4bbc9ef5ead22eda30f
-      internalID: 1268760874
+      spriteID: 3dc75f0c3764e42819d23dfade9d6dea
+      internalID: -1850058804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_10
+      name: Skull_Side_Attack_Right_10
       rect:
         serializedVersion: 2
-        x: 610
+        x: 580
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -341,20 +341,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea878ff022d5a44198b069537e784543
-      internalID: -1990708370
+      spriteID: 031792f067c9d4d3e9bfdb9bf9b12413
+      internalID: 346530319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_11
+      name: Skull_Side_Attack_Right_11
       rect:
         serializedVersion: 2
-        x: 671
+        x: 638
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -362,20 +362,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efea033178f0e42a0983a99debf17db8
-      internalID: -634744345
+      spriteID: 3a1474f8f140043f191c2d8ab00585c9
+      internalID: -1625329442
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_12
+      name: Skull_Side_Attack_Right_12
       rect:
         serializedVersion: 2
-        x: 732
+        x: 696
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -383,20 +383,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d879a4a19d0e4444a517f853407fb43
-      internalID: -283895715
+      spriteID: f703173ea0af640cb8b6a85ddacc871e
+      internalID: 764004475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_13
+      name: Skull_Side_Attack_Right_13
       rect:
         serializedVersion: 2
-        x: 793
+        x: 754
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -404,20 +404,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aae72b3b137394938a7fa1eb8d86ea57
-      internalID: -1081260661
+      spriteID: e541f79fa6da34509b53bfc65d087624
+      internalID: -1225264620
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_14
+      name: Skull_Side_Attack_Right_14
       rect:
         serializedVersion: 2
-        x: 854
+        x: 812
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -425,20 +425,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 515b3dcbd2faa4e8da2672274c524542
-      internalID: -520976407
+      spriteID: bff9030b154be4df58d9a028f14f74df
+      internalID: -1273255832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_15
+      name: Skull_Side_Attack_Right_15
       rect:
         serializedVersion: 2
-        x: 915
+        x: 870
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,20 +446,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9721f63da11ac4e16ba6a9569e7163dd
-      internalID: 461282216
+      spriteID: 5b30ff9393b704ff2ba656447d2a04bb
+      internalID: -967514811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_16
+      name: Skull_Side_Attack_Right_16
       rect:
         serializedVersion: 2
-        x: 976
+        x: 928
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -467,20 +467,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6421cf4ca0e484158b1a819a71277fbf
-      internalID: -1288535669
+      spriteID: 0fede3c6a85b840618628447371b7135
+      internalID: -972240732
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_17
+      name: Skull_Side_Attack_Right_17
       rect:
         serializedVersion: 2
-        x: 1037
+        x: 986
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -488,20 +488,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8404d2715b46649e0a78cee4db0b0f8b
-      internalID: 494954168
+      spriteID: 931729276a2fb4f769b17984b0148d2b
+      internalID: 1282014902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_18
+      name: Skull_Side_Attack_Right_18
       rect:
         serializedVersion: 2
-        x: 1098
+        x: 1044
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -509,20 +509,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1807963de9b314e4bbdb82654c65b873
-      internalID: -678406632
+      spriteID: cae9a62a4c921497ca49c97ae6a7a60b
+      internalID: -468132790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_19
+      name: Skull_Side_Attack_Right_19
       rect:
         serializedVersion: 2
-        x: 1159
+        x: 1102
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -530,20 +530,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baab734773218499081a8ebb4685ca29
-      internalID: -80190404
+      spriteID: f7c1a5cb7ad6f47d1af887db50e1f830
+      internalID: -502523612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_20
+      name: Skull_Side_Attack_Right_20
       rect:
         serializedVersion: 2
-        x: 1220
+        x: 1160
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -551,20 +551,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66c693aa8dc5f4870a0a333d5fa08d03
-      internalID: 2089913779
+      spriteID: 8c1df91967614468a8adf755939bfee4
+      internalID: 1033348325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_21
+      name: Skull_Side_Attack_Right_21
       rect:
         serializedVersion: 2
-        x: 1281
+        x: 1218
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -572,20 +572,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05a9478baf0d74d9b9ae6155194867c1
-      internalID: 1511852340
+      spriteID: 8ac1f0b6582e0431caabfa3645160908
+      internalID: 167944981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_22
+      name: Skull_Side_Attack_Right_22
       rect:
         serializedVersion: 2
-        x: 1342
+        x: 1276
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -593,20 +593,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0350b9feb43e4558a6061d261dc18e6
-      internalID: 923297346
+      spriteID: 8eae2d5ef2084428b9b2ff7260b9ac5d
+      internalID: 654177062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skull_Front_Attack_23
+      name: Skull_Side_Attack_Right_23
       rect:
         serializedVersion: 2
-        x: 1403
+        x: 1334
         y: 0
-        width: 61
-        height: 59
+        width: 58
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -614,8 +614,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd0630900be694e67b42b6f2d8935a2e
-      internalID: 817039506
+      spriteID: 61a37e90d3e5c40e6a185984f6ea84c1
+      internalID: 1879027586
       vertices: []
       indices: 
       edges: []
@@ -631,30 +631,30 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Skull_Front_Attack_2: 460649186
-      Skull_Front_Attack_0: -859672727
-      Skull_Front_Attack_14: -520976407
-      Skull_Front_Attack_10: -1990708370
-      Skull_Front_Attack_11: -634744345
-      Skull_Front_Attack_1: -1818021834
-      Skull_Front_Attack_16: -1288535669
-      Skull_Front_Attack_6: -359896732
-      Skull_Front_Attack_23: 817039506
-      Skull_Front_Attack_13: -1081260661
-      Skull_Front_Attack_3: -1579405674
-      Skull_Front_Attack_12: -283895715
-      Skull_Front_Attack_19: -80190404
-      Skull_Front_Attack_7: -1745506470
-      Skull_Front_Attack_8: -56214663
-      Skull_Front_Attack_9: 1268760874
-      Skull_Front_Attack_22: 923297346
-      Skull_Front_Attack_15: 461282216
-      Skull_Front_Attack_20: 2089913779
-      Skull_Front_Attack_18: -678406632
-      Skull_Front_Attack_17: 494954168
-      Skull_Front_Attack_4: -1240226330
-      Skull_Front_Attack_21: 1511852340
-      Skull_Front_Attack_5: -288698580
+      Skull_Side_Attack_Right_4: 780865742
+      Skull_Side_Attack_Right_13: -1225264620
+      Skull_Side_Attack_Right_12: 764004475
+      Skull_Side_Attack_Right_19: -502523612
+      Skull_Side_Attack_Right_17: 1282014902
+      Skull_Side_Attack_Right_5: -1199267833
+      Skull_Side_Attack_Right_21: 167944981
+      Skull_Side_Attack_Right_2: -1901219113
+      Skull_Side_Attack_Right_0: 1395640311
+      Skull_Side_Attack_Right_20: 1033348325
+      Skull_Side_Attack_Right_7: -950199868
+      Skull_Side_Attack_Right_23: 1879027586
+      Skull_Side_Attack_Right_9: -1850058804
+      Skull_Side_Attack_Right_18: -468132790
+      Skull_Side_Attack_Right_16: -972240732
+      Skull_Side_Attack_Right_8: 1887118529
+      Skull_Side_Attack_Right_22: 654177062
+      Skull_Side_Attack_Right_15: -967514811
+      Skull_Side_Attack_Right_14: -1273255832
+      Skull_Side_Attack_Right_10: 346530319
+      Skull_Side_Attack_Right_6: -2136304843
+      Skull_Side_Attack_Right_3: 312793601
+      Skull_Side_Attack_Right_1: -737303282
+      Skull_Side_Attack_Right_11: -1625329442
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
