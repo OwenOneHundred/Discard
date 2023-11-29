@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1780469493, guid: c26498147340649f78e106f783f0e548, type: 3}
+  m_Sprite: {fileID: -1214180167, guid: ff85479eb263044d98620573fcb66164, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -362,32 +362,48 @@ MonoBehaviour:
     targetVector: {x: -0.5, y: 0, z: 0}
   deathAnimations:
   - sprites:
-    - {fileID: 1015143631, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: -1753548800, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: -899514436, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: -1939650837, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    timeBetweenAnim: 0f0000000f0000000f0000002d000000
+    - {fileID: 1721802528, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -559122035, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 1004479256, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -1463260083, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -2055197901, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -1391519192, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 728214192, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -1739858541, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    timeBetweenAnim: 050000000500000005000000050000000500000005000000050000002d000000
     targetVector: {x: 69, y: 0, z: 0}
   - sprites:
-    - {fileID: -632916134, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 1821492986, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 1070132358, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: -663848849, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    timeBetweenAnim: 0f0000000f0000000f0000002d000000
+    - {fileID: 861112173, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 1624399424, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -303892304, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 1394160211, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 1825667325, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 1455020565, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 1910459949, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 1358718018, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    timeBetweenAnim: 050000000500000005000000050000000500000005000000050000002d000000
     targetVector: {x: 69, y: 0, z: 0}
   - sprites:
-    - {fileID: 397591650, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 935873661, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 1806229090, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 540409837, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    timeBetweenAnim: 0f0000000f0000000f0000002d000000
+    - {fileID: 510650804, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -1280595901, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 2000548209, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -1743268553, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 1563178295, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 619812528, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -1389300343, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -1968580699, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    timeBetweenAnim: 050000000500000005000000050000000500000005000000050000002d000000
     targetVector: {x: 69, y: 0, z: 0}
   - sprites:
-    - {fileID: -1583008315, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 1578233691, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 709527525, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    - {fileID: 1585902499, guid: e3c4fbe3eeef34b30a21ba7505020cfb, type: 3}
-    timeBetweenAnim: 0f0000000f0000000f0000002d000000
+    - {fileID: 1470537890, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -462080255, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 1452753472, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 208915362, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -245258961, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -894746449, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: -1447441073, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    - {fileID: 1193219342, guid: ff85479eb263044d98620573fcb66164, type: 3}
+    timeBetweenAnim: 050000000500000005000000050000000500000005000000050000002d000000
     targetVector: {x: 69, y: 0, z: 0}
 --- !u!114 &1386292785969522773
 MonoBehaviour:
@@ -406,7 +422,7 @@ MonoBehaviour:
   kbMultiplier: 1
   health: 150
   isLocal: 0
-  lengthOfDeathAnim: 1.5
+  lengthOfDeathAnim: 1.35
   cardReward: {fileID: 0}
 --- !u!114 &1386292785969522774
 MonoBehaviour:

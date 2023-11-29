@@ -19,6 +19,8 @@ public class DamageScript : MonoBehaviour
     //Time til enemy is destoryed
     public float lengthOfDeathAnim;
     private EnemyMind enemyMind;
+    public GameObject deathObject;
+    public Transform deathObjTar;
 
     //Card Reward Death
     private LootManager lootManager;
@@ -161,6 +163,10 @@ public class DamageScript : MonoBehaviour
         {
             GameObject tempCardR = Instantiate(cardReward, transform.position, Quaternion.identity);
             tempCardR.GetComponent<CardRewardObj>().offeredCards.Add(lootManager.GetLootCardBySpecifiedWeights(.5f, .3f, .2f));
+        }
+        if(deathObject != null)
+        {
+            Instantiate(deathObject, deathObjTar.transform.position, Quaternion.identity);
         }
         ehbm.Death();
         Destroy(this.gameObject);

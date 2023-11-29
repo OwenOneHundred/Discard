@@ -58,6 +58,7 @@ public class EnemyImager : MonoBehaviour
         {
             if (isAttacking == true && (isAnimDone == true || currentAnim == 2))
             {
+                Debug.Log("Bad Attack");
                 currentAnim = 2;
                 AnimateAttack();
             }
