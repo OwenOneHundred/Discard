@@ -7,15 +7,9 @@ public class TitleControl : MonoBehaviour
 {
     public string nextScene;
 
-    // Start is called before the first frame update
-    void Start()
+    public void ChangeScene()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Hit");
+        SceneManager.LoadScene(nextScene);
     }
 }

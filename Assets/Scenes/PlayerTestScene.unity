@@ -1663,14 +1663,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 528607436, guid: 3e68b3c30ad6e4be9858b7f2dddf3cdc, type: 3}
-      propertyPath: spellBuffs.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 528607436, guid: 3e68b3c30ad6e4be9858b7f2dddf3cdc, type: 3}
-      propertyPath: spellBuffs.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 83b97527b91464fc3a88753bdd67daa6, type: 2}
     - target: {fileID: 6565756605833071101, guid: 3e68b3c30ad6e4be9858b7f2dddf3cdc, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1721,50 +1713,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e68b3c30ad6e4be9858b7f2dddf3cdc, type: 3}
---- !u!1 &1460374982 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6565756605833071101, guid: 3e68b3c30ad6e4be9858b7f2dddf3cdc, type: 3}
-  m_PrefabInstance: {fileID: 1460374981}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1460374983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460374982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8f43cd6ff92a4558ae10534a32f94cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armorItemPrefab: {fileID: 1335669795576363226, guid: 500bae91943484ed7ba5d8ad9e56d555, type: 3}
---- !u!114 &1460374984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460374982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dee331e3462c9470d831216151037493, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  commonWeight: 0
-  commonCards:
-  - cardSO: {fileID: 11400000, guid: c7c09443e294049ba993b43e58a0eb19, type: 2}
-    oddsWeight: 1
-  - cardSO: {fileID: 11400000, guid: c7c09443e294049ba993b43e58a0eb19, type: 2}
-    oddsWeight: 1
-  uncommonWeight: 0
-  uncommonCards:
-  - cardSO: {fileID: 0}
-    oddsWeight: 0
-  rareWeight: 0
-  rareCards:
-  - cardSO: {fileID: 0}
-    oddsWeight: 0
 --- !u!114 &1527276255 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8686770303477453752, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
