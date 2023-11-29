@@ -6,19 +6,27 @@ using System.Linq;
 public class BuffManager : MonoBehaviour
 {
     public int consecutiveBoomerangs = 0;
+    HandManager hm;
 
     [SerializeField] List<SpellBuff> spellBuffs = new List<SpellBuff>();
 
     public List<Pair<Style, Color32>> stylesAndColors;
 
+    private void Start()
+    {
+        hm = GameObject.Find("Hand").GetComponent<HandManager>();
+    }
+
     public void AddSpellBuff(SpellBuff spellBuff)
     {
         spellBuffs.Add(spellBuff);
+        hm.UpdateCardDamages();
     }
 
     public void RemoveSpellBuff(SpellBuff spellBuff)
     {
         spellBuffs.Remove(spellBuff);
+        hm.UpdateCardDamages();
     }
 
     public float GetStyleMultiplier(Style style)

@@ -33,8 +33,11 @@ public class DamageScript : MonoBehaviour
         health -= damage;
         if (ehbm != null) { ehbm.OnHit(health); }
         if (health <= 0){
-            enemyMind.Death();
-            StartCoroutine("DeathWait");
+            if (enemyMind != null)
+            {
+                enemyMind.Death();
+                StartCoroutine("DeathWait");
+            }
         }
     }
 

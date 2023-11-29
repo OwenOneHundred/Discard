@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db44d29891fb8490ead7045661882e4b, type: 3}
+  m_Name: SpiritBomb
+  m_EditorClassIdentifier: 
+  name: Spirit Bomb
+  description: Launch a massive spirit that quickly explodes.
+  art: {fileID: 21300000, guid: 404094faaab344f19be4f91efd45b929, type: 3}
+  cost: 3
+  attackPrefab: {fileID: 7904248900105456000, guid: bf61439f606824a0dbad102b3a7245d0, type: 3}
+  style: 0
+  damageType: 2
+  isBoomerang: 0
+  baseDamage: 300
+  targetAnimator: {fileID: 0}
+  castFunctions:
+  - {fileID: 11400000, guid: 2b1734fecb98348f68b02ccf7070358b, type: 2}

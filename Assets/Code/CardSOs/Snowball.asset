@@ -20,7 +20,7 @@ MonoBehaviour:
   style: 0
   damageType: 2
   isBoomerang: 0
-  baseDamage: 250
+  baseDamage: 20
   targetAnimator: {fileID: 0}
   castFunctions:
   - {fileID: 11400000, guid: 5336560853ef64466ae33eff748efe85, type: 2}

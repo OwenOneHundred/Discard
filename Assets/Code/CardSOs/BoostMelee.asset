@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db44d29891fb8490ead7045661882e4b, type: 3}
+  m_Name: BoostMelee
+  m_EditorClassIdentifier: 
+  name: Melee Boost
+  description: Place a field that multiplies melee damage from within its radius
+    by 1.5x.
+  art: {fileID: 21300000, guid: 9e18715df517c4bb3912098c33981f0c, type: 3}
+  cost: 2
+  attackPrefab: {fileID: 4479173003569318001, guid: 10f552e332c0647cfbe7d42b633e51ed, type: 3}
+  style: 4
+  damageType: 2
+  isBoomerang: 0
+  baseDamage: 0
+  targetAnimator: {fileID: 0}
+  castFunctions:
+  - {fileID: 11400000, guid: 7e93cc9e89c1b41edbfb38440a603f9b, type: 2}
