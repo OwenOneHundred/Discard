@@ -154,7 +154,11 @@ public class DamageScript : MonoBehaviour
     //The time need to wait for death animation
     IEnumerator DeathWait()
     {
-        yield return new WaitForSeconds(lengthOfDeathAnim);
+        //Destroy health bar
+        yield return new WaitForSeconds(.1f);
+        ehbm.Death();
+
+        yield return new WaitForSeconds(lengthOfDeathAnim-.1f);
         if (isLocal == false)
         {
             EnemyWorldSpawner.enemyCount--;
@@ -168,7 +172,6 @@ public class DamageScript : MonoBehaviour
         {
             Instantiate(deathObject, deathObjTar.transform.position, Quaternion.identity);
         }
-        ehbm.Death();
         Destroy(this.gameObject);
     }
 }

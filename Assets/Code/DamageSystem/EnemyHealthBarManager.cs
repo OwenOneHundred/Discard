@@ -25,7 +25,10 @@ public class EnemyHealthBarManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        slider.transform.position = transform.position + (Vector3.up * height);
+        if(slider != null)
+        {
+            slider.transform.position = transform.position + (Vector3.up * height);
+        }
     }
 
     /// <summary>
