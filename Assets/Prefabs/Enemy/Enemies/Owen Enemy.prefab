@@ -158,6 +158,7 @@ MonoBehaviour:
   angleToPlayer: 0
   aggroed: 0
   inRange: 0
+  diesOnAttack: 0
   deathDistance: 30
   agroeDistance: 10
   pacifyDistance: 18
@@ -207,15 +208,18 @@ MonoBehaviour:
   currentlyFiring: 0
   attacks:
   - bullet: {fileID: 6998601661079292256, guid: 113a70b399fbe422cb088772eba2f447, type: 3}
-    preAnimfireRate: 60
+    preAnimfireRate: 55
     animfireRate: 90
     postAnimfireRate: 85
     diesOnFire: 0
     dontAngle: 1
     bulletCount: 1
     timeBetweenBullets: 0
+    stopAngleShort: 0
+    dontMoveDuringAttack: 0
   currentAttackPhase: 0
   player: {fileID: 0}
+  playerPosAtStopAngle: {x: 0, y: 0, z: 0}
   enemyTargeter:
   - {fileID: 3516262470830489025}
   - {fileID: 5513288231007502242}
@@ -445,6 +449,9 @@ MonoBehaviour:
   health: 250
   isLocal: 0
   lengthOfDeathAnim: 2
+  deathObject: {fileID: 0}
+  deathObjTar: {fileID: 0}
+  cardReward: {fileID: 0}
 --- !u!114 &3516262469844880623
 MonoBehaviour:
   m_ObjectHideFlags: 0

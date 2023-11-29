@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class PlayerInfo : MonoBehaviour
 {
     public float hp;
     public Slider hpSlider; 
     [System.NonSerialized] public WorldGenerator.Biome currentBiome;
+
+    public GameObject deathPanel;
 
     //Damages Player
     public void Damage(int damage)
@@ -16,7 +20,7 @@ public class PlayerInfo : MonoBehaviour
 
         if(hp <= 0f)
         {
-            Debug.Log("Player Death");
+            Death();
         }
     }
 
@@ -34,5 +38,21 @@ public class PlayerInfo : MonoBehaviour
             yield return new WaitForSeconds(1);
             currentBiome = GeneralUtil.GetBiomeAtPos(transform.position);
         }
+    }
+
+    //Handles the death of the player
+    public void Death()
+    {
+        Time.timeScale = .0f;
+        deathPanel.SetActive(true);
+        StartCoroutine("DeathWait");
+    }
+
+    private IEnumerator DeathWait()
+    {
+        Debug.Log("Start");
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("End");
+        SceneManager.LoadScene("Menu");
     }
 }

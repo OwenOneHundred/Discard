@@ -65,7 +65,7 @@ public class EnemyMind : MonoBehaviour
         //To Far from player 
         if(distToPlayer >= deathDistance)
         {
-            damageScript.OnReduceHealth(damageScript.health);
+            damageScript.QuickKill();
         }
 
         //Attacking

@@ -982,6 +982,12 @@ MonoBehaviour:
       volume: 0.2
       pitch: 1
       loop: 1
+    music:
+      name: 
+      clip: {fileID: 0}
+      volume: 0.5
+      pitch: 0
+      loop: 0
   - name: Plains
     temperature: 5
     weight: 1
@@ -1046,6 +1052,12 @@ MonoBehaviour:
       volume: 0.2
       pitch: 1
       loop: 1
+    music:
+      name: 
+      clip: {fileID: 0}
+      volume: 0.5
+      pitch: 0
+      loop: 0
   - name: Desert
     temperature: 10
     weight: 0.8
@@ -1074,6 +1086,12 @@ MonoBehaviour:
       volume: 0.05
       pitch: 1
       loop: 1
+    music:
+      name: 
+      clip: {fileID: 0}
+      volume: 0.5
+      pitch: 0
+      loop: 0
   - name: RedBiome
     temperature: 7
     weight: 1.1
@@ -1101,6 +1119,12 @@ MonoBehaviour:
       odds0to1: 0.0002
     footstepSounds: []
     ambientNoise:
+      name: 
+      clip: {fileID: 0}
+      volume: 0.5
+      pitch: 0
+      loop: 0
+    music:
       name: 
       clip: {fileID: 0}
       volume: 0.5
@@ -1726,6 +1750,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1740010682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3021810796906112905, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
+  m_PrefabInstance: {fileID: 1871730441}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1744232117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,6 +1994,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 864562379, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021810796906112905, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2579,9 +2612,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6642607665648479524, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
+      propertyPath: hp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642607665648479524, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
       propertyPath: hpSlider
       value: 
       objectReference: {fileID: 1527276255}
+    - target: {fileID: 6642607665648479524, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
+      propertyPath: deathPanel
+      value: 
+      objectReference: {fileID: 1740010682}
     - target: {fileID: 6642607665648479527, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
       propertyPath: m_RootOrder
       value: 7

@@ -69,12 +69,18 @@ MonoBehaviour:
       volume: 0.5
       pitch: 0
       loop: 0
+    music:
+      name: 
+      clip: {fileID: 0}
+      volume: 0.5
+      pitch: 0
+      loop: 0
   barrierMask:
     serializedVersion: 2
     m_Bits: 64
   rareOdds: 50
   currentRate: 0
-  timesToSpawn: fa000000b400000096000000780000005a000000
+  timesToSpawn: c800000096000000780000005a00000046000000
   countOfEnemies: 190000000f0000000a0000000500000000000000
   minSpawnY: 15
   minSpawnX: 25
