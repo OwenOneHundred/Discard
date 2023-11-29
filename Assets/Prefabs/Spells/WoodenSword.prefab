@@ -185,8 +185,8 @@ MonoBehaviour:
     windUpTime: 0.3
     windUpDegrees: 15
     swingTime: 0.3
-    swingDegrees: 300
-    endPauseTime: 0.04
+    swingDegrees: 220
+    endPauseTime: 0.15
     swingOutwardMovement: {x: 0, y: 0}
     refreshHitbox: 0
     swingSound: {fileID: 0}
@@ -194,8 +194,8 @@ MonoBehaviour:
     windUpTime: 0
     windUpDegrees: 0
     swingTime: 0.3
-    swingDegrees: 300
-    endPauseTime: 0.04
+    swingDegrees: 220
+    endPauseTime: 0.15
     swingOutwardMovement: {x: 0, y: 0}
     refreshHitbox: 1
     swingSound: {fileID: 0}
@@ -203,8 +203,8 @@ MonoBehaviour:
     windUpTime: 0
     windUpDegrees: 0
     swingTime: 0.3
-    swingDegrees: 265
-    endPauseTime: 0.15
+    swingDegrees: 200
+    endPauseTime: 0.2
     swingOutwardMovement: {x: 0, y: 0}
     refreshHitbox: 1
     swingSound: {fileID: 0}
@@ -233,7 +233,7 @@ MonoBehaviour:
   style: 3
   damageType: 2
   statusEffectData: []
-  onHitEffect: {fileID: 3369644740303421294, guid: 02d12e1e5d66f45aebcec8e6be7ea5dc, type: 3}
+  onHitEffect: {fileID: 0}
   effectLifetime: 0.6
   canHitMultipleTimes: 0
   damage: 0
