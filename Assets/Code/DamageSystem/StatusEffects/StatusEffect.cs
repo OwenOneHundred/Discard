@@ -56,9 +56,14 @@ public abstract class StatusEffect : ScriptableObject
         if (TryGetPSOnEnemyByTag(enemy.transform, psPrefab) == null)
         {
             GameObject newPS = Instantiate(psPrefab, enemy.transform);
-            var shape = newPS.GetComponent<ParticleSystem>().shape;
-            shape.sprite = enemy.GetComponent<SpriteRenderer>().sprite;
-            shape.scale = new Vector3(enemy.transform.localScale.x, enemy.transform.localScale.y, 1);
+
+            if (enemy.TryGetComponent(out SpriteRenderer sr))
+            {
+                var shape = newPS.GetComponent<ParticleSystem>().shape;
+                shape.sprite = sr.sprite;
+                shape.scale = new Vector3(enemy.transform.localScale.x, enemy.transform.localScale.y, 1);
+            }
+
         }
     }
 

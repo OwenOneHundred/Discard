@@ -617,6 +617,7 @@ public class WorldGenerator : MonoBehaviour
 
         public List<MiniSfXManager.Sound> footstepSounds;
         public MiniSfXManager.Sound ambientNoise;
+        public MiniSfXManager.Sound music;
 
         [System.Serializable]
         public class DecorObject
