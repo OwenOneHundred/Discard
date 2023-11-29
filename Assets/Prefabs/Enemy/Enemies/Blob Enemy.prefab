@@ -212,8 +212,8 @@ MonoBehaviour:
   inRange: 0
   diesOnAttack: 1
   deathDistance: 30
-  agroeDistance: 14
-  pacifyDistance: 18
+  agroeDistance: 18
+  pacifyDistance: 20
   attackDistance: 6
 --- !u!114 &4290501022507652427
 MonoBehaviour:

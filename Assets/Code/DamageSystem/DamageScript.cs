@@ -174,4 +174,15 @@ public class DamageScript : MonoBehaviour
         }
         Destroy(this.gameObject);
     }
+
+    //Quickly destory enemy(used when playe ris too far away)
+    public void QuickKill()
+    {
+        ehbm.Death();
+        if (isLocal == false)
+        {
+            EnemyWorldSpawner.enemyCount--;
+        }
+        Destroy(this.gameObject);
+    }
 }
