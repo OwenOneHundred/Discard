@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4478299456370421082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4478299456370421080}
+  - component: {fileID: 4478299456370421063}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4478299456370421080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478299456370421082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4478299456370421063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478299456370421082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31cf783e3c374ef4b4a731ab5b0c56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentBiome:
+    name: 
+    temperature: 0
+    weight: 1
+    averageNumTilesForStructure: 1000
+    groundTile: {fileID: 0}
+    raisedGroundTop: {fileID: 0}
+    raisedGroundFront: {fileID: 0}
+    rgFrontL: {fileID: 0}
+    rgFrontR: {fileID: 0}
+    bottomSlope: {fileID: 0}
+    topSlope: {fileID: 0}
+    hillOdds0to1: 1
+    decorObjects: []
+    structures: []
+    tallGrass:
+      tile: {fileID: 0}
+      odds0to1: 0.0001
+    footstepSounds: []
+    ambientNoise:
+      name: 
+      clip: {fileID: 0}
+      volume: 0.5
+      pitch: 0
+      loop: 0
+  barrierMask:
+    serializedVersion: 2
+    m_Bits: 64
+  rareOdds: 50
+  currentRate: 0
+  timesToSpawn: fa000000b400000096000000780000005a000000
+  countOfEnemies: 190000000f0000000a0000000500000000000000
+  minSpawnY: 15
+  minSpawnX: 25
+  forestEnemies:
+  - {fileID: 8957488655061449159, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
+  - {fileID: 862277616779180968, guid: 7744d1d09f1cd4bc3b5916af8f068d71, type: 3}
+  plainsEnemies:
+  - {fileID: 1386292785969522755, guid: 373cc604387c0444b97487ed85b3ef63, type: 3}
+  - {fileID: 4290501022507652421, guid: fe2323d68afce4e8aa20a8dc30088ff8, type: 3}
+  desertEnemies:
+  - {fileID: 862277616779180968, guid: 7744d1d09f1cd4bc3b5916af8f068d71, type: 3}
+  - {fileID: 1386292785969522755, guid: 373cc604387c0444b97487ed85b3ef63, type: 3}
+  redBiomeEnemies:
+  - {fileID: 4290501022507652421, guid: fe2323d68afce4e8aa20a8dc30088ff8, type: 3}
+  - {fileID: 8957488655061449159, guid: 1138962b99c63461aa39fd6cb54da7ca, type: 3}
+  rareEnemies:
+  - {fileID: 3516262469844880634, guid: ce0f1db52cdea43ce8f6456822a1a629, type: 3}
