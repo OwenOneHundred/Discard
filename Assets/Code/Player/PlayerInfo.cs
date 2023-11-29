@@ -50,9 +50,7 @@ public class PlayerInfo : MonoBehaviour
 
     private IEnumerator DeathWait()
     {
-        Debug.Log("Start");
-        yield return new WaitForSeconds(1.5f);
-        Debug.Log("End");
+        yield return new WaitForSecondsRealtime(2.5f);
         SceneManager.LoadScene("Menu");
     }
 }
