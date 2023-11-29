@@ -9,9 +9,9 @@ public class PlayerInfo : MonoBehaviour
     [System.NonSerialized] public WorldGenerator.Biome currentBiome;
 
     //Damages Player
-    public void Damage()
+    public void Damage(int damage)
     {
-        hp--;
+        hp = hp - damage;
         hpSlider.value = hp;
 
         if(hp <= 0f)

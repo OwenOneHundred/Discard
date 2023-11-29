@@ -19,6 +19,8 @@ public class DamageScript : MonoBehaviour
     //Time til enemy is destoryed
     public float lengthOfDeathAnim;
     private EnemyMind enemyMind;
+    public GameObject deathObject;
+    public Transform deathObjTar;
 
     //Card Reward Death
     private LootManager lootManager;
@@ -152,7 +154,11 @@ public class DamageScript : MonoBehaviour
     //The time need to wait for death animation
     IEnumerator DeathWait()
     {
-        yield return new WaitForSeconds(lengthOfDeathAnim);
+        //Destroy health bar
+        yield return new WaitForSeconds(.1f);
+        ehbm.Death();
+
+        yield return new WaitForSeconds(lengthOfDeathAnim-.1f);
         if (isLocal == false)
         {
             EnemyWorldSpawner.enemyCount--;
@@ -162,7 +168,10 @@ public class DamageScript : MonoBehaviour
             GameObject tempCardR = Instantiate(cardReward, transform.position, Quaternion.identity);
             tempCardR.GetComponent<CardRewardObj>().offeredCards.Add(lootManager.GetLootCardBySpecifiedWeights(.5f, .3f, .2f));
         }
-        ehbm.Death();
+        if(deathObject != null)
+        {
+            Instantiate(deathObject, deathObjTar.transform.position, Quaternion.identity);
+        }
         Destroy(this.gameObject);
     }
 }

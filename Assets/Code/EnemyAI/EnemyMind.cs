@@ -23,13 +23,13 @@ public class EnemyMind : MonoBehaviour
     //Enemy States
     public bool aggroed;
     public bool inRange;
+    public bool diesOnAttack;
 
     //Distance Goals
     public float deathDistance;
     public float agroeDistance;
     public float pacifyDistance;
     public float attackDistance;
-
 
     // Start is called before the first frame update
     void Awake()
@@ -82,8 +82,18 @@ public class EnemyMind : MonoBehaviour
                 //Activates or Deactives Gun
                 if(distToPlayer <= attackDistance)
                 {
-                    inRange = true;
-                    enemyGun.inRange = true;
+                    if(diesOnAttack == true)
+                    {
+                        if(damageScript.health > 0)
+                        {
+                            damageScript.OnReduceHealth(damageScript.health);
+                        }
+                    }
+                    else
+                    {
+                        inRange = true;
+                        enemyGun.inRange = true;
+                    }
                 }
                 else if(enemyGun.currentlyFiring == false)
                 {

@@ -211,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 8957488655061449159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8957488655578975863}
@@ -293,8 +293,11 @@ MonoBehaviour:
     dontAngle: 0
     bulletCount: 3
     timeBetweenBullets: 30
+    stopAngleShort: 0
+    dontMoveDuringAttack: 0
   currentAttackPhase: 0
   player: {fileID: 0}
+  playerPosAtStopAngle: {x: 0, y: 0, z: 0}
   enemyTargeter:
   - {fileID: 8957488656298297596}
 --- !u!114 &8957488655061449165
@@ -471,6 +474,7 @@ MonoBehaviour:
   health: 100
   isLocal: 0
   lengthOfDeathAnim: 1.5
+  cardReward: {fileID: 0}
 --- !u!114 &8957488655061449170
 MonoBehaviour:
   m_ObjectHideFlags: 0

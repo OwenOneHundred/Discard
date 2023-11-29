@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+    public int damage;
     public float speed;
 
     public float timeRemove;
@@ -41,7 +42,7 @@ public class EnemyBullet : MonoBehaviour
 
         if (other.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerInfo>().Damage();
+            other.gameObject.GetComponent<PlayerInfo>().Damage(damage);
             if (dontDestroy == false)
             {
                 Destroy(this.gameObject);
