@@ -9,7 +9,6 @@ public class TitleControl : MonoBehaviour
 
     public void ChangeScene()
     {
-        Debug.Log("Hit");
         SceneManager.LoadScene(nextScene);
     }
 }
