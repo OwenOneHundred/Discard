@@ -133,8 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 13844187}
   - component: {fileID: 13844190}
-  - component: {fileID: 13844189}
   - component: {fileID: 13844188}
+  - component: {fileID: 13844191}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -171,20 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aus: {fileID: 13844190}
   clips: []
---- !u!114 &13844189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13844186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b150867307f8142a2b9cdf36f8ca0050, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pi: {fileID: 2071843117}
-  aus: {fileID: 13844190}
 --- !u!82 &13844190
 AudioSource:
   m_ObjectHideFlags: 0
@@ -281,6 +267,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &13844191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13844186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac586ab89c7a493a9561213700bb14c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pi: {fileID: 2071843117}
+  aus: {fileID: 13844190}
 --- !u!1 &97909783
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,6 +2158,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6642607665648479531, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0841718
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642607665648479531, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.5142782
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
 --- !u!1001 &1654598659
@@ -3102,6 +3110,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 853407684210738905, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
+      propertyPath: scriptableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 6ea5af2fb557145f7b0e312813e0a837, type: 2}
     - target: {fileID: 8686770304516353431, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -10,6 +10,7 @@ public class ExplosionHitbox : MonoBehaviour
     [SerializeField] bool startOnAwake = true;
     [SerializeField] bool disableAtMaxSize = true;
     [SerializeField] float lifetime = 0f;
+    [SerializeField] float delay = 0;
 
     private void Start()
     {
@@ -42,6 +43,8 @@ public class ExplosionHitbox : MonoBehaviour
 
     private IEnumerator StartSizeChange()
     {
+        yield return new WaitForSeconds(delay);
+
         float timer = 0;
         float startSize = cc.radius;
         while (cc.radius < maxSize)
