@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmbientSound : MonoBehaviour
+public class MusicManager : MonoBehaviour
 {
     [SerializeField] PlayerInfo pi;
     WorldGenerator.Biome recognizedBiome;
@@ -20,12 +20,12 @@ public class AmbientSound : MonoBehaviour
         {
             if (recognizedBiome != null)
             {
-                StartCoroutine(msfx.FadeOutAndIn(aus, pi.currentBiome.ambientNoise.clip, 2, pi.currentBiome.ambientNoise.volume));
+                StartCoroutine(msfx.FadeOutAndIn(aus, pi.currentBiome.music.clip, 2, pi.currentBiome.music.volume));
             }
             else
             {
-                aus.clip = pi.currentBiome.ambientNoise.clip;
-                aus.volume = pi.currentBiome.ambientNoise.volume;
+                aus.clip = pi.currentBiome.music.clip;
+                aus.volume = pi.currentBiome.music.volume;
                 aus.Play();
             }
 
@@ -33,7 +33,4 @@ public class AmbientSound : MonoBehaviour
 
         }
     }
-
-    
-
 }

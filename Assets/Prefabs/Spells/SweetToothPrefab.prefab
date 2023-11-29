@@ -187,7 +187,7 @@ MonoBehaviour:
   style: 3
   damageType: 2
   statusEffectData: []
-  onHitEffect: {fileID: 3369644740303421294, guid: 02d12e1e5d66f45aebcec8e6be7ea5dc, type: 3}
+  onHitEffect: {fileID: 3161796286646881137, guid: 7671608bbf5d14f0e938ffc3010222c4, type: 3}
   effectLifetime: 0.6
   canHitMultipleTimes: 0
   damage: 0
