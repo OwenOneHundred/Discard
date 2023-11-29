@@ -5,7 +5,7 @@ using UnityEngine;
 public class AmbientSound : MonoBehaviour
 {
     [SerializeField] PlayerInfo pi;
-    WorldGenerator.Biome recognizedBiome;
+    WorldGenerator.Biome recognizedBiome = null;
     [SerializeField] AudioSource aus;
     MiniSfXManager msfx;
 

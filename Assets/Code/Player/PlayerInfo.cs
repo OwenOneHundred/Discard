@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerInfo : MonoBehaviour
 {
     public float hp;
-    public Slider hpSlider; 
+    Slider hpSlider; 
     [System.NonSerialized] public WorldGenerator.Biome currentBiome;
 
     public GameObject deathPanel;
@@ -26,6 +26,7 @@ public class PlayerInfo : MonoBehaviour
 
     private void Start()
     {
+        hpSlider = GameObject.Find("HealthBarBG").GetComponent<Slider>();
         hpSlider.maxValue = hp;
         hpSlider.value = hp;
         StartCoroutine(CheckBiomePosition());

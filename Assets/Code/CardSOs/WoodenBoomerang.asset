@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Wooden Boomerang
   description: Launch a flimsy wooden boomerang.
   art: {fileID: 21300000, guid: b86999ddb5a3f4718b7b8c9f8f4ea9b6, type: 3}
-  cost: 0
+  cost: 1
   attackPrefab: {fileID: 2321280582114706463, guid: 3288f6ffdfcec4a19b64fdae5a5bacb0, type: 3}
   style: 0
   damageType: 2
@@ -23,5 +23,4 @@ MonoBehaviour:
   baseDamage: 30
   targetAnimator: {fileID: 0}
   castFunctions:
-  - {fileID: 11400000, guid: 35337137de62741bdb7cb1295509de7a, type: 2}
   - {fileID: 11400000, guid: 2b1734fecb98348f68b02ccf7070358b, type: 2}
