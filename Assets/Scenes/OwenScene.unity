@@ -1039,6 +1039,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &553971028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3021810796906112905, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
+  m_PrefabInstance: {fileID: 8686770305007611429}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &608122897
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,6 +2055,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6642607665648479524, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
+      propertyPath: deathPanel
+      value: 
+      objectReference: {fileID: 553971028}
     - target: {fileID: 6642607665648479527, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -3049,7 +3058,7 @@ PrefabInstance:
     - target: {fileID: 853407684210738905, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: scriptableObject
       value: 
-      objectReference: {fileID: 11400000, guid: 6ea5af2fb557145f7b0e312813e0a837, type: 2}
+      objectReference: {fileID: 11400000, guid: a38cf32741ba34517b079df7de4c9fc6, type: 2}
     - target: {fileID: 8686770304516353431, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
