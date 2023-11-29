@@ -1713,17 +1713,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e68b3c30ad6e4be9858b7f2dddf3cdc, type: 3}
---- !u!114 &1527276255 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8686770303477453752, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
-  m_PrefabInstance: {fileID: 1871730441}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1740010682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3021810796906112905, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
@@ -1968,10 +1957,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 864562379, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3021810796906112905, guid: 8783a0ca9df8d4a608230f631702a759, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2585,14 +2570,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6642607665648479524, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
-      propertyPath: hp
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6642607665648479524, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
-      propertyPath: hpSlider
-      value: 
-      objectReference: {fileID: 1527276255}
     - target: {fileID: 6642607665648479524, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
       propertyPath: deathPanel
       value: 
