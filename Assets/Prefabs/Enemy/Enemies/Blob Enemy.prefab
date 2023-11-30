@@ -454,7 +454,7 @@ MonoBehaviour:
   lengthOfDeathAnim: 2.35
   deathObject: {fileID: 6254372789522924656, guid: c1adb3acf28e840818d2c94634712c03, type: 3}
   deathObjTar: {fileID: 4290501023426143359}
-  cardReward: {fileID: 0}
+  cardReward: {fileID: 2880674207948493477, guid: 8ae3515e5a27b436d89150839d652a27, type: 3}
 --- !u!114 &4290501022507652432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,7 +536,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 6
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
