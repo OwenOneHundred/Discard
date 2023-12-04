@@ -20,9 +20,12 @@ public class MusicManager : MonoBehaviour
         {
             if (recognizedBiome != null)
             {
-                StartCoroutine(msfx.FadeOutAndIn(aus, pi.currentBiome.music.clip, 2, pi.currentBiome.music.volume));
+                if (pi.currentBiome.music.name != recognizedBiome.music.name)
+                {
+                    StartCoroutine(msfx.FadeOutAndIn(aus, pi.currentBiome.music.clip, 2, pi.currentBiome.music.volume));
+                }
             }
-            else
+            else // runs on the first frame only I think
             {
                 aus.clip = pi.currentBiome.music.clip;
                 aus.volume = pi.currentBiome.music.volume;

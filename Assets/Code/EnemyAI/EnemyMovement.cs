@@ -34,14 +34,14 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            PauseMove(true);
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            PauseMove(false);
-        }
+        //if (Input.GetKeyDown(KeyCode.X))
+        //{
+        //    PauseMove(true);
+        //}
+        //if (Input.GetKeyDown(KeyCode.C))
+        //{
+        //    PauseMove(false);
+        //}
 
         //Moves Enemy Object towards objective if no at it already
         if (atObjective != true && (objective != null || objectiveV3 != null))

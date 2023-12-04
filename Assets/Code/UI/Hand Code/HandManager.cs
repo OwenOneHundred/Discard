@@ -355,7 +355,7 @@ public class HandManager : MonoBehaviour
         newCard.GetComponent<CardInfo>().scriptableObject = card;
         newCard.GetComponent<CardInfo>().SetUp();
         newCard.SetActive(false);
-        Deck.Add(newCard);
+        DrawPile.Add(newCard);
     }
 
     IEnumerator PutHandAway()

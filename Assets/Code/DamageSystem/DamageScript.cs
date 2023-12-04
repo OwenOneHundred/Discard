@@ -165,8 +165,12 @@ public class DamageScript : MonoBehaviour
         }
         if(lootManager != null && cardReward != null)
         {
-            GameObject tempCardR = Instantiate(cardReward, transform.position, Quaternion.identity);
-            tempCardR.GetComponent<CardRewardObj>().offeredCards.Add(lootManager.GetLootCardBySpecifiedWeights(.5f, .3f, .2f));
+            CardRewardObj newCardReward = Instantiate(cardReward, transform.position, Quaternion.identity).GetComponent<CardRewardObj>();
+            List<Card> rewardCards = new List<Card>() {
+                lootManager.GetLootCardBySpecifiedWeights(.5f, .3f, .2f),
+                lootManager.GetLootCardBySpecifiedWeights(.5f, .3f, .2f),
+                lootManager.GetLootCardBySpecifiedWeights(.5f, .3f, .2f), };
+            newCardReward.SetUp(rewardCards);
         }
         if(deathObject != null)
         {

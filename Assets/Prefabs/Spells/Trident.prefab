@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 6458660147812831668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5111301553035373250}
@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 1804182662208229899}
   - component: {fileID: 2326807697282690159}
   - component: {fileID: 361455609653569559}
+  - component: {fileID: 2101119302915706695}
   m_Layer: 0
   m_Name: Trident-SheetSS_0
   m_TagString: Untagged
@@ -173,4 +174,27 @@ MonoBehaviour:
   startOnAwake: 1
   disableAtMaxSize: 1
   lifetime: 0.9
-  delay: 0.1
+  delay: 0.19
+--- !u!114 &2101119302915706695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7890515851358881001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9da102ebe587a44ebb870fb8eb9b4d62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedHitbox: {fileID: 2326807697282690159}
+  knockback: 2000
+  KbOutInsteadOfBack: 1
+  forwardIsUp: 0
+  style: 4
+  damageType: 2
+  statusEffectData: []
+  onHitEffect: {fileID: 0}
+  effectLifetime: 1
+  canHitMultipleTimes: 0
+  damage: 0

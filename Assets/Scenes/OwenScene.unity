@@ -2051,6 +2051,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4478299456370421063, guid: d0a7467c62a474f9d88235b2451491d5, type: 3}
+      propertyPath: timesToSpawn.Array.data[0]
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478299456370421063, guid: d0a7467c62a474f9d88235b2451491d5, type: 3}
+      propertyPath: timesToSpawn.Array.data[1]
+      value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478299456370421063, guid: d0a7467c62a474f9d88235b2451491d5, type: 3}
+      propertyPath: timesToSpawn.Array.data[2]
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478299456370421063, guid: d0a7467c62a474f9d88235b2451491d5, type: 3}
+      propertyPath: timesToSpawn.Array.data[3]
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4478299456370421063, guid: d0a7467c62a474f9d88235b2451491d5, type: 3}
+      propertyPath: timesToSpawn.Array.data[4]
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4478299456370421080, guid: d0a7467c62a474f9d88235b2451491d5, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -2108,6 +2128,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 517327647680039765, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 517327647680039765, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3105029633519341324, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6642607665648479520, guid: ee2af53ac4f684d53adf5535b538a555, type: 3}
       propertyPath: m_Name
       value: Player

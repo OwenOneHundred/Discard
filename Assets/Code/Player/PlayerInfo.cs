@@ -44,7 +44,7 @@ public class PlayerInfo : MonoBehaviour
     //Handles the death of the player
     public void Death()
     {
-        Time.timeScale = .0f;
+        Time.timeScale = 0f;
         deathPanel.SetActive(true);
         StartCoroutine("DeathWait");
     }
@@ -52,6 +52,7 @@ public class PlayerInfo : MonoBehaviour
     private IEnumerator DeathWait()
     {
         yield return new WaitForSecondsRealtime(2.5f);
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
 }

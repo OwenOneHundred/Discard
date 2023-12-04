@@ -36,6 +36,7 @@ public class EnemyHealthBarManager : MonoBehaviour
     /// </summary>
     public void OnHit(float value)
     {
+        if (slider == null) { return; }
         slider.value = value;
         if (!slider.gameObject.activeInHierarchy)
         {
@@ -60,6 +61,9 @@ public class EnemyHealthBarManager : MonoBehaviour
 
     public void Death()
     {
-        Destroy(slider.gameObject);
+        if (slider != null)
+        {
+            Destroy(slider.gameObject);
+        }
     }
 }

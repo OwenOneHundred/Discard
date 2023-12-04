@@ -22,6 +22,7 @@ public class CardRewardObj : MonoBehaviour
         {
             Debug.LogWarning("CardRewardObj was not immediately set up after being spawned. Call CardRewardObj.SetUp().");
         }
+        Destroy(gameObject, 30f);
     }
 
     public void SetUp(List<Card> newOfferedCards)
@@ -66,7 +67,7 @@ public class CardRewardObj : MonoBehaviour
 
     void OnInteracted()
     {
-        closestPair = null;
+        closestPair = new Pair<GameObject, float>(gameObject, 666);
         GameObject.Find("UI").GetComponent<UIManager>().cardSelectionUI.GetComponent<CardSelectionManager>().CreateCardSelectionMenu(offeredCards);
         Destroy(gameObject);
         Destroy(associatedText);
